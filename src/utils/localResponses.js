@@ -611,6 +611,7 @@ const isAboutJorge = (message) => {
 
 export const getLocalResponse = (message) => {
     const normalizedMessage = normalizeText(message);
+
     const aboutJorge = isAboutJorge(message);
 
     const jorgeCategories = [
@@ -630,7 +631,7 @@ export const getLocalResponse = (message) => {
 
         /*
         |--------------------------------------------------------------------------
-        | SOLO INFORMACIÓN DE JORGE
+        | INFORMACIÓN DE JORGE
         |--------------------------------------------------------------------------
         */
 
@@ -645,7 +646,7 @@ export const getLocalResponse = (message) => {
 
         /*
         |--------------------------------------------------------------------------
-        | CALCULAR COINCIDENCIA
+        | COINCIDENCIAS
         |--------------------------------------------------------------------------
         */
 
@@ -654,12 +655,30 @@ export const getLocalResponse = (message) => {
 
             /*
             |--------------------------------------------------------------------------
-            | FRASE COMPLETA
+            | FRASE EXACTA
             |--------------------------------------------------------------------------
             */
 
-            if (normalizedMessage.includes(normalizedKeyword)) {
-                score += normalizedKeyword.split(" ").length * 3;
+            if (normalizedMessage === normalizedKeyword) {
+                score += 10;
+                continue;
+            }
+
+            /*
+            |--------------------------------------------------------------------------
+            | FRASE CONTENIDA
+            |--------------------------------------------------------------------------
+            */
+
+            const keywordRegex = new RegExp(
+                `(^|\\s)${normalizedKeyword.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    "\\$&"
+                )}(?=\\s|$)`
+            );
+
+            if (keywordRegex.test(normalizedMessage)) {
+                score += normalizedKeyword.split(" ").length * 5;
                 continue;
             }
 
@@ -674,7 +693,15 @@ export const getLocalResponse = (message) => {
                 .filter((word) => word.length > 2);
 
             for (const word of keywordWords) {
-                if (normalizedMessage.includes(word)) {
+
+                const wordRegex = new RegExp(
+                    `(^|\\s)${word.replace(
+                        /[.*+?^${}()|[\]\\]/g,
+                        "\\$&"
+                    )}(?=\\s|$)`
+                );
+
+                if (wordRegex.test(normalizedMessage)) {
                     score += 1;
                 }
             }
@@ -698,7 +725,7 @@ export const getLocalResponse = (message) => {
     |--------------------------------------------------------------------------
     */
 
-    if (bestScore >= 3 && bestMatch) {
+    if (bestMatch && bestScore >= 3) {
 
         const responses = bestMatch.responses;
 
@@ -708,12 +735,6 @@ export const getLocalResponse = (message) => {
 
         return responses[randomIndex];
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | NO HAY RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
 
     return null;
 };
