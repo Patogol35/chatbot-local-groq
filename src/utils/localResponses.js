@@ -609,109 +609,38 @@ const isAboutJorge = (message) => {
 |--------------------------------------------------------------------------
 */
 
-export const getLocalResponse = (message) => {
+            | export const getLocalResponse = (message) => {
     const normalizedMessage = normalizeText(message);
 
-    const aboutJorge = isAboutJorge(message);
-
-    const jorgeCategories = [
-        "identidad",
-        "formacion",
-        "notas",
-        "tecnologias",
-        "proyectos",
-        "certificaciones",
-        "intereses",
-    ];
+    /*
+    |--------------------------------------------------------------------------
+    | 1. BUSCAR PRIMERO KEYWORDS ESPECÍFICAS
+    |--------------------------------------------------------------------------
+    */
 
     let bestMatch = null;
     let bestScore = 0;
 
     for (const item of LOCAL_RESPONSES) {
-
-        /*
-        |--------------------------------------------------------------------------
-        | INFORMACIÓN DE JORGE
-        |--------------------------------------------------------------------------
-        */
-
-        if (
-            jorgeCategories.includes(item.category) &&
-            !aboutJorge
-        ) {
-            continue;
-        }
-
         let score = 0;
-
-        /*
-        |--------------------------------------------------------------------------
-        | COINCIDENCIAS
-        |--------------------------------------------------------------------------
-        */
 
         for (const keyword of item.keywords) {
             const normalizedKeyword = normalizeText(keyword);
 
-            /*
-            |--------------------------------------------------------------------------
-            | FRASE EXACTA
-            |--------------------------------------------------------------------------
-            */
-
-            if (normalizedMessage === normalizedKeyword) {
-                score += 10;
-                continue;
-            }
-
-            /*
-            |--------------------------------------------------------------------------
-            | FRASE CONTENIDA
-            |--------------------------------------------------------------------------
-            */
-
-            const keywordRegex = new RegExp(
+            const regex = new RegExp(
                 `(^|\\s)${normalizedKeyword.replace(
                     /[.*+?^${}()|[\]\\]/g,
                     "\\$&"
                 )}(?=\\s|$)`
             );
 
-            if (keywordRegex.test(normalizedMessage)) {
-                score += normalizedKeyword.split(" ").length * 5;
-                continue;
-            }
+            if (regex.test(normalizedMessage)) {
+                // Las frases largas tienen mayor prioridad
+                const words = normalizedKeyword.split(" ").length;
 
-            /*
-            |--------------------------------------------------------------------------
-            | PALABRAS INDIVIDUALES
-            |--------------------------------------------------------------------------
-            */
-
-            const keywordWords = normalizedKeyword
-                .split(" ")
-                .filter((word) => word.length > 2);
-
-            for (const word of keywordWords) {
-
-                const wordRegex = new RegExp(
-                    `(^|\\s)${word.replace(
-                        /[.*+?^${}()|[\]\\]/g,
-                        "\\$&"
-                    )}(?=\\s|$)`
-                );
-
-                if (wordRegex.test(normalizedMessage)) {
-                    score += 1;
-                }
+                score += words * 10;
             }
         }
-
-        /*
-        |--------------------------------------------------------------------------
-        | GUARDAR MEJOR COINCIDENCIA
-        |--------------------------------------------------------------------------
-        */
 
         if (score > bestScore) {
             bestScore = score;
@@ -721,20 +650,23 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | RESPUESTA LOCAL
+    | 2. SI ENCONTRÓ UNA CATEGORÍA ESPECÍFICA
     |--------------------------------------------------------------------------
     */
 
-    if (bestMatch && bestScore >= 3) {
-
+    if (bestMatch && bestScore >= 10) {
         const responses = bestMatch.responses;
 
-        const randomIndex = Math.floor(
-            Math.random() * responses.length
-        );
-
-        return responses[randomIndex];
+        return responses[
+            Math.floor(Math.random() * responses.length)
+        ];
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | 3. SI NO ENCONTRÓ KEYWORDS
+    |--------------------------------------------------------------------------
+    */
 
     return null;
 };
