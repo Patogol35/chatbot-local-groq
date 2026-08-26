@@ -602,21 +602,14 @@ const isAboutJorge = (message) => {
         normalized.includes(normalizeText(keyword))
     );
 };
-
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
 |--------------------------------------------------------------------------
 */
 
-            | export const getLocalResponse = (message) => {
+export const getLocalResponse = (message) => {
     const normalizedMessage = normalizeText(message);
-
-    /*
-    |--------------------------------------------------------------------------
-    | 1. BUSCAR PRIMERO KEYWORDS ESPECÍFICAS
-    |--------------------------------------------------------------------------
-    */
 
     let bestMatch = null;
     let bestScore = 0;
@@ -627,6 +620,12 @@ const isAboutJorge = (message) => {
         for (const keyword of item.keywords) {
             const normalizedKeyword = normalizeText(keyword);
 
+            /*
+            |--------------------------------------------------------------------------
+            | COINCIDENCIA EXACTA DE PALABRA O FRASE
+            |--------------------------------------------------------------------------
+            */
+
             const regex = new RegExp(
                 `(^|\\s)${normalizedKeyword.replace(
                     /[.*+?^${}()|[\]\\]/g,
@@ -635,12 +634,18 @@ const isAboutJorge = (message) => {
             );
 
             if (regex.test(normalizedMessage)) {
-                // Las frases largas tienen mayor prioridad
                 const words = normalizedKeyword.split(" ").length;
 
+                // Las coincidencias específicas tienen mucho peso
                 score += words * 10;
             }
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | GUARDAR LA MEJOR COINCIDENCIA
+        |--------------------------------------------------------------------------
+        */
 
         if (score > bestScore) {
             bestScore = score;
@@ -650,23 +655,19 @@ const isAboutJorge = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | 2. SI ENCONTRÓ UNA CATEGORÍA ESPECÍFICA
+    | RESPUESTA LOCAL
     |--------------------------------------------------------------------------
     */
 
     if (bestMatch && bestScore >= 10) {
         const responses = bestMatch.responses;
 
-        return responses[
-            Math.floor(Math.random() * responses.length)
-        ];
-    }
+        const randomIndex = Math.floor(
+            Math.random() * responses.length
+        );
 
-    /*
-    |--------------------------------------------------------------------------
-    | 3. SI NO ENCONTRÓ KEYWORDS
-    |--------------------------------------------------------------------------
-    */
+        return responses[randomIndex];
+    }
 
     return null;
 };
