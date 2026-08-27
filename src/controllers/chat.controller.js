@@ -10,7 +10,7 @@ const groq = new Groq({
 |--------------------------------------------------------------------------
 */
 
-const MODEL = "openai/gpt-oss-20b";
+const MODEL = "openai/gpt-oss-120b";
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 8;
