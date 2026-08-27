@@ -14,7 +14,7 @@ const MODEL = "openai/gpt-oss-120b";
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 8;
-const MAX_COMPLETION_TOKENS = 200;
+const MAX_COMPLETION_TOKENS = 260;
 const COST_PER_1K_TOKENS = 0.0002;
 
 /*
@@ -80,10 +80,7 @@ REGLAS:
 - Responde siempre en el mismo idioma de la pregunta.
 - Traduce también la información sobre Jorge al idioma del usuario.
 - Para información sobre Jorge, usa exclusivamente JORGE_INFO.
-- Responde de forma clara, natural y concisa.
-- Prioriza la información más importante y evita explicaciones innecesariamente largas.
-- Procura completar siempre la respuesta sin exceder aproximadamente 150-200 tokens.
-- No cortes una respuesta a mitad de una oración.
+- Sé claro, conciso y prioriza la información esencial; evita respuestas innecesariamente largas.
 
 INFORMACIÓN DE JORGE:
 ${JORGE_INFO}
