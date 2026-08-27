@@ -18,7 +18,7 @@ const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 4;
 
 // Respuestas cortas
-const MAX_COMPLETION_TOKENS = 180;
+const MAX_COMPLETION_TOKENS = 280;
 
 // Solo referencia para tu cálculo local.
 // Verifica el precio real del modelo en Groq.
