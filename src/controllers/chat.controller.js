@@ -18,7 +18,7 @@ Estudios:
 - Máster en Ingeniería de Software, UNIR, España — 8.68/10.
 
 Certificaciones:
-- MCP, Anthropic, 2026
+- MCP (IA), Anthropic, 2026
 - Claude API, Anthropic, 2026
 - Fundamentals of AI, IBM, 2025
 - Linux, Udemy, 2024
@@ -38,6 +38,9 @@ Lectura, especialmente Dan Brown, y música.
 
 Contacto:
 Sección "Contacto" del portfolio.
+
+Portafolio:
+portafolio-jorgepatricio.vercel.app
 `;
 
 const SYSTEM_PROMPT = `
