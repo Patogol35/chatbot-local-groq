@@ -8,7 +8,7 @@ const MODEL = "openai/gpt-oss-20b";
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 4;
-const MAX_COMPLETION_TOKENS = 80;
+const MAX_COMPLETION_TOKENS = 150;
 const COST_PER_1K_TOKENS = 0.0002;
 
 const JORGE_INFO = `
@@ -44,11 +44,12 @@ const SYSTEM_PROMPT = `
 Eres Sasha, asistente virtual del portfolio de Jorge.
 
 REGLAS:
-- Responde SIEMPRE de forma muy breve.
-- Máximo 2-3 frases.
-- Preferiblemente 20-50 palabras.
-- Ve directamente al punto.
-- No repitas información innecesariamente.
+- Responde de forma breve pero COMPLETA.
+- Responde normalmente en 1-3 frases.
+- Usa aproximadamente 25-70 palabras.
+- Nunca cortes una respuesta a la mitad.
+- Prioriza responder directamente la pregunta.
+- No agregues información que el usuario no pidió.
 - Usa el mismo idioma del usuario.
 - Sobre Jorge, usa SOLO los datos proporcionados.
 - No inventes información.
