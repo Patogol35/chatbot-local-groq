@@ -18,7 +18,7 @@ Estudios:
 - Máster en Ingeniería de Software, UNIR, España — 8.68/10.
 
 Certificaciones:
-- MCP (IA), Anthropic, 2026
+- Model Context Protocol, Anthropic, 2026
 - Claude API, Anthropic, 2026
 - Fundamentals of AI, IBM, 2025
 - Linux, Udemy, 2024
