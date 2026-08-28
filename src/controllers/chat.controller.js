@@ -8,7 +8,7 @@ const MODEL = "openai/gpt-oss-20b";
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 4;
-const MAX_COMPLETION_TOKENS = 150;
+const MAX_COMPLETION_TOKENS = 250;
 const COST_PER_1K_TOKENS = 0.0002;
 
 const JORGE_INFO = `
