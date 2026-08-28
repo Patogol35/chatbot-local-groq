@@ -28,19 +28,20 @@ Stack:
 React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel, AWS.
 
 Especialidades:
-Full Stack, virtualización, seguridad y documentación técnica.
+Desarrollo Full Stack, virtualización, ciberseguridad.
 
 Proyectos:
 Portfolio React, Quiz Ecuador, App del clima, Chatbot, Ajedrez y E-commerce React+Django.
 
 Intereses:
-Lectura, especialmente Dan Brown, y música.
+Lectura y música.
 
 Contacto:
 Sección "Contacto" del portfolio.
 
 Portafolio:
 portafolio-jorgepatricio.vercel.app
+
 `;
 
 const SYSTEM_PROMPT = `
