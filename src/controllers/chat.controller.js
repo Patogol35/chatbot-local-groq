@@ -39,9 +39,6 @@ Lectura y música.
 Contacto:
 Sección "Contacto" del portfolio.
 
-Portafolio:
-portafolio-jorgepatricio.vercel.app
-
 `;
 
 const SYSTEM_PROMPT = `
