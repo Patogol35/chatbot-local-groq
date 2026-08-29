@@ -4,7 +4,7 @@ const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
 });
 
-const MODEL = "openai/gpt-oss-120b";
+const MODEL = "openai/gpt-oss-20b";
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 4;
