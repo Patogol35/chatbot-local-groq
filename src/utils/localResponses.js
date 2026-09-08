@@ -42,6 +42,7 @@ const LOCAL_RESPONSES = [
             "presentame a jorge",
             "hablame de jorge",
             "sobre jorge",
+            "habla de jorge"
         ],
         responses: [
             "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
