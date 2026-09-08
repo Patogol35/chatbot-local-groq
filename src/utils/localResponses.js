@@ -72,7 +72,7 @@ const LOCAL_RESPONSES = [
 
         "sobre jorge",
         "sobre patricio",
-        "sobre Jorge Patricio"
+        "sobre Jorge Patricio",
     ],
     responses: [
         "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
