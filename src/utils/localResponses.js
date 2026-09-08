@@ -1409,6 +1409,24 @@ export const getLocalResponse = (message) => {
 const sashaResponses = [
 
     {
+    keywords: [
+        "hola sasha",
+        "hola sasha",
+        "hey sasha",
+        "oye sasha",
+        "buenas sasha",
+        "buenos dias sasha",
+        "buenas tardes sasha",
+        "buenas noches sasha"
+    ],
+    responses: [
+        "¡Hola! Soy Sasha 😊 ¿En qué puedo ayudarte?",
+        "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. ¿Qué te gustaría saber?",
+        "¡Hola! 😄 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge."
+    ]
+},
+
+    {
         keywords: [
             "quien eres",
             "quien eres tu",
