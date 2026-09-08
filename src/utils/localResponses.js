@@ -1428,7 +1428,7 @@ const sashaResponses = [
         "¡Hola! Soy Sasha 😊 ¿En qué puedo ayudarte?",
         "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. ¿Qué te gustaría saber?",
         "¡Hola! 😄 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge.",
-        "Hola soy Sasha y soy ña asistente de mi gran amigo Jorge",
+        "Hola soy Sasha y soy la asistente de mi gran amigo Jorge",
     ]
 },
 
@@ -1481,7 +1481,8 @@ const sashaResponses = [
         responses: [
             "Fui creada y desarrollada por Jorge como parte de su portfolio.",
             "Jorge es el desarrollador y creador de Sasha dentro de su portfolio.",
-            "Fui desarrollada por Jorge para funcionar como asistente virtual de su portfolio."
+            "Fui desarrollada por Jorge para funcionar como asistente virtual de su portfolio.",
+            "Jorge fue mi creador por eso lo admiro"
         ]
     },
 
