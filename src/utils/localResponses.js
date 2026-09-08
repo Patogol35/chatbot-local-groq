@@ -1261,7 +1261,7 @@ if (generalQueries.includes(normalized)) {
     /^donde se graduo (.+)$/,
     /^educacion de (.+)$/,
         /^habla de la educacion de (.+)$/,
-        /^habla de la formación de (.+)$/,
+        /^habla de la formacion de (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
