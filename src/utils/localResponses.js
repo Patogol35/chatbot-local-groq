@@ -1031,26 +1031,68 @@ const LOCAL_RESPONSES = [
 },
 
     /*
-    |--------------------------------------------------------------------------
-    | SASHA
-    |--------------------------------------------------------------------------
-    */
+|--------------------------------------------------------------------------
+| SASHA
+|--------------------------------------------------------------------------
+*/
 
-    {
-        category: "sasha",
-        keywords: [
-            "quien eres",
-            "que eres",
-            "como te llamas",
-            "tu nombre",
-        ],
-        responses: [
-            "Soy Sasha, la asistente virtual del portfolio de Jorge.",
-            "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge.",
-            "Soy Sasha, una IA creada para asistir a los visitantes del portfolio de Jorge.",
-            "Mi nombre es Sasha y funciono como asistente virtual del portfolio de Jorge."
-        ]
-    },
+{
+    category: "sasha",
+
+    keywords: [
+        "quien eres",
+        "quien eres tu",
+        "que eres",
+        "que eres tu",
+        "como te llamas",
+        "cual es tu nombre",
+        "tu nombre",
+        "como te puedo llamar",
+        "quien es sasha",
+        "que es sasha",
+
+        "que haces",
+        "que haces tu",
+        "para que sirves",
+        "cual es tu funcion",
+        "que funcion tienes",
+        "para que fuiste creada",
+        "para que te crearon",
+        "que puedes hacer",
+        "que puedes hacer tu",
+        "en que puedes ayudarme",
+        "como puedes ayudarme",
+
+        "quien te creo",
+        "quien te hizo",
+        "quien te desarrollo",
+        "quien es tu creador",
+        "quien es tu desarrollador",
+        "quien creo a sasha",
+        "quien desarrollo a sasha",
+
+        "eres una ia",
+        "eres inteligencia artificial",
+        "eres una inteligencia artificial",
+        "eres un robot",
+        "eres un chatbot",
+        "eres un asistente virtual",
+        "eres una asistente virtual",
+
+        "como funcionas",
+        "como trabajas",
+        "como respondes",
+
+        "que informacion tienes",
+        "que informacion conoces",
+        "que sabes",
+        "que sabes tu"
+    ],
+
+    responses: [
+        "Soy Sasha, la asistente virtual del portfolio de Jorge."
+    ]
+},
 ];
 
 /*
@@ -1353,6 +1395,178 @@ export const getLocalResponse = (message) => {
     }
 
     const normalizedMessage = normalizeText(message);
+
+
+
+
+
+    /*
+|--------------------------------------------------------------------------
+| RESPUESTAS ESPECÍFICAS DE SASHA
+|--------------------------------------------------------------------------
+*/
+
+const sashaResponses = [
+
+    {
+        keywords: [
+            "quien eres",
+            "quien eres tu",
+            "como te llamas",
+            "cual es tu nombre",
+            "tu nombre",
+            "quien es sasha",
+            "que es sasha"
+        ],
+        responses: [
+            "Soy Sasha, la asistente virtual del portfolio de Jorge.",
+            "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge.",
+            "Soy Sasha, una asistente virtual creada para acompañarte mientras exploras el portfolio de Jorge."
+        ]
+    },
+
+    {
+        keywords: [
+            "que haces",
+            "que haces tu",
+            "para que sirves",
+            "cual es tu funcion",
+            "que funcion tienes",
+            "que puedes hacer",
+            "que puedes hacer tu",
+            "en que puedes ayudarme",
+            "como puedes ayudarme"
+        ],
+        responses: [
+            "Mi función es ayudarte a conocer mejor el portfolio de Jorge y responder preguntas sobre su perfil, formación, tecnologías, proyectos y certificaciones.",
+            "Estoy aquí para ayudarte a explorar el portfolio de Jorge de una manera más interactiva.",
+            "Puedo ayudarte a encontrar información sobre Jorge, sus estudios, proyectos, tecnologías, certificaciones y otros aspectos de su perfil profesional."
+        ]
+    },
+
+    {
+        keywords: [
+            "quien te creo",
+            "quien te hizo",
+            "quien te desarrollo",
+            "quien es tu creador",
+            "quien es tu desarrollador",
+            "quien creo a sasha",
+            "quien desarrollo a sasha"
+        ],
+        responses: [
+            "Fui creada y desarrollada por Jorge como parte de su portfolio.",
+            "Jorge es el desarrollador y creador de Sasha dentro de su portfolio.",
+            "Fui desarrollada por Jorge para funcionar como asistente virtual de su portfolio."
+        ]
+    },
+
+    {
+        keywords: [
+            "eres una ia",
+            "eres inteligencia artificial",
+            "eres una inteligencia artificial",
+            "eres un robot",
+            "eres un chatbot",
+            "eres un asistente virtual",
+            "eres una asistente virtual"
+        ],
+        responses: [
+            "Sí, soy una asistente virtual basada en inteligencia artificial.",
+            "Soy una IA integrada en el portfolio de Jorge para interactuar con sus visitantes.",
+            "No soy una persona ni un robot físico; soy una asistente virtual diseñada para este portfolio."
+        ]
+    },
+
+    {
+        keywords: [
+            "que informacion tienes",
+            "que informacion conoces",
+            "que sabes",
+            "que sabes tu",
+            "que puedes contarme",
+            "que me puedes contar",
+            "que informacion puedes darme"
+        ],
+        responses: [
+            "Puedo proporcionarte información sobre Jorge, incluyendo su formación, tecnologías, proyectos, certificaciones y contacto.",
+            "Tengo información preparada sobre el perfil profesional de Jorge y puedo ayudarte a consultarla mediante preguntas.",
+            "Puedes preguntarme directamente sobre los estudios, proyectos, tecnologías o certificaciones de Jorge."
+        ]
+    },
+
+    {
+        keywords: [
+            "como funcionas",
+            "como trabajas",
+            "como respondes",
+            "como sabes las cosas",
+            "de donde obtienes la informacion",
+            "como obtienes la informacion"
+        ],
+        responses: [
+            "Funciono combinando respuestas preparadas específicamente para el portfolio con inteligencia artificial para responder preguntas que no estén contempladas localmente.",
+            "Mi sistema prioriza la información del portfolio y utiliza inteligencia artificial cuando una pregunta necesita una respuesta más abierta.",
+            "Analizo lo que preguntas y, cuando existe información disponible localmente, puedo responder directamente con ella."
+        ]
+    },
+
+    {
+        keywords: [
+            "que haces en el portfolio",
+            "que haces en el portafolio",
+            "para que estas en el portfolio",
+            "para que estas en el portafolio",
+            "cual es tu funcion en el portfolio",
+            "eres la asistente del portfolio",
+            "eres la asistente del portafolio"
+        ],
+        responses: [
+            "Estoy integrada en el portfolio de Jorge para ofrecer una forma más interactiva de conocer su perfil profesional.",
+            "Soy la asistente virtual de este portfolio y estoy aquí para ayudarte a descubrir su contenido.",
+            "Mi función dentro del portfolio es ayudarte a encontrar información sobre Jorge y sus proyectos de una manera más interactiva."
+        ]
+    }
+
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| BUSCAR RESPUESTA ESPECÍFICA DE SASHA
+|--------------------------------------------------------------------------
+*/
+
+for (const group of sashaResponses) {
+
+    for (const keyword of group.keywords) {
+
+        const normalizedKeyword = normalizeText(keyword);
+
+        const regex = new RegExp(
+            `(^|\\s)${normalizedKeyword.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            )}(?=\\s|$)`
+        );
+
+        if (regex.test(normalizedMessage)) {
+
+            const responses = group.responses;
+
+            const randomIndex = Math.floor(
+                Math.random() * responses.length
+            );
+
+            return responses[randomIndex];
+        }
+    }
+}
+
+
+
+
+    
 /*
 |--------------------------------------------------------------------------
 | CERTIFICACIONES POR AÑO
