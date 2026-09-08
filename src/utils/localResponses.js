@@ -1566,6 +1566,77 @@ for (const group of sashaResponses) {
 
 
 
+
+
+
+/*
+|--------------------------------------------------------------------------
+| PREGUNTAS TÉCNICAS / CONCEPTUALES
+|--------------------------------------------------------------------------
+*/
+
+const technicalPatterns = [
+    "como programar",
+    "como hacer",
+    "como se hace",
+    "como puedo hacer",
+    "como puedo programar",
+    "como imprimir",
+    "como mostrar",
+    "como declarar",
+    "como crear",
+    "como ejecutar",
+    "como usar",
+    "como utilizar",
+    "como funciona",
+
+    "de que trata",
+    "de que se trata",
+    "que trata",
+    "que es",
+    "que significa",
+    "para que sirve",
+    "para que se usa",
+    "en que consiste",
+    "en que consiste la certificacion",
+    "en que consiste el certificado",
+    "que se aprende",
+    "que enseñan",
+    "que temas incluye",
+    "que contenido tiene",
+    "que incluye la certificacion",
+    "que incluye el certificado",
+
+    "ejemplo de codigo",
+    "ejemplo de codigo en",
+    "codigo en",
+    "programar en",
+    "programacion en",
+    "programacion",
+    "codigo",
+    "bucle",
+    "variable",
+    "funcion",
+    "metodo",
+    "clase",
+    "array",
+    "arreglo",
+    "error de codigo",
+    "error en el codigo"
+];
+
+const isTechnicalQuestion = technicalPatterns.some(pattern =>
+    normalizedMessage.includes(pattern)
+);
+
+if (isTechnicalQuestion) {
+    return null;
+}
+
+    
+
+    
+
     
 /*
 |--------------------------------------------------------------------------
