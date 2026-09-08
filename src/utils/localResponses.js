@@ -32,26 +32,51 @@ const LOCAL_RESPONSES = [
     |--------------------------------------------------------------------------
     */
 
-    {
-        category: "identidad",
-        keywords: [
-            "quien es jorge",
-            "quien es jorge patricio",
-            "quien es santamaria",
-            "quien es santamaria cherrez",
-            "presentame a jorge",
-            "hablame de jorge",
-            "sobre jorge",
-            "habla de jorge"
-        ],
-        responses: [
-            "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
-            "Jorge Patricio Santamaría Cherrez es un profesional de Ingeniería de Software, con formación en Ingeniería en Sistemas y un Máster en esta área.",
-            "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica y Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR.",
-            "Jorge Patricio Santamaría Cherrez cuenta con formación en Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos."
-        ]
-    },
+{
+    category: "identidad",
+    keywords: [
+        "quien es jorge",
+        "quien es patricio",
 
+        "quien es jorge patricio",
+        "quien es jorge santamaria",
+        "quien es jorge cherrez",
+        "quien es patricio santamaria",
+        "quien es patricio cherrez",
+        "quien es santamaria cherrez",
+
+        "quien es jorge patricio santamaria",
+        "quien es jorge patricio cherrez",
+        "quien es jorge santamaria cherrez",
+        "quien es patricio santamaria cherrez",
+        "quien es jorge patricio santamaria cherrez",
+
+        "presentame a jorge",
+        "presentame a patricio",
+
+        "hablame de jorge",
+        "hablame de patricio",
+        "habla de jorge",
+        "habla de patricio",
+        "hablame de cherrez",
+        "hablame de cherrez",
+        "habla de cherrez",
+        "habla de cherrez",
+        "hablame de santamaría",
+        "hablame de santamaría",
+        "habla de santamaría",
+        "habla de santamaría",
+
+        "sobre jorge",
+        "sobre patricio",
+    ],
+    responses: [
+        "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
+        "Jorge Patricio Santamaría Cherrez es un profesional de Ingeniería de Software, con formación en Ingeniería en Sistemas y un Máster en esta área.",
+        "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica y Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR.",
+        "Jorge Patricio Santamaría Cherrez cuenta con formación en Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos."
+    ]
+},
     /*
     |--------------------------------------------------------------------------
     | FORMACIÓN
