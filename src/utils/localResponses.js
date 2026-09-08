@@ -1260,6 +1260,8 @@ if (generalQueries.includes(normalized)) {
     /^que ingenieria estudio (.+)$/,
     /^donde se graduo (.+)$/,
     /^educacion de (.+)$/,
+        /^habla de la educacion de (.+)$/,
+        /^habla de la formación de (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
