@@ -1416,7 +1416,7 @@ const sashaResponses = [
     {
     keywords: [
         "hola sasha",
-        "hola sasha",
+        
         "hey sasha",
         "oye sasha",
         "buenas sasha",
@@ -1427,7 +1427,7 @@ const sashaResponses = [
     responses: [
         "¡Hola! Soy Sasha 😊 ¿En qué puedo ayudarte?",
         "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. ¿Qué te gustaría saber?",
-        "¡Hola! 😄 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge."
+        "¡Hola! 😄 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge.",
         "Hola soy Sasha y soy ña asistente de mi gran amigo Jorge",
     ]
 },
