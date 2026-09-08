@@ -1399,79 +1399,8 @@ export const getLocalResponse = (message) => {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| PREGUNTAS TÉCNICAS / CONCEPTUALES
-|--------------------------------------------------------------------------
-*/
 
-const technicalPatterns = [
-
-    // PREGUNTAS CONCEPTUALES
-    "de que trata",
-    "de que se trata",
-    "que trata",
-    "que es",
-    "que significa",
-    "para que sirve",
-    "para que se usa",
-    "en que consiste",
-    "en que consiste la certificacion",
-    "en que consiste el certificado",
-    "que se aprende",
-    "que enseñan",
-    "que temas incluye",
-    "que contenido tiene",
-    "que incluye la certificacion",
-    "que incluye el certificado",
-
-    // FORMAS ABREVIADAS
-    "de q trata",
-    "de q se trata",
-    "q trata",
-    "q es",
-    "q significa",
-    "para q sirve",
-    "para q se usa",
-    "en q consiste",
-    "q se aprende",
-    "q enseñan",
-    "q temas incluye",
-    "q contenido tiene",
-    "q incluye la certificacion",
-    "q incluye el certificado",
-
-    // PROGRAMACIÓN
-    "como programar",
-    "como hacer",
-    "como se hace",
-    "como puedo hacer",
-    "como puedo programar",
-    "como imprimir",
-    "como mostrar",
-    "como declarar",
-    "como crear",
-    "como ejecutar",
-    "como usar",
-    "como utilizar",
-
-    // CÓDIGO
-    "ejemplo de codigo",
-    "ejemplo de codigo en",
-    "imprimir",
-    "impresion",
-    "codigo en",
-    "programar en",
-    "programacion en",
-    "programacion",
-    "codigo",
-    "bucle",
-    "variable",
-    "funcion",
-    "metodo",
-    "clase",
-    "array",
-
+    
 
     
 
@@ -1742,7 +1671,12 @@ const isTechnicalQuestion = technicalPatterns.some(pattern =>
     normalizedMessage.includes(pattern)
 );
 
+console.log("MENSAJE:", message);
+console.log("NORMALIZADO:", normalizedMessage);
+console.log("ES TECNICA:", isTechnicalQuestion);
+
 if (isTechnicalQuestion) {
+    console.log("🔥 RETURN NULL POR PREGUNTA TÉCNICA");
     return null;
 }
     
