@@ -656,9 +656,9 @@ const isAboutJorge = (message) => {
 |
 |--------------------------------------------------------------------------
 */
-
 const extractPersonName = (message) => {
     const normalized = normalizeText(message);
+    const original = message.trim();
 
     /*
     |--------------------------------------------------------------------------
@@ -683,10 +683,12 @@ const extractPersonName = (message) => {
         const match = normalized.match(pattern);
 
         if (match) {
-            return match[1].trim();
+            const name = match[1];
+            const index = normalized.indexOf(name);
+
+            return original.slice(index, index + name.length).trim();
         }
     }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -716,13 +718,23 @@ const extractPersonName = (message) => {
         /^que certificaciones tiene (.+)$/,
         /^que tecnologias usa (.+)$/,
         /^que proyectos tiene (.+)$/,
+
+        /^puedo hablarte de (.+)$/,
+        /^puedo hablarte sobre (.+)$/,
+        /^quiero hablarte de (.+)$/,
+        /^quiero hablarte sobre (.+)$/,
+        /^cuentame de (.+)$/,
+        /^cuentame sobre (.+)$/,
     ];
 
     for (const pattern of questionPatterns) {
         const match = normalized.match(pattern);
 
         if (match) {
-            return match[1].trim();
+            const name = match[1];
+            const index = normalized.indexOf(name);
+
+            return original.slice(index, index + name.length).trim();
         }
     }
 
