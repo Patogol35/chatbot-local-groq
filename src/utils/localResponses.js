@@ -873,8 +873,7 @@ export const getLocalResponse = (message) => {
     }
  }
 
-
-    /*
+/*
 |--------------------------------------------------------------------------
 | SI NO HABLA DE JORGE
 |--------------------------------------------------------------------------
@@ -886,11 +885,30 @@ if (!isAboutJorge(message)) {
 
 const normalizedMessage = normalizeText(message);
 
+
 /*
 |--------------------------------------------------------------------------
 | CERTIFICACIONES POR AÑO
 |--------------------------------------------------------------------------
 */
+
+const certificationYears = {
+    "2023": [
+        "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR."
+    ],
+
+    "2024": [
+        "En 2024, Jorge realizó una certificación de Linux en Udemy."
+    ],
+
+    "2025": [
+        "En 2025, Jorge obtuvo la certificación Fundamentals of AI de IBM."
+    ],
+
+    "2026": [
+        "En 2026, Jorge obtuvo certificaciones relacionadas con MCP y Claude API de Anthropic."
+    ]
+};
 
 const isCertificationQuery =
     normalizedMessage.includes("certificacion") ||
@@ -898,19 +916,15 @@ const isCertificationQuery =
     normalizedMessage.includes("certificado") ||
     normalizedMessage.includes("certificados");
 
-const year2023 = normalizedMessage.includes("2023");
+if (isCertificationQuery) {
 
-if (isCertificationQuery && year2023 && isAboutJorge(message)) {
-
-    const certification2023 = LOCAL_RESPONSES.find(
-        item =>
-            item.category === "certificaciones" &&
-            item.keywords.includes("az 900")
+    const year = Object.keys(certificationYears).find(
+        year => normalizedMessage.includes(year)
     );
 
-    if (certification2023) {
+    if (year) {
 
-        const responses = certification2023.responses;
+        const responses = certificationYears[year];
 
         const randomIndex = Math.floor(
             Math.random() * responses.length
@@ -920,42 +934,43 @@ if (isCertificationQuery && year2023 && isAboutJorge(message)) {
     }
 }
 
+
 let bestMatch = null;
 let bestScore = 0;
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | BUSCAR LA MEJOR RESPUESTA
-    |--------------------------------------------------------------------------
-    */
+/*
+|--------------------------------------------------------------------------
+| BUSCAR LA MEJOR RESPUESTA
+|--------------------------------------------------------------------------
+*/
 
-    for (const item of LOCAL_RESPONSES) {
-        let score = 0;
+for (const item of LOCAL_RESPONSES) {
+    let score = 0;
 
-        for (const keyword of item.keywords) {
-            const normalizedKeyword = normalizeText(keyword);
+    for (const keyword of item.keywords) {
+        const normalizedKeyword = normalizeText(keyword);
 
-            const regex = new RegExp(
-                `(^|\\s)${normalizedKeyword.replace(
-                    /[.*+?^${}()|[\]\\]/g,
-                    "\\$&"
-                )}(?=\\s|$)`
-            );
+        const regex = new RegExp(
+            `(^|\\s)${normalizedKeyword.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            )}(?=\\s|$)`
+        );
 
-            if (regex.test(normalizedMessage)) {
-                const words = normalizedKeyword.split(" ").length;
+        if (regex.test(normalizedMessage)) {
+            const words = normalizedKeyword.split(" ").length;
 
-                score += words * 10;
-            }
-        }
-
-        if (score > bestScore) {
-            bestScore = score;
-            bestMatch = item;
+            score += words * 10;
         }
     }
 
+    if (score > bestScore) {
+        bestScore = score;
+        bestMatch = item;
+    }
+}
+    
 
     /*
     |--------------------------------------------------------------------------
