@@ -1323,11 +1323,9 @@ if (generalQueries.includes(normalized)) {
 | BUSCAR RESPUESTA LOCAL
 |--------------------------------------------------------------------------
 */
-
 export const getLocalResponse = (message) => {
 
     const personName = extractPersonName(message);
-
 
     /*
     |--------------------------------------------------------------------------
@@ -1335,38 +1333,26 @@ export const getLocalResponse = (message) => {
     |--------------------------------------------------------------------------
     */
 
- if (personName) {
+    if (personName) {
 
-    if (!isAboutJorge(personName)) {
+        if (!isAboutJorge(personName)) {
 
-        const responses = [
-            `No tengo información sobre ${personName}.`,
-            `No tengo datos registrados sobre ${personName}.`,
-            `No dispongo de información sobre ${personName}.`,
-            `No tengo información disponible sobre ${personName}.`
-        ];
+            const responses = [
+                `No tengo información sobre ${personName}.`,
+                `No tengo datos registrados sobre ${personName}.`,
+                `No dispongo de información sobre ${personName}.`,
+                `No tengo información disponible sobre ${personName}.`
+            ];
 
-        const randomIndex = Math.floor(
-            Math.random() * responses.length
-        );
+            const randomIndex = Math.floor(
+                Math.random() * responses.length
+            );
 
-        return responses[randomIndex];
+            return responses[randomIndex];
+        }
     }
- }
 
-/*
-|--------------------------------------------------------------------------
-| SI NO HABLA DE JORGE
-|--------------------------------------------------------------------------
-*/
-
-if (!isAboutJorge(message)) {
-    return null;
-}
-
-const normalizedMessage = normalizeText(message);
-
-
+    const normalizedMessage = normalizeText(message);
 /*
 |--------------------------------------------------------------------------
 | CERTIFICACIONES POR AÑO
