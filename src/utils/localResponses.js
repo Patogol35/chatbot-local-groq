@@ -1396,7 +1396,13 @@ export const getLocalResponse = (message) => {
 
     const normalizedMessage = normalizeText(message);
 
+console.log("MENSAJE ORIGINAL:", message);
+console.log("MENSAJE NORMALIZADO:", normalizedMessage);
 
+if (normalizedMessage.includes("imprimir")) {
+    console.log("🔥 DETECTÓ IMPRIMIR → ENVIANDO A GROQ");
+    return null;
+}
 
 
 /*
