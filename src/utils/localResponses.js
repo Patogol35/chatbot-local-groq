@@ -581,9 +581,6 @@ const isAboutJorge = (message) => {
 
     const jorgeKeywords = [
     "jorge",
-    "patricio",
-    "santamaria",
-    "santamaria cherrez",
 
     // Combinaciones del nombre
     "jorge patricio",
@@ -591,6 +588,9 @@ const isAboutJorge = (message) => {
     "jorge cherrez",
     "patricio santamaria",
     "patricio cherrez",
+    "santamaria cherrez",
+
+    // Nombre completo
     "jorge patricio santamaria",
     "jorge patricio cherrez",
     "jorge santamaria cherrez",
@@ -609,6 +609,17 @@ const isAboutJorge = (message) => {
 */
 
 export const getLocalResponse = (message) => {
+
+    /*
+    |--------------------------------------------------------------------------
+    | SOLO USAR RESPUESTAS LOCALES SI HABLA DE JORGE
+    |--------------------------------------------------------------------------
+    */
+
+    if (!isAboutJorge(message)) {
+        return null;
+    }
+
     const normalizedMessage = normalizeText(message);
 
     let bestMatch = null;
@@ -620,12 +631,6 @@ export const getLocalResponse = (message) => {
         for (const keyword of item.keywords) {
             const normalizedKeyword = normalizeText(keyword);
 
-            /*
-            |--------------------------------------------------------------------------
-            | COINCIDENCIA EXACTA DE PALABRA O FRASE
-            |--------------------------------------------------------------------------
-            */
-
             const regex = new RegExp(
                 `(^|\\s)${normalizedKeyword.replace(
                     /[.*+?^${}()|[\]\\]/g,
@@ -636,28 +641,15 @@ export const getLocalResponse = (message) => {
             if (regex.test(normalizedMessage)) {
                 const words = normalizedKeyword.split(" ").length;
 
-                // Las coincidencias específicas tienen mucho peso
                 score += words * 10;
             }
         }
-
-        /*
-        |--------------------------------------------------------------------------
-        | GUARDAR LA MEJOR COINCIDENCIA
-        |--------------------------------------------------------------------------
-        */
 
         if (score > bestScore) {
             bestScore = score;
             bestMatch = item;
         }
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
 
     if (bestMatch && bestScore >= 10) {
         const responses = bestMatch.responses;
