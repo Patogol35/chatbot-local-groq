@@ -1423,6 +1423,7 @@ const sashaResponses = [
         "¡Hola! Soy Sasha 😊 ¿En qué puedo ayudarte?",
         "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. ¿Qué te gustaría saber?",
         "¡Hola! 😄 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge."
+        "Hola soy Sasha y soy ña asistente de mi gran amigo Jorge",
     ]
 },
 
@@ -1656,6 +1657,8 @@ const technicalPatterns = [
     "que incluye el certificado",
 
     "ejemplo de codigo",
+    "imprimir",
+    "impresión"
     "ejemplo de codigo en",
     "codigo en",
     "programar en",
