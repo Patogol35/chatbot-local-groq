@@ -569,10 +569,9 @@ const LOCAL_RESPONSES = [
     },
 ];
 
-
 /*
 |--------------------------------------------------------------------------
-| NOMBRES Y COMBINACIONES VÁLIDAS DE JORGE
+| NOMBRES VÁLIDOS DE JORGE
 |--------------------------------------------------------------------------
 */
 
@@ -594,7 +593,7 @@ const JORGE_NAMES = [
 
 /*
 |--------------------------------------------------------------------------
-| COMPROBAR SI ES UN NOMBRE DE JORGE
+| COMPROBAR SI ES JORGE
 |--------------------------------------------------------------------------
 */
 
@@ -618,44 +617,81 @@ const isAboutJorge = (message) => {
 
 /*
 |--------------------------------------------------------------------------
-| DETECTAR CONSULTAS SOBRE UNA PERSONA
+| EXTRAER PERSONA DE LA CONSULTA
+|--------------------------------------------------------------------------
+|
+| Ejemplos:
+|
+| "luis nota master"      → luis
+| "carlos nota master"    → carlos
+| "jorge nota master"     → jorge
+| "que nota tiene luis"  → luis
+|
 |--------------------------------------------------------------------------
 */
 
-const PERSON_PATTERNS = [
-    /^quien es (.+)$/,
-    /^quien es el (.+)$/,
-    /^quien es la (.+)$/,
-    /^hablame de (.+)$/,
-    /^dime sobre (.+)$/,
-    /^informacion sobre (.+)$/,
-    /^informacion de (.+)$/,
-    /^datos de (.+)$/,
-    /^que sabes de (.+)$/,
-    /^que sabes sobre (.+)$/,
-
-    /^que estudio (.+)$/,
-    /^donde estudio (.+)$/,
-    /^que carrera estudio (.+)$/,
-    /^que master tiene (.+)$/,
-    /^que certificaciones tiene (.+)$/,
-    /^que nota tiene (.+)$/,
-    /^cual es el promedio de (.+)$/,
-    /^que tecnologias usa (.+)$/,
-    /^que proyectos tiene (.+)$/,
-];
-
-
-/*
-|--------------------------------------------------------------------------
-| EXTRAER POSIBLE NOMBRE
-|--------------------------------------------------------------------------
-*/
-
-const getPersonName = (message) => {
+const extractPersonName = (message) => {
     const normalized = normalizeText(message);
 
-    for (const pattern of PERSON_PATTERNS) {
+    /*
+    |--------------------------------------------------------------------------
+    | FORMATO: "nombre + pregunta"
+    |--------------------------------------------------------------------------
+    */
+
+    const firstWordPatterns = [
+        /^(.+?)\s+nota\s+master$/,
+        /^(.+?)\s+promedio\s+master$/,
+        /^(.+?)\s+nota$/,
+        /^(.+?)\s+promedio$/,
+        /^(.+?)\s+certificaciones$/,
+        /^(.+?)\s+certificados$/,
+        /^(.+?)\s+tecnologias$/,
+        /^(.+?)\s+proyectos$/,
+        /^(.+?)\s+estudio$/,
+        /^(.+?)\s+master$/,
+    ];
+
+    for (const pattern of firstWordPatterns) {
+        const match = normalized.match(pattern);
+
+        if (match) {
+            return match[1].trim();
+        }
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | FORMATO: "pregunta + nombre"
+    |--------------------------------------------------------------------------
+    */
+
+    const questionPatterns = [
+        /^quien es (.+)$/,
+        /^hablame de (.+)$/,
+        /^dime sobre (.+)$/,
+        /^informacion sobre (.+)$/,
+        /^informacion de (.+)$/,
+        /^datos de (.+)$/,
+        /^que sabes de (.+)$/,
+        /^que sabes sobre (.+)$/,
+
+        /^que nota tiene (.+)$/,
+        /^cual es la nota de (.+)$/,
+        /^cual es el promedio de (.+)$/,
+
+        /^que estudio (.+)$/,
+        /^donde estudio (.+)$/,
+        /^que carrera estudio (.+)$/,
+
+        /^que master tiene (.+)$/,
+        /^que certificaciones tiene (.+)$/,
+        /^que tecnologias usa (.+)$/,
+        /^que proyectos tiene (.+)$/,
+    ];
+
+    for (const pattern of questionPatterns) {
         const match = normalized.match(pattern);
 
         if (match) {
@@ -669,45 +705,36 @@ const getPersonName = (message) => {
 
 /*
 |--------------------------------------------------------------------------
-| COMPROBAR SI LA CONSULTA ES SOBRE OTRA PERSONA
-|--------------------------------------------------------------------------
-*/
-
-const isAboutOtherPerson = (message) => {
-    const personName = getPersonName(message);
-
-    if (!personName) {
-        return false;
-    }
-
-    return !isAboutJorge(personName);
-};
-
-
-/*
-|--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
 |--------------------------------------------------------------------------
 */
 
 export const getLocalResponse = (message) => {
 
+    const personName = extractPersonName(message);
+
+
     /*
     |--------------------------------------------------------------------------
-    | OTRO NOMBRE
+    | SI HAY UNA PERSONA
     |--------------------------------------------------------------------------
     */
 
-    if (isAboutOtherPerson(message)) {
-        const personName = getPersonName(message);
+    if (personName) {
 
-        return `No tengo información sobre ${personName}.`;
+        /*
+        | Si es Jorge → continuar con las respuestas locales
+        */
+
+        if (!isAboutJorge(personName)) {
+            return `No tengo información sobre ${personName}.`;
+        }
     }
 
 
     /*
     |--------------------------------------------------------------------------
-    | NO HABLA DE JORGE
+    | SI NO HABLA DE JORGE
     |--------------------------------------------------------------------------
     */
 
@@ -720,6 +747,13 @@ export const getLocalResponse = (message) => {
 
     let bestMatch = null;
     let bestScore = 0;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | BUSCAR LA MEJOR RESPUESTA
+    |--------------------------------------------------------------------------
+    */
 
     for (const item of LOCAL_RESPONSES) {
         let score = 0;
