@@ -747,16 +747,24 @@ export const getLocalResponse = (message) => {
     |--------------------------------------------------------------------------
     */
 
-    if (personName) {
+ if (personName) {
 
-        /*
-        | Si es Jorge → continuar con las respuestas locales
-        */
+    if (!isAboutJorge(personName)) {
 
-        if (!isAboutJorge(personName)) {
-            return `No tengo información sobre ${personName}.`;
-        }
+        const responses = [
+            `No tengo información sobre ${personName}.`,
+            `No tengo datos registrados sobre ${personName}.`,
+            `No dispongo de información sobre ${personName}.`,
+            `No tengo información disponible sobre ${personName}.`
+        ];
+
+        const randomIndex = Math.floor(
+            Math.random() * responses.length
+        );
+
+        return responses[randomIndex];
     }
+ }
 
 
     /*
