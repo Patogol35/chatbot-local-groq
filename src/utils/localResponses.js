@@ -578,6 +578,7 @@ const LOCAL_RESPONSES = [
 
 const JORGE_NAMES = [
     "jorge",
+    "patricio",
     "jorge patricio",
     "jorge santamaria",
     "jorge cherrez",
