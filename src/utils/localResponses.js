@@ -166,19 +166,23 @@ const LOCAL_RESPONSES = [
     },
 
     {
-        category: "notas",
-        keywords: [
-            "promedio master",
-            "nota master",
-            "promedio posgrado",
-        ],
-        responses: [
-            "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
-            "En su Máster, Jorge obtuvo un promedio de 8.68.",
-            "La media final de Jorge en el Máster en Ingeniería de Software y Sistemas Informáticos fue de 8.68.",
-            "Jorge completó su Máster con un promedio de 8.68."
-        ]
-    },
+    category: "notas",
+    keywords: [
+        "promedio master",
+        "nota master",
+        "nota del master",
+        "promedio del master",
+        "promedio posgrado",
+        "nota del posgrado",
+        "promedio del posgrado",
+    ],
+    responses: [
+        "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
+        "En su Máster, Jorge obtuvo un promedio de 8.68.",
+        "La media final de Jorge en el Máster en Ingeniería de Software y Sistemas Informáticos fue de 8.68.",
+        "Jorge completó su Máster con un promedio de 8.68."
+    ]
+},
 
     {
         category: "notas",
@@ -724,6 +728,10 @@ const extractPersonName = (message) => {
     /^que promedio tiene (.+)$/,
     /^que nota obtuvo (.+)$/,
     /^que promedio obtuvo (.+)$/,
+        /^nota del master de (.+)$/,
+/^promedio del master de (.+)$/,
+/^nota del posgrado de (.+)$/,
+/^promedio del posgrado de (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
