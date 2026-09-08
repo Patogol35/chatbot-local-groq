@@ -1671,12 +1671,7 @@ const isTechnicalQuestion = technicalPatterns.some(pattern =>
     normalizedMessage.includes(pattern)
 );
 
-console.log("MENSAJE:", message);
-console.log("NORMALIZADO:", normalizedMessage);
-console.log("ES TECNICA:", isTechnicalQuestion);
-
 if (isTechnicalQuestion) {
-    console.log("🔥 RETURN NULL POR PREGUNTA TÉCNICA");
     return null;
 }
     
