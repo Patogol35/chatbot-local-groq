@@ -875,20 +875,53 @@ export const getLocalResponse = (message) => {
 
 
     /*
-    |--------------------------------------------------------------------------
-    | SI NO HABLA DE JORGE
-    |--------------------------------------------------------------------------
-    */
+|--------------------------------------------------------------------------
+| SI NO HABLA DE JORGE
+|--------------------------------------------------------------------------
+*/
 
-    if (!isAboutJorge(message)) {
-        return null;
+if (!isAboutJorge(message)) {
+    return null;
+}
+
+const normalizedMessage = normalizeText(message);
+
+/*
+|--------------------------------------------------------------------------
+| CERTIFICACIONES POR AÑO
+|--------------------------------------------------------------------------
+*/
+
+const isCertificationQuery =
+    normalizedMessage.includes("certificacion") ||
+    normalizedMessage.includes("certificaciones") ||
+    normalizedMessage.includes("certificado") ||
+    normalizedMessage.includes("certificados");
+
+const year2023 = normalizedMessage.includes("2023");
+
+if (isCertificationQuery && year2023 && isAboutJorge(message)) {
+
+    const certification2023 = LOCAL_RESPONSES.find(
+        item =>
+            item.category === "certificaciones" &&
+            item.keywords.includes("az 900")
+    );
+
+    if (certification2023) {
+
+        const responses = certification2023.responses;
+
+        const randomIndex = Math.floor(
+            Math.random() * responses.length
+        );
+
+        return responses[randomIndex];
     }
+}
 
-
-    const normalizedMessage = normalizeText(message);
-
-    let bestMatch = null;
-    let bestScore = 0;
+let bestMatch = null;
+let bestScore = 0;
 
 
     /*
