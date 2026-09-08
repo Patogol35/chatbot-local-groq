@@ -548,7 +548,7 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con una aplicación tipo Quiz enfocada en Ecuador."
         ]
     },
-
+  /*
     |--------------------------------------------------------------------------
     | PROYECTO - CLIMA
     |--------------------------------------------------------------------------
