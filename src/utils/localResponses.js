@@ -697,35 +697,130 @@ const extractPersonName = (message) => {
     */
 
     const questionPatterns = [
-        /^quien es (.+)$/,
-        /^hablame de (.+)$/,
-        /^dime sobre (.+)$/,
-        /^informacion sobre (.+)$/,
-        /^informacion de (.+)$/,
-        /^datos de (.+)$/,
-        /^que sabes de (.+)$/,
-        /^que sabes sobre (.+)$/,
+    /*
+    |--------------------------------------------------------------------------
+    | IDENTIDAD / INFORMACIÓN GENERAL
+    |--------------------------------------------------------------------------
+    */
 
-        /^que nota tiene (.+)$/,
-        /^cual es la nota de (.+)$/,
-        /^cual es el promedio de (.+)$/,
+    /^quien es (.+)$/,
+    /^hablame de (.+)$/,
+    /^dime sobre (.+)$/,
+    /^informacion sobre (.+)$/,
+    /^informacion de (.+)$/,
+    /^datos de (.+)$/,
+    /^que sabes de (.+)$/,
+    /^que sabes sobre (.+)$/,
 
-        /^que estudio (.+)$/,
-        /^donde estudio (.+)$/,
-        /^que carrera estudio (.+)$/,
+    /*
+    |--------------------------------------------------------------------------
+    | NOTAS
+    |--------------------------------------------------------------------------
+    */
 
-        /^que master tiene (.+)$/,
-        /^que certificaciones tiene (.+)$/,
-        /^que tecnologias usa (.+)$/,
-        /^que proyectos tiene (.+)$/,
+    /^que nota tiene (.+)$/,
+    /^cual es la nota de (.+)$/,
+    /^cual es el promedio de (.+)$/,
+    /^que promedio tiene (.+)$/,
+    /^que nota obtuvo (.+)$/,
+    /^que promedio obtuvo (.+)$/,
 
-        /^puedo hablarte de (.+)$/,
-        /^puedo hablarte sobre (.+)$/,
-        /^quiero hablarte de (.+)$/,
-        /^quiero hablarte sobre (.+)$/,
-        /^cuentame de (.+)$/,
-        /^cuentame sobre (.+)$/,
-    ];
+    /*
+    |--------------------------------------------------------------------------
+    | FORMACIÓN
+    |--------------------------------------------------------------------------
+    */
+
+    /^que estudio (.+)$/,
+    /^donde estudio (.+)$/,
+    /^que carrera estudio (.+)$/,
+    /^que ingenieria estudio (.+)$/,
+    /^donde se graduo (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | MÁSTER
+    |--------------------------------------------------------------------------
+    */
+
+    /^que master tiene (.+)$/,
+    /^que maestria tiene (.+)$/,
+    /^que posgrado tiene (.+)$/,
+    /^donde hizo el master (.+)$/,
+    /^donde hizo la maestria (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | CERTIFICACIONES
+    |--------------------------------------------------------------------------
+    */
+
+    /^que certificaciones tiene (.+)$/,
+    /^que certificados tiene (.+)$/,
+    /^que certificacion tiene (.+)$/,
+    /^que certificacion obtuvo (.+)$/,
+    /^que certificados obtuvo (.+)$/,
+
+    /^certificado de (.+) del \d{4}$/,
+    /^certificacion de (.+) del \d{4}$/,
+    /^certificado de (.+)$/,
+    /^certificacion de (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | TECNOLOGÍAS
+    |--------------------------------------------------------------------------
+    */
+
+    /^que tecnologias usa (.+)$/,
+    /^que tecnologia usa (.+)$/,
+    /^que stack usa (.+)$/,
+    /^que lenguajes usa (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | FRONTEND
+    |--------------------------------------------------------------------------
+    */
+
+    /^que tecnologias frontend usa (.+)$/,
+    /^que tecnologias front usa (.+)$/,
+    /^que tecnologias de frontend usa (.+)$/,
+    /^que tecnologias de front usa (.+)$/,
+
+    /^que herramientas frontend usa (.+)$/,
+    /^que herramientas front usa (.+)$/,
+    /^que herramientas de frontend usa (.+)$/,
+    /^que herramientas de front usa (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | BACKEND
+    |--------------------------------------------------------------------------
+    */
+
+    /^que tecnologias backend usa (.+)$/,
+    /^que tecnologias back usa (.+)$/,
+    /^que tecnologias de backend usa (.+)$/,
+    /^que tecnologias de back usa (.+)$/,
+
+    /^que herramientas backend usa (.+)$/,
+    /^que herramientas back usa (.+)$/,
+    /^que herramientas de backend usa (.+)$/,
+    /^que herramientas de back usa (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | PROYECTOS
+    |--------------------------------------------------------------------------
+    */
+
+    /^que proyectos tiene (.+)$/,
+    /^que proyectos ha realizado (.+)$/,
+    /^que proyectos ha desarrollado (.+)$/,
+    /^que ha desarrollado (.+)$/,
+    /^que aplicaciones tiene (.+)$/,
+];
 
     for (const pattern of questionPatterns) {
         const match = normalized.match(pattern);
