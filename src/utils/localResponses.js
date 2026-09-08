@@ -667,6 +667,23 @@ const extractPersonName = (message) => {
     const original = message.trim();
 
     /*
+|--------------------------------------------------------------------------
+| CONSULTAS GENERALES SIN NOMBRE
+|--------------------------------------------------------------------------
+*/
+
+const generalQueries = [
+    "nota del master",
+    "promedio del master",
+    "nota del posgrado",
+    "promedio del posgrado",
+];
+
+if (generalQueries.includes(normalized)) {
+    return null;
+}
+
+    /*
     |--------------------------------------------------------------------------
     | FORMATO: "nombre + pregunta"
     |--------------------------------------------------------------------------
