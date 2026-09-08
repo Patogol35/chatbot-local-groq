@@ -37,9 +37,7 @@ const LOCAL_RESPONSES = [
     keywords: [
         "quien es jorge",
         "quien es patricio",
-        "perfil de Jorge",
-        "perfil de Patricio",
-        "perfil de Jorge Patricio",
+        
 
         "quien es jorge patricio",
         "quien es jorge santamaria",
@@ -56,23 +54,30 @@ const LOCAL_RESPONSES = [
 
         "presentame a jorge",
         "presentame a patricio",
+        "presentame a jorge patricio",
+        "presentame a jorge patricio santamaría cherrez",
+        "presentame a jorge santamaría",
+        "presentame a patricio santamaría",
 
         "hablame de jorge",
         "hablame de patricio",
         "habla de jorge",
         "habla de patricio",
+        "hablame de Patricio Santamaría",
         "hablame de cherrez",
+        "habla de Jorge santamaría",
+        "habla de Jorge cherrez",
+        "hablame de santamaría",
         "hablame de cherrez",
-        "habla de cherrez",
-        "habla de cherrez",
-        "hablame de santamaría",
-        "hablame de santamaría",
         "habla de santamaría",
-        "habla de santamaría",
+        "habla de Patricio santamaría",
 
         "sobre jorge",
         "sobre patricio",
         "sobre Jorge Patricio",
+        "perfil de Jorge",
+        "perfil de Patricio",
+        "perfil de Jorge Patricio",
     ],
     responses: [
         "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
