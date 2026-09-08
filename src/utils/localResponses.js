@@ -153,10 +153,12 @@ const LOCAL_RESPONSES = [
     {
         category: "notas",
         keywords: [
-            "promedio ingenieria",
-            "nota ingenieria",
-            "promedio universidad",
-        ],
+    "promedio ingenieria",
+    "promedio de ingenieria",
+    "nota ingenieria",
+    "nota de ingenieria",
+    "promedio universidad",
+],
         responses: [
             "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas.",
             "En Ingeniería en Sistemas, Jorge obtuvo un promedio final de 9.",
@@ -732,6 +734,8 @@ const extractPersonName = (message) => {
 /^promedio del master de (.+)$/,
 /^nota del posgrado de (.+)$/,
 /^promedio del posgrado de (.+)$/,
+        /^promedio de ingenieria de (.+)$/,
+/^nota de ingenieria de (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
