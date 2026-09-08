@@ -37,6 +37,7 @@ const LOCAL_RESPONSES = [
     keywords: [
         "quien es jorge",
         "quien es patricio",
+        "perfil de Jorge",
 
         "quien es jorge patricio",
         "quien es jorge santamaria",
