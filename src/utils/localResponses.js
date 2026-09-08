@@ -569,40 +569,43 @@ const LOCAL_RESPONSES = [
     },
 ];
 
+
 /*
 |--------------------------------------------------------------------------
-| COMPROBAR SI HABLA DE JORGE
+| NOMBRES Y COMBINACIONES VÁLIDAS DE JORGE
+|--------------------------------------------------------------------------
+*/
+
+const JORGE_NAMES = [
+    "jorge",
+    "jorge patricio",
+    "jorge santamaria",
+    "jorge cherrez",
+    "patricio santamaria",
+    "patricio cherrez",
+    "santamaria cherrez",
+    "jorge patricio santamaria",
+    "jorge patricio cherrez",
+    "jorge santamaria cherrez",
+    "patricio santamaria cherrez",
+    "jorge patricio santamaria cherrez",
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| COMPROBAR SI ES UN NOMBRE DE JORGE
 |--------------------------------------------------------------------------
 */
 
 const isAboutJorge = (message) => {
     const normalized = normalizeText(message);
 
-    const jorgeKeywords = [
-        // Nombre
-        "jorge",
-
-        // Combinaciones
-        "jorge patricio",
-        "jorge santamaria",
-        "jorge cherrez",
-        "patricio santamaria",
-        "patricio cherrez",
-        "santamaria cherrez",
-
-        // Combinaciones completas
-        "jorge patricio santamaria",
-        "jorge patricio cherrez",
-        "jorge santamaria cherrez",
-        "patricio santamaria cherrez",
-        "jorge patricio santamaria cherrez",
-    ];
-
-    return jorgeKeywords.some((keyword) => {
-        const normalizedKeyword = normalizeText(keyword);
+    return JORGE_NAMES.some((name) => {
+        const normalizedName = normalizeText(name);
 
         const regex = new RegExp(
-            `(^|\\s)${normalizedKeyword.replace(
+            `(^|\\s)${normalizedName.replace(
                 /[.*+?^${}()|[\]\\]/g,
                 "\\$&"
             )}(?=\\s|$)`
@@ -610,6 +613,74 @@ const isAboutJorge = (message) => {
 
         return regex.test(normalized);
     });
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| DETECTAR CONSULTAS SOBRE UNA PERSONA
+|--------------------------------------------------------------------------
+*/
+
+const PERSON_PATTERNS = [
+    /^quien es (.+)$/,
+    /^quien es el (.+)$/,
+    /^quien es la (.+)$/,
+    /^hablame de (.+)$/,
+    /^dime sobre (.+)$/,
+    /^informacion sobre (.+)$/,
+    /^informacion de (.+)$/,
+    /^datos de (.+)$/,
+    /^que sabes de (.+)$/,
+    /^que sabes sobre (.+)$/,
+
+    /^que estudio (.+)$/,
+    /^donde estudio (.+)$/,
+    /^que carrera estudio (.+)$/,
+    /^que master tiene (.+)$/,
+    /^que certificaciones tiene (.+)$/,
+    /^que nota tiene (.+)$/,
+    /^cual es el promedio de (.+)$/,
+    /^que tecnologias usa (.+)$/,
+    /^que proyectos tiene (.+)$/,
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| EXTRAER POSIBLE NOMBRE
+|--------------------------------------------------------------------------
+*/
+
+const getPersonName = (message) => {
+    const normalized = normalizeText(message);
+
+    for (const pattern of PERSON_PATTERNS) {
+        const match = normalized.match(pattern);
+
+        if (match) {
+            return match[1].trim();
+        }
+    }
+
+    return null;
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| COMPROBAR SI LA CONSULTA ES SOBRE OTRA PERSONA
+|--------------------------------------------------------------------------
+*/
+
+const isAboutOtherPerson = (message) => {
+    const personName = getPersonName(message);
+
+    if (!personName) {
+        return false;
+    }
+
+    return !isAboutJorge(personName);
 };
 
 
@@ -623,13 +694,27 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | SOLO RESPUESTAS LOCALES PARA JORGE
+    | OTRO NOMBRE
+    |--------------------------------------------------------------------------
+    */
+
+    if (isAboutOtherPerson(message)) {
+        const personName = getPersonName(message);
+
+        return `No tengo información sobre ${personName}.`;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | NO HABLA DE JORGE
     |--------------------------------------------------------------------------
     */
 
     if (!isAboutJorge(message)) {
         return null;
     }
+
 
     const normalizedMessage = normalizeText(message);
 
@@ -652,22 +737,16 @@ export const getLocalResponse = (message) => {
             if (regex.test(normalizedMessage)) {
                 const words = normalizedKeyword.split(" ").length;
 
-                // Las coincidencias específicas tienen mucho peso
                 score += words * 10;
             }
         }
-
-        /*
-        |--------------------------------------------------------------------------
-        | GUARDAR LA MEJOR COINCIDENCIA
-        |--------------------------------------------------------------------------
-        */
 
         if (score > bestScore) {
             bestScore = score;
             bestMatch = item;
         }
     }
+
 
     /*
     |--------------------------------------------------------------------------
