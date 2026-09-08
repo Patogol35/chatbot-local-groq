@@ -578,30 +578,41 @@ const LOCAL_RESPONSES = [
 const isAboutJorge = (message) => {
     const normalized = normalizeText(message);
 
-
     const jorgeKeywords = [
-    "jorge",
+        // Nombre
+        "jorge",
 
-    // Combinaciones del nombre
-    "jorge patricio",
-    "jorge santamaria",
-    "jorge cherrez",
-    "patricio santamaria",
-    "patricio cherrez",
-    "santamaria cherrez",
+        // Combinaciones
+        "jorge patricio",
+        "jorge santamaria",
+        "jorge cherrez",
+        "patricio santamaria",
+        "patricio cherrez",
+        "santamaria cherrez",
 
-    // Nombre completo
-    "jorge patricio santamaria",
-    "jorge patricio cherrez",
-    "jorge santamaria cherrez",
-    "patricio santamaria cherrez",
-    "jorge patricio santamaria cherrez",
-];
+        // Combinaciones completas
+        "jorge patricio santamaria",
+        "jorge patricio cherrez",
+        "jorge santamaria cherrez",
+        "patricio santamaria cherrez",
+        "jorge patricio santamaria cherrez",
+    ];
 
-    return jorgeKeywords.some((keyword) =>
-        normalized.includes(normalizeText(keyword))
-    );
+    return jorgeKeywords.some((keyword) => {
+        const normalizedKeyword = normalizeText(keyword);
+
+        const regex = new RegExp(
+            `(^|\\s)${normalizedKeyword.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            )}(?=\\s|$)`
+        );
+
+        return regex.test(normalized);
+    });
 };
+
+
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
@@ -612,7 +623,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | SOLO USAR RESPUESTAS LOCALES SI HABLA DE JORGE
+    | SOLO RESPUESTAS LOCALES PARA JORGE
     |--------------------------------------------------------------------------
     */
 
@@ -641,15 +652,28 @@ export const getLocalResponse = (message) => {
             if (regex.test(normalizedMessage)) {
                 const words = normalizedKeyword.split(" ").length;
 
+                // Las coincidencias específicas tienen mucho peso
                 score += words * 10;
             }
         }
+
+        /*
+        |--------------------------------------------------------------------------
+        | GUARDAR LA MEJOR COINCIDENCIA
+        |--------------------------------------------------------------------------
+        */
 
         if (score > bestScore) {
             bestScore = score;
             bestMatch = item;
         }
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPUESTA LOCAL
+    |--------------------------------------------------------------------------
+    */
 
     if (bestMatch && bestScore >= 10) {
         const responses = bestMatch.responses;
