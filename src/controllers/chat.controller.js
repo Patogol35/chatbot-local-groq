@@ -163,22 +163,27 @@ export const sendMessage = async (req, res) => {
 
         const localResponse = getLocalResponse(userMessage);
 
-        if (localResponse) {
-            console.log("⚡ RESPUESTA LOCAL");
-            console.log("🤖 Groq no fue utilizado");
-            console.log("💰 Tokens utilizados: 0");
+console.log("=================================");
+console.log("📝 MENSAJE:", userMessage);
+console.log("🏠 RESPUESTA LOCAL:", localResponse);
+console.log("=================================");
 
-            return res.json({
-                response: localResponse,
-                source: "local",
-                usage: {
-                    promptTokens: 0,
-                    completionTokens: 0,
-                    totalTokens: 0,
-                    estimatedCost: 0,
-                },
-            });
-        }
+if (localResponse) {
+    console.log("⚡ RESPUESTA LOCAL");
+    console.log("🤖 Groq no fue utilizado");
+    console.log("💰 Tokens utilizados: 0");
+
+    return res.json({
+        response: localResponse,
+        source: "local",
+        usage: {
+            promptTokens: 0,
+            completionTokens: 0,
+            totalTokens: 0,
+            estimatedCost: 0,
+        },
+    });
+}
 
         /*
         |--------------------------------------------------------------------------
