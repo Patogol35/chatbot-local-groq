@@ -700,7 +700,7 @@ const LOCAL_RESPONSES = [
         keywords: [
             "chatbot",
             "chat bot",
-            "sasha",
+            
         ],
         responses: [
             "Jorge desarrolló un chatbot y Sasha funciona como asistente virtual de su portfolio.",
