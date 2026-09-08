@@ -31,13 +31,17 @@ const LOCAL_RESPONSES = [
     | IDENTIDAD
     |--------------------------------------------------------------------------
     */
-
 {
     category: "identidad",
     keywords: [
+        // =========================================================
+        // QUIÉN ES
+        // =========================================================
+
         "quien es jorge",
         "quien es patricio",
-        
+        "quien es santamaria",
+        "quien es cherrez",
 
         "quien es jorge patricio",
         "quien es jorge santamaria",
@@ -52,33 +56,254 @@ const LOCAL_RESPONSES = [
         "quien es patricio santamaria cherrez",
         "quien es jorge patricio santamaria cherrez",
 
+
+        // =========================================================
+        // PRESÉNTAME
+        // =========================================================
+
         "presentame a jorge",
         "presentame a patricio",
+        "presentame a santamaria",
+        "presentame a cherrez",
+
         "presentame a jorge patricio",
-        "presentame a jorge patricio santamaría cherrez",
-        "presentame a jorge santamaría",
-        "presentame a patricio santamaría",
+        "presentame a jorge santamaria",
+        "presentame a jorge cherrez",
+        "presentame a patricio santamaria",
+        "presentame a patricio cherrez",
+        "presentame a santamaria cherrez",
+
+        "presentame a jorge patricio santamaria",
+        "presentame a jorge patricio cherrez",
+        "presentame a jorge santamaria cherrez",
+        "presentame a patricio santamaria cherrez",
+        "presentame a jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // HÁBLAME / HABLA
+        // =========================================================
 
         "hablame de jorge",
         "hablame de patricio",
+        "hablame de santamaria",
+        "hablame de cherrez",
+
+        "hablame de jorge patricio",
+        "hablame de jorge santamaria",
+        "hablame de jorge cherrez",
+        "hablame de patricio santamaria",
+        "hablame de patricio cherrez",
+        "hablame de santamaria cherrez",
+
+        "hablame de jorge patricio santamaria",
+        "hablame de jorge patricio cherrez",
+        "hablame de jorge santamaria cherrez",
+        "hablame de patricio santamaria cherrez",
+        "hablame de jorge patricio santamaria cherrez",
+
         "habla de jorge",
         "habla de patricio",
-        "hablame de Patricio Santamaría",
-        "hablame de cherrez",
-        "habla de Jorge santamaría",
-        "habla de Jorge cherrez",
-        "hablame de santamaría",
-        "hablame de cherrez",
-        "habla de santamaría",
-        "habla de Patricio santamaría",
+        "habla de santamaria",
+        "habla de cherrez",
+
+        "habla de jorge patricio",
+        "habla de jorge santamaria",
+        "habla de jorge cherrez",
+        "habla de patricio santamaria",
+        "habla de patricio cherrez",
+        "habla de santamaria cherrez",
+
+        "habla de jorge patricio santamaria",
+        "habla de jorge patricio cherrez",
+        "habla de jorge santamaria cherrez",
+        "habla de patricio santamaria cherrez",
+        "habla de jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // SOBRE
+        // =========================================================
 
         "sobre jorge",
         "sobre patricio",
-        "sobre Jorge Patricio",
-        "perfil de Jorge",
-        "perfil de Patricio",
-        "perfil de Jorge Patricio",
+        "sobre santamaria",
+        "sobre cherrez",
+
+        "sobre jorge patricio",
+        "sobre jorge santamaria",
+        "sobre jorge cherrez",
+        "sobre patricio santamaria",
+        "sobre patricio cherrez",
+        "sobre santamaria cherrez",
+
+        "sobre jorge patricio santamaria",
+        "sobre jorge patricio cherrez",
+        "sobre jorge santamaria cherrez",
+        "sobre patricio santamaria cherrez",
+        "sobre jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // PERFIL
+        // =========================================================
+
+        "perfil de jorge",
+        "perfil de patricio",
+        "perfil de santamaria",
+        "perfil de cherrez",
+
+        "perfil de jorge patricio",
+        "perfil de jorge santamaria",
+        "perfil de jorge cherrez",
+        "perfil de patricio santamaria",
+        "perfil de patricio cherrez",
+        "perfil de santamaria cherrez",
+
+        "perfil de jorge patricio santamaria",
+        "perfil de jorge patricio cherrez",
+        "perfil de jorge santamaria cherrez",
+        "perfil de patricio santamaria cherrez",
+        "perfil de jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // DIME
+        // =========================================================
+
+        "dime de jorge",
+        "dime de patricio",
+        "dime de santamaria",
+        "dime de cherrez",
+
+        "dime sobre jorge",
+        "dime sobre patricio",
+        "dime sobre santamaria",
+        "dime sobre cherrez",
+
+        "dime sobre jorge patricio",
+        "dime sobre jorge santamaria",
+        "dime sobre jorge cherrez",
+        "dime sobre patricio santamaria",
+        "dime sobre patricio cherrez",
+        "dime sobre santamaria cherrez",
+
+        "dime sobre jorge patricio santamaria",
+        "dime sobre jorge patricio cherrez",
+        "dime sobre jorge santamaria cherrez",
+        "dime sobre patricio santamaria cherrez",
+        "dime sobre jorge patricio santamaria cherrez",
+
+        "dime quien es jorge",
+        "dime quien es patricio",
+        "dime quien es jorge patricio",
+        "dime quien es jorge santamaria",
+        "dime quien es patricio santamaria",
+        "dime quien es jorge patricio santamaria",
+        "dime quien es jorge patricio cherrez",
+        "dime quien es jorge santamaria cherrez",
+        "dime quien es patricio santamaria cherrez",
+        "dime quien es jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // CUÉNTAME
+        // =========================================================
+
+        "cuentame de jorge",
+        "cuentame de patricio",
+        "cuentame de santamaria",
+        "cuentame de cherrez",
+
+        "cuentame sobre jorge",
+        "cuentame sobre patricio",
+        "cuentame sobre santamaria",
+        "cuentame sobre cherrez",
+
+        "cuentame sobre jorge patricio",
+        "cuentame sobre jorge santamaria",
+        "cuentame sobre jorge cherrez",
+        "cuentame sobre patricio santamaria",
+        "cuentame sobre patricio cherrez",
+        "cuentame sobre santamaria cherrez",
+
+        "cuentame sobre jorge patricio santamaria",
+        "cuentame sobre jorge patricio cherrez",
+        "cuentame sobre jorge santamaria cherrez",
+        "cuentame sobre patricio santamaria cherrez",
+        "cuentame sobre jorge patricio santamaria cherrez",
+
+        "cuentame quien es jorge",
+        "cuentame quien es patricio",
+        "cuentame quien es jorge patricio",
+        "cuentame quien es jorge santamaria",
+        "cuentame quien es patricio santamaria",
+        "cuentame quien es jorge patricio santamaria",
+        "cuentame quien es jorge patricio cherrez",
+        "cuentame quien es jorge santamaria cherrez",
+        "cuentame quien es patricio santamaria cherrez",
+        "cuentame quien es jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // QUÉ SABES / INFORMACIÓN
+        // =========================================================
+
+        "que sabes de jorge",
+        "que sabes de patricio",
+        "que sabes de jorge patricio",
+        "que sabes de jorge santamaria",
+        "que sabes de patricio santamaria",
+        "que sabes de jorge patricio santamaria",
+        "que sabes de jorge patricio cherrez",
+        "que sabes de jorge santamaria cherrez",
+        "que sabes de patricio santamaria cherrez",
+        "que sabes de jorge patricio santamaria cherrez",
+
+        "informacion sobre jorge",
+        "informacion sobre patricio",
+        "informacion sobre jorge patricio",
+        "informacion sobre jorge santamaria",
+        "informacion sobre patricio santamaria",
+        "informacion sobre jorge patricio santamaria",
+        "informacion sobre jorge patricio cherrez",
+        "informacion sobre jorge santamaria cherrez",
+        "informacion sobre patricio santamaria cherrez",
+        "informacion sobre jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // QUIERO SABER
+        // =========================================================
+
+        "quiero saber quien es jorge",
+        "quiero saber quien es patricio",
+        "quiero saber quien es jorge patricio",
+        "quiero saber quien es jorge santamaria",
+        "quiero saber quien es patricio santamaria",
+        "quiero saber quien es jorge patricio santamaria",
+        "quiero saber quien es jorge patricio cherrez",
+        "quiero saber quien es jorge santamaria cherrez",
+        "quiero saber quien es patricio santamaria cherrez",
+        "quiero saber quien es jorge patricio santamaria cherrez",
+
+
+        // =========================================================
+        // TODO SOBRE
+        // =========================================================
+
+        "todo sobre jorge",
+        "todo sobre patricio",
+        "todo sobre jorge patricio",
+        "todo sobre jorge santamaria",
+        "todo sobre patricio santamaria",
+        "todo sobre jorge patricio santamaria",
+        "todo sobre jorge patricio cherrez",
+        "todo sobre jorge santamaria cherrez",
+        "todo sobre patricio santamaria cherrez",
+        "todo sobre jorge patricio santamaria cherrez",
     ],
+
     responses: [
         "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
         "Jorge Patricio Santamaría Cherrez es un profesional de Ingeniería de Software, con formación en Ingeniería en Sistemas y un Máster en esta área.",
@@ -92,67 +317,107 @@ const LOCAL_RESPONSES = [
     |--------------------------------------------------------------------------
     */
 
-    {
-        category: "formacion",
-        keywords: [
-            "donde estudio",
-            "en que universidad",
-        ],
-        responses: [
-            "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador. Posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR, España.",
-            "Su formación universitaria comenzó con Ingeniería en Sistemas en la Universidad Indoamérica y continuó con un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR.",
-            "Jorge cursó Ingeniería en Sistemas en Ecuador y posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-            "A nivel universitario, Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica y después obtuvo un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR."
-        ]
-    },
 
-    {
-        category: "formacion",
-        keywords: [
-            "que estudio",
-            "que carrera estudio",
-            "ingenieria",
-        ],
-        responses: [
-            "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
-            "La carrera universitaria de Jorge es Ingeniería en Sistemas.",
-            "Jorge es Ingeniero en Sistemas, titulado por la Universidad Indoamérica.",
-            "Su formación de grado corresponde a Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador."
-        ]
-    },
+{
+    category: "formacion",
+    keywords: [
+        // Dónde estudió
+        "donde estudio",
+        "donde estudió",
+        "en que universidad",
+        "en qué universidad",
+        "universidad de jorge",
+        "universidad donde estudio",
+        "universidad donde estudió",
 
-    {
-        category: "formacion",
-        keywords: [
-            "master",
-            "maestria",
-            "posgrado",
-            "que master tiene",
-        ],
-        responses: [
-            "Jorge realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja (UNIR), España.",
-            "Jorge tiene un Máster en Ingeniería de Software y Sistemas Informáticos realizado en la UNIR.",
-            "A nivel de posgrado, Jorge cuenta con un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
-            "Jorge continuó su formación con un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja."
-        ]
-    },
+        // Formación académica
+        "formacion",
+        "formación",
+        "formacion academica",
+        "formación académica",
+        "educacion",
+        "educación",
+        "trayectoria academica",
+        "trayectoria académica",
+        "estudios de jorge",
+        "estudios de jorge patricio",
+        "que estudios tiene",
+        "qué estudios tiene",
 
-    {
-        category: "formacion",
-        keywords: [
-            "formacion",
-            "formacion academica",
-            "educacion",
-            "trayectoria academica",
-        ],
-        responses: [
-            "La formación académica de Jorge incluye Ingeniería en Sistemas por la Universidad Indoamérica y un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
-            "Jorge tiene formación de grado en Ingeniería en Sistemas y formación de posgrado en Ingeniería de Software y Sistemas Informáticos.",
-            "Su trayectoria académica comprende una Ingeniería en Sistemas en Ecuador y un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-            "En cuanto a formación académica, Jorge cuenta con una Ingeniería en Sistemas y posteriormente realizó un Máster especializado en Ingeniería de Software y Sistemas Informáticos."
-        ]
-    },
+        // Preguntas generales
+        "que estudio",
+        "qué estudió",
+        "que ha estudiado",
+        "qué ha estudiado",
+        "que carrera estudio",
+        "qué carrera estudió",
+        "que carrera tiene",
+        "qué carrera tiene",
+        "cual es su carrera",
+        "cuál es su carrera",
+    ],
+    responses: [
+        "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador. Posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR, España.",
+        "Su formación universitaria comenzó con Ingeniería en Sistemas en la Universidad Indoamérica y continuó con un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR.",
+        "Jorge cursó Ingeniería en Sistemas en Ecuador y posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
+        "A nivel universitario, Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica y después obtuvo un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR."
+    ]
+},
 
+{
+    category: "formacion",
+    keywords: [
+        // Ingeniería
+        "ingenieria",
+        "ingeniería",
+        "ingenieria en sistemas",
+        "ingeniería en sistemas",
+        "carrera de ingenieria",
+        "carrera de ingeniería",
+        "ingenieria que estudio",
+        "ingeniería que estudió",
+        "que ingenieria estudio",
+        "qué ingeniería estudió",
+        "donde estudio ingenieria",
+        "dónde estudió ingeniería",
+    ],
+    responses: [
+        "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
+        "La carrera universitaria de Jorge es Ingeniería en Sistemas.",
+        "Jorge es Ingeniero en Sistemas, titulado por la Universidad Indoamérica.",
+        "Su formación de grado corresponde a Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador."
+    ]
+},
+
+{
+    category: "formacion",
+    keywords: [
+        // Máster / Maestría
+        "master",
+        "máster",
+        "maestria",
+        "maestría",
+        "posgrado",
+        "que master tiene",
+        "qué máster tiene",
+        "que maestria tiene",
+        "qué maestría tiene",
+        "que posgrado tiene",
+        "qué posgrado tiene",
+        "que estudio de posgrado tiene",
+        "qué estudio de posgrado tiene",
+        "donde hizo el master",
+        "dónde hizo el máster",
+        "donde estudio el master",
+        "dónde estudió el máster",
+    ],
+    responses: [
+        "Jorge realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja (UNIR), España.",
+        "Jorge tiene un Máster en Ingeniería de Software y Sistemas Informáticos realizado en la UNIR.",
+        "A nivel de posgrado, Jorge cuenta con un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
+        "Jorge continuó su formación con un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja."
+    ]
+},
     /*
     |--------------------------------------------------------------------------
     | NOTAS
@@ -218,86 +483,166 @@ const LOCAL_RESPONSES = [
     |--------------------------------------------------------------------------
     */
 
-    {
-        category: "tecnologias",
-        keywords: [
-            "frontend",
-            "front end",
-            "react",
-            "javascript",
-        ],
-        responses: [
-            "En frontend, Jorge trabaja principalmente con React y JavaScript.",
-            "Para desarrollo frontend, Jorge utiliza principalmente React y JavaScript.",
-            "Jorge tiene experiencia en frontend utilizando React y JavaScript.",
-            "En la parte visual de sus proyectos, Jorge trabaja con React y JavaScript."
-        ]
-    },
 
-    {
-        category: "tecnologias",
-        keywords: [
-            "backend",
-            "back end",
-            "django",
-            "java",
-        ],
-        responses: [
-            "En backend, Jorge trabaja principalmente con Django y Java.",
-            "Para el desarrollo backend, Jorge utiliza Django y Java.",
-            "Jorge cuenta con experiencia en backend utilizando Django y Java.",
-            "En el lado del servidor, Jorge trabaja principalmente con Django y Java."
-        ]
-    },
+{
+    category: "tecnologias",
+    keywords: [
+        // Frontend
+        "frontend",
+        "front end",
+        "front-end",
+        "desarrollo frontend",
+        "desarrollo front end",
+        "tecnologias frontend",
+        "tecnologías frontend",
+        "que usa en frontend",
+        "qué usa en frontend",
+        "que utiliza en frontend",
+        "qué utiliza en frontend",
 
-    {
-        category: "tecnologias",
-        keywords: [
-            "base de datos",
-            "bases de datos",
-            "postgresql",
-            "mysql",
-        ],
-        responses: [
-            "Jorge trabaja con PostgreSQL y MySQL.",
-            "En bases de datos, Jorge utiliza principalmente PostgreSQL y MySQL.",
-            "Jorge tiene experiencia trabajando con PostgreSQL y MySQL.",
-            "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL."
-        ]
-    },
+        "react",
+        "react js",
+        "reactjs",
+        "javascript",
+        "java script",
+    ],
+    responses: [
+        "En frontend, Jorge trabaja principalmente con React y JavaScript.",
+        "Para desarrollo frontend, Jorge utiliza principalmente React y JavaScript.",
+        "Jorge tiene experiencia en frontend utilizando React y JavaScript.",
+        "En la parte visual de sus proyectos, Jorge trabaja con React y JavaScript."
+    ]
+},
 
-    {
-        category: "tecnologias",
-        keywords: [
-            "deploy",
-            "deployment",
-            "despliegue",
-            "hosting",
-        ],
-        responses: [
-            "Para despliegue, Jorge trabaja con servicios como Render, Vercel y AWS.",
-            "Jorge utiliza Render, Vercel y AWS para desplegar sus aplicaciones.",
-            "En cuanto a deployment, Jorge trabaja con plataformas como Render, Vercel y AWS.",
-            "Para publicar sus proyectos, Jorge utiliza servicios como Render, Vercel y AWS."
-        ]
-    },
+{
+    category: "tecnologias",
+    keywords: [
+        // Backend
+        "backend",
+        "back end",
+        "back-end",
+        "desarrollo backend",
+        "desarrollo back end",
+        "tecnologias backend",
+        "tecnologías backend",
+        "que usa en backend",
+        "qué usa en backend",
+        "que utiliza en backend",
+        "qué utiliza en backend",
 
-    {
-        category: "tecnologias",
-        keywords: [
-            "tecnologias",
-            "tecnologia",
-            "stack",
-            "herramientas",
-            "lenguajes",
-        ],
-        responses: [
-            "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
-            "Su stack incluye React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
-            "Entre las principales tecnologías de Jorge están React, JavaScript, Django, Java, PostgreSQL y MySQL, junto con Render, Vercel y AWS.",
-            "Jorge cuenta con experiencia en frontend, backend, bases de datos y deployment utilizando React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS."
-        ]
-    },
+        "django",
+        "django python",
+        "java",
+        "spring",
+        "spring boot",
+    ],
+    responses: [
+        "En backend, Jorge trabaja principalmente con Django y Java.",
+        "Para el desarrollo backend, Jorge utiliza Django y Java.",
+        "Jorge cuenta con experiencia en backend utilizando Django y Java.",
+        "En el lado del servidor, Jorge trabaja principalmente con Django y Java."
+    ]
+},
+
+{
+    category: "tecnologias",
+    keywords: [
+        // Bases de datos
+        "base de datos",
+        "bases de datos",
+        "base datos",
+        "bases datos",
+        "tecnologias de base de datos",
+        "tecnologías de base de datos",
+        "que base de datos usa",
+        "qué base de datos usa",
+        "que bases de datos usa",
+        "qué bases de datos usa",
+        "que base de datos utiliza",
+        "qué base de datos utiliza",
+
+        "postgresql",
+        "postgres",
+        "mysql",
+    ],
+    responses: [
+        "Jorge trabaja con PostgreSQL y MySQL.",
+        "En bases de datos, Jorge utiliza principalmente PostgreSQL y MySQL.",
+        "Jorge tiene experiencia trabajando con PostgreSQL y MySQL.",
+        "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL."
+    ]
+},
+
+{
+    category: "tecnologias",
+    keywords: [
+        // Deploy / Deployment
+        "deploy",
+        "deployment",
+        "despliegue",
+        "desplegar",
+        "desplegar aplicaciones",
+        "publicar aplicaciones",
+        "hosting",
+        "donde despliega",
+        "dónde despliega",
+        "donde aloja sus proyectos",
+        "dónde aloja sus proyectos",
+        "que usa para desplegar",
+        "qué usa para desplegar",
+
+        "render",
+        "vercel",
+        "aws",
+    ],
+    responses: [
+        "Para despliegue, Jorge trabaja con servicios como Render, Vercel y AWS.",
+        "Jorge utiliza Render, Vercel y AWS para desplegar sus aplicaciones.",
+        "En cuanto a deployment, Jorge trabaja con plataformas como Render, Vercel y AWS.",
+        "Para publicar sus proyectos, Jorge utiliza servicios como Render, Vercel y AWS."
+    ]
+},
+
+{
+    category: "tecnologias",
+    keywords: [
+        // Stack / tecnologías generales
+        "tecnologias",
+        "tecnología",
+        "tecnologia",
+        "stack",
+        "tech stack",
+        "stack tecnologico",
+        "stack tecnológico",
+        "herramientas",
+        "herramientas que usa",
+        "lenguajes",
+        "lenguajes de programacion",
+        "lenguajes de programación",
+
+        "que tecnologias usa",
+        "qué tecnologías usa",
+        "que tecnologias utiliza",
+        "qué tecnologías utiliza",
+        "que herramientas usa",
+        "qué herramientas usa",
+        "con que tecnologias trabaja",
+        "con qué tecnologías trabaja",
+        "con que trabaja",
+        "con qué trabaja",
+
+        "tecnologias de jorge",
+        "tecnologías de jorge",
+        "stack de jorge",
+        "herramientas de jorge",
+    ],
+    responses: [
+        "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
+        "Su stack incluye React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
+        "Entre las principales tecnologías de Jorge están React, JavaScript, Django, Java, PostgreSQL y MySQL, junto con Render, Vercel y AWS.",
+        "Jorge cuenta con experiencia en frontend, backend, bases de datos y deployment utilizando React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS."
+    ]
+},
 
     /*
     |--------------------------------------------------------------------------
@@ -419,93 +764,172 @@ const LOCAL_RESPONSES = [
     |--------------------------------------------------------------------------
     */
 
-    {
-        category: "certificaciones",
-        keywords: [
-            "mcp",
-            "certificacion mcp",
-        ],
-        responses: [
-            "Jorge cuenta con una certificación relacionada con MCP de Anthropic, obtenida en 2026.",
-            "En 2026, Jorge obtuvo una certificación relacionada con MCP de Anthropic.",
-            "Jorge tiene una certificación de MCP asociada a Anthropic.",
-            "Entre sus certificaciones se encuentra una relacionada con MCP de Anthropic, obtenida en 2026."
-        ]
-    },
+    
 
-    {
-        category: "certificaciones",
-        keywords: [
-            "linux",
-            "certificacion linux",
-        ],
-        responses: [
-            "Jorge cuenta con una certificación de Linux realizada en Udemy en 2024.",
-            "En 2024, Jorge realizó una certificación de Linux en Udemy.",
-            "Jorge tiene formación certificada en Linux mediante Udemy.",
-            "Entre sus certificaciones se encuentra una relacionada con Linux, realizada en Udemy en 2024."
-        ]
-    },
+{
+    category: "certificaciones",
+    keywords: [
+        // MCP
+        "mcp",
+        "certificacion mcp",
+        "certificación mcp",
+        "certificado mcp",
+        "certificado de mcp",
+        "certificacion de mcp",
+        "certificación de mcp",
+        "que certificacion tiene de mcp",
+        "qué certificación tiene de mcp",
+        "cuando obtuvo mcp",
+        "cuándo obtuvo mcp",
+    ],
+    responses: [
+        "Jorge cuenta con una certificación relacionada con MCP de Anthropic, obtenida en 2026.",
+        "En 2026, Jorge obtuvo una certificación relacionada con MCP de Anthropic.",
+        "Jorge tiene una certificación de MCP asociada a Anthropic.",
+        "Entre sus certificaciones se encuentra una relacionada con MCP de Anthropic, obtenida en 2026."
+    ]
+},
 
-    {
-        category: "certificaciones",
-        keywords: [
-            "fundamentals of ai",
-            "fundamentos de ia",
-            "ibm",
-        ],
-        responses: [
-            "Jorge cuenta con la certificación Fundamentals of AI de IBM, obtenida en 2025.",
-            "En 2025, Jorge obtuvo Fundamentals of AI de IBM.",
-            "Jorge tiene una certificación de Fundamentals of AI otorgada por IBM.",
-            "Entre sus certificaciones está Fundamentals of AI de IBM, correspondiente a 2025."
-        ]
-    },
+{
+    category: "certificaciones",
+    keywords: [
+        // Linux
+        "linux",
+        "certificacion linux",
+        "certificación linux",
+        "certificado linux",
+        "certificado de linux",
+        "certificacion de linux",
+        "certificación de linux",
+        "que certificacion tiene de linux",
+        "qué certificación tiene de linux",
+        "cuando obtuvo linux",
+        "cuándo obtuvo linux",
+    ],
+    responses: [
+        "Jorge cuenta con una certificación de Linux realizada en Udemy en 2024.",
+        "En 2024, Jorge realizó una certificación de Linux en Udemy.",
+        "Jorge tiene formación certificada en Linux mediante Udemy.",
+        "Entre sus certificaciones se encuentra una relacionada con Linux, realizada en Udemy en 2024."
+    ]
+},
 
-    {
-        category: "certificaciones",
-        keywords: [
-            "az 900",
-            "az-900",
-            "azure",
-        ],
-        responses: [
-            "Jorge cuenta con la certificación AZ-900 de UNIR, obtenida en 2023.",
-            "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR.",
-            "Jorge tiene la certificación AZ-900 relacionada con Azure.",
-            "Entre sus certificaciones se encuentra AZ-900, obtenida mediante UNIR en 2023."
-        ]
-    },
+{
+    category: "certificaciones",
+    keywords: [
+        // Fundamentals of AI - IBM
+        "fundamentals of ai",
+        "fundamentos de ia",
+        "fundamentos de inteligencia artificial",
+        "fundamentals ai",
+        "certificacion fundamentals of ai",
+        "certificación fundamentals of ai",
+        "certificado fundamentals of ai",
+        "certificacion de fundamentals of ai",
+        "certificación de fundamentals of ai",
+        "ibm",
+        "certificacion ibm",
+        "certificación ibm",
+        "certificado ibm",
+        "certificacion de ibm",
+        "certificación de ibm",
+    ],
+    responses: [
+        "Jorge cuenta con la certificación Fundamentals of AI de IBM, obtenida en 2025.",
+        "En 2025, Jorge obtuvo Fundamentals of AI de IBM.",
+        "Jorge tiene una certificación de Fundamentals of AI otorgada por IBM.",
+        "Entre sus certificaciones está Fundamentals of AI de IBM, correspondiente a 2025."
+    ]
+},
 
-    {
-        category: "certificaciones",
-        keywords: [
-            "claude api",
-            "certificacion claude",
-        ],
-        responses: [
-            "Jorge cuenta con una certificación relacionada con Claude API de Anthropic, obtenida en 2026.",
-            "En 2026, Jorge obtuvo una certificación relacionada con Claude API de Anthropic.",
-            "Jorge tiene una certificación relacionada con Claude API.",
-            "Entre sus certificaciones está una relacionada con Claude API de Anthropic, correspondiente a 2026."
-        ]
-    },
+{
+    category: "certificaciones",
+    keywords: [
+        // AZ-900 / Azure
+        "az 900",
+        "az-900",
+        "az900",
+        "azure",
+        "certificacion az 900",
+        "certificación az 900",
+        "certificacion az-900",
+        "certificación az-900",
+        "certificado az 900",
+        "certificado az-900",
+        "certificacion azure",
+        "certificación azure",
+        "certificado azure",
+        "certificado de azure",
+        "que certificacion tiene de azure",
+        "qué certificación tiene de azure",
+    ],
+    responses: [
+        "Jorge cuenta con la certificación AZ-900 de UNIR, obtenida en 2023.",
+        "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR.",
+        "Jorge tiene la certificación AZ-900 relacionada con Azure.",
+        "Entre sus certificaciones se encuentra AZ-900, obtenida mediante UNIR en 2023."
+    ]
+},
 
-    {
-        category: "certificaciones",
-        keywords: [
-            "certificaciones",
-            "certificados",
-            "certificacion",
-            "que certificaciones tiene",
-        ],
-        responses: [
-            "Jorge cuenta con certificaciones relacionadas con MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
-            "Entre las certificaciones de Jorge se encuentran MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
-            "Jorge tiene certificaciones en áreas como MCP, Linux, inteligencia artificial, Azure y Claude API.",
-            "Su formación complementaria incluye certificaciones de MCP, Linux, Fundamentals of AI, AZ-900 y Claude API."
-        ]
-    },
+{
+    category: "certificaciones",
+    keywords: [
+        // Claude API
+        "claude api",
+        "claude",
+        "certificacion claude api",
+        "certificación claude api",
+        "certificado claude api",
+        "certificacion de claude api",
+        "certificación de claude api",
+        "certificacion claude",
+        "certificación claude",
+        "certificado claude",
+        "que certificacion tiene de claude",
+        "qué certificación tiene de claude",
+    ],
+    responses: [
+        "Jorge cuenta con una certificación relacionada con Claude API de Anthropic, obtenida en 2026.",
+        "En 2026, Jorge obtuvo una certificación relacionada con Claude API de Anthropic.",
+        "Jorge tiene una certificación relacionada con Claude API.",
+        "Entre sus certificaciones está una relacionada con Claude API de Anthropic, correspondiente a 2026."
+    ]
+},
+
+{
+    category: "certificaciones",
+    keywords: [
+        // Certificaciones en general
+        "certificaciones",
+        "certificados",
+        "certificacion",
+        "certificación",
+        "que certificaciones tiene",
+        "qué certificaciones tiene",
+        "que certificados tiene",
+        "qué certificados tiene",
+        "que certificaciones posee",
+        "qué certificaciones posee",
+        "cuales son sus certificaciones",
+        "cuáles son sus certificaciones",
+        "que certificaciones ha obtenido",
+        "qué certificaciones ha obtenido",
+        "que certificados ha obtenido",
+        "qué certificados ha obtenido",
+        "que certificaciones tiene jorge",
+        "qué certificaciones tiene jorge",
+        "certificaciones de jorge",
+        "certificados de jorge",
+        "formacion certificada",
+        "formación certificada",
+    ],
+    responses: [
+        "Jorge cuenta con certificaciones relacionadas con MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+        "Entre las certificaciones de Jorge se encuentran MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+        "Jorge tiene certificaciones en áreas como MCP, Linux, inteligencia artificial, Azure y Claude API.",
+        "Su formación complementaria incluye certificaciones de MCP, Linux, Fundamentals of AI, AZ-900 y Claude API."
+    ]
+},
 
     /*
     |--------------------------------------------------------------------------
@@ -567,25 +991,44 @@ const LOCAL_RESPONSES = [
     |--------------------------------------------------------------------------
     */
 
-    {
-        category: "contacto",
-        keywords: [
-            "contacto",
-            "contactar",
-            "contactarme",
-            "comunicarme",
-            "hablar con jorge",
-            "contactar a jorge",
-            "como contacto",
-            "como contactar",
-        ],
-        responses: [
-            'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
-            'Para comunicarte con Jorge, utiliza la sección "Contacto" de su portfolio.',
-            'Si quieres contactar a Jorge, encontrarás la opción correspondiente en la sección "Contacto".',
-            'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.'
-        ]
-    },
+    
+
+{
+    category: "contacto",
+    keywords: [
+        "contacto",
+        "contactar",
+        "contactarme",
+        "comunicarme",
+        "comunicar",
+        "hablar con jorge",
+        "contactar a jorge",
+        "contactarme con jorge",
+        "comunicarme con jorge",
+        "como contacto",
+        "como contactar",
+        "como contactar a jorge",
+        "como me contacto",
+        "como me comunico",
+        "como hablar con jorge",
+        "donde contacto a jorge",
+        "donde puedo contactar a jorge",
+        "donde puedo comunicarme con jorge",
+        "quiero contactar a jorge",
+        "quiero hablar con jorge",
+        "quiero comunicarme con jorge",
+        "como escribirle a jorge",
+        "donde escribirle a jorge",
+        "redes sociales de jorge",
+        "redes de jorge",
+    ],
+    responses: [
+        'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
+        'Para comunicarte con Jorge, utiliza la sección "Contacto" de su portfolio.',
+        'Si quieres contactar a Jorge, encontrarás la opción correspondiente en la sección "Contacto".',
+        'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.'
+    ]
+},
 
     /*
     |--------------------------------------------------------------------------
