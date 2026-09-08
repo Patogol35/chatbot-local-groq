@@ -4,35 +4,14 @@
 |--------------------------------------------------------------------------
 */
 
-const normalizeText = (text = "") => {
+const normalizeText = (text) => {
     return text
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[-_/]/g, " ")
-        .replace(/[¿?¡!.,;:()[\]{}"'`]/g, " ")
+        .replace(/[¿?¡!.,;:()[\]{}]/g, " ")
         .replace(/\s+/g, " ")
         .trim();
-};
-
-/*
-|--------------------------------------------------------------------------
-| UTILIDADES
-|--------------------------------------------------------------------------
-*/
-
-const containsAny = (text, keywords = []) => {
-    return keywords.some((keyword) =>
-        text.includes(normalizeText(keyword))
-    );
-};
-
-const randomPick = (responses = []) => {
-    if (!responses.length) return null;
-
-    return responses[
-        Math.floor(Math.random() * responses.length)
-    ];
 };
 
 /*
@@ -40,124 +19,12 @@ const randomPick = (responses = []) => {
 | RESPUESTAS LOCALES
 |--------------------------------------------------------------------------
 |
-| Estas respuestas NO utilizan Groq.
+| Cada tema puede tener hasta 4 respuestas.
+| Se selecciona una de ellas de forma aleatoria.
 |
-|--------------------------------------------------------------------------
 */
 
 const LOCAL_RESPONSES = [
-
-    /*
-    |--------------------------------------------------------------------------
-    | SALUDOS
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        category: "saludos",
-        keywords: [
-            "hola",
-            "hola sasha",
-            "hola a sasha",
-            "buenos dias",
-            "buenas tardes",
-            "buenas noches",
-            "buenas",
-            "hey",
-            "hey sasha",
-            "hello",
-            "hello sasha",
-            "holi",
-            "holi sasha",
-        ],
-        responses: [
-            "¡Hola! Soy Sasha, la asistente virtual del portfolio de Jorge. ¿En qué puedo ayudarte?",
-            "¡Hola! Soy Sasha. ¿Qué te gustaría saber sobre Jorge o sus proyectos?",
-            "¡Hola! 😊 Soy Sasha, la IA del portfolio de Jorge. ¿En qué puedo ayudarte?",
-            "¡Hola! Encantada de ayudarte. Puedes preguntarme sobre Jorge, sus estudios, tecnologías o proyectos."
-        ]
-    },
-
-    /*
-    |--------------------------------------------------------------------------
-    | ESTADO DE SASHA
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        category: "estado",
-        keywords: [
-            "como estas",
-            "como estas sasha",
-            "como te encuentras",
-            "como te encuentras sasha",
-            "estas bien",
-            "estas bien sasha",
-            "que tal estas",
-            "que tal sasha",
-        ],
-        responses: [
-            "¡Muy bien, gracias! Estoy lista para ayudarte con información sobre Jorge y su portfolio.",
-            "Todo bien por aquí. Soy Sasha y estoy lista para ayudarte.",
-            "¡Estoy muy bien! ¿Qué te gustaría saber sobre Jorge?",
-            "Funcionando correctamente y lista para ayudarte. 😊"
-        ]
-    },
-
-    /*
-    |--------------------------------------------------------------------------
-    | AGRADECIMIENTOS
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        category: "agradecimientos",
-        keywords: [
-            "gracias",
-            "muchas gracias",
-            "te agradezco",
-            "gracias sasha",
-            "muchas gracias sasha",
-            "gracias por ayudarme",
-            "gracias por la ayuda",
-        ],
-        responses: [
-            "¡De nada! Estoy aquí para ayudarte.",
-            "¡Con gusto! 😊",
-            "No hay de qué. Cuando quieras, puedes preguntarme algo más.",
-            "¡Encantada de ayudarte!"
-        ]
-    },
-
-    /*
-    |--------------------------------------------------------------------------
-    | DESPEDIDAS
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        category: "despedidas",
-        keywords: [
-            "adios",
-            "adios sasha",
-            "hasta luego",
-            "hasta luego sasha",
-            "nos vemos",
-            "nos vemos sasha",
-            "chao",
-            "chao sasha",
-            "bye",
-            "bye sasha",
-            "me voy",
-            "hasta pronto",
-        ],
-        responses: [
-            "¡Hasta luego! Fue un gusto ayudarte.",
-            "¡Adiós! Cuando quieras volver, aquí estará Sasha.",
-            "¡Nos vemos! Espero que hayas encontrado lo que buscabas.",
-            "¡Hasta pronto! 👋"
-        ]
-    },
 
     /*
     |--------------------------------------------------------------------------
@@ -170,19 +37,11 @@ const LOCAL_RESPONSES = [
         keywords: [
             "quien es jorge",
             "quien es jorge patricio",
-            "quien es jorge patricio santamaria",
             "quien es santamaria",
             "quien es santamaria cherrez",
-            "quien es jorge santamaria",
             "presentame a jorge",
-            "presenta a jorge",
-            "presentame",
             "hablame de jorge",
-            "habla de jorge",
             "sobre jorge",
-            "informacion sobre jorge",
-            "informacion de jorge",
-            "dime sobre jorge",
         ],
         responses: [
             "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
@@ -202,11 +61,7 @@ const LOCAL_RESPONSES = [
         category: "formacion",
         keywords: [
             "donde estudio",
-            "donde estudia",
             "en que universidad",
-            "universidad de jorge",
-            "universidades donde estudio",
-            "estudios universitarios",
         ],
         responses: [
             "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador. Posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR, España.",
@@ -221,12 +76,7 @@ const LOCAL_RESPONSES = [
         keywords: [
             "que estudio",
             "que carrera estudio",
-            "que carrera tiene",
-            "que profesion tiene",
-            "que profesion es",
-            "ingenieria en sistemas",
-            "ingeniero en sistemas",
-            "carrera de jorge",
+            "ingenieria",
         ],
         responses: [
             "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
@@ -243,11 +93,6 @@ const LOCAL_RESPONSES = [
             "maestria",
             "posgrado",
             "que master tiene",
-            "que maestria tiene",
-            "que posgrado tiene",
-            "estudio un master",
-            "tiene un master",
-            "tiene maestria",
         ],
         responses: [
             "Jorge realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja (UNIR), España.",
@@ -264,8 +109,6 @@ const LOCAL_RESPONSES = [
             "formacion academica",
             "educacion",
             "trayectoria academica",
-            "perfil academico",
-            "historial academico",
         ],
         responses: [
             "La formación académica de Jorge incluye Ingeniería en Sistemas por la Universidad Indoamérica y un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
@@ -277,28 +120,16 @@ const LOCAL_RESPONSES = [
 
     /*
     |--------------------------------------------------------------------------
-    | NOTA DE INGENIERÍA
+    | NOTAS
     |--------------------------------------------------------------------------
     */
 
     {
-        category: "nota_ingenieria",
+        category: "notas",
         keywords: [
             "promedio ingenieria",
-            "promedio de ingenieria",
-            "promedio en ingenieria",
             "nota ingenieria",
-            "nota de ingenieria",
-            "nota en ingenieria",
-            "calificacion ingenieria",
-            "calificacion de ingenieria",
-            "calificacion en ingenieria",
             "promedio universidad",
-            "nota universidad",
-            "promedio carrera",
-            "nota carrera",
-            "promedio de la carrera",
-            "nota de la carrera",
         ],
         responses: [
             "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas.",
@@ -308,42 +139,12 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | NOTA DEL MÁSTER
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "nota_master",
+        category: "notas",
         keywords: [
             "promedio master",
-            "promedio del master",
-            "promedio en el master",
             "nota master",
-            "nota del master",
-            "nota en el master",
-            "calificacion master",
-            "calificacion del master",
-            "calificacion en el master",
-            "promedio maestria",
-            "promedio de la maestria",
-            "promedio en la maestria",
-            "nota maestria",
-            "nota de la maestria",
-            "nota en la maestria",
-            "calificacion maestria",
-            "calificacion de la maestria",
-            "calificacion en la maestria",
             "promedio posgrado",
-            "promedio del posgrado",
-            "promedio en el posgrado",
-            "nota posgrado",
-            "nota del posgrado",
-            "nota en el posgrado",
-            "calificacion posgrado",
-            "calificacion del posgrado",
-            "calificacion en el posgrado",
         ],
         responses: [
             "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
@@ -353,46 +154,36 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | NOTAS GENERALES
-    |--------------------------------------------------------------------------
-    */
-
     {
         category: "notas",
         keywords: [
             "promedio",
-            "promedios",
             "notas",
             "nota",
             "calificacion",
             "calificaciones",
-            "resultados academicos",
         ],
         responses: [
             "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas y un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
             "En su formación universitaria, Jorge obtuvo un 9 de promedio en Ingeniería en Sistemas y 8.68 en el Máster.",
             "Sus promedios registrados son 9 en Ingeniería en Sistemas y 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
-            "Jorge obtuvo un promedio de 9 en su Ingeniería en Sistemas y 8.68 en su Máster."
+            "Jorge obtuvo excelentes resultados académicos: 9 en su Ingeniería en Sistemas y 8.68 en su Máster."
         ]
     },
 
     /*
     |--------------------------------------------------------------------------
-    | TECNOLOGÍAS - FRONTEND
+    | TECNOLOGÍAS
     |--------------------------------------------------------------------------
     */
 
     {
-        category: "tecnologias_frontend",
+        category: "tecnologias",
         keywords: [
             "frontend",
             "front end",
             "react",
             "javascript",
-            "desarrollo frontend",
-            "tecnologias frontend",
         ],
         responses: [
             "En frontend, Jorge trabaja principalmente con React y JavaScript.",
@@ -402,21 +193,13 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | TECNOLOGÍAS - BACKEND
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "tecnologias_backend",
+        category: "tecnologias",
         keywords: [
             "backend",
             "back end",
             "django",
             "java",
-            "desarrollo backend",
-            "tecnologias backend",
         ],
         responses: [
             "En backend, Jorge trabaja principalmente con Django y Java.",
@@ -426,21 +209,13 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | BASES DE DATOS
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "bases_datos",
+        category: "tecnologias",
         keywords: [
             "base de datos",
             "bases de datos",
             "postgresql",
             "mysql",
-            "base datos",
-            "bases datos",
         ],
         responses: [
             "Jorge trabaja con PostgreSQL y MySQL.",
@@ -450,22 +225,13 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | DEPLOY / HOSTING
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "deploy",
+        category: "tecnologias",
         keywords: [
             "deploy",
             "deployment",
             "despliegue",
             "hosting",
-            "donde despliega",
-            "donde aloja",
-            "publicar aplicaciones",
         ],
         responses: [
             "Para despliegue, Jorge trabaja con servicios como Render, Vercel y AWS.",
@@ -475,24 +241,14 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | STACK
-    |--------------------------------------------------------------------------
-    */
-
     {
         category: "tecnologias",
         keywords: [
             "tecnologias",
             "tecnologia",
             "stack",
-            "tech stack",
             "herramientas",
             "lenguajes",
-            "que tecnologias usa",
-            "que tecnologias utiliza",
-            "con que tecnologias trabaja",
         ],
         responses: [
             "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
@@ -504,19 +260,16 @@ const LOCAL_RESPONSES = [
 
     /*
     |--------------------------------------------------------------------------
-    | PROYECTO - PORTFOLIO
+    | PROYECTOS
     |--------------------------------------------------------------------------
     */
 
     {
-        category: "proyecto_portfolio",
+        category: "proyectos",
         keywords: [
             "portfolio",
             "portafolio",
             "portfolio react",
-            "portafolio react",
-            "sitio web",
-            "pagina web",
         ],
         responses: [
             "Jorge cuenta con un portfolio desarrollado con React para mostrar su formación, tecnologías y proyectos.",
@@ -526,20 +279,12 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTO - QUIZ
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "proyecto_quiz",
+        category: "proyectos",
         keywords: [
             "quiz",
             "quiz ecuador",
             "quiz sobre ecuador",
-            "preguntas ecuador",
-            "juego ecuador",
         ],
         responses: [
             "Uno de los proyectos de Jorge es un Quiz sobre Ecuador.",
@@ -548,21 +293,13 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con una aplicación tipo Quiz enfocada en Ecuador."
         ]
     },
-  /*
-    |--------------------------------------------------------------------------
-    | PROYECTO - CLIMA
-    |--------------------------------------------------------------------------
-    */
 
     {
-        category: "proyecto_clima",
+        category: "proyectos",
         keywords: [
             "clima",
             "app clima",
             "aplicacion clima",
-            "app del clima",
-            "aplicacion del clima",
-            "meteorologia",
         ],
         responses: [
             "Jorge desarrolló una aplicación del clima que permite consultar información meteorológica.",
@@ -572,19 +309,12 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTO - CHATBOT
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "proyecto_chatbot",
+        category: "proyectos",
         keywords: [
             "chatbot",
             "chat bot",
-            "asistente virtual",
-            "asistente de jorge",
+            "sasha",
         ],
         responses: [
             "Jorge desarrolló un chatbot y Sasha funciona como asistente virtual de su portfolio.",
@@ -594,19 +324,11 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTO - AJEDREZ
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "proyecto_ajedrez",
+        category: "proyectos",
         keywords: [
             "ajedrez",
             "chess",
-            "juego de ajedrez",
-            "proyecto de ajedrez",
         ],
         responses: [
             "Jorge cuenta con un proyecto relacionado con el juego de ajedrez.",
@@ -616,23 +338,14 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTO - E-COMMERCE
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "proyecto_ecommerce",
+        category: "proyectos",
         keywords: [
             "ecommerce",
-            "e commerce",
             "e-commerce",
             "tienda",
             "tienda online",
-            "tienda en linea",
             "comercio electronico",
-            "comercio en linea",
         ],
         responses: [
             "Jorge desarrolló un e-commerce utilizando React en frontend y Django en backend.",
@@ -642,12 +355,6 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTOS GENERALES
-    |--------------------------------------------------------------------------
-    */
-
     {
         category: "proyectos",
         keywords: [
@@ -655,9 +362,7 @@ const LOCAL_RESPONSES = [
             "proyecto",
             "que proyectos tiene",
             "que ha desarrollado",
-            "que aplicaciones tiene",
             "aplicaciones",
-            "trabajos realizados",
         ],
         responses: [
             "Entre los proyectos de Jorge se encuentran su Portfolio React, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
@@ -669,16 +374,15 @@ const LOCAL_RESPONSES = [
 
     /*
     |--------------------------------------------------------------------------
-    | CERTIFICACIÓN - MCP
+    | CERTIFICACIONES
     |--------------------------------------------------------------------------
     */
 
     {
-        category: "certificacion_mcp",
+        category: "certificaciones",
         keywords: [
             "mcp",
             "certificacion mcp",
-            "certificado mcp",
         ],
         responses: [
             "Jorge cuenta con una certificación relacionada con MCP de Anthropic, obtenida en 2026.",
@@ -688,18 +392,11 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIÓN - LINUX
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "certificacion_linux",
+        category: "certificaciones",
         keywords: [
             "linux",
             "certificacion linux",
-            "certificado linux",
         ],
         responses: [
             "Jorge cuenta con una certificación de Linux realizada en Udemy en 2024.",
@@ -709,20 +406,12 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIÓN - FUNDAMENTALS OF AI
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "certificacion_ai",
+        category: "certificaciones",
         keywords: [
             "fundamentals of ai",
             "fundamentos de ia",
-            "fundamentos de ai",
             "ibm",
-            "certificacion ibm",
         ],
         responses: [
             "Jorge cuenta con la certificación Fundamentals of AI de IBM, obtenida en 2025.",
@@ -732,20 +421,12 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIÓN - AZ-900
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "certificacion_az900",
+        category: "certificaciones",
         keywords: [
             "az 900",
-            "az900",
+            "az-900",
             "azure",
-            "certificacion azure",
-            "certificado azure",
         ],
         responses: [
             "Jorge cuenta con la certificación AZ-900 de UNIR, obtenida en 2023.",
@@ -755,18 +436,11 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIÓN - CLAUDE API
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "certificacion_claude",
+        category: "certificaciones",
         keywords: [
             "claude api",
             "certificacion claude",
-            "certificado claude",
         ],
         responses: [
             "Jorge cuenta con una certificación relacionada con Claude API de Anthropic, obtenida en 2026.",
@@ -776,21 +450,13 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIONES GENERALES
-    |--------------------------------------------------------------------------
-    */
-
     {
         category: "certificaciones",
         keywords: [
             "certificaciones",
             "certificados",
             "certificacion",
-            "certificado",
             "que certificaciones tiene",
-            "que certificados tiene",
         ],
         responses: [
             "Jorge cuenta con certificaciones relacionadas con MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
@@ -802,21 +468,18 @@ const LOCAL_RESPONSES = [
 
     /*
     |--------------------------------------------------------------------------
-    | INTERESES - LECTURA
+    | INTERESES
     |--------------------------------------------------------------------------
     */
 
     {
-        category: "intereses_lectura",
+        category: "intereses",
         keywords: [
             "lectura",
             "leer",
             "libros",
             "libro",
             "dan brown",
-            "que libros lee",
-            "que libros le gustan",
-            "autor favorito",
         ],
         responses: [
             "A Jorge le gusta la lectura, especialmente las obras del escritor Dan Brown.",
@@ -826,20 +489,11 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | INTERESES - MÚSICA
-    |--------------------------------------------------------------------------
-    */
-
     {
-        category: "intereses_musica",
+        category: "intereses",
         keywords: [
             "musica",
             "que musica le gusta",
-            "que musica escucha",
-            "le gusta la musica",
-            "escucha musica",
         ],
         responses: [
             "La música es uno de los intereses de Jorge.",
@@ -849,12 +503,6 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | INTERESES GENERALES
-    |--------------------------------------------------------------------------
-    */
-
     {
         category: "intereses",
         keywords: [
@@ -863,171 +511,6 @@ const LOCAL_RESPONSES = [
             "pasatiempos",
             "aficiones",
             "que le gusta",
-            "que le interesa",
         ],
         responses: [
-            "Entre los intereses de Jorge están la lectura, especialmente las obras de Dan Brown, y la música.",
-            "Jorge tiene interés por la lectura y la música. En literatura, muestra especial interés por Dan Brown.",
-            "Entre sus principales intereses se encuentran la lectura y la música.",
-            "Jorge disfruta de la lectura, especialmente de las obras de Dan Brown, y también tiene interés por la música."
-        ]
-    },
-
-    /*
-    |--------------------------------------------------------------------------
-    | CONTACTO
-    |--------------------------------------------------------------------------
-    */
-
-    {
-        category: "contacto",
-        keywords: [
-            "contacto",
-            "contactar",
-            "contactar a jorge",
-            "como contacto a jorge",
-            "como puedo contactar",
-            "como comunicarme con jorge",
-            "correo de jorge",
-            "email de jorge",
-            "telefono de jorge",
-        ],
-        responses: [
-            'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
-            'Para comunicarte con Jorge, utiliza la sección "Contacto" de su portfolio.',
-            'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.',
-            'Puedes encontrar las opciones de contacto de Jorge en la sección "Contacto" del portfolio.'
-        ]
-    },
-];
-
-/*
-|--------------------------------------------------------------------------
-| DETECCIÓN DE INTENCIONES ESPECIALES
-|--------------------------------------------------------------------------
-*/
-
-const detectSpecialIntent = (text) => {
-
-    /*
-    |--------------------------------------------------------------------------
-    | NOTA DEL MÁSTER
-    |--------------------------------------------------------------------------
-    */
-
-    const asksForGrade = containsAny(text, [
-        "nota",
-        "promedio",
-        "calificacion",
-        "calificación",
-        "media",
-        "puntaje",
-        "puntuacion",
-        "puntuación",
-    ]);
-
-    const mentionsMaster = containsAny(text, [
-        "master",
-        "maestria",
-        "posgrado",
-        "unir",
-    ]);
-
-    if (asksForGrade && mentionsMaster) {
-        return "nota_master";
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | NOTA DE INGENIERÍA
-    |--------------------------------------------------------------------------
-    */
-
-    const mentionsEngineering = containsAny(text, [
-        "ingenieria",
-        "ingenieria en sistemas",
-        "carrera",
-        "universidad indoamerica",
-    ]);
-
-    if (asksForGrade && mentionsEngineering) {
-        return "nota_ingenieria";
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | NOTAS GENERALES
-    |--------------------------------------------------------------------------
-    */
-
-    if (asksForGrade) {
-        return "notas";
-    }
-
-    return null;
-};
-
-/*
-|--------------------------------------------------------------------------
-| OBTENER RESPUESTA LOCAL
-|--------------------------------------------------------------------------
-*/
-
-export const getLocalResponse = (message) => {
-    if (typeof message !== "string") {
-        return null;
-    }
-
-    const text = normalizeText(message);
-
-    if (!text) {
-        return null;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 1. INTENCIONES ESPECIALES
-    |--------------------------------------------------------------------------
-    */
-
-    const specialIntent = detectSpecialIntent(text);
-
-    if (specialIntent) {
-        const intent = LOCAL_RESPONSES.find(
-            (item) => item.category === specialIntent
-        );
-
-        if (intent) {
-            return randomPick(intent.responses);
-        }
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 2. KEYWORDS NORMALES
-    |--------------------------------------------------------------------------
-    */
-
-    for (const item of LOCAL_RESPONSES) {
-        const matched = item.keywords.some((keyword) =>
-            text.includes(normalizeText(keyword))
-        );
-
-        if (matched) {
-            return randomPick(item.responses);
-        }
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 3. NO HAY RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    |
-    | null = enviar la pregunta a Groq.
-    |
-    */
-
-    return null;
-};
-
-export { normalizeText };
+            "Entre los intereses de Jorge están la lectura, especialmente las obras de Dan Brown, y la músi
