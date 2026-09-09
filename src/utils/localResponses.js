@@ -390,6 +390,7 @@ const LOCAL_RESPONSES = [
         keywords: [
 
             "frontend",
+            "tecnologias",
             "front end",
             "front-end",
             "desarrollo frontend",
@@ -1353,6 +1354,7 @@ const extractPersonName = (message) => {
         "usa tecnologia",
         "utiliza tecnologias",
         "utiliza tecnologia",
+        "tecnologias",
 
         "conoce tecnologias",
         "maneja tecnologias",
