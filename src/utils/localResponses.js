@@ -2990,20 +2990,33 @@ if (isTechnicalQuestion) {
 */
 
 const certificationYears = {
+
     "2023": [
-        "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR."
+        "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR.",
+        "Durante 2023, Jorge consiguió la certificación AZ-900 de UNIR.",
+        "En el año 2023, Jorge completó la certificación AZ-900 de UNIR.",
+        "Jorge obtuvo en 2023 la certificación AZ-900 de UNIR."
     ],
 
     "2024": [
-        "En 2024, Jorge realizó una certificación de Linux en Udemy."
+        "En 2024, Jorge realizó una certificación de Linux en Udemy.",
+        "Durante 2024, Jorge completó una certificación de Linux en Udemy.",
+        "En 2024, Jorge obtuvo una certificación relacionada con Linux mediante Udemy.",
+        "Jorge realizó en 2024 su certificación de Linux en Udemy."
     ],
 
     "2025": [
-        "En 2025, Jorge obtuvo la certificación Fundamentals of AI de IBM."
+        "En 2025, Jorge obtuvo la certificación Fundamentals of AI de IBM.",
+        "Durante 2025, Jorge consiguió la certificación Fundamentals of AI de IBM.",
+        "En el año 2025, Jorge completó la certificación Fundamentals of AI de IBM.",
+        "Jorge obtuvo en 2025 la certificación Fundamentals of AI, otorgada por IBM."
     ],
 
     "2026": [
-        "En 2026, Jorge obtuvo certificaciones relacionadas con MCP y Claude API de Anthropic."
+        "En 2026, Jorge obtuvo certificaciones relacionadas con MCP y Claude API de Anthropic.",
+        "Durante 2026, Jorge consiguió certificaciones relacionadas con MCP y Claude API de Anthropic.",
+        "En 2026, Jorge completó certificaciones enfocadas en MCP y Claude API de Anthropic.",
+        "Jorge cuenta en 2026 con certificaciones relacionadas con MCP y Claude API de Anthropic."
     ]
 };
 
@@ -3019,6 +3032,7 @@ if (isCertificationQuery) {
         year => normalizedMessage.includes(year)
     );
 
+    // Si el año está registrado
     if (year) {
 
         const responses = certificationYears[year];
@@ -3028,6 +3042,25 @@ if (isCertificationQuery) {
         );
 
         return responses[randomIndex];
+    }
+
+    // Detectar si preguntó por un año que no está registrado
+    const requestedYear = normalizedMessage.match(/\b20\d{2}\b/);
+
+    if (requestedYear) {
+
+        const noCertificationResponses = [
+            `No tengo certificaciones de Jorge registradas para ${requestedYear[0]}.`,
+            `No encuentro certificaciones de Jorge correspondientes al año ${requestedYear[0]}.`,
+            `No tengo datos de certificaciones de Jorge para ${requestedYear[0]}.`,
+            `No aparece ninguna certificación de Jorge registrada en ${requestedYear[0]}.`
+        ];
+
+        const randomIndex = Math.floor(
+            Math.random() * noCertificationResponses.length
+        );
+
+        return noCertificationResponses[randomIndex];
     }
 }
 
