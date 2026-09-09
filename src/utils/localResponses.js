@@ -1553,6 +1553,9 @@ for (const pattern of firstWordPatterns) {
 
 
 // AQUÍ VA topicPersonPatterns
+// ============================================================
+// TEMA + PERSONA
+// ============================================================
 
 const topicPersonPatterns = [
     /^habla del (.+?) de (.+)$/,
@@ -1571,19 +1574,45 @@ for (const pattern of topicPersonPatterns) {
         const name = match[2].trim();
 
         const knownTopics = [
+
+            // Proyectos
             "ajedrez",
             "proyecto de ajedrez",
+            "proyecto ajedrez",
             "ecommerce",
             "e-commerce",
+            "proyecto ecommerce",
+            "proyecto e-commerce",
             "quiz",
+            "proyecto quiz",
             "clima",
+            "proyecto clima",
             "chatbot",
             "chat bot",
+            "proyecto chatbot",
+            "proyecto chat bot",
             "portfolio",
-            "portafolio"
+            "portafolio",
+
+            // Certificaciones
+            "certificado",
+            "certificados",
+            "certificacion",
+            "certificaciones",
+            "certificado de",
+            "certificacion de",
+
+            // Diplomas
+            "diploma",
+            "diplomas"
         ];
 
-        if (knownTopics.includes(topic)) {
+        if (
+            knownTopics.includes(topic) ||
+            topic.startsWith("certificado ") ||
+            topic.startsWith("certificacion ") ||
+            topic.startsWith("diploma ")
+        ) {
 
             const index = normalized.lastIndexOf(name);
 
