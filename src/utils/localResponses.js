@@ -1364,6 +1364,32 @@ const firstWordPatterns = [
     /^(.+?)\s+trabaja\s+con\s+tecnologias$/,
     /^(.+?)\s+trabaja\s+con\s+herramientas$/,
 
+    // Tecnologías concretas
+    /^(.+?)\s+react$/,
+    /^(.+?)\s+react\s+js$/,
+    /^(.+?)\s+reactjs$/,
+    /^(.+?)\s+javascript$/,
+    /^(.+?)\s+python$/,
+    /^(.+?)\s+django$/,
+    /^(.+?)\s+java$/,
+    /^(.+?)\s+spring$/,
+    /^(.+?)\s+spring\s+boot$/,
+    /^(.+?)\s+postgresql$/,
+    /^(.+?)\s+postgres$/,
+    /^(.+?)\s+mysql$/,
+    /^(.+?)\s+render$/,
+    /^(.+?)\s+vercel$/,
+    /^(.+?)\s+aws$/,
+
+    // Herramientas
+    /^(.+?)\s+postman$/,
+    /^(.+?)\s+linux$/,
+    /^(.+?)\s+virtualbox$/,
+    /^(.+?)\s+nextdns$/,
+    /^(.+?)\s+anydesk$/,
+    /^(.+?)\s+microsoft\s+office$/,
+    /^(.+?)\s+office$/,
+
 
     // ============================================================
     // FRONTEND
