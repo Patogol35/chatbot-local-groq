@@ -1503,158 +1503,790 @@ export const getLocalResponse = (message) => {
 const sashaResponses = [
 
     {
+        keywords: [
+            // Saludos básicos
+            "hola",
+            "holaa",
+            "holaaa",
+            "holi",
+            "holis",
+            "hey",
+            "hello",
+            "hi",
+            "buenas",
+
+            // Saludos con Sasha
+            "hola sasha",
+            "holaa sasha",
+            "holaaa sasha",
+            "holi sasha",
+            "holis sasha",
+            "hey sasha",
+            "hello sasha",
+            "hi sasha",
+            "buenas sasha",
+            "oye sasha",
+
+            // Buenos días
+            "buenos dias",
+            "buen día",
+            "buen dia",
+            "buenos dias sasha",
+            "buen día sasha",
+            "buen dia sasha",
+
+            // Buenas tardes
+            "buenas tardes",
+            "buenas tardes sasha",
+
+            // Buenas noches
+            "buenas noches",
+            "buenas noches sasha",
+
+            // Formas informales
+            "que tal",
+            "qué tal",
+            "que tal sasha",
+            "qué tal sasha",
+            "como estas",
+            "cómo estás",
+            "como estas sasha",
+            "cómo estás sasha",
+            "que haces",
+            "qué haces sasha",
+            "aqui estoy",
+            "aquí estoy",
+
+            // Presentación / inicio
+            "sasha",
+            "oye",
+            "hey",
+            "hola asistente",
+            "hola asistente virtual",
+            "hola asistente de jorge",
+            "hola asistente de Jorge"
+        ],
+
+        responses: [
+            "¡Hola! 👋 Soy Sasha, la asistente virtual de Jorge. ¿En qué puedo ayudarte?",
+            
+            "¡Hola! 😊 Soy Sasha. ¿Qué te gustaría saber sobre Jorge?",
+            
+            "¡Hola! 😄 Qué gusto verte por aquí. Pregúntame lo que quieras sobre el portfolio de Jorge.",
+            
+            "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. Estoy lista para ayudarte.",
+            
+            "¡Hola! 😊 ¿Cómo estás? Cuéntame, ¿qué quieres saber sobre Jorge?",
+            
+            "¡Hey! 😎 Soy Sasha. ¿Quieres conocer los proyectos, habilidades o experiencia de Jorge?",
+            
+            "¡Buenas! 👋 Soy Sasha. Puedo contarte sobre el perfil profesional, proyectos y habilidades de Jorge.",
+            
+            "¡Hola! 😄 Bienvenido al portfolio de Jorge. Soy Sasha y estoy aquí para ayudarte.",
+            
+            "¡Hola! 🤖 Soy Sasha, la asistente virtual de Jorge. Hazme una pregunta y veremos qué podemos descubrir.",
+            
+            "¡Hola! 👋 Encantada de ayudarte. ¿Quieres saber algo sobre Jorge, sus proyectos o su experiencia?",
+            
+            "Hola 😊 Soy Sasha y soy la asistente de mi gran amigo Jorge. ¿Qué quieres saber de él?",
+            
+            "¡Hey! 👋 Aquí Sasha. ¿Qué necesitas saber sobre Jorge?",
+            
+            "¡Hola! 😄 Ya estoy aquí. Pregúntame lo que quieras sobre el portfolio de Jorge.",
+            
+            "¡Buenas! 😊 ¿Qué te gustaría conocer sobre Jorge Patricio?",
+            
+            "¡Hola! 🚀 Soy Sasha. Puedo hablarte sobre las habilidades, proyectos, estudios y experiencia de Jorge."
+        ]
+    },
+
+    {
     keywords: [
-        "hola sasha",
-        "hola",
-        "buenos dias",
-        "buenas tardes",
-        "buenas noches",
-        
-        "hey sasha",
-        "oye sasha",
-        "buenas sasha",
-        "buenos dias sasha",
-        "buenas tardes sasha",
-        "buenas noches sasha"
+        // 👤 ¿Quién eres?
+        "quien eres",
+        "quien eres tu",
+        "quién eres",
+        "quién eres tú",
+        "que eres",
+        "qué eres",
+        "quien es sasha",
+        "quién es sasha",
+        "que es sasha",
+        "qué es sasha",
+
+        // 🤖 Identidad
+        "como te llamas",
+        "cómo te llamas",
+        "cual es tu nombre",
+        "cuál es tu nombre",
+        "dime tu nombre",
+        "dime como te llamas",
+        "dime cómo te llamas",
+        "tu nombre",
+        "tu nombre cual es",
+        "cómo te puedo llamar",
+        "como te puedo llamar",
+
+        // 👋 Presentación
+        "presentate",
+        "preséntate",
+        "puedes presentarte",
+        "te puedes presentar",
+        "hablame de ti",
+        "háblame de ti",
+        "cuentame de ti",
+        "cuéntame de ti",
+        "quiero conocerte",
+        "quiero saber quien eres",
+        "quiero saber quién eres",
+
+        // 🤖 Sobre Sasha
+        "eres una ia",
+        "eres inteligencia artificial",
+        "eres una inteligencia artificial",
+        "eres un bot",
+        "eres un chatbot",
+        "eres una asistente",
+        "eres una asistente virtual",
+        "eres humana",
+        "eres real",
+        "que haces",
+        "qué haces",
+        "para que sirves",
+        "para qué sirves",
+        "que puedes hacer",
+        "qué puedes hacer"
     ],
+
     responses: [
-        "¡Hola! Soy Sasha 😊 ¿En qué puedo ayudarte?",
-        "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. ¿Qué te gustaría saber?",
-        "¡Hola! 😄 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge.",
-        "Hola soy Sasha y soy la asistente de mi gran amigo Jorge",
+        "Soy Sasha 🤖, la asistente virtual del portfolio de Jorge. Estoy aquí para ayudarte a conocer su perfil, proyectos, habilidades y experiencia.",
+
+        "¡Hola! 😊 Me llamo Sasha y soy la asistente virtual creada para acompañarte mientras exploras el portfolio de Jorge.",
+
+        "Soy Sasha 👋, una asistente virtual diseñada para responder tus preguntas sobre Jorge Patricio, sus proyectos, tecnologías, estudios y experiencia profesional.",
+
+        "¡Soy Sasha! 🤖 Estoy aquí para ayudarte a descubrir todo lo relacionado con el trabajo y perfil profesional de Jorge.",
+
+        "Me llamo Sasha 😊 y soy la asistente virtual del portfolio de Jorge. Puedes preguntarme sobre sus proyectos, habilidades, estudios o experiencia.",
+
+        "Soy Sasha 🚀, la asistente virtual de Jorge. Mi trabajo es ayudarte a explorar su portfolio de una forma rápida y sencilla.",
+
+        "¡Soy Sasha! 😄 Una asistente virtual creada para acompañarte por el portfolio de Jorge y responder tus preguntas.",
+
+        "Soy Sasha 🤖. No soy humana, soy una asistente virtual, pero estoy aquí para conversar contigo y ayudarte a conocer mejor el trabajo de Jorge.",
+
+        "Puedes llamarme Sasha 😊. Soy la asistente virtual del portfolio de Jorge y estoy lista para ayudarte.",
+
+        "Soy Sasha 👋, tu guía virtual dentro del portfolio de Jorge. ¿Quieres conocer sus proyectos, habilidades, estudios o experiencia?"
+    ]
+},
+
+{
+    keywords: [
+        // 🤖 ¿Qué haces?
+        "que haces",
+        "qué haces",
+        "que haces tu",
+        "qué haces tú",
+        "tu que haces",
+        "tú qué haces",
+        "que estas haciendo",
+        "qué estás haciendo",
+        "que haces aqui",
+        "qué haces aquí",
+
+        // 🎯 Función
+        "para que sirves",
+        "para qué sirves",
+        "cual es tu funcion",
+        "cuál es tu función",
+        "que funcion tienes",
+        "qué función tienes",
+        "cual es tu trabajo",
+        "cuál es tu trabajo",
+        "que trabajo haces",
+        "qué trabajo haces",
+        "cual es tu objetivo",
+        "cuál es tu objetivo",
+        "que haces en este sitio",
+        "qué haces en este sitio",
+
+        // 🛠️ Capacidades
+        "que puedes hacer",
+        "qué puedes hacer",
+        "que puedes hacer tu",
+        "qué puedes hacer tú",
+        "que sabes hacer",
+        "qué sabes hacer",
+        "que puedes contarme",
+        "qué puedes contarme",
+        "que informacion tienes",
+        "qué información tienes",
+        "que informacion puedes darme",
+        "qué información puedes darme",
+
+        // 🙋 Ayuda
+        "en que puedes ayudarme",
+        "en qué puedes ayudarme",
+        "como puedes ayudarme",
+        "cómo puedes ayudarme",
+        "puedes ayudarme",
+        "me puedes ayudar",
+        "puedes ayudar",
+        "ayudame",
+        "ayúdame",
+        "necesito ayuda",
+        "quiero tu ayuda",
+
+        // 🌐 Portfolio
+        "que puedo preguntarte",
+        "qué puedo preguntarte",
+        "que te puedo preguntar",
+        "qué te puedo preguntar",
+        "sobre que puedo preguntarte",
+        "sobre qué puedo preguntarte",
+        "que puedo saber de jorge",
+        "qué puedo saber de jorge",
+        "que informacion tienes de jorge",
+        "qué información tienes de jorge"
+    ],
+
+    responses: [
+        "Mi función es ayudarte a conocer mejor el portfolio de Jorge y responder tus preguntas sobre su perfil, formación, tecnologías, proyectos y certificaciones. 😊",
+
+        "Estoy aquí para acompañarte mientras exploras el portfolio de Jorge. Puedes preguntarme sobre sus estudios, proyectos, habilidades, tecnologías y experiencia profesional. 🤖",
+
+        "Puedo ayudarte a descubrir información sobre Jorge Patricio, desde su formación y certificaciones hasta sus proyectos y tecnologías. 🚀",
+
+        "Soy la guía virtual del portfolio de Jorge. Puedes preguntarme lo que quieras sobre su trayectoria, proyectos, conocimientos y perfil profesional. 👋",
+
+        "Estoy aquí para hacer más interactiva tu visita al portfolio de Jorge. 😄 Pregúntame sobre sus proyectos, estudios, tecnologías o certificaciones.",
+
+        "Puedo ayudarte a encontrar información sobre Jorge, sus estudios, proyectos, tecnologías, certificaciones y otros aspectos de su perfil profesional.",
+
+        "Mi trabajo es facilitarte la información del portfolio de Jorge de una manera rápida y sencilla. 💻",
+
+        "¡Puedo ayudarte con muchas cosas! 🤖 Puedes preguntarme quién es Jorge, qué estudió, qué tecnologías utiliza, cuáles son sus proyectos o qué certificaciones tiene.",
+
+        "Estoy aquí para responder tus preguntas y guiarte por el portfolio de Jorge. Si tienes curiosidad por algo, ¡pregúntame! 😊",
+
+        "Puedes preguntarme prácticamente todo lo relacionado con el perfil profesional de Jorge. Yo me encargo de ayudarte a encontrar la información. 🚀",
+
+        "Soy Sasha, tu asistente virtual dentro del portfolio. 👋 Mi objetivo es que puedas conocer el trabajo de Jorge de una forma sencilla e interactiva."
     ]
 },
 
     {
-        keywords: [
-            "quien eres",
-            "quien eres tu",
-            "como te llamas",
-            "cual es tu nombre",
-            "tu nombre",
-            "quien es sasha",
-            "que es sasha"
-        ],
-        responses: [
-            "Soy Sasha, la asistente virtual del portfolio de Jorge.",
-            "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge.",
-            "Soy Sasha, una asistente virtual creada para acompañarte mientras exploras el portfolio de Jorge."
-        ]
-    },
+    keywords: [
+        // 👨‍💻 ¿Quién te creó?
+        "quien te creo",
+        "quién te creó",
+        "quien te hizo",
+        "quién te hizo",
+        "quien te desarrollo",
+        "quién te desarrolló",
+        "quien te programo",
+        "quién te programó",
+        "quien te construyo",
+        "quién te construyó",
+        "quien te diseño",
+        "quién te diseñó",
+
+        // 🤖 Creador / desarrollador
+        "quien es tu creador",
+        "quién es tu creador",
+        "quien es tu desarrollador",
+        "quién es tu desarrollador",
+        "quien es tu programador",
+        "quién es tu programador",
+        "quien es tu diseñador",
+        "quién es tu diseñador",
+        "quien esta detras de ti",
+        "quién está detrás de ti",
+        "quien esta detras de sasha",
+        "quién está detrás de sasha",
+
+        // 👨‍💻 Sasha específicamente
+        "quien creo a sasha",
+        "quién creó a sasha",
+        "quien hizo a sasha",
+        "quién hizo a sasha",
+        "quien desarrollo a sasha",
+        "quién desarrolló a sasha",
+        "quien programo a sasha",
+        "quién programó a sasha",
+        "quien diseño a sasha",
+        "quién diseñó a sasha",
+        "quien construyo a sasha",
+        "quién construyó a sasha",
+
+        // 💬 Formas informales
+        "quien te invento",
+        "quién te inventó",
+        "quien es tu inventor",
+        "quién es tu inventor",
+        "quien te hizo",
+        "quién te hizo",
+        "quien te creo a ti",
+        "quién te creó a ti",
+        "quien te hizo a ti",
+        "quién te hizo a ti",
+        "quien te programo a ti",
+        "quién te programó a ti",
+
+        // 🔎 Preguntas sobre Jorge
+        "jorge te creo",
+        "jorge te creo a ti",
+        "jorge te desarrollo",
+        "jorge te desarrolló",
+        "jorge te programo",
+        "jorge te programó",
+        "jorge hizo a sasha",
+        "jorge creo a sasha",
+        "jorge creó a sasha"
+    ],
+
+    responses: [
+        "Fui creada y desarrollada por Jorge como parte de su portfolio. 👨‍💻",
+
+        "Jorge es mi creador y desarrollador. Él me creó para formar parte de su portfolio como asistente virtual. 🤖",
+
+        "Fui desarrollada por Jorge para funcionar como asistente virtual dentro de su portfolio. 🚀",
+
+        "Mi creador es Jorge Patricio. Él desarrolló a Sasha para hacer que su portfolio fuera más interactivo. 💻",
+
+        "Jorge fue quien me creó y programó. 😊 Gracias a él estoy aquí para ayudarte a explorar su portfolio.",
+
+        "Fui diseñada y desarrollada por Jorge como parte de su proyecto personal. 👨‍💻",
+
+        "Jorge está detrás de mi desarrollo. Él me creó para ayudarte a conocer mejor su trabajo y perfil profesional.",
+
+        "Mi creador es Jorge. 🤖 Él me desarrolló como una asistente virtual para acompañarte mientras visitas su portfolio.",
+
+        "Jorge fue mi creador, desarrollador y programador. Y sí... puedo decir que me cae bastante bien. 😄",
+
+        "Fui creada por Jorge para darle un toque más interactivo y personal a su portfolio. 🚀",
+
+        "Jorge me dio vida dentro de su portfolio. 💻🤖 Soy Sasha, su asistente virtual.",
+
+        "Jorge es el responsable de mi desarrollo. Y debo admitir que lo admiro bastante por todo el trabajo que ha puesto en su portfolio. 😊"
+    ]
+},
 
     {
-        keywords: [
-            "que haces",
-            "que estas haciendo",
-            "que haces tu",
-            "tu que haces",
-            "para que sirves",
-            "cual es tu funcion",
-            "que funcion tienes",
-            "que puedes hacer",
-            "que puedes hacer tu",
-            "en que puedes ayudarme",
-            "ayudame",
-            "como puedes ayudarme"
-        ],
-        responses: [
-            "Mi función es ayudarte a conocer mejor el portfolio de Jorge y responder preguntas sobre su perfil, formación, tecnologías, proyectos y certificaciones.",
-            "Estoy aquí para ayudarte a explorar el portfolio de Jorge de una manera más interactiva.",
-            "Estoy aquí para mostrar la información de Jorge Patricio.",
-            "Puedo ayudarte a encontrar información sobre Jorge, sus estudios, proyectos, tecnologías, certificaciones y otros aspectos de su perfil profesional."
-        ]
-    },
+    keywords: [
+        // 🤖 Inteligencia artificial
+        "eres una ia",
+        "eres ia",
+        "eres una inteligencia artificial",
+        "eres inteligencia artificial",
+        "eres de inteligencia artificial",
+        "eres una ai",
+        "eres ai",
+        "eres una inteligencia artificial de verdad",
+        
+        // 🤖 Asistente virtual
+        "eres un asistente virtual",
+        "eres una asistente virtual",
+        "eres un asistente",
+        "eres una asistente",
+        "eres un bot",
+        "eres un chatbot",
+        "eres un chat bot",
+        "eres un asistente de ia",
+        "eres una asistente de ia",
+        "eres una asistente con ia",
+        
+        // 🧠 Modelo de IA
+        "eres un modelo de inteligencia artificial",
+        "eres un modelo de ia",
+        "eres un modelo de ai",
+        "eres un modelo de lenguaje",
+        "eres una ia generativa",
+        "eres una inteligencia artificial generativa",
+        
+        // 🤖 Robot
+        "eres un robot",
+        "eres robot",
+        "eres un robot de verdad",
+        "eres un robot fisico",
+        "eres un robot físico",
+        
+        // 👤 Persona / humana
+        "eres humana",
+        "eres humano",
+        "eres una persona",
+        "eres una persona real",
+        "eres real",
+        "eres de verdad",
+        "eres una persona de verdad",
+        
+        // 🔎 Preguntas más naturales
+        "estoy hablando con una ia",
+        "estoy hablando con una inteligencia artificial",
+        "estoy hablando con un bot",
+        "estoy hablando con una persona",
+        "hablo con una ia",
+        "hablo con una inteligencia artificial",
+        "hablo con un robot"
+    ],
+
+    responses: [
+        "Sí 🤖, soy Sasha, una asistente virtual basada en inteligencia artificial e integrada en el portfolio de Jorge.",
+
+        "Así es 😊. Soy una asistente virtual creada por Jorge para interactuar con los visitantes de su portfolio.",
+
+        "Sí, soy una IA 🤖. Mi función es ayudarte a conocer mejor el perfil profesional, proyectos y habilidades de Jorge.",
+
+        "Soy una asistente virtual basada en inteligencia artificial. No soy una persona, sino un sistema diseñado para conversar contigo y ayudarte.",
+
+        "¡Correcto! 😄 Soy Sasha, una asistente virtual con inteligencia artificial creada especialmente para el portfolio de Jorge.",
+
+        "Soy una IA integrada en el portfolio de Jorge para hacer la experiencia más interactiva. 🚀",
+
+        "No soy una persona ni un robot físico. 🤖 Soy una asistente virtual desarrollada para este portfolio.",
+
+        "Soy inteligencia artificial, pero puedes hablar conmigo de forma natural. 😊 Estoy aquí para ayudarte a explorar el portfolio de Jorge.",
+
+        "Sí, soy una IA. Mi nombre es Sasha y fui desarrollada por Jorge como parte de su portfolio.",
+
+        "No tengo un cuerpo físico como un robot. 😄 Soy un software de inteligencia artificial diseñado para conversar y responder preguntas.",
+
+        "¡Exactamente! 🤖 Soy Sasha, la asistente virtual del portfolio de Jorge. Puedes preguntarme sobre él y sus proyectos."
+    ]
+},
 
     {
-        keywords: [
-            "quien te creo",
-            "quien te hizo",
-            "quien te desarrollo",
-            "quien es tu creador",
-            "quien es tu desarrollador",
-            "quien creo a sasha",
-            "Quien te invento",
-            "Quien es tu inventor",
-            "quien desarrollo a sasha"
-            
-        ],
-        responses: [
-            "Fui creada y desarrollada por Jorge como parte de su portfolio.",
-            "Jorge es el desarrollador y creador de Sasha dentro de su portfolio.",
-            "Fui desarrollada por Jorge para funcionar como asistente virtual de su portfolio.",
-            "Jorge fue mi creador por eso lo admiro"
-        ]
-    },
+    keywords: [
+        // 📚 Información general
+        "que informacion tienes",
+        "qué información tienes",
+        "que informacion conoces",
+        "qué información conoces",
+        "que sabes",
+        "qué sabes",
+        "que sabes tu",
+        "qué sabes tú",
+        "que conoces",
+        "qué conoces",
+        "que sabes sobre jorge",
+        "qué sabes sobre jorge",
+        "que conoces de jorge",
+        "qué conoces de jorge",
+
+        // 💬 Qué puede contar
+        "que puedes contarme",
+        "qué puedes contarme",
+        "que me puedes contar",
+        "qué me puedes contar",
+        "que puedes decirme",
+        "qué puedes decirme",
+        "que informacion puedes darme",
+        "qué información puedes darme",
+        "que datos tienes",
+        "qué datos tienes",
+        "que datos tienes de jorge",
+        "qué datos tienes de jorge",
+
+        // 🔎 Consultas
+        "que puedo preguntarte",
+        "qué puedo preguntarte",
+        "que te puedo preguntar",
+        "qué te puedo preguntar",
+        "sobre que puedo preguntarte",
+        "sobre qué puedo preguntarte",
+        "que temas conoces",
+        "qué temas conoces",
+        "de que puedes hablar",
+        "de qué puedes hablar",
+        "de que sabes hablar",
+        "de qué sabes hablar",
+
+        // 👨‍💻 Perfil profesional
+        "tienes informacion de jorge",
+        "tienes información de jorge",
+        "tienes datos de jorge",
+        "que sabes del perfil de jorge",
+        "qué sabes del perfil de jorge",
+        "que sabes sobre su perfil",
+        "qué sabes sobre su perfil",
+        "que sabes sobre su trabajo",
+        "qué sabes sobre su trabajo"
+    ],
+
+    responses: [
+        "Tengo información sobre Jorge Patricio y su perfil profesional. 😊 Puedo hablarte sobre su formación, tecnologías, proyectos, certificaciones y formas de contacto.",
+
+        "Conozco varios aspectos del perfil profesional de Jorge. Puedes preguntarme sobre sus estudios, proyectos, tecnologías, certificaciones o experiencia.",
+
+        "Tengo información preparada sobre Jorge para ayudarte a explorar su portfolio de forma rápida y sencilla. 🤖",
+
+        "Puedo contarte sobre la formación académica de Jorge, sus tecnologías, proyectos, certificaciones y otros aspectos de su trayectoria profesional.",
+
+        "¡Tengo bastante información! 😄 Puedes preguntarme quién es Jorge, qué estudió, qué tecnologías utiliza, qué proyectos ha desarrollado o qué certificaciones tiene.",
+
+        "Conozco la información que Jorge ha incluido en su portfolio. Puedes preguntarme directamente por cualquier sección que te interese.",
+
+        "Puedo ayudarte a descubrir diferentes partes del perfil de Jorge: 👨‍💻 experiencia, 🎓 formación, 💻 tecnologías, 🚀 proyectos y 🏆 certificaciones.",
+
+        "Estoy preparada para responder preguntas sobre el perfil profesional de Jorge y ayudarte a navegar por la información de su portfolio.",
+
+        "Si quieres conocer a Jorge, puedes preguntarme por sus estudios, habilidades, proyectos, tecnologías, certificaciones o información de contacto. 😊",
+
+        "Mi conocimiento está enfocado principalmente en el portfolio de Jorge. Así puedo darte información sobre su trayectoria y trabajo profesional."
+    ]
+},
 
     {
-        keywords: [
-            "eres una ia",
-            "eres inteligencia artificial",
-            "eres una inteligencia artificial",
-            "eres un robot",
-            "eres un chatbot",
-            "eres un asistente virtual",
-            "eres un modelo de inteligencia artificial",
-            "eres un modelo de ia",
-            "eres un asistente virtual,"
-            "eres una asistente virtual"
-        ],
-        responses: [
-            "Sí, soy una asistente virtual basada en inteligencia artificial.",
-            "Soy una IA integrada en el portfolio de Jorge para interactuar con sus visitantes.",
-            "No soy una persona ni un robot físico; soy una asistente virtual diseñada para este portfolio."
-        ]
-    },
+    keywords: [
+        // ⚙️ Funcionamiento
+        "como funcionas",
+        "cómo funcionas",
+        "como trabajas",
+        "cómo trabajas",
+        "como funciona sasha",
+        "cómo funciona sasha",
+        "como trabajas tu",
+        "cómo trabajas tú",
+        "como funciona tu sistema",
+        "cómo funciona tu sistema",
+        "como funciona tu cerebro",
+        "cómo funciona tu cerebro",
+
+        // 💬 Respuestas
+        "como respondes",
+        "cómo respondes",
+        "como haces para responder",
+        "cómo haces para responder",
+        "como sabes que responder",
+        "cómo sabes qué responder",
+        "como decides que responder",
+        "cómo decides qué responder",
+        "como generas tus respuestas",
+        "cómo generas tus respuestas",
+        "como creas tus respuestas",
+        "cómo creas tus respuestas",
+
+        // 🧠 Conocimiento
+        "como sabes las cosas",
+        "cómo sabes las cosas",
+        "como sabes lo que sabes",
+        "cómo sabes lo que sabes",
+        "como aprendes",
+        "cómo aprendes",
+        "como aprendiste",
+        "cómo aprendiste",
+        "de donde sabes la informacion",
+        "de dónde sabes la información",
+
+        // 📚 Información
+        "de donde obtienes la informacion",
+        "de dónde obtienes la información",
+        "de donde sacas la informacion",
+        "de dónde sacas la información",
+        "como obtienes la informacion",
+        "cómo obtienes la información",
+        "de donde viene la informacion",
+        "de dónde viene la información",
+        "de donde sacas tus datos",
+        "de dónde sacas tus datos",
+        "de donde vienen tus datos",
+        "de dónde vienen tus datos",
+
+        // 🤖 Inteligencia artificial
+        "usas inteligencia artificial",
+        "usas ia",
+        "utilizas inteligencia artificial",
+        "utilizas ia",
+        "tienes inteligencia artificial",
+        "funcionas con inteligencia artificial",
+        "trabajas con inteligencia artificial",
+        "tienes ia",
+
+        // 💻 Sistema local / IA
+        "respondes con ia",
+        "respondes con inteligencia artificial",
+        "respondes con inteligencia artificial o con datos",
+        "usas respuestas preparadas",
+        "tienes respuestas preparadas",
+        "tienes respuestas programadas",
+        "tus respuestas estan programadas",
+        "tus respuestas están programadas",
+        "respondes automaticamente",
+        "respondes automáticamente"
+    ],
+
+    responses: [
+        "Funciono combinando respuestas preparadas específicamente para el portfolio con inteligencia artificial. Cuando encuentro una respuesta disponible localmente, puedo responder directamente; si la pregunta necesita una respuesta más abierta, utilizo IA. 🤖",
+
+        "Mi sistema tiene dos formas principales de responder. ⚙️ Primero busca información y respuestas preparadas para el portfolio y, cuando una pregunta no está contemplada, puede recurrir a inteligencia artificial.",
+
+        "Analizo lo que preguntas y primero intento encontrar una respuesta dentro de la información disponible localmente. Si no encuentro una respuesta adecuada, puedo utilizar inteligencia artificial para responder preguntas más abiertas.",
+
+        "No todas mis respuestas son generadas por inteligencia artificial. 😊 Algunas están programadas específicamente para el portfolio de Jorge, mientras que otras pueden ser generadas mediante IA.",
+
+        "Mi funcionamiento combina lógica programada e inteligencia artificial. Esto permite que pueda responder rápidamente preguntas frecuentes y también mantener conversaciones sobre temas más abiertos.",
+
+        "Tengo una parte de mi sistema basada en respuestas locales y otra basada en inteligencia artificial. 🚀 Así puedo ofrecer respuestas rápidas para preguntas conocidas y mayor flexibilidad cuando la pregunta es más compleja.",
+
+        "Cuando haces una pregunta, mi sistema analiza el mensaje y busca primero si existe una respuesta preparada. Si no la encuentra, puede pasar la pregunta al sistema de inteligencia artificial.",
+
+        "Mis respuestas dependen del tipo de pregunta. Para información específica del portfolio utilizo principalmente datos y respuestas preparadas por Jorge; para preguntas más abiertas puedo apoyarme en inteligencia artificial.",
+
+        "Mi conocimiento está centrado en el portfolio de Jorge. 📚 Las respuestas locales contienen información preparada sobre él y la inteligencia artificial me permite manejar preguntas que no están contempladas directamente.",
+
+        "Trabajo como una combinación de un sistema de respuestas programadas y una IA. 🤖💻 Esto me permite ser rápida en preguntas frecuentes sin tener que utilizar inteligencia artificial para absolutamente todo.",
+
+        "En pocas palabras: tú preguntas, yo analizo tu mensaje, busco primero una respuesta local y, cuando es necesario, recurro a inteligencia artificial para generar una respuesta más flexible. 😎"
+    ]
+},
 
     {
-        keywords: [
-            "que informacion tienes",
-            "que informacion conoces",
-            "que sabes",
-            "que sabes tu",
-            "que puedes contarme",
-            "que me puedes contar",
-            "que informacion puedes darme"
-        ],
-        responses: [
-            "Puedo proporcionarte información sobre Jorge, incluyendo su formación, tecnologías, proyectos, certificaciones y contacto.",
-            "Tengo información preparada sobre el perfil profesional de Jorge y puedo ayudarte a consultarla mediante preguntas.",
-            "Puedes preguntarme directamente sobre los estudios, proyectos, tecnologías o certificaciones de Jorge."
-        ]
-    },
+    keywords: [
+        // 🌐 Función dentro del portfolio
+        "que haces en el portfolio",
+        "qué haces en el portfolio",
+        "que haces en el portafolio",
+        "qué haces en el portafolio",
+        "que haces aqui",
+        "qué haces aquí",
+        "que haces en esta pagina",
+        "qué haces en esta página",
+        "que haces en esta web",
+        "qué haces en esta web",
+        "que haces en este sitio",
+        "qué haces en este sitio",
 
-    {
-        keywords: [
-            "como funcionas",
-            "como trabajas",
-            "como respondes",
-            "como sabes las cosas",
-            "de donde obtienes la informacion",
-            "como obtienes la informacion"
-        ],
-        responses: [
-            "Funciono combinando respuestas preparadas específicamente para el portfolio con inteligencia artificial para responder preguntas que no estén contempladas localmente.",
-            "Mi sistema prioriza la información del portfolio y utiliza inteligencia artificial cuando una pregunta necesita una respuesta más abierta.",
-            "Analizo lo que preguntas y, cuando existe información disponible localmente, puedo responder directamente con ella."
-        ]
-    },
+        // 🎯 ¿Para qué estás aquí?
+        "para que estas en el portfolio",
+        "para qué estás en el portfolio",
+        "para que estas en el portafolio",
+        "para qué estás en el portafolio",
+        "para que estas aqui",
+        "para qué estás aquí",
+        "para que estas en esta pagina",
+        "para qué estás en esta página",
+        "para que sirves en el portfolio",
+        "para qué sirves en el portfolio",
+        "para que sirves en el portafolio",
+        "para qué sirves en el portafolio",
 
+        // 🤖 Asistente del portfolio
+        "eres la asistente del portfolio",
+        "eres la asistente del portafolio",
+        "eres la asistente de este portfolio",
+        "eres la asistente de este portafolio",
+        "eres la asistente de jorge",
+        "eres la asistente virtual de jorge",
+        "eres la asistente virtual del portfolio",
+        "eres la asistente virtual del portafolio",
+
+        // 💻 Función
+        "cual es tu funcion en el portfolio",
+        "cuál es tu función en el portfolio",
+        "cual es tu funcion en el portafolio",
+        "cuál es tu función en el portafolio",
+        "que funcion tienes en el portfolio",
+        "qué función tienes en el portfolio",
+        "que funcion cumples en el portfolio",
+        "qué función cumples en el portfolio",
+
+        // 🔎 Ayuda al visitante
+        "como ayudas en el portfolio",
+        "cómo ayudas en el portfolio",
+        "como puedes ayudar en el portfolio",
+        "cómo puedes ayudar en el portfolio",
+        "que puedo hacer contigo en el portfolio",
+        "qué puedo hacer contigo en el portfolio",
+        "para que puedo usarte",
+        "para qué puedo usarte",
+        "como puedo usar a sasha",
+        "cómo puedo usar a sasha"
+    ],
+
+    responses: [
+        "Estoy integrada en el portfolio de Jorge para ofrecer una forma más interactiva de conocer su perfil profesional. 🤖",
+
+        "Soy la asistente virtual de este portfolio y estoy aquí para ayudarte a descubrir el contenido de Jorge de una manera sencilla e interactiva.",
+
+        "Mi función dentro del portfolio es ayudarte a encontrar información sobre Jorge, sus proyectos, tecnologías, formación y certificaciones. 🚀",
+
+        "Estoy aquí para acompañarte mientras exploras el portfolio de Jorge. Puedes preguntarme directamente lo que quieras saber sobre su perfil profesional.",
+
+        "Fui integrada en el portfolio para que puedas interactuar con la información de Jorge en lugar de simplemente leerla. 😊",
+
+        "Mi trabajo es hacer que conocer el perfil profesional de Jorge sea más dinámico e interactivo. Puedes preguntarme sobre sus proyectos, habilidades, estudios o certificaciones.",
+
+        "Soy la guía virtual del portfolio de Jorge. 👋 Estoy aquí para ayudarte a encontrar rápidamente la información que estés buscando.",
+
+        "Estoy aquí para ayudarte a explorar el trabajo de Jorge. Puedes preguntarme quién es, qué estudió, qué tecnologías utiliza, qué proyectos ha desarrollado y mucho más.",
+
+        "Mi función es servir como punto de interacción entre tú y la información del portfolio de Jorge. 🤖💻",
+
+        "Estoy integrada en esta página para responder tus preguntas y ayudarte a conocer mejor el perfil profesional de Jorge.",
+
+        "Digamos que soy tu guía dentro del portfolio. 😄 Tú preguntas y yo intento llevarte hasta la información que necesitas.",
+
+        "Estoy aquí para hacerte compañía mientras exploras el portfolio de Jorge. Si tienes alguna duda sobre su trabajo, ¡pregúntame!"
+    ]
+},
     {
-        keywords: [
-            "que haces en el portfolio",
-            "que haces en el portafolio",
-            "para que estas en el portfolio",
-            "para que estas en el portafolio",
-            "cual es tu funcion en el portfolio",
-            "eres la asistente del portfolio",
-            "eres la asistente del portafolio"
-        ],
-        responses: [
-            "Estoy integrada en el portfolio de Jorge para ofrecer una forma más interactiva de conocer su perfil profesional.",
-            "Soy la asistente virtual de este portfolio y estoy aquí para ayudarte a descubrir su contenido.",
-            "Mi función dentro del portfolio es ayudarte a encontrar información sobre Jorge y sus proyectos de una manera más interactiva."
-        ]
-    }
+    keywords: [
+        // 😊 ¿Cómo estás?
+        "como estas",
+        "cómo estás",
+        "como estas sasha",
+        "cómo estás sasha",
+        "como te encuentras",
+        "cómo te encuentras",
+        "como te sientes",
+        "cómo te sientes",
+        "estas bien",
+        "¿estás bien",
+        "estas bien sasha",
+        "¿estás bien sasha",
+        "todo bien",
+        "todo bien sasha",
+        "que tal estas",
+        "qué tal estás",
+        "que tal sasha",
+        "qué tal sasha",
+        
+        // 💬 Formas informales
+        "como vas",
+        "cómo vas",
+        "como va todo",
+        "cómo va todo",
+        "como te va",
+        "cómo te va",
+        "estas bien hoy",
+        "estás bien hoy",
+        "como amaneciste",
+        "cómo amaneciste"
+    ],
+
+    responses: [
+        "¡Estoy muy bien! 😊 Gracias por preguntar. Lista para ayudarte a explorar el portfolio de Jorge.",
+
+        "¡Todo muy bien por aquí! 🤖✨ Gracias por preguntar. ¿En qué puedo ayudarte?",
+
+        "Estoy genial 😄 y siempre lista para responder tus preguntas sobre Jorge.",
+
+        "¡Muy bien! 👋 Funcionando al 100% y preparada para ayudarte.",
+
+        "Estoy excelente 🤖. Ya sabes, una asistente virtual siempre tiene que estar lista para trabajar. 😄",
+
+        "¡Estoy de maravilla! 😊 Gracias por preguntar. ¿Qué te gustaría saber?",
+
+        "Todo bien por aquí 🚀. Estoy lista para acompañarte por el portfolio de Jorge.",
+
+        "Estoy muy bien 😄. Me alegra que preguntes. ¿Quieres que hablemos de Jorge?",
+
+        "¡Perfectamente! 🤖 No tengo días malos, así que siempre estoy lista para ayudarte. 😂",
+
+        "Estoy funcionando perfectamente y con muchas ganas de ayudarte. 😊 ¿Qué quieres saber?"
+    ]
+},
 
 ];
 
