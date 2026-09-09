@@ -1232,6 +1232,7 @@ if (generalQueries.includes(normalized)) {
 // PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
 // ============================================================
 
+
 const technicalPrefixes = [
     "imprime",
     "imprimir",
@@ -1251,15 +1252,13 @@ const technicalPrefixes = [
 ];
 
 const isTechnicalMessage = technicalPrefixes.some(prefix =>
-    normalized.startsWith(prefix + " ") ||
-    normalized === prefix
+    normalized === prefix ||
+    normalized.startsWith(prefix + " ")
 );
 
 if (isTechnicalMessage) {
     return null;
 }
-
-
 
     
 /*
@@ -3332,19 +3331,21 @@ const technicalPatterns = [
     "q incluye el certificado",
 
     // PROGRAMACIÓN
-    "como programar",
-    "como hacer",
-    "como se hace",
-    "como puedo hacer",
-    "como puedo programar",
-    "como imprimir",
-    "como mostrar",
-    "como declarar",
-    "como crear",
-    "como ejecutar",
-    "como usar",
-    "como utilizar",
-    "como funciona",
+"como programar",
+"como hacer",
+"como se hace",
+"como puedo hacer",
+"como puedo programar",
+"como imprimir",
+"imprime",
+"imprimir",
+"como mostrar",
+"como declarar",
+"como crear",
+"como ejecutar",
+"como usar",
+"como utilizar",
+"como funciona",
 
     // CÓDIGO
     "ejemplo de codigo",
