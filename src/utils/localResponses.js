@@ -53,14 +53,14 @@ const LOCAL_RESPONSES = [
             // HÁBLAME / HABLA
             // =========================================================
 
-            "hablame de",
-            "habla de",
+          //  "hablame de",
+           // "habla de",
 
             // =========================================================
             // SOBRE
             // =========================================================
 
-            "sobre",
+          //  "sobre",
 
             // =========================================================
             // PERFIL
@@ -1288,15 +1288,42 @@ for (const prefix of generalPrefixes) {
 */
 
 const firstWordPatterns = [
+// ============================================================
+// IDENTIDAD
+// ============================================================
 
-    // ============================================================
-    // IDENTIDAD
-    // ============================================================
+// Formas directas
+/^(.+?)\s+quien\s+es$/,
+/^(.+?)\s+informacion$/,
+/^(.+?)\s+datos$/,
+/^(.+?)\s+perfil$/,
 
-    /^(.+?)\s+quien\s+es$/,
-    /^(.+?)\s+informacion$/,
-    /^(.+?)\s+datos$/,
-    /^(.+?)\s+perfil$/,
+// Formas naturales
+/^(.+?)\s+presentame$/,
+/^(.+?)\s+presentame\s+a$/,
+/^(.+?)\s+hablame$/,
+/^(.+?)\s+hablame\s+de$/,
+/^(.+?)\s+habla\s+de$/,
+/^(.+?)\s+cuentame$/,
+/^(.+?)\s+cuentame\s+de$/,
+/^(.+?)\s+cuentame\s+sobre$/,
+/^(.+?)\s+dime\s+de$/,
+/^(.+?)\s+dime\s+sobre$/,
+/^(.+?)\s+que\s+sabes$/,
+/^(.+?)\s+que\s+sabes\s+de$/,
+/^(.+?)\s+quiero\s+saber$/,
+/^(.+?)\s+quiero\s+saber\s+quien\s+es$/,
+/^(.+?)\s+todo\s+sobre$/,
+
+// Perfil
+/^(.+?)\s+perfil\s+profesional$/,
+/^(.+?)\s+perfil\s+profesional\s+de$/,
+
+// Profesión
+/^(.+?)\s+profesion$/,
+/^(.+?)\s+profesionalmente$/,
+/^(.+?)\s+que\s+hace$/,
+/^(.+?)\s+a\s+que\s+se\s+dedica$/,
 
 
     // ============================================================
