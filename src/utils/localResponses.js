@@ -1124,20 +1124,68 @@ const JORGE_NAMES = [
 |--------------------------------------------------------------------------
 */
 
+const levenshteinDistance = (a, b) => {
+    const matrix = Array.from(
+        { length: b.length + 1 },
+        (_, i) => [i]
+    );
+
+    for (let j = 1; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b[i - 1] === a[j - 1]) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j - 1] + 1
+                );
+            }
+        }
+    }
+
+    return matrix[b.length][a.length];
+};
+
+
 const isAboutJorge = (message) => {
     const normalized = normalizeText(message);
+    const words = normalized.split(/\s+/);
 
     return JORGE_NAMES.some((name) => {
         const normalizedName = normalizeText(name);
+        const nameWords = normalizedName.split(/\s+/);
 
-        const regex = new RegExp(
-            `(^|\\s)${normalizedName.replace(
-                /[.*+?^${}()|[\]\\]/g,
-                "\\$&"
-            )}(?=\\s|$)`
-        );
+        // Buscar el nombre completo dentro del mensaje
+        for (let i = 0; i <= words.length - nameWords.length; i++) {
+            const candidate = words
+                .slice(i, i + nameWords.length)
+                .join(" ");
 
-        return regex.test(normalized);
+            // Coincidencia exacta
+            if (candidate === normalizedName) {
+                return true;
+            }
+
+            // Coincidencia aproximada
+            const distance = levenshteinDistance(
+                candidate,
+                normalizedName
+            );
+
+            const maxErrors =
+                normalizedName.length <= 5 ? 1 : 2;
+
+            if (distance <= maxErrors) {
+                return true;
+            }
+        }
+
+        return false;
     });
 };
 
