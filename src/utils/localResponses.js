@@ -1255,6 +1255,8 @@ if (generalQueries.includes(normalized)) {
 */
 
     /^que estudio (.+)$/,
+        /^formacion de (.+)$/,
+        /^formacion (.+)$/,
     /^donde estudio (.+)$/,
     /^que carrera estudio (.+)$/,
     /^que ingenieria estudio (.+)$/,
