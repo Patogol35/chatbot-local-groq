@@ -1252,15 +1252,23 @@ const firstWordPatterns = [
     /^(.+?)\s+obtuvo\s+de\s+promedio$/,
 
     // Formación
-    /^(.+?)\s+estudio$/,
-    /^(.+?)\s+estudia$/,
-    /^(.+?)\s+ha\s+estudiado$/,
-    /^(.+?)\s+tiene\s+estudios$/,
-    /^(.+?)\s+tiene\s+carrera$/,
-    /^(.+?)\s+tiene\s+ingenieria$/,
-    /^(.+?)\s+tiene\s+titulo$/,
-    /^(.+?)\s+formacion$/,
-    /^(.+?)\s+educacion$/,
+/^(.+?)\s+estudio$/,
+/^(.+?)\s+estudia$/,
+/^(.+?)\s+ha\s+estudiado$/,
+/^(.+?)\s+tiene\s+estudios$/,
+/^(.+?)\s+tiene\s+carrera$/,
+/^(.+?)\s+tiene\s+ingenieria$/,
+/^(.+?)\s+tiene\s+titulo$/,
+/^(.+?)\s+formacion$/,
+/^(.+?)\s+educacion$/,
+
+// Formación con "su"
+ /^(.+?)\s+su\s+formacion$/,
+ /^(.+?)\s+su\s+educacion$/,
+ /^(.+?)\s+su\s+trayectoria$/,
+ /^(.+?)\s+sus\s+estudios$/,
+ /^(.+?)\s+su\s+carrera$/,
+ /^(.+?)\s+su\s+titulo$/,
 
     // Máster / maestría / posgrado
     /^(.+?)\s+tiene\s+master$/,
