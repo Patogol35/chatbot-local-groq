@@ -1472,8 +1472,9 @@ const firstWordPatterns = [
 
 
     // ============================================================
-    // PROYECTOS / APLICACIONES
-    // ============================================================
+// PROYECTOS / APLICACIONES
+// ============================================================
+
 // Proyectos concretos
 /^(.+?)\s+ecommerce$/,
 /^(.+?)\s+e-commerce$/,
@@ -1485,23 +1486,30 @@ const firstWordPatterns = [
 /^(.+?)\s+chatbot$/,
 /^(.+?)\s+chat\s+bot$/,
 /^(.+?)\s+ajedrez$/,
-    /^(.+?)\s+proyectos$/,
-    /^(.+?)\s+sus\s+proyectos$/,
-    /^(.+?)\s+su\s+proyecto$/,
-    /^(.+?)\s+sus\s+aplicaciones$/,
-    /^(.+?)\s+sus\s+programas$/,
-    /^(.+?)\s+tiene\s+proyectos$/,
-    /^(.+?)\s+tiene\s+aplicaciones$/,
-    /^(.+?)\s+tiene\s+programas$/,
-    /^(.+?)\s+ha\s+realizado\s+proyectos$/,
-    /^(.+?)\s+ha\s+desarrollado\s+proyectos$/,
-    /^(.+?)\s+desarrollo\s+proyectos$/,
-    /^(.+?)\s+realizo\s+proyectos$/,
-    /^(.+?)\s+desarrollo\s+aplicaciones$/,
-    /^(.+?)\s+ha\s+desarrollado\s+aplicaciones$/,
-    /^(.+?)\s+ha\s+realizado\s+aplicaciones$/,
-    /^(.+?)\s+tiene\s+software$/,
-    /^(.+?)\s+ha\s+desarrollado\s+software$/,
+
+// Proyecto + nombre
+/^(.+?)\s+proyecto$/,
+/^(.+?)\s+proyecto\s+ajedrez$/,
+/^(.+?)\s+proyecto\s+de\s+ajedrez$/,
+
+// Proyectos / aplicaciones
+/^(.+?)\s+proyectos$/,
+/^(.+?)\s+sus\s+proyectos$/,
+/^(.+?)\s+su\s+proyecto$/,
+/^(.+?)\s+sus\s+aplicaciones$/,
+/^(.+?)\s+sus\s+programas$/,
+/^(.+?)\s+tiene\s+proyectos$/,
+/^(.+?)\s+tiene\s+aplicaciones$/,
+/^(.+?)\s+tiene\s+programas$/,
+/^(.+?)\s+ha\s+realizado\s+proyectos$/,
+/^(.+?)\s+ha\s+desarrollado\s+proyectos$/,
+/^(.+?)\s+desarrollo\s+proyectos$/,
+/^(.+?)\s+realizo\s+proyectos$/,
+/^(.+?)\s+desarrollo\s+aplicaciones$/,
+/^(.+?)\s+ha\s+desarrollado\s+aplicaciones$/,
+/^(.+?)\s+ha\s+realizado\s+aplicaciones$/,
+/^(.+?)\s+tiene\s+software$/,
+/^(.+?)\s+ha\s+desarrollado\s+software$/,
 
 
     // ============================================================
