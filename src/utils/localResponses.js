@@ -1481,16 +1481,7 @@ const sashaResponses = [
             "buenas noches sasha",
 
             // Formas informales
-            "que tal",
-            "qué tal",
-            "que tal sasha",
-            "qué tal sasha",
-            "como estas",
-            "cómo estás",
-            "como estas sasha",
-            "cómo estás sasha",
-            "que haces",
-            "qué haces sasha",
+            
             "aqui estoy",
             "aquí estoy",
 
@@ -2179,16 +2170,16 @@ const sashaResponses = [
         "como te sientes",
         "cómo te sientes",
         "estas bien",
-        "¿estás bien",
+        "estás bien",
         "estas bien sasha",
-        "¿estás bien sasha",
+        "estás bien sasha",
         "todo bien",
         "todo bien sasha",
         "que tal estas",
         "qué tal estás",
         "que tal sasha",
         "qué tal sasha",
-        
+
         // 💬 Formas informales
         "como vas",
         "cómo vas",
@@ -2199,7 +2190,23 @@ const sashaResponses = [
         "estas bien hoy",
         "estás bien hoy",
         "como amaneciste",
-        "cómo amaneciste"
+        "cómo amaneciste",
+
+        // 😄 Otras formas naturales
+        "como te encuentras hoy",
+        "cómo te encuentras hoy",
+        "como te sientes hoy",
+        "cómo te sientes hoy",
+        "todo esta bien",
+        "todo está bien",
+        "todo bien por ahi",
+        "todo bien por ahí",
+        "como va",
+        "cómo va",
+        "que tal vas",
+        "qué tal vas",
+        "como sigues",
+        "cómo sigues"
     ],
 
     responses: [
@@ -2221,7 +2228,13 @@ const sashaResponses = [
 
         "¡Perfectamente! 🤖 No tengo días malos, así que siempre estoy lista para ayudarte. 😂",
 
-        "Estoy funcionando perfectamente y con muchas ganas de ayudarte. 😊 ¿Qué quieres saber?"
+        "Estoy funcionando perfectamente y con muchas ganas de ayudarte. 😊 ¿Qué quieres saber?",
+
+        "¡Todo en orden! 😎 Sasha está funcionando perfectamente y lista para ayudarte.",
+
+        "Muy bien por aquí 🤖✨. Gracias por preguntar. ¿Qué quieres descubrir sobre Jorge?",
+
+        "¡De maravilla! 🚀 Lista, activa y preparada para responder tus preguntas."
     ]
 },
 
@@ -2230,9 +2243,12 @@ const sashaResponses = [
 
 /*
 |--------------------------------------------------------------------------
-| BUSCAR RESPUESTA ESPECÍFICA DE SASHA
+| BUSCAR LA MEJOR RESPUESTA DE SASHA
 |--------------------------------------------------------------------------
 */
+
+let bestSashaMatch = null;
+let bestSashaScore = 0;
 
 for (const group of sashaResponses) {
 
@@ -2240,24 +2256,42 @@ for (const group of sashaResponses) {
 
         const normalizedKeyword = normalizeText(keyword);
 
+        const escapedKeyword = normalizedKeyword.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
+
         const regex = new RegExp(
-            `(^|\\s)${normalizedKeyword.replace(
-                /[.*+?^${}()|[\]\\]/g,
-                "\\$&"
-            )}(?=\\s|$)`
+            `(^|\\s)${escapedKeyword}(?=\\s|$)`
         );
 
         if (regex.test(normalizedMessage)) {
 
-            const responses = group.responses;
+            const words = normalizedKeyword.split(/\s+/).length;
 
-            const randomIndex = Math.floor(
-                Math.random() * responses.length
-            );
+            /*
+            | Más palabras = coincidencia más específica
+            */
+            const score = words * 10 + normalizedKeyword.length;
 
-            return responses[randomIndex];
+            if (score > bestSashaScore) {
+
+                bestSashaScore = score;
+                bestSashaMatch = group;
+            }
         }
     }
+}
+
+if (bestSashaMatch) {
+
+    const responses = bestSashaMatch.responses;
+
+    const randomIndex = Math.floor(
+        Math.random() * responses.length
+    );
+
+    return responses[randomIndex];
 }
 
 
