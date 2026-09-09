@@ -1221,6 +1221,7 @@ if (generalQueries.includes(normalized)) {
     */
 
     /^quien es (.+)$/,
+        /^habla de (.+)$/,
     /^hablame de (.+)$/,
     /^dime sobre (.+)$/,
     /^informacion sobre (.+)$/,
