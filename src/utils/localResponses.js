@@ -1030,70 +1030,7 @@ const LOCAL_RESPONSES = [
     ]
 },
 
-    /*
-|--------------------------------------------------------------------------
-| SASHA
-|--------------------------------------------------------------------------
-*/
 
-{
-    category: "sasha",
-
-    keywords: [
-        "quien eres",
-        "quien eres tu",
-        "que eres",
-        "que eres tu",
-        "como te llamas",
-        "cual es tu nombre",
-        "tu nombre",
-        "como te puedo llamar",
-        "quien es sasha",
-        "que es sasha",
-
-        "que haces",
-        "que haces tu",
-        "para que sirves",
-        "cual es tu funcion",
-        "que funcion tienes",
-        "para que fuiste creada",
-        "para que te crearon",
-        "que puedes hacer",
-        "que puedes hacer tu",
-        "en que puedes ayudarme",
-        "como puedes ayudarme",
-
-        "quien te creo",
-        "quien te hizo",
-        "quien te desarrollo",
-        "quien es tu creador",
-        "quien es tu desarrollador",
-        "quien creo a sasha",
-        "quien desarrollo a sasha",
-
-        "eres una ia",
-        "eres inteligencia artificial",
-        "eres una inteligencia artificial",
-        "eres un robot",
-        "eres un chatbot",
-        "eres un asistente virtual",
-        "eres una asistente virtual",
-
-        "como funcionas",
-        "como trabajas",
-        "como respondes",
-
-        "que informacion tienes",
-        "que informacion conoces",
-        "que sabes",
-        "que sabes tu"
-    ],
-
-    responses: [
-        "Soy Sasha, la asistente virtual del portfolio de Jorge."
-    ]
-},
-];
 
 /*
 |--------------------------------------------------------------------------
