@@ -1,4 +1,3 @@
-
 /*
 |--------------------------------------------------------------------------
 | NORMALIZAR TEXTO
@@ -1274,19 +1273,28 @@ const firstWordPatterns = [
 /^(.+?)\s+educacion$/,
 
     // Máster / maestría / posgrado
-    /^(.+?)\s+tiene\s+master$/,
-    /^(.+?)\s+tiene\s+maestria$/,
-    /^(.+?)\s+tiene\s+posgrado$/,
-    /^(.+?)\s+estudio\s+master$/,
-    /^(.+?)\s+estudio\s+maestria$/,
-    /^(.+?)\s+estudio\s+posgrado$/,
-    /^(.+?)\s+hizo\s+el\s+master$/,
-    /^(.+?)\s+hizo\s+la\s+maestria$/,
-    /^(.+?)\s+hizo\s+el\s+posgrado$/,
-    /^(.+?)\s+estudio\s+un\s+master$/,
-    /^(.+?)\s+estudio\s+una\s+maestria$/,
+/^(.+?)\s+tiene\s+master$/,
+/^(.+?)\s+tiene\s+maestria$/,
+/^(.+?)\s+tiene\s+posgrado$/,
+/^(.+?)\s+estudio\s+master$/,
+/^(.+?)\s+estudio\s+maestria$/,
+/^(.+?)\s+estudio\s+posgrado$/,
+/^(.+?)\s+hizo\s+el\s+master$/,
+/^(.+?)\s+hizo\s+la\s+maestria$/,
+/^(.+?)\s+hizo\s+el\s+posgrado$/,
+/^(.+?)\s+estudio\s+un\s+master$/,
+/^(.+?)\s+estudio\s+una\s+maestria$/,
+/^(.+?)\s+su\s+master$/,
+/^(.+?)\s+su\s+maestria$/,
+/^(.+?)\s+su\s+posgrado$/,
+/^(.+?)\s+su\s+estudio$/,
+/^(.+?)\s+sus\s+estudios$/,
 
     // Certificaciones
+    /^(.+?)\s+sus\s+certificados$/,
+/^(.+?)\s+sus\s+certificaciones$/,
+/^(.+?)\s+certificados$/,
+/^(.+?)\s+certificaciones$/,
 /^(.+?)\s+tiene\s+certificaciones$/,
 /^(.+?)\s+tiene\s+certificacion$/,
 /^(.+?)\s+tiene\s+certificados$/,
@@ -1341,6 +1349,9 @@ const firstWordPatterns = [
     /^(.+?)\s+usa\s+frameworks\s+backend$/,
 
     // Proyectos
+    /^(.+?)\s+sus\s+proyectos$/,
+/^(.+?)\s+su\s+proyecto$/,
+/^(.+?)\s+proyectos$/,
     /^(.+?)\s+tiene\s+proyectos$/,
     /^(.+?)\s+tiene\s+aplicaciones$/,
     /^(.+?)\s+tiene\s+programas$/,
