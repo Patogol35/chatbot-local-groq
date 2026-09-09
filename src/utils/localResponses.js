@@ -1470,10 +1470,14 @@ const firstWordPatterns = [
     /^(.+?)\s+usa\s+framework\s+backend$/,
     /^(.+?)\s+usa\s+frameworks\s+backend$/,
 
-
-    // ============================================================
+// ============================================================
 // PROYECTOS / APLICACIONES
 // ============================================================
+
+// Proyecto + nombre
+/^(.+?)\s+proyecto\s+ajedrez$/,
+/^(.+?)\s+proyecto\s+de\s+ajedrez$/,
+/^(.+?)\s+proyecto$/,
 
 // Proyectos concretos
 /^(.+?)\s+ecommerce$/,
@@ -1486,11 +1490,6 @@ const firstWordPatterns = [
 /^(.+?)\s+chatbot$/,
 /^(.+?)\s+chat\s+bot$/,
 /^(.+?)\s+ajedrez$/,
-
-// Proyecto + nombre
-/^(.+?)\s+proyecto$/,
-/^(.+?)\s+proyecto\s+ajedrez$/,
-/^(.+?)\s+proyecto\s+de\s+ajedrez$/,
 
 // Proyectos / aplicaciones
 /^(.+?)\s+proyectos$/,
