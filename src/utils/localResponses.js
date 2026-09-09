@@ -1160,8 +1160,9 @@ const isAboutJorge = (message) => {
         const normalizedName = normalizeText(name);
         const nameWords = normalizedName.split(/\s+/);
 
-        // Buscar el nombre completo dentro del mensaje
+        // Buscar el nombre dentro del mensaje
         for (let i = 0; i <= words.length - nameWords.length; i++) {
+
             const candidate = words
                 .slice(i, i + nameWords.length)
                 .join(" ");
