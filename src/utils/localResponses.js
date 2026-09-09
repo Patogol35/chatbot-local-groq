@@ -1470,6 +1470,7 @@ if (generalQueries.includes(normalized)) {
     */
 
     const questionPatterns = [
+
     /*
     |--------------------------------------------------------------------------
     | IDENTIDAD / INFORMACIÓN GENERAL
@@ -1477,65 +1478,95 @@ if (generalQueries.includes(normalized)) {
     */
 
     /^quien es (.+)$/,
-        /^habla de (.+)$/,
+    /^habla de (.+)$/,
     /^hablame de (.+)$/,
     /^dime sobre (.+)$/,
+    /^dime quien es (.+)$/,
     /^informacion sobre (.+)$/,
     /^informacion de (.+)$/,
     /^datos de (.+)$/,
     /^que sabes de (.+)$/,
     /^que sabes sobre (.+)$/,
+    /^que informacion tienes de (.+)$/,
+    /^que datos tienes de (.+)$/,
+    /^conoces a (.+)$/,
+    /^puedes hablarme de (.+)$/,
+    /^puedes hablar de (.+)$/,
+    /^quiero saber sobre (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
-    | NOTAS
+    | NOTAS / PROMEDIOS
     |--------------------------------------------------------------------------
     */
 
     /^que nota tiene (.+)$/,
     /^cual es la nota de (.+)$/,
-    /^cual es el promedio de (.+)$/,
     /^que promedio tiene (.+)$/,
+    /^cual es el promedio de (.+)$/,
     /^que nota obtuvo (.+)$/,
     /^que promedio obtuvo (.+)$/,
-        /^nota del master de (.+)$/,
-/^promedio del master de (.+)$/,
-/^nota del posgrado de (.+)$/,
-/^promedio del posgrado de (.+)$/,
-        /^promedio de ingenieria de (.+)$/,
-/^nota de ingenieria de (.+)$/,
+    /^que calificacion tiene (.+)$/,
+    /^que calificacion obtuvo (.+)$/,
+    /^cuanto saco (.+)$/,
+    /^cuanto obtuvo (.+)$/,
+    /^cuanto obtuvo de promedio (.+)$/,
+    /^cuanto saco de promedio (.+)$/,
 
-    /*
-|--------------------------------------------------------------------------
-| FORMACIÓN
-|--------------------------------------------------------------------------
-*/
-
-    /^que estudio (.+)$/,
-        /^formacion de (.+)$/,
-        /^formacion (.+)$/,
-    /^donde estudio (.+)$/,
-    /^que carrera estudio (.+)$/,
-    /^que ingenieria estudio (.+)$/,
-    /^donde se graduo (.+)$/,
-    /^educacion de (.+)$/,
-        /^habla de la educacion de (.+)$/,
-        /^habla de la formacion de (.+)$/,
-        /^educacion (.+)$/,
-        /^(.+) educacion$/,
-        /^(.+) formacion$/,
+    /^nota del master de (.+)$/,
+    /^nota de la maestria de (.+)$/,
+    /^promedio del master de (.+)$/,
+    /^promedio de la maestria de (.+)$/,
+    /^nota del posgrado de (.+)$/,
+    /^promedio del posgrado de (.+)$/,
+    /^promedio de ingenieria de (.+)$/,
+    /^nota de ingenieria de (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
-    | MÁSTER
+    | FORMACIÓN / ESTUDIOS
+    |--------------------------------------------------------------------------
+    */
+
+    /^que estudio (.+)$/,
+    /^que estudia (.+)$/,
+    /^que ha estudiado (.+)$/,
+    /^donde estudio (.+)$/,
+    /^donde se graduo (.+)$/,
+    /^donde se formo (.+)$/,
+    /^que carrera estudio (.+)$/,
+    /^que carrera tiene (.+)$/,
+    /^que ingenieria estudio (.+)$/,
+    /^que titulo tiene (.+)$/,
+    /^que estudios tiene (.+)$/,
+    /^cuales son sus estudios (.+)$/,
+    /^formacion de (.+)$/,
+    /^formacion (.+)$/,
+    /^educacion de (.+)$/,
+    /^educacion (.+)$/,
+    /^habla de la educacion de (.+)$/,
+    /^habla de la formacion de (.+)$/,
+    /^(.+) educacion$/,
+    /^(.+) formacion$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | MÁSTER / MAESTRÍA / POSGRADO
     |--------------------------------------------------------------------------
     */
 
     /^que master tiene (.+)$/,
     /^que maestria tiene (.+)$/,
     /^que posgrado tiene (.+)$/,
+    /^que master estudio (.+)$/,
+    /^que maestria estudio (.+)$/,
+    /^que posgrado estudio (.+)$/,
     /^donde hizo el master (.+)$/,
     /^donde hizo la maestria (.+)$/,
+    /^donde estudio el master (.+)$/,
+    /^donde estudio la maestria (.+)$/,
+    /^tiene master (.+)$/,
+    /^tiene maestria (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
@@ -1544,11 +1575,19 @@ if (generalQueries.includes(normalized)) {
     */
 
     /^que certificaciones tiene (.+)$/,
-    /^que certificados tiene (.+)$/,
     /^que certificacion tiene (.+)$/,
+    /^que certificaciones obtuvo (.+)$/,
     /^que certificacion obtuvo (.+)$/,
+    /^que certificados tiene (.+)$/,
+    /^que certificado tiene (.+)$/,
     /^que certificados obtuvo (.+)$/,
-
+    /^que certificado obtuvo (.+)$/,
+    /^que certificaciones ha obtenido (.+)$/,
+    /^que certificaciones ha realizado (.+)$/,
+    /^cuales son sus certificaciones (.+)$/,
+    /^cuales son los certificados de (.+)$/,
+    /^certificados de (.+)$/,
+    /^certificaciones de (.+)$/,
     /^certificado de (.+) del \d{4}$/,
     /^certificacion de (.+) del \d{4}$/,
     /^certificado de (.+)$/,
@@ -1556,14 +1595,24 @@ if (generalQueries.includes(normalized)) {
 
     /*
     |--------------------------------------------------------------------------
-    | TECNOLOGÍAS
+    | TECNOLOGÍAS / STACK
     |--------------------------------------------------------------------------
     */
 
     /^que tecnologias usa (.+)$/,
     /^que tecnologia usa (.+)$/,
+    /^que tecnologias utiliza (.+)$/,
+    /^que tecnologia utiliza (.+)$/,
+    /^que tecnologias conoce (.+)$/,
+    /^que tecnologias maneja (.+)$/,
+    /^que tecnologias domina (.+)$/,
     /^que stack usa (.+)$/,
+    /^que stack utiliza (.+)$/,
     /^que lenguajes usa (.+)$/,
+    /^que lenguajes utiliza (.+)$/,
+    /^con que tecnologias trabaja (.+)$/,
+    /^con que tecnologia trabaja (.+)$/,
+    /^con que herramientas trabaja (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
@@ -1575,11 +1624,15 @@ if (generalQueries.includes(normalized)) {
     /^que tecnologias front usa (.+)$/,
     /^que tecnologias de frontend usa (.+)$/,
     /^que tecnologias de front usa (.+)$/,
-
     /^que herramientas frontend usa (.+)$/,
     /^que herramientas front usa (.+)$/,
     /^que herramientas de frontend usa (.+)$/,
     /^que herramientas de front usa (.+)$/,
+    /^que framework frontend usa (.+)$/,
+    /^que frameworks frontend usa (.+)$/,
+    /^que usa para frontend (.+)$/,
+    /^que usa para el frontend (.+)$/,
+    /^que usa para desarrollar frontend (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
@@ -1591,25 +1644,77 @@ if (generalQueries.includes(normalized)) {
     /^que tecnologias back usa (.+)$/,
     /^que tecnologias de backend usa (.+)$/,
     /^que tecnologias de back usa (.+)$/,
-
     /^que herramientas backend usa (.+)$/,
     /^que herramientas back usa (.+)$/,
     /^que herramientas de backend usa (.+)$/,
     /^que herramientas de back usa (.+)$/,
+    /^que framework backend usa (.+)$/,
+    /^que frameworks backend usa (.+)$/,
+    /^que usa para backend (.+)$/,
+    /^que usa para el backend (.+)$/,
+    /^que usa para desarrollar backend (.+)$/,
 
     /*
     |--------------------------------------------------------------------------
-    | PROYECTOS
+    | PROYECTOS / APLICACIONES
     |--------------------------------------------------------------------------
     */
 
     /^que proyectos tiene (.+)$/,
-        /^proyectos de (.+)$/,
-        /^aplicaciones de (.+)$/,
     /^que proyectos ha realizado (.+)$/,
     /^que proyectos ha desarrollado (.+)$/,
+    /^que proyectos desarrollo (.+)$/,
+    /^que proyectos realizo (.+)$/,
     /^que ha desarrollado (.+)$/,
+    /^que ha realizado (.+)$/,
     /^que aplicaciones tiene (.+)$/,
+    /^que aplicaciones ha desarrollado (.+)$/,
+    /^que aplicaciones ha realizado (.+)$/,
+    /^que programas ha desarrollado (.+)$/,
+    /^que software ha desarrollado (.+)$/,
+    /^cuales son sus proyectos (.+)$/,
+    /^cuales son los proyectos de (.+)$/,
+    /^proyectos de (.+)$/,
+    /^aplicaciones de (.+)$/,
+    /^software de (.+)$/,
+
+    /*
+    |--------------------------------------------------------------------------
+    | CONTACTO
+    |--------------------------------------------------------------------------
+    */
+
+    /^como contacto a (.+)$/,
+    /^como contactar a (.+)$/,
+    /^como puedo contactar a (.+)$/,
+    /^como puedo contactarlo (.+)$/,
+    /^como puedo comunicarme con (.+)$/,
+    /^como me comunico con (.+)$/,
+    /^como comunicarme con (.+)$/,
+    /^donde puedo contactar a (.+)$/,
+    /^donde contacto a (.+)$/,
+    /^como contactar con (.+)$/,
+    /^como puedo contactar con (.+)$/,
+    /^como comunicarme con (.+)$/,
+    /^como puedo comunicarme con (.+)$/,
+    /^tiene correo (.+)$/,
+    /^cual es el correo de (.+)$/,
+    /^cual es su correo (.+)$/,
+    /^cual es el email de (.+)$/,
+    /^cual es su email (.+)$/,
+    /^cual es el correo electronico de (.+)$/,
+    /^cual es su correo electronico (.+)$/,
+    /^tiene email (.+)$/,
+    /^tiene correo electronico (.+)$/,
+    /^donde puedo escribirle a (.+)$/,
+    /^donde puedo escribir a (.+)$/,
+    /^como escribirle a (.+)$/,
+    /^como escribir a (.+)$/,
+    /^redes sociales de (.+)$/,
+    /^cuales son sus redes sociales (.+)$/,
+    /^como encontrar a (.+)$/,
+    /^donde encontrar a (.+)$/,
+
 ];
 
     for (const pattern of questionPatterns) {
