@@ -40,24 +40,10 @@ const LOCAL_RESPONSES = [
             // QUIÉN ES
             // =========================================================
 
-            "quien es jorge",
-            "quien es patricio",
-            "quien es santamaria",
-            "quien es cherrez",
+            
             "quien es",
 
-            "quien es jorge patricio",
-            "quien es jorge santamaria",
-            "quien es jorge cherrez",
-            "quien es patricio santamaria",
-            "quien es patricio cherrez",
-            "quien es santamaria cherrez",
-
-            "quien es jorge patricio santamaria",
-            "quien es jorge patricio cherrez",
-            "quien es jorge santamaria cherrez",
-            "quien es patricio santamaria cherrez",
-            "quien es jorge patricio santamaria cherrez",
+            
 
             // =========================================================
             // PRESÉNTAME
