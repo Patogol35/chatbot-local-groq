@@ -1477,6 +1477,12 @@ const firstWordPatterns = [
 // Proyecto + nombre
 /^(.+?)\s+proyecto\s+ajedrez$/,
 /^(.+?)\s+proyecto\s+de\s+ajedrez$/,
+/^(.+?)\s+proyecto\s+chatbot$/,
+/^(.+?)\s+proyecto\s+chat\s+bot$/,
+/^(.+?)\s+proyecto\s+ecommerce$/,
+/^(.+?)\s+proyecto\s+e-commerce$/,
+/^(.+?)\s+proyecto\s+quiz$/,
+/^(.+?)\s+proyecto\s+clima$/,
 /^(.+?)\s+proyecto$/,
 
 // Proyectos concretos
