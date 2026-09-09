@@ -1226,6 +1226,42 @@ const generalQueries = [
 if (generalQueries.includes(normalized)) {
     return null;
 }
+
+
+// ============================================================
+// PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
+// ============================================================
+
+const technicalPrefixes = [
+    "imprime",
+    "imprimir",
+    "como imprimir",
+    "como mostrar",
+    "como declarar",
+    "como crear",
+    "como ejecutar",
+    "como programar",
+    "como hacer",
+    "codigo",
+    "ejemplo de codigo",
+    "programar en",
+    "programacion en",
+    "programacion",
+    "codigo en"
+];
+
+const isTechnicalMessage = technicalPrefixes.some(prefix =>
+    normalized.startsWith(prefix + " ") ||
+    normalized === prefix
+);
+
+if (isTechnicalMessage) {
+    return null;
+}
+
+
+
+    
 /*
     |--------------------------------------------------------------------------
     | TEMAS GENERALES SIN PERSONA
