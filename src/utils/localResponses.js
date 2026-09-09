@@ -1538,6 +1538,52 @@ for (const pattern of firstWordPatterns) {
     }
 }
 
+
+// AQUÍ VA topicPersonPatterns
+
+const topicPersonPatterns = [
+    /^habla del (.+?) de (.+)$/,
+    /^habla de (.+?) de (.+)$/,
+    /^hablame del (.+?) de (.+)$/,
+    /^hablame de (.+?) de (.+)$/,
+];
+
+for (const pattern of topicPersonPatterns) {
+
+    const match = normalized.match(pattern);
+
+    if (match) {
+
+        const topic = match[1].trim();
+        const name = match[2].trim();
+
+        const knownTopics = [
+            "ajedrez",
+            "proyecto de ajedrez",
+            "ecommerce",
+            "e-commerce",
+            "quiz",
+            "clima",
+            "chatbot",
+            "chat bot",
+            "portfolio",
+            "portafolio"
+        ];
+
+        if (knownTopics.includes(topic)) {
+
+            const index = normalized.lastIndexOf(name);
+
+            return original
+                .slice(index, index + name.length)
+                .trim();
+        }
+    }
+}
+
+
+
+
     
 
     /*
