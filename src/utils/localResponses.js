@@ -1232,8 +1232,10 @@ if (generalQueries.includes(normalized)) {
 // PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
 // ============================================================
 
-const technicalPrefixes = [
-    // Programación general
+    const technicalPrefixes = [
+    // ============================================================
+    // PROGRAMACIÓN GENERAL
+    // ============================================================
     "programa",
     "programar",
     "programacion",
@@ -1241,8 +1243,13 @@ const technicalPrefixes = [
     "codifica",
     "codificar",
     "ejemplo de codigo",
+    "codigo en",
+    "programar en",
+    "programacion en",
 
-    // Mostrar / imprimir
+    // ============================================================
+    // MOSTRAR / IMPRIMIR
+    // ============================================================
     "imprime",
     "imprimir",
     "impresion",
@@ -1250,47 +1257,76 @@ const technicalPrefixes = [
     "mostrar",
     "escribe",
     "escribir",
+    "como imprimir",
+    "como mostrar",
+    "como escribir",
 
-    // Crear / declarar
-    "crea",
-    "crear",
+    // ============================================================
+    // CREAR / DECLARAR / DEFINIR
+    // ============================================================
     "como crear",
-    "declara",
-    "declarar",
-    "define",
-    "definir",
-
-    // Ejecutar / usar
-    "ejecuta",
-    "ejecutar",
+    "como declarar",
+    "como definir",
     "como ejecutar",
-    "usa",
-    "usar",
-    "utiliza",
-    "utilizar",
 
-    // Operaciones matemáticas
-    "suma",
-    "sumar",
+    "crea un",
+    "crea una",
+    "crear un",
+    "crear una",
+    "declara un",
+    "declara una",
+    "declarar un",
+    "declarar una",
+    "define un",
+    "define una",
+    "definir un",
+    "definir una",
+
+    // ============================================================
+    // EJECUTAR / USAR
+    // ============================================================
+    "como ejecutar",
+    "ejecuta un",
+    "ejecuta una",
+    "ejecutar un",
+    "ejecutar una",
+
+    "como usar",
+    "como utilizar",
+    "como se usa",
+    "como se utiliza",
+
+    // ============================================================
+    // OPERACIONES MATEMÁTICAS
+    // ============================================================
     "suma dos",
     "sumar dos",
-    "resta",
-    "restar",
+    "suma tres",
+    "sumar tres",
     "resta dos",
     "restar dos",
-    "multiplica",
-    "multiplicar",
-    "divide",
-    "dividir",
-    "calcula",
-    "calcular",
-    "operacion",
-    "operaciones",
+    "resta tres",
+    "restar tres",
+    "multiplica dos",
+    "multiplicar dos",
+    "divide dos",
+    "dividir dos",
+    "calcula el",
+    "calcular el",
+    "calcula la",
+    "calcular la",
 
-    // Variables y estructuras
+    // ============================================================
+    // VARIABLES Y ESTRUCTURAS
+    // ============================================================
+    "declara una variable",
+    "declarar una variable",
+    "crear una variable",
+    "crear un array",
+    "crear un arreglo",
+    "crear una lista",
     "variable",
     "variables",
-    "declara una variable",
     "array",
     "arreglo",
     "lista",
@@ -1307,33 +1343,29 @@ const technicalPrefixes = [
     "clase",
     "objeto",
 
-    // Errores / depuración
-    "error",
+    // ============================================================
+    // ERRORES / DEPURACIÓN
+    // ============================================================
     "error de codigo",
     "error en el codigo",
+    "error de código",
+    "error en el código",
     "depura",
     "depurar",
     "debug",
     "debuggear",
 
-    // Preguntas técnicas
+    // ============================================================
+    // PREGUNTAS TÉCNICAS
+    // ============================================================
     "como programar",
     "como hacer",
     "como se hace",
     "como puedo hacer",
     "como puedo programar",
-    "como imprimir",
-    "como mostrar",
-    "como declarar",
-    "como ejecutar",
     "como funciona",
-    "como usar",
-    "como utilizar",
-    "ejemplo",
     "ejemplo de",
-    "codigo en",
-    "programar en",
-    "programacion en"
+    "ejemplo"
 ];
 
 const isTechnicalMessage = technicalPrefixes.some(prefix =>
