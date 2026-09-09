@@ -1610,22 +1610,69 @@ const firstWordPatterns = [
 /^(.+?)\s+tiene\s+software$/,
 /^(.+?)\s+ha\s+desarrollado\s+software$/,
 
+// ============================================================
+// CONTACTO
+// ============================================================
 
-    // ============================================================
-    // CONTACTO
-    // ============================================================
+// Contacto general
+/^(.+?)\s+contacto$/,
+/^(.+?)\s+contactar$/,
+/^(.+?)\s+contactarme$/,
+/^(.+?)\s+comunicar$/,
+/^(.+?)\s+comunicarme$/,
 
-    /^(.+?)\s+tiene\s+correo$/,
-    /^(.+?)\s+tiene\s+email$/,
-    /^(.+?)\s+tiene\s+correo\s+electronico$/,
-    /^(.+?)\s+tiene\s+redes\s+sociales$/,
-    /^(.+?)\s+tiene\s+contacto$/,
-    /^(.+?)\s+tiene\s+informacion\s+de\s+contacto$/,
-    /^(.+?)\s+como\s+contacto$/,
-    /^(.+?)\s+como\s+contactar$/,
-    /^(.+?)\s+como\s+comunicarme$/,
-    /^(.+?)\s+como\s+escribirle$/,
-    /^(.+?)\s+como\s+escribir$/,
+// Correo / email
+/^(.+?)\s+tiene\s+correo$/,
+/^(.+?)\s+tiene\s+email$/,
+/^(.+?)\s+tiene\s+correo\s+electronico$/,
+/^(.+?)\s+correo$/,
+/^(.+?)\s+email$/,
+/^(.+?)\s+correo\s+electronico$/,
+/^(.+?)\s+correo\s+electronico\s+de$/,
+
+// Redes sociales
+/^(.+?)\s+tiene\s+redes\s+sociales$/,
+/^(.+?)\s+redes\s+sociales$/,
+/^(.+?)\s+redes$/,
+/^(.+?)\s+redes\s+sociales\s+de$/,
+
+// Formas de contactar
+/^(.+?)\s+como\s+contacto$/,
+/^(.+?)\s+como\s+contactar$/,
+/^(.+?)\s+como\s+contactar\s+a$/,
+/^(.+?)\s+como\s+me\s+contacto$/,
+/^(.+?)\s+como\s+me\s+comunico$/,
+/^(.+?)\s+como\s+hablar\s+con$/,
+
+// Comunicación
+/^(.+?)\s+como\s+comunicarme$/,
+/^(.+?)\s+como\s+comunicarme\s+con$/,
+/^(.+?)\s+como\s+escribirle$/,
+/^(.+?)\s+como\s+escribir$/,
+/^(.+?)\s+como\s+puedo\s+escribirle$/,
+/^(.+?)\s+como\s+puedo\s+contactar$/,
+/^(.+?)\s+como\s+puedo\s+contactarme$/,
+
+// Mensajes
+/^(.+?)\s+como\s+enviarle\s+un\s+mensaje$/,
+/^(.+?)\s+como\s+enviarle\s+un\s+mensaje$/,
+/^(.+?)\s+como\s+enviar\s+mensaje$/,
+/^(.+?)\s+como\s+enviarle\s+mensaje$/,
+
+// Tiene información de contacto
+/^(.+?)\s+tiene\s+contacto$/,
+/^(.+?)\s+tiene\s+informacion\s+de\s+contacto$/,
+/^(.+?)\s+tiene\s+datos\s+de\s+contacto$/,
+/^(.+?)\s+tiene\s+medios\s+de\s+contacto$/,
+/^(.+?)\s+tiene\s+formas\s+de\s+contacto$/,
+
+// Contactar / comunicarse
+/^(.+?)\s+quiero\s+contactar$/,
+/^(.+?)\s+quiero\s+contactar\s+a$/,
+/^(.+?)\s+quiero\s+hablar\s+con$/,
+/^(.+?)\s+quiero\s+comunicarme$/,
+/^(.+?)\s+quiero\s+comunicarme\s+con$/,
+/^(.+?)\s+quiero\s+escribirle$/,
 ];
 
 
