@@ -1153,41 +1153,65 @@ const levenshteinDistance = (a, b) => {
 
 
 const isAboutJorge = (message) => {
-    const normalized = normalizeText(message);
-    const words = normalized.split(/\s+/);
+    const normalized = normalizeText(message).trim();
+
+    const inputWords = normalized.split(/\s+/);
 
     return JORGE_NAMES.some((name) => {
-        const normalizedName = normalizeText(name);
+        const normalizedName = normalizeText(name).trim();
         const nameWords = normalizedName.split(/\s+/);
 
-        // Buscar el nombre dentro del mensaje
-        for (let i = 0; i <= words.length - nameWords.length; i++) {
-
-            const candidate = words
-                .slice(i, i + nameWords.length)
-                .join(" ");
-
-            // Coincidencia exacta
-            if (candidate === normalizedName) {
-                return true;
-            }
-
-            // Coincidencia aproximada
-            const distance = levenshteinDistance(
-                candidate,
-                normalizedName
-            );
-
-            const maxErrors =
-                normalizedName.length <= 5 ? 1 : 2;
-
-            if (distance <= maxErrors) {
-                return true;
-            }
+        if (inputWords.length !== nameWords.length) {
+            return false;
         }
 
-        return false;
+        return inputWords.every((word, index) => {
+            const target = nameWords[index];
+
+            if (word === target) {
+                return true;
+            }
+
+            const distance = levenshteinDistance(word, target);
+
+            const maxErrors =
+                target.length <= 5 ? 1 : 2;
+
+            return distance <= maxErrors;
+        });
     });
+};
+const normalizeJorgeName = (message) => {
+    const normalized = normalizeText(message).trim();
+
+    return JORGE_NAMES.reduce((bestMatch, name) => {
+        const normalizedName = normalizeText(name).trim();
+
+        const inputWords = normalized.split(/\s+/);
+        const nameWords = normalizedName.split(/\s+/);
+
+        if (inputWords.length !== nameWords.length) {
+            return bestMatch;
+        }
+
+        const matches = inputWords.every((word, index) => {
+            const target = nameWords[index];
+
+            if (word === target) {
+                return true;
+            }
+
+            const distance = levenshteinDistance(word, target);
+
+            const maxErrors =
+                target.length <= 5 ? 1 : 2;
+
+            return distance <= maxErrors;
+        });
+
+        return matches ? normalizedName : bestMatch;
+
+    }, normalized);
 };
 
 
@@ -1433,6 +1457,8 @@ export const getLocalResponse = (message) => {
     |--------------------------------------------------------------------------
     */
 
+    let normalizedMessage = normalizeText(message);
+
     if (personName) {
 
         if (!isAboutJorge(personName)) {
@@ -1450,13 +1476,16 @@ export const getLocalResponse = (message) => {
 
             return responses[randomIndex];
         }
+
+        const correctedName = normalizeJorgeName(personName);
+
+        normalizedMessage = normalizedMessage.replace(
+            normalizeText(personName),
+            correctedName
+        );
     }
 
-    const normalizedMessage = normalizeText(message);
-
-
-
-
+    // 👇 AQUÍ SIGUE EL RESTO DE TU CÓDIGO
 
     
 
