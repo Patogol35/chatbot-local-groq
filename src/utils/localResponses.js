@@ -388,32 +388,32 @@ const LOCAL_RESPONSES = [
     {
         category: "tecnologias",
         keywords: [
+keywords: [
 
-            "frontend",
-            "tecnologias",
-            "front end",
-            "front-end",
-            "desarrollo frontend",
-            "desarrollo front end",
-            "tecnologias frontend",
-            "que usa en frontend",
-            "que utiliza en frontend",
-            "tecnologias de frontend",
-            "herramientas frontend",
+    "frontend",
+    "front end",
+    "front-end",
+    "desarrollo frontend",
+    "desarrollo front end",
+    "tecnologias frontend",
+    "que usa en frontend",
+    "que utiliza en frontend",
+    "tecnologias de frontend",
+    "herramientas frontend",
 
-            "react",
-            "react js",
-            "reactjs",
-            "javascript",
-            "java script",
-            "js",
+    "react",
+    "react js",
+    "reactjs",
+    "javascript",
+    "java script",
+    "js",
 
-            "que usa para frontend",
-            "que utiliza para frontend",
-            "con que hace frontend",
-            "con que desarrolla frontend",
-            "tecnologias para frontend"
-        ],
+    "que usa para frontend",
+    "que utiliza para frontend",
+    "con que hace frontend",
+    "con que desarrolla frontend",
+    "tecnologias para frontend"
+],
 
         responses: [
             "En frontend, Jorge trabaja principalmente con React y JavaScript.",
