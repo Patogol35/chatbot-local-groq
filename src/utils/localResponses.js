@@ -43,277 +43,89 @@ const LOCAL_RESPONSES = [
             
             "quien es",
 
-            
-
             // =========================================================
             // PRESÉNTAME
             // =========================================================
 
-            "presentame a jorge",
-            "presentame a patricio",
-            "presentame a santamaria",
-            "presentame a cherrez",
-
-            "presentame a jorge patricio",
-            "presentame a jorge santamaria",
-            "presentame a jorge cherrez",
-            "presentame a patricio santamaria",
-            "presentame a patricio cherrez",
-            "presentame a santamaria cherrez",
-
-            "presentame a jorge patricio santamaria",
-            "presentame a jorge patricio cherrez",
-            "presentame a jorge santamaria cherrez",
-            "presentame a patricio santamaria cherrez",
-            "presentame a jorge patricio santamaria cherrez",
+            "presentame a",
 
             // =========================================================
             // HÁBLAME / HABLA
             // =========================================================
 
-            "hablame de jorge",
-            "hablame de patricio",
-            "hablame de santamaria",
-            "hablame de cherrez",
-
-            "hablame de jorge patricio",
-            "hablame de jorge santamaria",
-            "hablame de jorge cherrez",
-            "hablame de patricio santamaria",
-            "hablame de patricio cherrez",
-            "hablame de santamaria cherrez",
-
-            "hablame de jorge patricio santamaria",
-            "hablame de jorge patricio cherrez",
-            "hablame de jorge santamaria cherrez",
-            "hablame de patricio santamaria cherrez",
-            "hablame de jorge patricio santamaria cherrez",
-
-            "habla de jorge",
-            "habla de patricio",
-            "habla de santamaria",
-            "habla de cherrez",
-
-            "habla de jorge patricio",
-            "habla de jorge santamaria",
-            "habla de jorge cherrez",
-            "habla de patricio santamaria",
-            "habla de patricio cherrez",
-            "habla de santamaria cherrez",
-
-            "habla de jorge patricio santamaria",
-            "habla de jorge patricio cherrez",
-            "habla de jorge santamaria cherrez",
-            "habla de patricio santamaria cherrez",
-            "habla de jorge patricio santamaria cherrez",
+            "hablame de",
+            "habla de",
 
             // =========================================================
             // SOBRE
             // =========================================================
 
-            "sobre jorge",
-            "sobre patricio",
-            "sobre santamaria",
-            "sobre cherrez",
-
-            "sobre jorge patricio",
-            "sobre jorge santamaria",
-            "sobre jorge cherrez",
-            "sobre patricio santamaria",
-            "sobre patricio cherrez",
-            "sobre santamaria cherrez",
-
-            "sobre jorge patricio santamaria",
-            "sobre jorge patricio cherrez",
-            "sobre jorge santamaria cherrez",
-            "sobre patricio santamaria cherrez",
-            "sobre jorge patricio santamaria cherrez",
+            "sobre",
 
             // =========================================================
             // PERFIL
             // =========================================================
 
-            "perfil de jorge",
-            "perfil de patricio",
-            "perfil de santamaria",
-            "perfil de cherrez",
-
-            "perfil de jorge patricio",
-            "perfil de jorge santamaria",
-            "perfil de jorge cherrez",
-            "perfil de patricio santamaria",
-            "perfil de patricio cherrez",
-            "perfil de santamaria cherrez",
-
-            "perfil de jorge patricio santamaria",
-            "perfil de jorge patricio cherrez",
-            "perfil de jorge santamaria cherrez",
-            "perfil de patricio santamaria cherrez",
-            "perfil de jorge patricio santamaria cherrez",
-
-            "perfil profesional de jorge",
-            "perfil profesional de jorge patricio",
-            "perfil profesional de jorge santamaria",
-            "perfil profesional de jorge patricio santamaria",
-            "perfil profesional de jorge patricio santamaria cherrez",
+            "perfil de",
+            "perfil profesional de",
 
             // =========================================================
             // DIME
             // =========================================================
 
-            "dime de jorge",
-            "dime de patricio",
-            "dime de santamaria",
-            "dime de cherrez",
+            "dime de",
+            "dime sobre",
+            "dime quien es",
 
-            "dime sobre jorge",
-            "dime sobre patricio",
-            "dime sobre santamaria",
-            "dime sobre cherrez",
-
-            "dime sobre jorge patricio",
-            "dime sobre jorge santamaria",
-            "dime sobre jorge cherrez",
-            "dime sobre patricio santamaria",
-            "dime sobre patricio cherrez",
-            "dime sobre santamaria cherrez",
-
-            "dime sobre jorge patricio santamaria",
-            "dime sobre jorge patricio cherrez",
-            "dime sobre jorge santamaria cherrez",
-            "dime sobre patricio santamaria cherrez",
-            "dime sobre jorge patricio santamaria cherrez",
-
-            "dime quien es jorge",
-            "dime quien es patricio",
-            "dime quien es jorge patricio",
-            "dime quien es jorge santamaria",
-            "dime quien es patricio santamaria",
-            "dime quien es jorge patricio santamaria",
-            "dime quien es jorge patricio cherrez",
-            "dime quien es jorge santamaria cherrez",
-            "dime quien es patricio santamaria cherrez",
-            "dime quien es jorge patricio santamaria cherrez",
 
             // =========================================================
             // CUÉNTAME
             // =========================================================
 
-            "cuentame de jorge",
-            "cuentame de patricio",
-            "cuentame de santamaria",
-            "cuentame de cherrez",
-
-            "cuentame sobre jorge",
-            "cuentame sobre patricio",
-            "cuentame sobre santamaria",
-            "cuentame sobre cherrez",
-
-            "cuentame sobre jorge patricio",
-            "cuentame sobre jorge santamaria",
-            "cuentame sobre jorge cherrez",
-            "cuentame sobre patricio santamaria",
-            "cuentame sobre patricio cherrez",
-            "cuentame sobre santamaria cherrez",
-
-            "cuentame sobre jorge patricio santamaria",
-            "cuentame sobre jorge patricio cherrez",
-            "cuentame sobre jorge santamaria cherrez",
-            "cuentame sobre patricio santamaria cherrez",
-            "cuentame sobre jorge patricio santamaria cherrez",
-
-            "cuentame quien es jorge",
-            "cuentame quien es patricio",
-            "cuentame quien es jorge patricio",
-            "cuentame quien es jorge santamaria",
-            "cuentame quien es patricio santamaria",
-            "cuentame quien es jorge patricio santamaria",
-            "cuentame quien es jorge patricio cherrez",
-            "cuentame quien es jorge santamaria cherrez",
-            "cuentame quien es patricio santamaria cherrez",
-            "cuentame quien es jorge patricio santamaria cherrez",
+            "cuentame de",
+            "cuentame sobre",
+            "cuentame quien es",
 
             // =========================================================
             // QUÉ SABES / INFORMACIÓN
             // =========================================================
 
-            "que sabes de jorge",
-            "que sabes de patricio",
-            "que sabes de jorge patricio",
-            "que sabes de jorge santamaria",
-            "que sabes de patricio santamaria",
-            "que sabes de jorge patricio santamaria",
-            "que sabes de jorge patricio cherrez",
-            "que sabes de jorge santamaria cherrez",
-            "que sabes de patricio santamaria cherrez",
-            "que sabes de jorge patricio santamaria cherrez",
-
-            "informacion sobre jorge",
-            "informacion sobre patricio",
-            "informacion sobre jorge patricio",
-            "informacion sobre jorge santamaria",
-            "informacion sobre patricio santamaria",
-            "informacion sobre jorge patricio santamaria",
-            "informacion sobre jorge patricio cherrez",
-            "informacion sobre jorge santamaria cherrez",
-            "informacion sobre patricio santamaria cherrez",
-            "informacion sobre jorge patricio santamaria cherrez",
-
+            "que sabes de",
+            "informacion sobre",
+            
             // =========================================================
             // QUIERO SABER
             // =========================================================
 
-            "quiero saber quien es jorge",
-            "quiero saber quien es patricio",
-            "quiero saber quien es jorge patricio",
-            "quiero saber quien es jorge santamaria",
-            "quiero saber quien es patricio santamaria",
-            "quiero saber quien es jorge patricio santamaria",
-            "quiero saber quien es jorge patricio cherrez",
-            "quiero saber quien es jorge santamaria cherrez",
-            "quiero saber quien es patricio santamaria cherrez",
-            "quiero saber quien es jorge patricio santamaria cherrez",
+            "quiero saber quien es",
 
             // =========================================================
             // TODO SOBRE
             // =========================================================
 
-            "todo sobre jorge",
-            "todo sobre patricio",
-            "todo sobre jorge patricio",
-            "todo sobre jorge santamaria",
-            "todo sobre patricio santamaria",
-            "todo sobre jorge patricio santamaria",
-            "todo sobre jorge patricio cherrez",
-            "todo sobre jorge santamaria cherrez",
-            "todo sobre patricio santamaria cherrez",
-            "todo sobre jorge patricio santamaria cherrez",
+            "todo sobre",
 
             // =========================================================
             // FORMAS NATURALES
             // =========================================================
 
-            "hablame un poco de jorge",
-            "cuentame un poco de jorge",
-            "quiero conocer a jorge",
-            "quiero conocer a patricio",
-            "quiero conocer a jorge patricio",
-            "me puedes hablar de jorge",
-            "puedes hablarme de jorge",
-            "puedes contarme sobre jorge",
-            "puedes contarme de jorge",
-            "me puedes contar sobre jorge",
-            "me puedes contar de jorge",
-            "quiero informacion de jorge",
-            "quiero informacion sobre jorge",
-            "dame informacion de jorge",
-            "dame informacion sobre jorge",
-            "dame datos de jorge",
-            "dame datos sobre jorge",
-            "conoces a jorge",
-            "conoces a patricio",
-            "sabes quien es jorge",
-            "sabes quien es patricio",
+            "hablame un poco de",
+            "cuentame un poco de",
+            "quiero conocer a",
+            "me puedes hablar de",
+            "puedes hablarme de",
+            "puedes contarme sobre",
+            "puedes contarme de",
+            "me puedes contar sobre",
+            "me puedes contar de",
+            "quiero informacion de",
+            "quiero informacion sobre",
+            "dame informacion de",
+            "dame informacion sobre",
+            "dame datos de",
+            "dame datos sobre",
+            "conoces a",
+            "sabes quien",
 
             // =========================================================
             // PROFESIÓN
@@ -360,8 +172,8 @@ const LOCAL_RESPONSES = [
             "formacion",
             "formacion academica",
             "educacion",
-            "educacion de jorge",
-            "formacion de jorge",
+            "educacion de",
+            "formacion de",
             "formacion profesional",
             "trayectoria academica",
             "trayectoria profesional",
@@ -370,33 +182,25 @@ const LOCAL_RESPONSES = [
             "en que universidad",
             "universidad de jorge",
             "universidad donde estudio",
-            "donde estudio jorge",
-            "donde estudio patricio",
             "en que universidad estudio",
-            "en que universidad estudio jorge",
 
-            "estudios de jorge",
-            "estudios de jorge patricio",
+            "estudios de",
             "que estudios tiene",
-            "que estudios tiene jorge",
             "que ha estudiado",
-            "que ha estudiado jorge",
-            "que estudio jorge",
+            "que estudio",
             "que carrera estudio",
-            "que carrera estudio jorge",
             "que carrera tiene",
-            "que carrera tiene jorge",
             "cual es su carrera",
-            "cual es la carrera de jorge",
+            "cual es la carrera de",
 
             "estudios universitarios",
-            "estudios universitarios de jorge",
+            "estudios universitarios de",
             "formacion universitaria",
-            "formacion universitaria de jorge",
+            "formacion universitaria de",
             "educacion universitaria",
-            "educacion universitaria de jorge",
+            "educacion universitaria de",
             "trayectoria universitaria",
-            "trayectoria universitaria de jorge"
+            "trayectoria universitaria de"
         ],
 
         responses: [
@@ -431,7 +235,6 @@ const LOCAL_RESPONSES = [
             "titulo de ingeniero",
             "titulo de ingenieria",
             "titulo universitario",
-            "titulo universitario de jorge"
         ],
 
         responses: [
@@ -463,9 +266,9 @@ const LOCAL_RESPONSES = [
             "donde hizo el posgrado",
             "donde estudio el posgrado",
 
-            "master de jorge",
-            "maestria de jorge",
-            "posgrado de jorge",
+            "master de",
+            "maestria de",
+            "posgrado de",
             "master en ingenieria de software",
             "maestria en ingenieria de software",
             "ingenieria de software y sistemas informaticos",
@@ -683,8 +486,8 @@ const LOCAL_RESPONSES = [
             "postgres",
             "mysql",
 
-            "base de datos de jorge",
-            "bases de datos de jorge"
+            "base de datos de",
+            "bases de datos de"
         ],
 
         responses: [
@@ -753,11 +556,11 @@ const LOCAL_RESPONSES = [
             "con que trabaja",
             "con que herramientas trabaja",
 
-            "tecnologias de jorge",
-            "stack de jorge",
-            "herramientas de jorge",
-            "lenguajes de jorge",
-            "stack tecnologico de jorge",
+            "tecnologias de",
+            "stack de",
+            "herramientas de",
+            "lenguajes de",
+            "stack tecnologico de",
             "tecnologias que domina",
             "tecnologias que conoce",
             "tecnologias con las que trabaja"
@@ -785,12 +588,11 @@ const LOCAL_RESPONSES = [
             "portafolio",
             "portfolio react",
             "portafolio react",
-            "portfolio de jorge",
-            "portafolio de jorge",
-            "sitio web de jorge",
-            "pagina de jorge",
-            "pagina web de jorge",
-            "web de jorge"
+            "portfolio de",
+            "sitio web de",
+            "pagina de",
+            "pagina web de",
+            "web de"
         ],
 
         responses: [
@@ -859,7 +661,7 @@ const LOCAL_RESPONSES = [
             "sasha",
             "proyecto chatbot",
             "proyecto chat",
-            "chatbot de jorge"
+            "chatbot de"
         ],
 
         responses: [
@@ -905,7 +707,7 @@ const LOCAL_RESPONSES = [
             "aplicacion ecommerce",
             "proyecto ecommerce",
             "proyecto tienda",
-            "tienda de jorge"
+            "tienda de"
         ],
 
         responses: [
@@ -931,8 +733,8 @@ const LOCAL_RESPONSES = [
             "aplicaciones",
             "trabajos realizados",
             "proyectos realizados",
-            "proyectos de jorge",
-            "aplicaciones de jorge",
+            "proyectos de",
+            "aplicaciones de",
             "principales proyectos",
             "principales aplicaciones"
         ],
@@ -1094,9 +896,9 @@ const LOCAL_RESPONSES = [
             "cuales son sus certificaciones",
             "que certificaciones ha obtenido",
             "que certificados ha obtenido",
-            "que certificaciones tiene jorge",
-            "certificaciones de jorge",
-            "certificados de jorge",
+            "que certificaciones tiene",
+            "certificaciones de",
+            "certificados de",
             "formacion certificada",
             "certificaciones profesionales",
             "certificados profesionales"
@@ -1214,32 +1016,32 @@ const LOCAL_RESPONSES = [
             "comunicarme",
             "comunicar",
 
-            "hablar con jorge",
-            "contactar a jorge",
-            "contactarme con jorge",
-            "comunicarme con jorge",
+            "hablar con",
+            "contactar a",
+            "contactarme con",
+            "comunicarme con",
 
             "como contacto",
             "como contactar",
-            "como contactar a jorge",
+            "como contactar a",
             "como me contacto",
             "como me comunico",
-            "como hablar con jorge",
+            "como hablar con",
 
-            "donde contacto a jorge",
-            "donde puedo contactar a jorge",
-            "donde puedo comunicarme con jorge",
+            "donde contacto a",
+            "donde puedo contactar a",
+            "donde puedo comunicarme con",
 
-            "quiero contactar a jorge",
-            "quiero hablar con jorge",
-            "quiero comunicarme con jorge",
+            "quiero contactar a",
+            "quiero hablar con",
+            "quiero comunicarme con",
 
-            "como escribirle a jorge",
-            "donde escribirle a jorge",
-            "como puedo escribirle a jorge",
+            "como escribirle a",
+            "donde escribirle a",
+            "como puedo escribirle a",
 
-            "redes sociales de jorge",
-            "redes de jorge",
+            "redes sociales de",
+            "redes de",
             "redes sociales",
             "redes profesionales de jorge",
              "tiene correo",
@@ -1248,8 +1050,8 @@ const LOCAL_RESPONSES = [
             "correo de jorge",
             "email de jorge",
             "correo electronico de jorge",
-            "como enviarle un mensaje a jorge",
-            "como enviar mensaje a jorge",
+            "como enviarle un mensaje a",
+            "como enviar mensaje a",
             "como comunicarme con el",
             "como contactar con el"
         ],
