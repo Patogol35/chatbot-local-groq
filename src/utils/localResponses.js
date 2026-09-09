@@ -1364,42 +1364,52 @@ const firstWordPatterns = [
     /^(.+?)\s+su\s+estudio$/,
 
 
-    // ============================================================
-    // CERTIFICACIONES
-    // ============================================================
-// Certificaciones con año al final
+// ============================================================
+// CERTIFICACIONES
+// ============================================================
+
+// Certificaciones con año + persona
+/^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
+/^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
+/^certificados\s+de\s+(.+?)\s+en\s+el\s+\d{4}$/,
+/^certificaciones\s+de\s+(.+?)\s+en\s+el\s+\d{4}$/,
+/^certificados\s+de\s+(.+?)\s+en\s+\d{4}$/,
+/^certificaciones\s+de\s+(.+?)\s+en\s+\d{4}$/,
+
+// Persona + certificaciones + año
 /^(.+?)\s+certificados\s+\d{4}$/,
 /^(.+?)\s+certificaciones\s+\d{4}$/,
 /^(.+?)\s+certificado\s+\d{4}$/,
 /^(.+?)\s+certificacion\s+\d{4}$/,
-    /^(.+?)\s+certificados$/,
-    /^(.+?)\s+certificaciones$/,
-    /^(.+?)\s+certificado$/,
-    /^(.+?)\s+certificacion$/,
-    /^(.+?)\s+sus\s+certificados$/,
-    /^(.+?)\s+sus\s+certificaciones$/,
-    /^(.+?)\s+su\s+certificado$/,
-    /^(.+?)\s+su\s+certificacion$/,
-    /^(.+?)\s+tiene\s+certificaciones$/,
-    /^(.+?)\s+tiene\s+certificacion$/,
-    /^(.+?)\s+tiene\s+certificados$/,
-    /^(.+?)\s+tiene\s+certificado$/,
-    /^(.+?)\s+obtuvo\s+certificaciones$/,
-    /^(.+?)\s+obtuvo\s+certificacion$/,
-    /^(.+?)\s+obtuvo\s+certificados$/,
-    /^(.+?)\s+obtuvo\s+certificado$/,
-    /^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
-    /^(.+?)\s+ha\s+realizado\s+certificaciones$/,
-    /^(.+?)\s+cuenta\s+con\s+certificaciones$/,
 
-    // Certificaciones con año
-    /^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
-    /^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
-    // Certificaciones: año + persona
+// Certificaciones con año + persona
 /^certificados\s+del\s+\d{4}\s+de\s+(.+)$/,
 /^certificaciones\s+del\s+\d{4}\s+de\s+(.+)$/,
 /^certificado\s+del\s+\d{4}\s+de\s+(.+)$/,
 /^certificacion\s+del\s+\d{4}\s+de\s+(.+)$/,
+
+// Persona + certificaciones
+/^(.+?)\s+su\s+certificado$/,
+/^(.+?)\s+su\s+certificacion$/,
+/^(.+?)\s+sus\s+certificados$/,
+/^(.+?)\s+sus\s+certificaciones$/,
+/^(.+?)\s+tiene\s+certificaciones$/,
+/^(.+?)\s+tiene\s+certificacion$/,
+/^(.+?)\s+tiene\s+certificados$/,
+/^(.+?)\s+tiene\s+certificado$/,
+/^(.+?)\s+obtuvo\s+certificaciones$/,
+/^(.+?)\s+obtuvo\s+certificacion$/,
+/^(.+?)\s+obtuvo\s+certificados$/,
+/^(.+?)\s+obtuvo\s+certificado$/,
+/^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
+/^(.+?)\s+ha\s+realizado\s+certificaciones$/,
+/^(.+?)\s+cuenta\s+con\s+certificaciones$/,
+
+// Certificaciones genéricas
+/^(.+?)\s+certificados$/,
+/^(.+?)\s+certificaciones$/,
+/^(.+?)\s+certificado$/,
+/^(.+?)\s+certificacion$/,
 
 
     // ============================================================
