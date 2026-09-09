@@ -1421,6 +1421,8 @@ if (generalQueries.includes(normalized)) {
     */
 
     /^que proyectos tiene (.+)$/,
+        /^proyectos de (.+)$/,
+        /^aplicaciones de (.+)$/,
     /^que proyectos ha realizado (.+)$/,
     /^que proyectos ha desarrollado (.+)$/,
     /^que ha desarrollado (.+)$/,
