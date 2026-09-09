@@ -44,6 +44,7 @@ const LOCAL_RESPONSES = [
             "quien es patricio",
             "quien es santamaria",
             "quien es cherrez",
+            "quien es",
 
             "quien es jorge patricio",
             "quien es jorge santamaria",
