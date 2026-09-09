@@ -1226,7 +1226,7 @@ const generalQueries = [
 if (generalQueries.includes(normalized)) {
     return null;
 }
-
+/*
     |--------------------------------------------------------------------------
     | TEMAS GENERALES SIN PERSONA
     |--------------------------------------------------------------------------
