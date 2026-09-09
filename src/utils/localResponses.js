@@ -1235,13 +1235,20 @@ if (generalQueries.includes(normalized)) {
 
 const firstWordPatterns = [
 
-    // Identidad
+    // ============================================================
+    // IDENTIDAD
+    // ============================================================
+
     /^(.+?)\s+quien\s+es$/,
     /^(.+?)\s+informacion$/,
     /^(.+?)\s+datos$/,
     /^(.+?)\s+perfil$/,
 
-    // Notas / promedios
+
+    // ============================================================
+    // NOTAS / PROMEDIOS
+    // ============================================================
+
     /^(.+?)\s+tiene\s+nota$/,
     /^(.+?)\s+tiene\s+promedio$/,
     /^(.+?)\s+tiene\s+calificacion$/,
@@ -1249,73 +1256,100 @@ const firstWordPatterns = [
     /^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
     /^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
     /^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
+    /^(.+?)\s+tiene\s+nota\s+del\s+posgrado$/,
+    /^(.+?)\s+tiene\s+promedio\s+del\s+posgrado$/,
     /^(.+?)\s+saco\s+de\s+promedio$/,
     /^(.+?)\s+obtuvo\s+de\s+promedio$/,
 
-    
-// Formación con "su"
- /^(.+?)\s+su\s+formacion$/,
- /^(.+?)\s+su\s+educacion$/,
- /^(.+?)\s+su\s+trayectoria$/,
- /^(.+?)\s+sus\s+estudios$/,
- /^(.+?)\s+su\s+carrera$/,
- /^(.+?)\s+su\s+titulo$/,
 
-// Formación
-/^(.+?)\s+estudio$/,
-/^(.+?)\s+estudia$/,
-/^(.+?)\s+ha\s+estudiado$/,
-/^(.+?)\s+tiene\s+estudios$/,
-/^(.+?)\s+tiene\s+carrera$/,
-/^(.+?)\s+tiene\s+ingenieria$/,
-/^(.+?)\s+tiene\s+titulo$/,
-/^(.+?)\s+formacion$/,
-/^(.+?)\s+educacion$/,
+    // ============================================================
+    // FORMACIÓN / ESTUDIOS
+    // ============================================================
 
-    // Máster / maestría / posgrado
-/^(.+?)\s+tiene\s+master$/,
-/^(.+?)\s+tiene\s+maestria$/,
-/^(.+?)\s+tiene\s+posgrado$/,
-/^(.+?)\s+estudio\s+master$/,
-/^(.+?)\s+estudio\s+maestria$/,
-/^(.+?)\s+estudio\s+posgrado$/,
-/^(.+?)\s+hizo\s+el\s+master$/,
-/^(.+?)\s+hizo\s+la\s+maestria$/,
-/^(.+?)\s+hizo\s+el\s+posgrado$/,
-/^(.+?)\s+estudio\s+un\s+master$/,
-/^(.+?)\s+estudio\s+una\s+maestria$/,
-/^(.+?)\s+su\s+master$/,
-/^(.+?)\s+su\s+maestria$/,
-/^(.+?)\s+su\s+posgrado$/,
-/^(.+?)\s+su\s+estudio$/,
-/^(.+?)\s+sus\s+estudios$/,
+    // Con su / sus
+    /^(.+?)\s+su\s+formacion$/,
+    /^(.+?)\s+su\s+educacion$/,
+    /^(.+?)\s+su\s+trayectoria$/,
+    /^(.+?)\s+sus\s+estudios$/,
+    /^(.+?)\s+su\s+carrera$/,
+    /^(.+?)\s+su\s+titulo$/,
 
-    // Certificaciones
+    // Formas directas
+    /^(.+?)\s+estudio$/,
+    /^(.+?)\s+estudia$/,
+    /^(.+?)\s+ha\s+estudiado$/,
+    /^(.+?)\s+tiene\s+estudios$/,
+    /^(.+?)\s+tiene\s+carrera$/,
+    /^(.+?)\s+tiene\s+ingenieria$/,
+    /^(.+?)\s+tiene\s+titulo$/,
+    /^(.+?)\s+formacion$/,
+    /^(.+?)\s+educacion$/,
+    /^(.+?)\s+estudios$/,
+
+
+    // ============================================================
+    // MÁSTER / MAESTRÍA / POSGRADO
+    // ============================================================
+
+    /^(.+?)\s+tiene\s+master$/,
+    /^(.+?)\s+tiene\s+maestria$/,
+    /^(.+?)\s+tiene\s+posgrado$/,
+    /^(.+?)\s+estudio\s+master$/,
+    /^(.+?)\s+estudio\s+maestria$/,
+    /^(.+?)\s+estudio\s+posgrado$/,
+    /^(.+?)\s+hizo\s+el\s+master$/,
+    /^(.+?)\s+hizo\s+la\s+maestria$/,
+    /^(.+?)\s+hizo\s+el\s+posgrado$/,
+    /^(.+?)\s+estudio\s+un\s+master$/,
+    /^(.+?)\s+estudio\s+una\s+maestria$/,
+
+    // Con su / sus
+    /^(.+?)\s+su\s+master$/,
+    /^(.+?)\s+su\s+maestria$/,
+    /^(.+?)\s+su\s+posgrado$/,
+    /^(.+?)\s+su\s+estudio$/,
+
+
+    // ============================================================
+    // CERTIFICACIONES
+    // ============================================================
+
+    /^(.+?)\s+certificados$/,
+    /^(.+?)\s+certificaciones$/,
+    /^(.+?)\s+certificado$/,
+    /^(.+?)\s+certificacion$/,
     /^(.+?)\s+sus\s+certificados$/,
-/^(.+?)\s+sus\s+certificaciones$/,
-/^(.+?)\s+certificados$/,
-/^(.+?)\s+certificaciones$/,
-/^(.+?)\s+tiene\s+certificaciones$/,
-/^(.+?)\s+tiene\s+certificacion$/,
-/^(.+?)\s+tiene\s+certificados$/,
-/^(.+?)\s+tiene\s+certificado$/,
-/^(.+?)\s+obtuvo\s+certificaciones$/,
-/^(.+?)\s+obtuvo\s+certificacion$/,
-/^(.+?)\s+obtuvo\s+certificados$/,
-/^(.+?)\s+obtuvo\s+certificado$/,
-/^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
-/^(.+?)\s+ha\s+realizado\s+certificaciones$/,
-/^(.+?)\s+cuenta\s+con\s+certificaciones$/,
+    /^(.+?)\s+sus\s+certificaciones$/,
+    /^(.+?)\s+su\s+certificado$/,
+    /^(.+?)\s+su\s+certificacion$/,
+    /^(.+?)\s+tiene\s+certificaciones$/,
+    /^(.+?)\s+tiene\s+certificacion$/,
+    /^(.+?)\s+tiene\s+certificados$/,
+    /^(.+?)\s+tiene\s+certificado$/,
+    /^(.+?)\s+obtuvo\s+certificaciones$/,
+    /^(.+?)\s+obtuvo\s+certificacion$/,
+    /^(.+?)\s+obtuvo\s+certificados$/,
+    /^(.+?)\s+obtuvo\s+certificado$/,
+    /^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
+    /^(.+?)\s+ha\s+realizado\s+certificaciones$/,
+    /^(.+?)\s+cuenta\s+con\s+certificaciones$/,
 
-// Certificaciones con año
-/^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
-/^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
+    // Certificaciones con año
+    /^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
+    /^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
 
-    // Tecnologías
-    /^(.+?)\s+sus\s+tecnologias$/,
-/^(.+?)\s+sus\s+tecnologia$/,
+
+    // ============================================================
+    // TECNOLOGÍAS / STACK
+    // ============================================================
+
     /^(.+?)\s+tecnologias$/,
-/^(.+?)\s+tecnologia$/,
+    /^(.+?)\s+tecnologia$/,
+    /^(.+?)\s+sus\s+tecnologias$/,
+    /^(.+?)\s+sus\s+tecnologia$/,
+    /^(.+?)\s+su\s+stack$/,
+    /^(.+?)\s+sus\s+herramientas$/,
+    /^(.+?)\s+sus\s+lenguajes$/,
     /^(.+?)\s+usa\s+tecnologias$/,
     /^(.+?)\s+usa\s+tecnologia$/,
     /^(.+?)\s+utiliza\s+tecnologias$/,
@@ -1330,7 +1364,11 @@ const firstWordPatterns = [
     /^(.+?)\s+trabaja\s+con\s+tecnologias$/,
     /^(.+?)\s+trabaja\s+con\s+herramientas$/,
 
-    // Frontend
+
+    // ============================================================
+    // FRONTEND
+    // ============================================================
+
     /^(.+?)\s+usa\s+frontend$/,
     /^(.+?)\s+usa\s+tecnologias\s+frontend$/,
     /^(.+?)\s+usa\s+tecnologias\s+de\s+frontend$/,
@@ -1339,7 +1377,11 @@ const firstWordPatterns = [
     /^(.+?)\s+usa\s+framework\s+frontend$/,
     /^(.+?)\s+usa\s+frameworks\s+frontend$/,
 
-    // Backend
+
+    // ============================================================
+    // BACKEND
+    // ============================================================
+
     /^(.+?)\s+usa\s+backend$/,
     /^(.+?)\s+usa\s+tecnologias\s+backend$/,
     /^(.+?)\s+usa\s+tecnologias\s+de\s+backend$/,
@@ -1348,10 +1390,16 @@ const firstWordPatterns = [
     /^(.+?)\s+usa\s+framework\s+backend$/,
     /^(.+?)\s+usa\s+frameworks\s+backend$/,
 
-    // Proyectos
+
+    // ============================================================
+    // PROYECTOS / APLICACIONES
+    // ============================================================
+
+    /^(.+?)\s+proyectos$/,
     /^(.+?)\s+sus\s+proyectos$/,
-/^(.+?)\s+su\s+proyecto$/,
-/^(.+?)\s+proyectos$/,
+    /^(.+?)\s+su\s+proyecto$/,
+    /^(.+?)\s+sus\s+aplicaciones$/,
+    /^(.+?)\s+sus\s+programas$/,
     /^(.+?)\s+tiene\s+proyectos$/,
     /^(.+?)\s+tiene\s+aplicaciones$/,
     /^(.+?)\s+tiene\s+programas$/,
@@ -1365,7 +1413,11 @@ const firstWordPatterns = [
     /^(.+?)\s+tiene\s+software$/,
     /^(.+?)\s+ha\s+desarrollado\s+software$/,
 
-    // Contacto
+
+    // ============================================================
+    // CONTACTO
+    // ============================================================
+
     /^(.+?)\s+tiene\s+correo$/,
     /^(.+?)\s+tiene\s+email$/,
     /^(.+?)\s+tiene\s+correo\s+electronico$/,
@@ -1396,6 +1448,8 @@ for (const pattern of firstWordPatterns) {
     }
 }
 
+    
+
     /*
     |--------------------------------------------------------------------------
     | FORMATO: "pregunta + nombre"
@@ -1404,11 +1458,9 @@ for (const pattern of firstWordPatterns) {
 
     const questionPatterns = [
 
-    /*
-    |--------------------------------------------------------------------------
-    | IDENTIDAD / INFORMACIÓN GENERAL
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // IDENTIDAD / INFORMACIÓN GENERAL
+    // ============================================================
 
     // Pregunta + nombre
     /^quien es (.+)$/,
@@ -1435,11 +1487,9 @@ for (const pattern of firstWordPatterns) {
     /^(.+) perfil$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | NOTAS / PROMEDIOS
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // NOTAS / PROMEDIOS
+    // ============================================================
 
     // Pregunta + nombre
     /^que nota tiene (.+)$/,
@@ -1456,9 +1506,9 @@ for (const pattern of firstWordPatterns) {
     /^cuanto saco de promedio (.+)$/,
     /^nota del master de (.+)$/,
     /^nota de la maestria de (.+)$/,
+    /^nota del posgrado de (.+)$/,
     /^promedio del master de (.+)$/,
     /^promedio de la maestria de (.+)$/,
-    /^nota del posgrado de (.+)$/,
     /^promedio del posgrado de (.+)$/,
     /^promedio de ingenieria de (.+)$/,
     /^nota de ingenieria de (.+)$/,
@@ -1477,11 +1527,9 @@ for (const pattern of firstWordPatterns) {
     /^(.+) obtuvo de promedio$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | FORMACIÓN / ESTUDIOS
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // FORMACIÓN / ESTUDIOS
+    // ============================================================
 
     // Pregunta + nombre
     /^que estudio (.+)$/,
@@ -1500,6 +1548,7 @@ for (const pattern of firstWordPatterns) {
     /^formacion (.+)$/,
     /^educacion de (.+)$/,
     /^educacion (.+)$/,
+    /^estudios de (.+)$/,
     /^habla de la educacion de (.+)$/,
     /^habla de la formacion de (.+)$/,
 
@@ -1511,16 +1560,20 @@ for (const pattern of firstWordPatterns) {
     /^(.+) tiene carrera$/,
     /^(.+) tiene ingenieria$/,
     /^(.+) tiene titulo$/,
-    /^(.+) tiene estudios$/,
+    /^(.+) su formacion$/,
+    /^(.+) su educacion$/,
+    /^(.+) su trayectoria$/,
+    /^(.+) sus estudios$/,
+    /^(.+) su carrera$/,
+    /^(.+) su titulo$/,
     /^(.+) formacion$/,
     /^(.+) educacion$/,
+    /^(.+) estudios$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | MÁSTER / MAESTRÍA / POSGRADO
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // MÁSTER / MAESTRÍA / POSGRADO
+    // ============================================================
 
     // Pregunta + nombre
     /^que master tiene (.+)$/,
@@ -1535,6 +1588,10 @@ for (const pattern of firstWordPatterns) {
     /^donde estudio la maestria (.+)$/,
     /^tiene master (.+)$/,
     /^tiene maestria (.+)$/,
+    /^tiene posgrado (.+)$/,
+    /^master de (.+)$/,
+    /^maestria de (.+)$/,
+    /^posgrado de (.+)$/,
 
     // Nombre + pregunta
     /^(.+) tiene master$/,
@@ -1548,13 +1605,15 @@ for (const pattern of firstWordPatterns) {
     /^(.+) hizo el posgrado$/,
     /^(.+) estudio un master$/,
     /^(.+) estudio una maestria$/,
+    /^(.+) su master$/,
+    /^(.+) su maestria$/,
+    /^(.+) su posgrado$/,
+    /^(.+) su estudio$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIONES
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // CERTIFICACIONES
+    // ============================================================
 
     // Pregunta + nombre
     /^que certificaciones tiene (.+)$/,
@@ -1580,19 +1639,24 @@ for (const pattern of firstWordPatterns) {
     /^(.+) tiene certificaciones$/,
     /^(.+) tiene certificacion$/,
     /^(.+) tiene certificados$/,
+    /^(.+) tiene certificado$/,
     /^(.+) obtuvo certificaciones$/,
     /^(.+) obtuvo certificacion$/,
     /^(.+) obtuvo certificados$/,
     /^(.+) ha obtenido certificaciones$/,
     /^(.+) ha realizado certificaciones$/,
     /^(.+) cuenta con certificaciones$/,
+    /^(.+) sus certificados$/,
+    /^(.+) sus certificaciones$/,
+    /^(.+) su certificado$/,
+    /^(.+) su certificacion$/,
+    /^(.+) certificados$/,
+    /^(.+) certificaciones$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | TECNOLOGÍAS / STACK
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // TECNOLOGÍAS / STACK
+    // ============================================================
 
     // Pregunta + nombre
     /^que tecnologias usa (.+)$/,
@@ -1609,6 +1673,11 @@ for (const pattern of firstWordPatterns) {
     /^con que tecnologias trabaja (.+)$/,
     /^con que tecnologia trabaja (.+)$/,
     /^con que herramientas trabaja (.+)$/,
+    /^tecnologias de (.+)$/,
+    /^tecnologia de (.+)$/,
+    /^stack de (.+)$/,
+    /^herramientas de (.+)$/,
+    /^lenguajes de (.+)$/,
 
     // Nombre + pregunta
     /^(.+) usa tecnologias$/,
@@ -1624,13 +1693,18 @@ for (const pattern of firstWordPatterns) {
     /^(.+) utiliza lenguajes$/,
     /^(.+) trabaja con tecnologias$/,
     /^(.+) trabaja con herramientas$/,
+    /^(.+) sus tecnologias$/,
+    /^(.+) sus tecnologia$/,
+    /^(.+) su stack$/,
+    /^(.+) sus herramientas$/,
+    /^(.+) sus lenguajes$/,
+    /^(.+) tecnologias$/,
+    /^(.+) tecnologia$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | FRONTEND
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // FRONTEND
+    // ============================================================
 
     // Pregunta + nombre
     /^que tecnologias frontend usa (.+)$/,
@@ -1657,11 +1731,9 @@ for (const pattern of firstWordPatterns) {
     /^(.+) usa frameworks frontend$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | BACKEND
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // BACKEND
+    // ============================================================
 
     // Pregunta + nombre
     /^que tecnologias backend usa (.+)$/,
@@ -1688,11 +1760,9 @@ for (const pattern of firstWordPatterns) {
     /^(.+) usa frameworks backend$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTOS / APLICACIONES
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // PROYECTOS / APLICACIONES
+    // ============================================================
 
     // Pregunta + nombre
     /^que proyectos tiene (.+)$/,
@@ -1726,13 +1796,16 @@ for (const pattern of firstWordPatterns) {
     /^(.+) ha realizado aplicaciones$/,
     /^(.+) tiene software$/,
     /^(.+) ha desarrollado software$/,
+    /^(.+) sus proyectos$/,
+    /^(.+) su proyecto$/,
+    /^(.+) sus aplicaciones$/,
+    /^(.+) sus programas$/,
+    /^(.+) proyectos$/,
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | CONTACTO
-    |--------------------------------------------------------------------------
-    */
+    // ============================================================
+    // CONTACTO
+    // ============================================================
 
     // Pregunta + nombre
     /^como contacto a (.+)$/,
@@ -1778,20 +1851,24 @@ for (const pattern of firstWordPatterns) {
 ];
 
 
+for (const pattern of questionPatterns) {
 
-    for (const pattern of questionPatterns) {
-        const match = normalized.match(pattern);
+    const match = normalized.match(pattern);
 
-        if (match) {
-            const name = match[1];
-            const index = normalized.indexOf(name);
+    if (match) {
 
-            return original.slice(index, index + name.length).trim();
-        }
+        const name = match[1];
+
+        const index = normalized.indexOf(name);
+
+        return original
+            .slice(index, index + name.length)
+            .trim();
     }
+}
 
-    return null;
-};
+return null;
+    };
 
 
 /*
