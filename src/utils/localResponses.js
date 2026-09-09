@@ -1304,6 +1304,8 @@ const firstWordPatterns = [
 /^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
 
     // Tecnologías
+    /^(.+?)\s+sus\s+tecnologias$/,
+/^(.+?)\s+sus\s+tecnologia$/,
     /^(.+?)\s+tecnologias$/,
 /^(.+?)\s+tecnologia$/,
     /^(.+?)\s+usa\s+tecnologias$/,
