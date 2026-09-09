@@ -1300,70 +1300,101 @@ const firstWordPatterns = [
 
 
     // ============================================================
-    // NOTAS / PROMEDIOS
-    // ============================================================
+// NOTAS / PROMEDIOS
+// ============================================================
 
-    /^(.+?)\s+tiene\s+nota$/,
-    /^(.+?)\s+tiene\s+promedio$/,
-    /^(.+?)\s+tiene\s+calificacion$/,
-    /^(.+?)\s+tiene\s+nota\s+del\s+master$/,
-    /^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
-    /^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
-    /^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
-    /^(.+?)\s+tiene\s+nota\s+del\s+posgrado$/,
-    /^(.+?)\s+tiene\s+promedio\s+del\s+posgrado$/,
-    /^(.+?)\s+saco\s+de\s+promedio$/,
-    /^(.+?)\s+obtuvo\s+de\s+promedio$/,
+// Notas / promedios generales
+/^(.+?)\s+tiene\s+nota$/,
+/^(.+?)\s+tiene\s+notas$/,
+/^(.+?)\s+tiene\s+promedio$/,
+/^(.+?)\s+tiene\s+promedios$/,
+/^(.+?)\s+tiene\s+calificacion$/,
+/^(.+?)\s+tiene\s+calificaciones$/,
 
+// Ingeniería / universidad
+/^(.+?)\s+tiene\s+nota\s+de\s+ingenieria$/,
+/^(.+?)\s+tiene\s+promedio\s+de\s+ingenieria$/,
+/^(.+?)\s+tiene\s+nota\s+de\s+la\s+universidad$/,
+/^(.+?)\s+tiene\s+promedio\s+de\s+la\s+universidad$/,
 
-    // ============================================================
-    // FORMACIÓN / ESTUDIOS
-    // ============================================================
+// Máster / Maestría / Posgrado
+/^(.+?)\s+tiene\s+nota\s+del\s+master$/,
+/^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
+/^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
+/^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
+/^(.+?)\s+tiene\s+nota\s+del\s+posgrado$/,
+/^(.+?)\s+tiene\s+nota\s+de\s+posgrado$/,
+/^(.+?)\s+tiene\s+promedio\s+del\s+posgrado$/,
+/^(.+?)\s+tiene\s+promedio\s+de\s+posgrado$/,
 
-    // Con su / sus
-    /^(.+?)\s+su\s+formacion$/,
-    /^(.+?)\s+su\s+educacion$/,
-    /^(.+?)\s+su\s+trayectoria$/,
-    /^(.+?)\s+sus\s+estudios$/,
-    /^(.+?)\s+su\s+carrera$/,
-    /^(.+?)\s+su\s+titulo$/,
-
-    // Formas directas
-    /^(.+?)\s+estudio$/,
-    /^(.+?)\s+estudia$/,
-    /^(.+?)\s+ha\s+estudiado$/,
-    /^(.+?)\s+tiene\s+estudios$/,
-    /^(.+?)\s+tiene\s+carrera$/,
-    /^(.+?)\s+tiene\s+ingenieria$/,
-    /^(.+?)\s+tiene\s+titulo$/,
-    /^(.+?)\s+formacion$/,
-    /^(.+?)\s+educacion$/,
-    /^(.+?)\s+estudios$/,
+// Formas coloquiales
+/^(.+?)\s+saco\s+de\s+promedio$/,
+/^(.+?)\s+saco\s+de\s+nota$/,
+/^(.+?)\s+obtuvo\s+de\s+promedio$/,
+/^(.+?)\s+obtuvo\s+un\s+promedio$/,
+/^(.+?)\s+obtuvo\s+una\s+calificacion$/,
 
 
-    // ============================================================
-    // MÁSTER / MAESTRÍA / POSGRADO
-    // ============================================================
+// ============================================================
+// FORMACIÓN / ESTUDIOS
+// ============================================================
 
-    /^(.+?)\s+tiene\s+master$/,
-    /^(.+?)\s+tiene\s+maestria$/,
-    /^(.+?)\s+tiene\s+posgrado$/,
-    /^(.+?)\s+estudio\s+master$/,
-    /^(.+?)\s+estudio\s+maestria$/,
-    /^(.+?)\s+estudio\s+posgrado$/,
-    /^(.+?)\s+hizo\s+el\s+master$/,
-    /^(.+?)\s+hizo\s+la\s+maestria$/,
-    /^(.+?)\s+hizo\s+el\s+posgrado$/,
-    /^(.+?)\s+estudio\s+un\s+master$/,
-    /^(.+?)\s+estudio\s+una\s+maestria$/,
+// Con su / sus
+/^(.+?)\s+su\s+formacion$/,
+/^(.+?)\s+su\s+formacion\s+academica$/,
+/^(.+?)\s+su\s+educacion$/,
+/^(.+?)\s+su\s+educacion\s+academica$/,
+/^(.+?)\s+su\s+trayectoria$/,
+/^(.+?)\s+su\s+trayectoria\s+academica$/,
+/^(.+?)\s+sus\s+estudios$/,
+/^(.+?)\s+su\s+carrera$/,
+/^(.+?)\s+su\s+titulo$/,
+/^(.+?)\s+su\s+titulo\s+universitario$/,
 
-    // Con su / sus
-    /^(.+?)\s+su\s+master$/,
-    /^(.+?)\s+su\s+maestria$/,
-    /^(.+?)\s+su\s+posgrado$/,
-    /^(.+?)\s+su\s+estudio$/,
+// Formas directas
+/^(.+?)\s+estudio$/,
+/^(.+?)\s+estudia$/,
+/^(.+?)\s+ha\s+estudiado$/,
+/^(.+?)\s+tiene\s+estudios$/,
+/^(.+?)\s+tiene\s+carrera$/,
+/^(.+?)\s+tiene\s+ingenieria$/,
+/^(.+?)\s+tiene\s+titulo$/,
+/^(.+?)\s+formacion$/,
+/^(.+?)\s+educacion$/,
+/^(.+?)\s+estudios$/,
+/^(.+?)\s+formacion\s+academica$/,
+/^(.+?)\s+educacion\s+academica$/,
+/^(.+?)\s+trayectoria\s+academica$/,
 
 
+// ============================================================
+// MÁSTER / MAESTRÍA / POSGRADO
+// ============================================================
+
+// Directas
+/^(.+?)\s+tiene\s+master$/,
+/^(.+?)\s+tiene\s+maestria$/,
+/^(.+?)\s+tiene\s+posgrado$/,
+/^(.+?)\s+estudio\s+master$/,
+/^(.+?)\s+estudio\s+maestria$/,
+/^(.+?)\s+estudio\s+posgrado$/,
+/^(.+?)\s+hizo\s+el\s+master$/,
+/^(.+?)\s+hizo\s+la\s+maestria$/,
+/^(.+?)\s+hizo\s+el\s+posgrado$/,
+/^(.+?)\s+estudio\s+un\s+master$/,
+/^(.+?)\s+estudio\s+una\s+maestria$/,
+/^(.+?)\s+realizo\s+un\s+master$/,
+/^(.+?)\s+realizo\s+una\s+maestria$/,
+/^(.+?)\s+realizo\s+el\s+posgrado$/,
+/^(.+?)\s+realizo\s+un\s+posgrado$/,
+
+// Con su / sus
+/^(.+?)\s+su\s+master$/,
+/^(.+?)\s+su\s+maestria$/,
+/^(.+?)\s+su\s+posgrado$/,
+/^(.+?)\s+su\s+estudio$/,
+
+    
 // ============================================================
 // CERTIFICACIONES
 // ============================================================
