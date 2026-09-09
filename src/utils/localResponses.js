@@ -1421,6 +1421,10 @@ const sashaResponses = [
     {
     keywords: [
         "hola sasha",
+        "hola",
+        "buenos dias",
+        "buenas tardes",
+        "buenas noches",
         
         "hey sasha",
         "oye sasha",
