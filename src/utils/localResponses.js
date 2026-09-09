@@ -1420,7 +1420,17 @@ const firstWordPatterns = [
     // ============================================================
     // PROYECTOS / APLICACIONES
     // ============================================================
-
+// Proyectos concretos
+/^(.+?)\s+ecommerce$/,
+/^(.+?)\s+e-commerce$/,
+/^(.+?)\s+tienda$/,
+/^(.+?)\s+tienda\s+online$/,
+/^(.+?)\s+tienda\s+virtual$/,
+/^(.+?)\s+quiz$/,
+/^(.+?)\s+clima$/,
+/^(.+?)\s+chatbot$/,
+/^(.+?)\s+chat\s+bot$/,
+/^(.+?)\s+ajedrez$/,
     /^(.+?)\s+proyectos$/,
     /^(.+?)\s+sus\s+proyectos$/,
     /^(.+?)\s+su\s+proyecto$/,
