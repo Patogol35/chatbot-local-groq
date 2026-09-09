@@ -1255,7 +1255,9 @@ const LOCAL_RESPONSES = [
             "redes de jorge",
             "redes sociales",
             "redes profesionales de jorge",
-
+             "tiene correo",
+"tiene email",
+"tiene correo electronico",
             "correo de jorge",
             "email de jorge",
             "correo electronico de jorge",
