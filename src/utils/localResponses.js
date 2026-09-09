@@ -1233,42 +1233,52 @@ if (generalQueries.includes(normalized)) {
     */
 
     const generalTopics = [
-        "ajedrez",
-        "ecommerce",
-        "e-commerce",
-        "quiz",
-        "clima",
-        "chatbot",
-        "portfolio",
-        "portafolio"
-    ];
+    "ajedrez",
+    "chess",
+    "ecommerce",
+    "e-commerce",
+    "quiz",
+    "clima",
+    "chatbot",
+    "chat bot",
+    "portfolio",
+    "portafolio",
+    "proyecto de ajedrez",
+    "proyecto ajedrez",
+    "proyecto ecommerce",
+    "proyecto quiz",
+    "proyecto clima",
+    "proyecto chatbot"
+];
 
-    const generalPrefixes = [
-        "habla de",
-        "hablame de",
-        "habla sobre",
-        "hablame sobre",
-        "dime sobre",
-        "dime del",
-        "informacion sobre",
-        "informacion de",
-        "datos de",
-        "que sabes de",
-        "que sabes sobre",
-        "quiero saber sobre"
-    ];
+const generalPrefixes = [
+    "habla de",
+    "habla del",
+    "hablame de",
+    "hablame del",
+    "habla sobre",
+    "hablame sobre",
+    "dime sobre",
+    "dime del",
+    "informacion sobre",
+    "informacion de",
+    "datos de",
+    "que sabes de",
+    "que sabes sobre",
+    "quiero saber sobre"
+];
 
-    for (const prefix of generalPrefixes) {
-        if (normalized.startsWith(prefix + " ")) {
+for (const prefix of generalPrefixes) {
+    if (normalized.startsWith(prefix + " ")) {
 
-            const topic = normalized
-                .slice(prefix.length)
-                .trim();
+        const topic = normalized
+            .slice(prefix.length)
+            .trim();
 
-            if (generalTopics.includes(topic)) {
-                return null;
-            }
+        if (generalTopics.includes(topic)) {
+            return null;
         }
+    }
 }
 
 /*
