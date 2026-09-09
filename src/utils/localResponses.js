@@ -1483,18 +1483,20 @@ const firstWordPatterns = [
     /^(.+?)\s+estudio\s+una\s+maestria$/,
 
     // Certificaciones
-    /^(.+?)\s+tiene\s+certificaciones$/,
-    /^(.+?)\s+tiene\s+certificacion$/,
-    /^(.+?)\s+tiene\s+certificados$/,
-    /^(.+?)\s+tiene\s+certificado$/,
-    /^(.+?)\s+obtuvo\s+certificaciones$/,
-    /^(.+?)\s+obtuvo\s+certificacion$/,
-    /^(.+?)\s+obtuvo\s+certificados$/,
-    /^(.+?)\s+obtuvo\s+certificado$/,
-    /^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
-    /^(.+?)\s+ha\s+realizado\s+certificaciones$/,
-    /^(.+?)\s+cuenta\s+con\s+certificaciones$/,
-    /^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
+/^(.+?)\s+tiene\s+certificaciones$/,
+/^(.+?)\s+tiene\s+certificacion$/,
+/^(.+?)\s+tiene\s+certificados$/,
+/^(.+?)\s+tiene\s+certificado$/,
+/^(.+?)\s+obtuvo\s+certificaciones$/,
+/^(.+?)\s+obtuvo\s+certificacion$/,
+/^(.+?)\s+obtuvo\s+certificados$/,
+/^(.+?)\s+obtuvo\s+certificado$/,
+/^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
+/^(.+?)\s+ha\s+realizado\s+certificaciones$/,
+/^(.+?)\s+cuenta\s+con\s+certificaciones$/,
+
+// Certificaciones con año
+/^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
 /^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
 
     // Tecnologías
