@@ -2244,6 +2244,16 @@ for (const pattern of topicPersonPatterns) {
     /^(.+) sus programas$/,
     /^(.+) proyectos$/,
 
+        // Proyecto + persona al final
+/^ajedrez\s+de\s+(.+)$/,
+/^proyecto\s+ajedrez\s+de\s+(.+)$/,
+/^chatbot\s+de\s+(.+)$/,
+/^chat\s+bot\s+de\s+(.+)$/,
+/^ecommerce\s+de\s+(.+)$/,
+/^e-commerce\s+de\s+(.+)$/,
+/^quiz\s+de\s+(.+)$/,
+/^clima\s+de\s+(.+)$/,
+
 
     // ============================================================
     // CONTACTO
