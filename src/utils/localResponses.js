@@ -1367,7 +1367,11 @@ const firstWordPatterns = [
     // ============================================================
     // CERTIFICACIONES
     // ============================================================
-
+// Certificaciones con año al final
+/^(.+?)\s+certificados\s+\d{4}$/,
+/^(.+?)\s+certificaciones\s+\d{4}$/,
+/^(.+?)\s+certificado\s+\d{4}$/,
+/^(.+?)\s+certificacion\s+\d{4}$/,
     /^(.+?)\s+certificados$/,
     /^(.+?)\s+certificaciones$/,
     /^(.+?)\s+certificado$/,
