@@ -1784,7 +1784,30 @@ const extractPersonName = (message) => {
     return null;
 };
 
+const extractPersonNameAtEnd = (message) => {
+    const original = message.trim();
+    const normalized = normalizeText(original);
 
+    for (const intention of endingIntentions) {
+        const suffix = ` ${intention}`;
+
+        if (normalized.endsWith(suffix)) {
+            const name = normalized
+                .slice(0, -suffix.length)
+                .trim();
+
+            const cleanedName = cleanName(name);
+
+            if (!cleanedName) continue;
+
+            return original
+                .slice(0, original.length - suffix.length)
+                .trim();
+        }
+    }
+
+    return null;
+};
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
@@ -1792,9 +1815,7 @@ const extractPersonName = (message) => {
 */
 export const getLocalResponse = (message) => {
 
-    const personName =
-        extractPersonName(message) ||
-        extractPersonNameAtStart(message);
+    const personName = extractPersonName(message);
 
     let normalizedMessage = normalizeText(message);
 
