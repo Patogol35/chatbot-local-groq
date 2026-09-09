@@ -1346,13 +1346,61 @@ const firstWordPatterns = [
 
 // Máster / Maestría / Posgrado
 /^(.+?)\s+tiene\s+nota\s+del\s+master$/,
+/^(.+?)\s+tiene\s+notas\s+del\s+master$/,
 /^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
+/^(.+?)\s+tiene\s+notas\s+de\s+la\s+maestria$/,
 /^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
+/^(.+?)\s+tiene\s+promedios\s+del\s+master$/,
 /^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
+/^(.+?)\s+tiene\s+promedios\s+de\s+la\s+maestria$/,
 /^(.+?)\s+tiene\s+nota\s+del\s+posgrado$/,
+/^(.+?)\s+tiene\s+notas\s+del\s+posgrado$/,
 /^(.+?)\s+tiene\s+nota\s+de\s+posgrado$/,
+/^(.+?)\s+tiene\s+notas\s+de\s+posgrado$/,
 /^(.+?)\s+tiene\s+promedio\s+del\s+posgrado$/,
+/^(.+?)\s+tiene\s+promedios\s+del\s+posgrado$/,
 /^(.+?)\s+tiene\s+promedio\s+de\s+posgrado$/,
+/^(.+?)\s+tiene\s+promedios\s+de\s+posgrado$/,
+
+// Nota / notas + Máster
+/^(.+?)\s+nota\s+master$/,
+/^(.+?)\s+notas\s+master$/,
+/^(.+?)\s+nota\s+del\s+master$/,
+/^(.+?)\s+notas\s+del\s+master$/,
+
+// Nota / notas + Maestría
+/^(.+?)\s+nota\s+maestria$/,
+/^(.+?)\s+notas\s+maestria$/,
+/^(.+?)\s+nota\s+de\s+la\s+maestria$/,
+/^(.+?)\s+notas\s+de\s+la\s+maestria$/,
+
+// Nota / notas + Posgrado
+/^(.+?)\s+nota\s+posgrado$/,
+/^(.+?)\s+notas\s+posgrado$/,
+/^(.+?)\s+nota\s+del\s+posgrado$/,
+/^(.+?)\s+notas\s+del\s+posgrado$/,
+/^(.+?)\s+nota\s+de\s+posgrado$/,
+/^(.+?)\s+notas\s+de\s+posgrado$/,
+
+// Promedio / promedios + Máster
+/^(.+?)\s+promedio\s+master$/,
+/^(.+?)\s+promedios\s+master$/,
+/^(.+?)\s+promedio\s+del\s+master$/,
+/^(.+?)\s+promedios\s+del\s+master$/,
+
+// Promedio / promedios + Maestría
+/^(.+?)\s+promedio\s+maestria$/,
+/^(.+?)\s+promedios\s+maestria$/,
+/^(.+?)\s+promedio\s+de\s+la\s+maestria$/,
+/^(.+?)\s+promedios\s+de\s+la\s+maestria$/,
+
+// Promedio / promedios + Posgrado
+/^(.+?)\s+promedio\s+posgrado$/,
+/^(.+?)\s+promedios\s+posgrado$/,
+/^(.+?)\s+promedio\s+del\s+posgrado$/,
+/^(.+?)\s+promedios\s+del\s+posgrado$/,
+/^(.+?)\s+promedio\s+de\s+posgrado$/,
+/^(.+?)\s+promedios\s+de\s+posgrado$/,
 
 // Formas coloquiales
 /^(.+?)\s+saco\s+de\s+promedio$/,
@@ -1420,6 +1468,7 @@ const firstWordPatterns = [
 /^(.+?)\s+su\s+maestria$/,
 /^(.+?)\s+su\s+posgrado$/,
 /^(.+?)\s+su\s+estudio$/,
+
 
     
 // ============================================================
