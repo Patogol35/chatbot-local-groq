@@ -1191,590 +1191,651 @@ const normalizeJorgeName = (message) => {
 };
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | EXTRAER PERSONA DE LA CONSULTA
 |--------------------------------------------------------------------------
 |
+| Detecta nombres tanto al inicio como al final de la consulta.
+|
 | Ejemplos:
 |
-| "luis nota master"      → luis
-| "carlos nota master"    → carlos
-| "jorge nota master"     → jorge
-| "que nota tiene luis"  → luis
+| "luis nota master"          → Luis
+| "carlos nota master"        → Carlos
+| "jorge nota master"         → Jorge
+| "que nota tiene luis"       → Luis
+| "Jorge su formación"        → Jorge
+| "Jorge sus proyectos"       → Jorge
+| "formación de Jorge"        → Jorge
+| "qué estudió Jorge"        → Jorge
+| "Jorge tiene proyectos"     → Jorge
 |
 |--------------------------------------------------------------------------
 */
+
 const extractPersonName = (message) => {
+
     const normalized = normalizeText(message);
     const original = message.trim();
 
     /*
-|--------------------------------------------------------------------------
-| CONSULTAS GENERALES SIN NOMBRE
-|--------------------------------------------------------------------------
-*/
+    |--------------------------------------------------------------------------
+    | CONSULTAS GENERALES SIN NOMBRE
+    |--------------------------------------------------------------------------
+    */
 
-const generalQueries = [
-    "nota del master",
-    "promedio del master",
-    "nota del posgrado",
-    "promedio del posgrado",
-];
+    const generalQueries = [
+        "nota del master",
+        "promedio del master",
+        "nota del posgrado",
+        "promedio del posgrado",
+        "quien es",
+        "formacion",
+        "educacion",
+        "estudios",
+        "proyectos",
+        "tecnologias",
+        "certificaciones",
+        "contacto"
+    ];
 
-if (generalQueries.includes(normalized)) {
-    return null;
-}
-
-/*
-|--------------------------------------------------------------------------
-| FORMATO: "nombre + pregunta"
-|--------------------------------------------------------------------------
-*/
-
-const firstWordPatterns = [
-
-    // Identidad
-    /^(.+?)\s+quien\s+es$/,
-    /^(.+?)\s+informacion$/,
-    /^(.+?)\s+datos$/,
-    /^(.+?)\s+perfil$/,
-
-    // Notas / promedios
-    /^(.+?)\s+tiene\s+nota$/,
-    /^(.+?)\s+tiene\s+promedio$/,
-    /^(.+?)\s+tiene\s+calificacion$/,
-    /^(.+?)\s+tiene\s+nota\s+del\s+master$/,
-    /^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
-    /^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
-    /^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
-    /^(.+?)\s+saco\s+de\s+promedio$/,
-    /^(.+?)\s+obtuvo\s+de\s+promedio$/,
-
-    
-// Formación con "su"
- /^(.+?)\s+su\s+formacion$/,
- /^(.+?)\s+su\s+educacion$/,
- /^(.+?)\s+su\s+trayectoria$/,
- /^(.+?)\s+sus\s+estudios$/,
- /^(.+?)\s+su\s+carrera$/,
- /^(.+?)\s+su\s+titulo$/,
-
-// Formación
-/^(.+?)\s+estudio$/,
-/^(.+?)\s+estudia$/,
-/^(.+?)\s+ha\s+estudiado$/,
-/^(.+?)\s+tiene\s+estudios$/,
-/^(.+?)\s+tiene\s+carrera$/,
-/^(.+?)\s+tiene\s+ingenieria$/,
-/^(.+?)\s+tiene\s+titulo$/,
-/^(.+?)\s+formacion$/,
-/^(.+?)\s+educacion$/,
-
-    // Máster / maestría / posgrado
-    /^(.+?)\s+tiene\s+master$/,
-    /^(.+?)\s+tiene\s+maestria$/,
-    /^(.+?)\s+tiene\s+posgrado$/,
-    /^(.+?)\s+estudio\s+master$/,
-    /^(.+?)\s+estudio\s+maestria$/,
-    /^(.+?)\s+estudio\s+posgrado$/,
-    /^(.+?)\s+hizo\s+el\s+master$/,
-    /^(.+?)\s+hizo\s+la\s+maestria$/,
-    /^(.+?)\s+hizo\s+el\s+posgrado$/,
-    /^(.+?)\s+estudio\s+un\s+master$/,
-    /^(.+?)\s+estudio\s+una\s+maestria$/,
-
-    // Certificaciones
-/^(.+?)\s+tiene\s+certificaciones$/,
-/^(.+?)\s+tiene\s+certificacion$/,
-/^(.+?)\s+tiene\s+certificados$/,
-/^(.+?)\s+tiene\s+certificado$/,
-/^(.+?)\s+obtuvo\s+certificaciones$/,
-/^(.+?)\s+obtuvo\s+certificacion$/,
-/^(.+?)\s+obtuvo\s+certificados$/,
-/^(.+?)\s+obtuvo\s+certificado$/,
-/^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
-/^(.+?)\s+ha\s+realizado\s+certificaciones$/,
-/^(.+?)\s+cuenta\s+con\s+certificaciones$/,
-
-// Certificaciones con año
-/^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
-/^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
-
-    // Tecnologías
-    /^(.+?)\s+usa\s+tecnologias$/,
-    /^(.+?)\s+usa\s+tecnologia$/,
-    /^(.+?)\s+utiliza\s+tecnologias$/,
-    /^(.+?)\s+utiliza\s+tecnologia$/,
-    /^(.+?)\s+conoce\s+tecnologias$/,
-    /^(.+?)\s+maneja\s+tecnologias$/,
-    /^(.+?)\s+domina\s+tecnologias$/,
-    /^(.+?)\s+usa\s+stack$/,
-    /^(.+?)\s+utiliza\s+stack$/,
-    /^(.+?)\s+usa\s+lenguajes$/,
-    /^(.+?)\s+utiliza\s+lenguajes$/,
-    /^(.+?)\s+trabaja\s+con\s+tecnologias$/,
-    /^(.+?)\s+trabaja\s+con\s+herramientas$/,
-
-    // Frontend
-    /^(.+?)\s+usa\s+frontend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+frontend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+de\s+frontend$/,
-    /^(.+?)\s+usa\s+herramientas\s+frontend$/,
-    /^(.+?)\s+usa\s+herramientas\s+de\s+frontend$/,
-    /^(.+?)\s+usa\s+framework\s+frontend$/,
-    /^(.+?)\s+usa\s+frameworks\s+frontend$/,
-
-    // Backend
-    /^(.+?)\s+usa\s+backend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+backend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+de\s+backend$/,
-    /^(.+?)\s+usa\s+herramientas\s+backend$/,
-    /^(.+?)\s+usa\s+herramientas\s+de\s+backend$/,
-    /^(.+?)\s+usa\s+framework\s+backend$/,
-    /^(.+?)\s+usa\s+frameworks\s+backend$/,
-
-    // Proyectos
-    /^(.+?)\s+tiene\s+proyectos$/,
-    /^(.+?)\s+tiene\s+aplicaciones$/,
-    /^(.+?)\s+tiene\s+programas$/,
-    /^(.+?)\s+ha\s+realizado\s+proyectos$/,
-    /^(.+?)\s+ha\s+desarrollado\s+proyectos$/,
-    /^(.+?)\s+desarrollo\s+proyectos$/,
-    /^(.+?)\s+realizo\s+proyectos$/,
-    /^(.+?)\s+desarrollo\s+aplicaciones$/,
-    /^(.+?)\s+ha\s+desarrollado\s+aplicaciones$/,
-    /^(.+?)\s+ha\s+realizado\s+aplicaciones$/,
-    /^(.+?)\s+tiene\s+software$/,
-    /^(.+?)\s+ha\s+desarrollado\s+software$/,
-
-    // Contacto
-    /^(.+?)\s+tiene\s+correo$/,
-    /^(.+?)\s+tiene\s+email$/,
-    /^(.+?)\s+tiene\s+correo\s+electronico$/,
-    /^(.+?)\s+tiene\s+redes\s+sociales$/,
-    /^(.+?)\s+tiene\s+contacto$/,
-    /^(.+?)\s+tiene\s+informacion\s+de\s+contacto$/,
-    /^(.+?)\s+como\s+contacto$/,
-    /^(.+?)\s+como\s+contactar$/,
-    /^(.+?)\s+como\s+comunicarme$/,
-    /^(.+?)\s+como\s+escribirle$/,
-    /^(.+?)\s+como\s+escribir$/,
-];
-
-
-for (const pattern of firstWordPatterns) {
-
-    const match = normalized.match(pattern);
-
-    if (match) {
-
-        const name = match[1].trim();
-
-        const index = normalized.indexOf(name);
-
-        return original
-            .slice(index, index + name.length)
-            .trim();
+    if (generalQueries.includes(normalized)) {
+        return null;
     }
-}
 
     /*
     |--------------------------------------------------------------------------
-    | FORMATO: "pregunta + nombre"
+    | LIMPIAR NOMBRE
     |--------------------------------------------------------------------------
     */
 
-    const questionPatterns = [
+    const cleanName = (name) => {
+
+        return name
+            .trim()
+            .replace(/\s+/g, " ")
+            .replace(/^(de|del|la|el)\s+/i, "")
+            .replace(/\s+(de|del|la|el|su|sus)$/i, "")
+            .trim();
+    };
 
     /*
     |--------------------------------------------------------------------------
-    | IDENTIDAD / INFORMACIÓN GENERAL
+    | INTENCIONES AL FINAL
+    |
+    | Ejemplos:
+    | "Jorge formación"
+    | "Jorge su formación"
+    | "Jorge sus proyectos"
+    | "Jorge tiene master"
     |--------------------------------------------------------------------------
     */
 
-    // Pregunta + nombre
-    /^quien es (.+)$/,
-    /^habla de (.+)$/,
-    /^hablame de (.+)$/,
-    /^dime sobre (.+)$/,
-    /^dime quien es (.+)$/,
-    /^informacion sobre (.+)$/,
-    /^informacion de (.+)$/,
-    /^datos de (.+)$/,
-    /^que sabes de (.+)$/,
-    /^que sabes sobre (.+)$/,
-    /^que informacion tienes de (.+)$/,
-    /^que datos tienes de (.+)$/,
-    /^conoces a (.+)$/,
-    /^puedes hablarme de (.+)$/,
-    /^puedes hablar de (.+)$/,
-    /^quiero saber sobre (.+)$/,
+    const endingIntentions = [
 
-    // Nombre + pregunta
-    /^(.+) quien es$/,
-    /^(.+) informacion$/,
-    /^(.+) datos$/,
-    /^(.+) perfil$/,
+        // Identidad
+        "quien es",
+        "informacion",
+        "datos",
+        "perfil",
 
+        // Formación
+        "su formacion",
+        "su educacion",
+        "su trayectoria",
+        "sus estudios",
+        "su carrera",
+        "su titulo",
+
+        "tiene estudios",
+        "tiene carrera",
+        "tiene ingenieria",
+        "tiene titulo",
+
+        "ha estudiado",
+        "estudio",
+        "estudia",
+        "formacion",
+        "educacion",
+        "estudios",
+
+        // Máster
+        "tiene nota del master",
+        "tiene nota de la maestria",
+        "tiene promedio del master",
+        "tiene promedio de la maestria",
+
+        "tiene master",
+        "tiene maestria",
+        "tiene posgrado",
+
+        "estudio un master",
+        "estudio una maestria",
+
+        "estudio master",
+        "estudio maestria",
+        "estudio posgrado",
+
+        "hizo el master",
+        "hizo la maestria",
+        "hizo el posgrado",
+
+        // Notas
+        "tiene nota",
+        "tiene promedio",
+        "tiene calificacion",
+        "saco de promedio",
+        "obtuvo de promedio",
+
+        // Certificaciones
+        "tiene certificaciones",
+        "tiene certificacion",
+        "tiene certificados",
+        "tiene certificado",
+
+        "obtuvo certificaciones",
+        "obtuvo certificacion",
+        "obtuvo certificados",
+        "obtuvo certificado",
+
+        "ha obtenido certificaciones",
+        "ha realizado certificaciones",
+
+        "cuenta con certificaciones",
+
+        "sus certificaciones",
+        "sus certificados",
+
+        // Tecnologías
+        "usa tecnologias",
+        "usa tecnologia",
+        "utiliza tecnologias",
+        "utiliza tecnologia",
+
+        "conoce tecnologias",
+        "maneja tecnologias",
+        "domina tecnologias",
+
+        "usa stack",
+        "utiliza stack",
+
+        "usa lenguajes",
+        "utiliza lenguajes",
+
+        "trabaja con tecnologias",
+        "trabaja con herramientas",
+
+        "sus tecnologias",
+        "sus herramientas",
+        "su stack",
+        "sus lenguajes",
+
+        // Frontend
+        "usa frontend",
+        "usa tecnologias frontend",
+        "usa tecnologias de frontend",
+        "usa herramientas frontend",
+        "usa herramientas de frontend",
+        "usa framework frontend",
+        "usa frameworks frontend",
+
+        // Backend
+        "usa backend",
+        "usa tecnologias backend",
+        "usa tecnologias de backend",
+        "usa herramientas backend",
+        "usa herramientas de backend",
+        "usa framework backend",
+        "usa frameworks backend",
+
+        // Proyectos
+        "tiene proyectos",
+        "tiene aplicaciones",
+        "tiene programas",
+
+        "ha realizado proyectos",
+        "ha desarrollado proyectos",
+        "desarrollo proyectos",
+        "realizo proyectos",
+
+        "desarrollo aplicaciones",
+        "ha desarrollado aplicaciones",
+        "ha realizado aplicaciones",
+
+        "tiene software",
+        "ha desarrollado software",
+
+        "sus proyectos",
+        "sus aplicaciones",
+        "sus programas",
+        "su software",
+
+        // Contacto
+        "tiene correo",
+        "tiene email",
+        "tiene correo electronico",
+        "tiene redes sociales",
+        "tiene contacto",
+        "tiene informacion de contacto",
+
+        "como contacto",
+        "como contactar",
+        "como comunicarme",
+        "como escribirle",
+        "como escribir",
+
+        "su correo",
+        "su email",
+        "su correo electronico",
+        "sus redes sociales"
+    ];
 
     /*
     |--------------------------------------------------------------------------
-    | NOTAS / PROMEDIOS
+    | IMPORTANTE
+    |
+    | Las frases más largas se revisan primero.
+    |
+    | Así:
+    |
+    | "Jorge su formación"
+    |
+    | detecta "su formación" antes que solamente "formación".
     |--------------------------------------------------------------------------
     */
 
-    // Pregunta + nombre
-    /^que nota tiene (.+)$/,
-    /^cual es la nota de (.+)$/,
-    /^que promedio tiene (.+)$/,
-    /^cual es el promedio de (.+)$/,
-    /^que nota obtuvo (.+)$/,
-    /^que promedio obtuvo (.+)$/,
-    /^que calificacion tiene (.+)$/,
-    /^que calificacion obtuvo (.+)$/,
-    /^cuanto saco (.+)$/,
-    /^cuanto obtuvo (.+)$/,
-    /^cuanto obtuvo de promedio (.+)$/,
-    /^cuanto saco de promedio (.+)$/,
-    /^nota del master de (.+)$/,
-    /^nota de la maestria de (.+)$/,
-    /^promedio del master de (.+)$/,
-    /^promedio de la maestria de (.+)$/,
-    /^nota del posgrado de (.+)$/,
-    /^promedio del posgrado de (.+)$/,
-    /^promedio de ingenieria de (.+)$/,
-    /^nota de ingenieria de (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) tiene nota$/,
-    /^(.+) tiene promedio$/,
-    /^(.+) tiene calificacion$/,
-    /^(.+) tiene nota del master$/,
-    /^(.+) tiene nota de la maestria$/,
-    /^(.+) tiene promedio del master$/,
-    /^(.+) tiene promedio de la maestria$/,
-    /^(.+) tiene nota del posgrado$/,
-    /^(.+) tiene promedio del posgrado$/,
-    /^(.+) saco de promedio$/,
-    /^(.+) obtuvo de promedio$/,
-
+    endingIntentions.sort(
+        (a, b) => b.length - a.length
+    );
 
     /*
     |--------------------------------------------------------------------------
-    | FORMACIÓN / ESTUDIOS
+    | BUSCAR: "NOMBRE + INTENCIÓN"
     |--------------------------------------------------------------------------
     */
 
-    // Pregunta + nombre
-    /^que estudio (.+)$/,
-    /^que estudia (.+)$/,
-    /^que ha estudiado (.+)$/,
-    /^donde estudio (.+)$/,
-    /^donde se graduo (.+)$/,
-    /^donde se formo (.+)$/,
-    /^que carrera estudio (.+)$/,
-    /^que carrera tiene (.+)$/,
-    /^que ingenieria estudio (.+)$/,
-    /^que titulo tiene (.+)$/,
-    /^que estudios tiene (.+)$/,
-    /^cuales son sus estudios (.+)$/,
-    /^formacion de (.+)$/,
-    /^formacion (.+)$/,
-    /^educacion de (.+)$/,
-    /^educacion (.+)$/,
-    /^habla de la educacion de (.+)$/,
-    /^habla de la formacion de (.+)$/,
+    for (const intention of endingIntentions) {
 
-    // Nombre + pregunta
-    /^(.+) estudio$/,
-    /^(.+) estudia$/,
-    /^(.+) ha estudiado$/,
-    /^(.+) tiene estudios$/,
-    /^(.+) tiene carrera$/,
-    /^(.+) tiene ingenieria$/,
-    /^(.+) tiene titulo$/,
-    /^(.+) tiene estudios$/,
-    /^(.+) formacion$/,
-    /^(.+) educacion$/,
+        const suffix = ` ${intention}`;
 
+        if (normalized.endsWith(suffix)) {
 
-    /*
-    |--------------------------------------------------------------------------
-    | MÁSTER / MAESTRÍA / POSGRADO
-    |--------------------------------------------------------------------------
-    */
+            const name = normalized
+                .slice(0, -suffix.length)
+                .trim();
 
-    // Pregunta + nombre
-    /^que master tiene (.+)$/,
-    /^que maestria tiene (.+)$/,
-    /^que posgrado tiene (.+)$/,
-    /^que master estudio (.+)$/,
-    /^que maestria estudio (.+)$/,
-    /^que posgrado estudio (.+)$/,
-    /^donde hizo el master (.+)$/,
-    /^donde hizo la maestria (.+)$/,
-    /^donde estudio el master (.+)$/,
-    /^donde estudio la maestria (.+)$/,
-    /^tiene master (.+)$/,
-    /^tiene maestria (.+)$/,
+            const cleanedName = cleanName(name);
 
-    // Nombre + pregunta
-    /^(.+) tiene master$/,
-    /^(.+) tiene maestria$/,
-    /^(.+) tiene posgrado$/,
-    /^(.+) estudio master$/,
-    /^(.+) estudio maestria$/,
-    /^(.+) estudio posgrado$/,
-    /^(.+) hizo el master$/,
-    /^(.+) hizo la maestria$/,
-    /^(.+) hizo el posgrado$/,
-    /^(.+) estudio un master$/,
-    /^(.+) estudio una maestria$/,
+            if (!cleanedName) {
+                continue;
+            }
 
+            /*
+            | Recuperamos el nombre original para conservar mayúsculas
+            | y caracteres como á, é, í, ó, ú, ñ.
+            */
 
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIONES
-    |--------------------------------------------------------------------------
-    */
-
-    // Pregunta + nombre
-    /^que certificaciones tiene (.+)$/,
-    /^que certificacion tiene (.+)$/,
-    /^que certificaciones obtuvo (.+)$/,
-    /^que certificacion obtuvo (.+)$/,
-    /^que certificados tiene (.+)$/,
-    /^que certificado tiene (.+)$/,
-    /^que certificados obtuvo (.+)$/,
-    /^que certificado obtuvo (.+)$/,
-    /^que certificaciones ha obtenido (.+)$/,
-    /^que certificaciones ha realizado (.+)$/,
-    /^cuales son sus certificaciones (.+)$/,
-    /^cuales son los certificados de (.+)$/,
-    /^certificados de (.+)$/,
-    /^certificaciones de (.+)$/,
-    /^certificado de (.+) del \d{4}$/,
-    /^certificacion de (.+) del \d{4}$/,
-    /^certificado de (.+)$/,
-    /^certificacion de (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) tiene certificaciones$/,
-    /^(.+) tiene certificacion$/,
-    /^(.+) tiene certificados$/,
-    /^(.+) obtuvo certificaciones$/,
-    /^(.+) obtuvo certificacion$/,
-    /^(.+) obtuvo certificados$/,
-    /^(.+) ha obtenido certificaciones$/,
-    /^(.+) ha realizado certificaciones$/,
-    /^(.+) cuenta con certificaciones$/,
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | TECNOLOGÍAS / STACK
-    |--------------------------------------------------------------------------
-    */
-
-    // Pregunta + nombre
-    /^que tecnologias usa (.+)$/,
-    /^que tecnologia usa (.+)$/,
-    /^que tecnologias utiliza (.+)$/,
-    /^que tecnologia utiliza (.+)$/,
-    /^que tecnologias conoce (.+)$/,
-    /^que tecnologias maneja (.+)$/,
-    /^que tecnologias domina (.+)$/,
-    /^que stack usa (.+)$/,
-    /^que stack utiliza (.+)$/,
-    /^que lenguajes usa (.+)$/,
-    /^que lenguajes utiliza (.+)$/,
-    /^con que tecnologias trabaja (.+)$/,
-    /^con que tecnologia trabaja (.+)$/,
-    /^con que herramientas trabaja (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) usa tecnologias$/,
-    /^(.+) usa tecnologia$/,
-    /^(.+) utiliza tecnologias$/,
-    /^(.+) utiliza tecnologia$/,
-    /^(.+) conoce tecnologias$/,
-    /^(.+) maneja tecnologias$/,
-    /^(.+) domina tecnologias$/,
-    /^(.+) usa stack$/,
-    /^(.+) utiliza stack$/,
-    /^(.+) usa lenguajes$/,
-    /^(.+) utiliza lenguajes$/,
-    /^(.+) trabaja con tecnologias$/,
-    /^(.+) trabaja con herramientas$/,
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | FRONTEND
-    |--------------------------------------------------------------------------
-    */
-
-    // Pregunta + nombre
-    /^que tecnologias frontend usa (.+)$/,
-    /^que tecnologias front usa (.+)$/,
-    /^que tecnologias de frontend usa (.+)$/,
-    /^que tecnologias de front usa (.+)$/,
-    /^que herramientas frontend usa (.+)$/,
-    /^que herramientas front usa (.+)$/,
-    /^que herramientas de frontend usa (.+)$/,
-    /^que herramientas de front usa (.+)$/,
-    /^que framework frontend usa (.+)$/,
-    /^que frameworks frontend usa (.+)$/,
-    /^que usa para frontend (.+)$/,
-    /^que usa para el frontend (.+)$/,
-    /^que usa para desarrollar frontend (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) usa frontend$/,
-    /^(.+) usa tecnologias frontend$/,
-    /^(.+) usa tecnologias de frontend$/,
-    /^(.+) usa herramientas frontend$/,
-    /^(.+) usa herramientas de frontend$/,
-    /^(.+) usa framework frontend$/,
-    /^(.+) usa frameworks frontend$/,
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | BACKEND
-    |--------------------------------------------------------------------------
-    */
-
-    // Pregunta + nombre
-    /^que tecnologias backend usa (.+)$/,
-    /^que tecnologias back usa (.+)$/,
-    /^que tecnologias de backend usa (.+)$/,
-    /^que tecnologias de back usa (.+)$/,
-    /^que herramientas backend usa (.+)$/,
-    /^que herramientas back usa (.+)$/,
-    /^que herramientas de backend usa (.+)$/,
-    /^que herramientas de back usa (.+)$/,
-    /^que framework backend usa (.+)$/,
-    /^que frameworks backend usa (.+)$/,
-    /^que usa para backend (.+)$/,
-    /^que usa para el backend (.+)$/,
-    /^que usa para desarrollar backend (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) usa backend$/,
-    /^(.+) usa tecnologias backend$/,
-    /^(.+) usa tecnologias de backend$/,
-    /^(.+) usa herramientas backend$/,
-    /^(.+) usa herramientas de backend$/,
-    /^(.+) usa framework backend$/,
-    /^(.+) usa frameworks backend$/,
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTOS / APLICACIONES
-    |--------------------------------------------------------------------------
-    */
-
-    // Pregunta + nombre
-    /^que proyectos tiene (.+)$/,
-    /^que proyectos ha realizado (.+)$/,
-    /^que proyectos ha desarrollado (.+)$/,
-    /^que proyectos desarrollo (.+)$/,
-    /^que proyectos realizo (.+)$/,
-    /^que ha desarrollado (.+)$/,
-    /^que ha realizado (.+)$/,
-    /^que aplicaciones tiene (.+)$/,
-    /^que aplicaciones ha desarrollado (.+)$/,
-    /^que aplicaciones ha realizado (.+)$/,
-    /^que programas ha desarrollado (.+)$/,
-    /^que software ha desarrollado (.+)$/,
-    /^cuales son sus proyectos (.+)$/,
-    /^cuales son los proyectos de (.+)$/,
-    /^proyectos de (.+)$/,
-    /^aplicaciones de (.+)$/,
-    /^software de (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) tiene proyectos$/,
-    /^(.+) tiene aplicaciones$/,
-    /^(.+) tiene programas$/,
-    /^(.+) ha realizado proyectos$/,
-    /^(.+) ha desarrollado proyectos$/,
-    /^(.+) desarrollo proyectos$/,
-    /^(.+) realizo proyectos$/,
-    /^(.+) desarrollo aplicaciones$/,
-    /^(.+) ha desarrollado aplicaciones$/,
-    /^(.+) ha realizado aplicaciones$/,
-    /^(.+) tiene software$/,
-    /^(.+) ha desarrollado software$/,
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | CONTACTO
-    |--------------------------------------------------------------------------
-    */
-
-    // Pregunta + nombre
-    /^como contacto a (.+)$/,
-    /^como contactar a (.+)$/,
-    /^como puedo contactar a (.+)$/,
-    /^como puedo comunicarme con (.+)$/,
-    /^como me comunico con (.+)$/,
-    /^como comunicarme con (.+)$/,
-    /^donde puedo contactar a (.+)$/,
-    /^donde contacto a (.+)$/,
-    /^como contactar con (.+)$/,
-    /^como puedo contactar con (.+)$/,
-    /^tiene correo (.+)$/,
-    /^cual es el correo de (.+)$/,
-    /^cual es su correo (.+)$/,
-    /^cual es el email de (.+)$/,
-    /^cual es su email (.+)$/,
-    /^cual es el correo electronico de (.+)$/,
-    /^cual es su correo electronico (.+)$/,
-    /^tiene email (.+)$/,
-    /^tiene correo electronico (.+)$/,
-    /^donde puedo escribirle a (.+)$/,
-    /^donde puedo escribir a (.+)$/,
-    /^como escribirle a (.+)$/,
-    /^como escribir a (.+)$/,
-    /^redes sociales de (.+)$/,
-    /^cuales son sus redes sociales (.+)$/,
-    /^como encontrar a (.+)$/,
-    /^donde encontrar a (.+)$/,
-
-    // Nombre + pregunta
-    /^(.+) tiene correo$/,
-    /^(.+) tiene email$/,
-    /^(.+) tiene correo electronico$/,
-    /^(.+) tiene redes sociales$/,
-    /^(.+) tiene contacto$/,
-    /^(.+) tiene informacion de contacto$/,
-    /^(.+) como contacto$/,
-    /^(.+) como contactar$/,
-    /^(.+) como comunicarme$/,
-    /^(.+) como escribirle$/,
-    /^(.+) como escribir$/,
-];
-
-
-
-    for (const pattern of questionPatterns) {
-        const match = normalized.match(pattern);
-
-        if (match) {
-            const name = match[1];
             const index = normalized.indexOf(name);
 
-            return original.slice(index, index + name.length).trim();
+            return original
+                .slice(index, index + name.length)
+                .trim();
         }
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | INTENCIONES AL INICIO
+    |
+    | Ejemplos:
+    |
+    | "quien es Jorge"
+    | "que nota tiene Jorge"
+    | "formación de Jorge"
+    | "que estudio Jorge"
+    | "proyectos de Jorge"
+    |--------------------------------------------------------------------------
+    */
+
+    const startingIntentions = [
+
+        // Identidad
+        "quien es",
+        "habla de",
+        "hablame de",
+        "dime sobre",
+        "dime quien es",
+        "informacion sobre",
+        "informacion de",
+        "datos de",
+        "que sabes de",
+        "que sabes sobre",
+        "que informacion tienes de",
+        "que datos tienes de",
+        "conoces a",
+        "puedes hablarme de",
+        "puedes hablar de",
+        "quiero saber sobre",
+        "quiero conocer a",
+        "cuentame de",
+        "cuentame sobre",
+        "cuentame quien es",
+
+        // Notas
+        "cuanto obtuvo de promedio",
+        "cuanto saco de promedio",
+
+        "que promedio tiene",
+        "cual es el promedio de",
+        "que promedio obtuvo",
+
+        "que nota tiene",
+        "cual es la nota de",
+        "que nota obtuvo",
+
+        "que calificacion tiene",
+        "que calificacion obtuvo",
+
+        "cuanto saco",
+        "cuanto obtuvo",
+
+        "nota del master de",
+        "nota de la maestria de",
+        "promedio del master de",
+        "promedio de la maestria de",
+        "nota del posgrado de",
+        "promedio del posgrado de",
+
+        "promedio de ingenieria de",
+        "nota de ingenieria de",
+
+        // Formación
+        "habla de la educacion de",
+        "habla de la formacion de",
+
+        "que carrera estudio",
+        "que carrera tiene",
+        "que ingenieria estudio",
+        "que titulo tiene",
+        "que estudios tiene",
+
+        "que ha estudiado",
+        "que estudio",
+        "que estudia",
+
+        "donde estudio",
+        "donde se graduo",
+        "donde se formo",
+
+        "cuales son sus estudios",
+
+        "formacion de",
+        "educacion de",
+        "estudios de",
+
+        "formacion",
+        "educacion",
+
+        // Máster
+        "donde estudio el master",
+        "donde estudio la maestria",
+
+        "donde hizo el master",
+        "donde hizo la maestria",
+
+        "que master tiene",
+        "que maestria tiene",
+        "que posgrado tiene",
+
+        "que master estudio",
+        "que maestria estudio",
+        "que posgrado estudio",
+
+        "tiene master",
+        "tiene maestria",
+
+        // Certificaciones
+        "que certificaciones ha obtenido",
+        "que certificaciones ha realizado",
+
+        "cuales son sus certificaciones",
+
+        "que certificaciones tiene",
+        "que certificacion tiene",
+        "que certificaciones obtuvo",
+        "que certificacion obtuvo",
+
+        "que certificados tiene",
+        "que certificado tiene",
+        "que certificados obtuvo",
+        "que certificado obtuvo",
+
+        "cuales son los certificados de",
+
+        "certificados de",
+        "certificaciones de",
+        "certificado de",
+        "certificacion de",
+
+        // Tecnologías
+        "que tecnologias utiliza",
+        "que tecnologia utiliza",
+        "que tecnologias usa",
+        "que tecnologia usa",
+
+        "que tecnologias conoce",
+        "que tecnologias maneja",
+        "que tecnologias domina",
+
+        "que stack utiliza",
+        "que stack usa",
+
+        "que lenguajes utiliza",
+        "que lenguajes usa",
+
+        "con que tecnologias trabaja",
+        "con que tecnologia trabaja",
+        "con que herramientas trabaja",
+
+        // Frontend
+        "que tecnologias de frontend usa",
+        "que tecnologias de front usa",
+        "que tecnologias frontend usa",
+        "que tecnologias front usa",
+
+        "que herramientas de frontend usa",
+        "que herramientas de front usa",
+        "que herramientas frontend usa",
+        "que herramientas front usa",
+
+        "que frameworks frontend usa",
+        "que framework frontend usa",
+
+        "que usa para desarrollar frontend",
+        "que usa para el frontend",
+        "que usa para frontend",
+
+        // Backend
+        "que tecnologias de backend usa",
+        "que tecnologias de back usa",
+        "que tecnologias backend usa",
+        "que tecnologias back usa",
+
+        "que herramientas de backend usa",
+        "que herramientas de back usa",
+        "que herramientas backend usa",
+        "que herramientas back usa",
+
+        "que frameworks backend usa",
+        "que framework backend usa",
+
+        "que usa para desarrollar backend",
+        "que usa para el backend",
+        "que usa para backend",
+
+        // Proyectos
+        "que proyectos ha desarrollado",
+        "que proyectos ha realizado",
+        "que proyectos desarrollo",
+        "que proyectos realizo",
+        "que proyectos tiene",
+
+        "que aplicaciones ha desarrollado",
+        "que aplicaciones ha realizado",
+        "que aplicaciones tiene",
+
+        "que programas ha desarrollado",
+        "que software ha desarrollado",
+
+        "cuales son sus proyectos",
+        "cuales son los proyectos de",
+
+        "que ha desarrollado",
+        "que ha realizado",
+
+        "proyectos de",
+        "aplicaciones de",
+        "software de",
+
+        // Contacto
+        "como puedo comunicarme con",
+        "como me comunico con",
+        "como comunicarme con",
+
+        "como puedo contactar a",
+        "como contactar a",
+        "como contacto a",
+
+        "donde puedo contactar a",
+        "donde contacto a",
+
+        "como puedo contactar con",
+        "como contactar con",
+
+        "donde puedo escribirle a",
+        "donde puedo escribir a",
+
+        "como escribirle a",
+        "como escribir a",
+
+        "cual es el correo electronico de",
+        "cual es el correo de",
+        "cual es su correo",
+
+        "cual es el email de",
+        "cual es su email",
+
+        "tiene correo electronico",
+        "tiene correo",
+        "tiene email",
+
+        "redes sociales de",
+        "cuales son sus redes sociales",
+
+        "como encontrar a",
+        "donde encontrar a"
+    ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | Las frases largas primero
+    |--------------------------------------------------------------------------
+    */
+
+    startingIntentions.sort(
+        (a, b) => b.length - a.length
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | BUSCAR: "INTENCIÓN + NOMBRE"
+    |--------------------------------------------------------------------------
+    */
+
+    for (const intention of startingIntentions) {
+
+        const prefix = `${intention} `;
+
+        if (normalized.startsWith(prefix)) {
+
+            const name = normalized
+                .slice(prefix.length)
+                .trim();
+
+            const cleanedName = cleanName(name);
+
+            if (!cleanedName) {
+                continue;
+            }
+
+            /*
+            | Recuperar nombre original.
+            */
+
+            const index = normalized.indexOf(name);
+
+            return original
+                .slice(index, index + name.length)
+                .trim();
+        }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | NO SE ENCONTRÓ PERSONA
+    |--------------------------------------------------------------------------
+    */
+
     return null;
 };
+
+
+/*
+|--------------------------------------------------------------------------
+| BUSCAR RESPUESTA LOCAL
+|--------------------------------------------------------------------------
+*/
+
+export const getLocalResponse = (message) => {
+
+    const personName = extractPersonName(message);
+
+    /*
+    |--------------------------------------------------------------------------
+    | SI HAY UNA PERSONA
+    |--------------------------------------------------------------------------
+    */
+
+    let normalizedMessage = normalizeText(message);
+
+    if (personName) {
+
+        if (!isAboutJorge(personName)) {
+
+            const responses = [
+                `No tengo información sobre ${personName}.`,
+                `No tengo datos registrados sobre ${personName}.`,
+                `No dispongo de información sobre ${personName}.`,
+                `No tengo información disponible sobre ${personName}.`
+            ];
+
+            const randomIndex = Math.floor(
+                Math.random() * responses.length
+            );
+
+            return responses[randomIndex];
+        }
+
+        const correctedName = normalizeJorgeName(personName);
+
+        normalizedMessage = normalizedMessage.replace(
+            normalizeText(personName),
+            correctedName
+        );
+    }
+
 
 
 /*
