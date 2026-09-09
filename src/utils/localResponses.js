@@ -1433,35 +1433,145 @@ if (generalQueries.includes(normalized)) {
     return null;
 }
 
-    /*
-    |--------------------------------------------------------------------------
-    | FORMATO: "nombre + pregunta"
-    |--------------------------------------------------------------------------
-    */
+/*
+|--------------------------------------------------------------------------
+| FORMATO: "nombre + pregunta"
+|--------------------------------------------------------------------------
+*/
 
-    const firstWordPatterns = [
-        /^(.+?)\s+nota\s+master$/,
-        /^(.+?)\s+promedio\s+master$/,
-        /^(.+?)\s+nota$/,
-        /^(.+?)\s+promedio$/,
-        /^(.+?)\s+certificaciones$/,
-        /^(.+?)\s+certificados$/,
-        /^(.+?)\s+tecnologias$/,
-        /^(.+?)\s+proyectos$/,
-        /^(.+?)\s+estudio$/,
-        /^(.+?)\s+master$/,
-    ];
+const firstWordPatterns = [
 
-    for (const pattern of firstWordPatterns) {
-        const match = normalized.match(pattern);
+    // Identidad
+    /^(.+?)\s+quien\s+es$/,
+    /^(.+?)\s+informacion$/,
+    /^(.+?)\s+datos$/,
+    /^(.+?)\s+perfil$/,
 
-        if (match) {
-            const name = match[1];
-            const index = normalized.indexOf(name);
+    // Notas / promedios
+    /^(.+?)\s+tiene\s+nota$/,
+    /^(.+?)\s+tiene\s+promedio$/,
+    /^(.+?)\s+tiene\s+calificacion$/,
+    /^(.+?)\s+tiene\s+nota\s+del\s+master$/,
+    /^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
+    /^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
+    /^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
+    /^(.+?)\s+saco\s+de\s+promedio$/,
+    /^(.+?)\s+obtuvo\s+de\s+promedio$/,
 
-            return original.slice(index, index + name.length).trim();
-        }
+    // Formación
+    /^(.+?)\s+estudio$/,
+    /^(.+?)\s+estudia$/,
+    /^(.+?)\s+ha\s+estudiado$/,
+    /^(.+?)\s+tiene\s+estudios$/,
+    /^(.+?)\s+tiene\s+carrera$/,
+    /^(.+?)\s+tiene\s+ingenieria$/,
+    /^(.+?)\s+tiene\s+titulo$/,
+    /^(.+?)\s+formacion$/,
+    /^(.+?)\s+educacion$/,
+
+    // Máster / maestría / posgrado
+    /^(.+?)\s+tiene\s+master$/,
+    /^(.+?)\s+tiene\s+maestria$/,
+    /^(.+?)\s+tiene\s+posgrado$/,
+    /^(.+?)\s+estudio\s+master$/,
+    /^(.+?)\s+estudio\s+maestria$/,
+    /^(.+?)\s+estudio\s+posgrado$/,
+    /^(.+?)\s+hizo\s+el\s+master$/,
+    /^(.+?)\s+hizo\s+la\s+maestria$/,
+    /^(.+?)\s+hizo\s+el\s+posgrado$/,
+    /^(.+?)\s+estudio\s+un\s+master$/,
+    /^(.+?)\s+estudio\s+una\s+maestria$/,
+
+    // Certificaciones
+    /^(.+?)\s+tiene\s+certificaciones$/,
+    /^(.+?)\s+tiene\s+certificacion$/,
+    /^(.+?)\s+tiene\s+certificados$/,
+    /^(.+?)\s+tiene\s+certificado$/,
+    /^(.+?)\s+obtuvo\s+certificaciones$/,
+    /^(.+?)\s+obtuvo\s+certificacion$/,
+    /^(.+?)\s+obtuvo\s+certificados$/,
+    /^(.+?)\s+obtuvo\s+certificado$/,
+    /^(.+?)\s+ha\s+obtenido\s+certificaciones$/,
+    /^(.+?)\s+ha\s+realizado\s+certificaciones$/,
+    /^(.+?)\s+cuenta\s+con\s+certificaciones$/,
+
+    // Tecnologías
+    /^(.+?)\s+usa\s+tecnologias$/,
+    /^(.+?)\s+usa\s+tecnologia$/,
+    /^(.+?)\s+utiliza\s+tecnologias$/,
+    /^(.+?)\s+utiliza\s+tecnologia$/,
+    /^(.+?)\s+conoce\s+tecnologias$/,
+    /^(.+?)\s+maneja\s+tecnologias$/,
+    /^(.+?)\s+domina\s+tecnologias$/,
+    /^(.+?)\s+usa\s+stack$/,
+    /^(.+?)\s+utiliza\s+stack$/,
+    /^(.+?)\s+usa\s+lenguajes$/,
+    /^(.+?)\s+utiliza\s+lenguajes$/,
+    /^(.+?)\s+trabaja\s+con\s+tecnologias$/,
+    /^(.+?)\s+trabaja\s+con\s+herramientas$/,
+
+    // Frontend
+    /^(.+?)\s+usa\s+frontend$/,
+    /^(.+?)\s+usa\s+tecnologias\s+frontend$/,
+    /^(.+?)\s+usa\s+tecnologias\s+de\s+frontend$/,
+    /^(.+?)\s+usa\s+herramientas\s+frontend$/,
+    /^(.+?)\s+usa\s+herramientas\s+de\s+frontend$/,
+    /^(.+?)\s+usa\s+framework\s+frontend$/,
+    /^(.+?)\s+usa\s+frameworks\s+frontend$/,
+
+    // Backend
+    /^(.+?)\s+usa\s+backend$/,
+    /^(.+?)\s+usa\s+tecnologias\s+backend$/,
+    /^(.+?)\s+usa\s+tecnologias\s+de\s+backend$/,
+    /^(.+?)\s+usa\s+herramientas\s+backend$/,
+    /^(.+?)\s+usa\s+herramientas\s+de\s+backend$/,
+    /^(.+?)\s+usa\s+framework\s+backend$/,
+    /^(.+?)\s+usa\s+frameworks\s+backend$/,
+
+    // Proyectos
+    /^(.+?)\s+tiene\s+proyectos$/,
+    /^(.+?)\s+tiene\s+aplicaciones$/,
+    /^(.+?)\s+tiene\s+programas$/,
+    /^(.+?)\s+ha\s+realizado\s+proyectos$/,
+    /^(.+?)\s+ha\s+desarrollado\s+proyectos$/,
+    /^(.+?)\s+desarrollo\s+proyectos$/,
+    /^(.+?)\s+realizo\s+proyectos$/,
+    /^(.+?)\s+desarrollo\s+aplicaciones$/,
+    /^(.+?)\s+ha\s+desarrollado\s+aplicaciones$/,
+    /^(.+?)\s+ha\s+realizado\s+aplicaciones$/,
+    /^(.+?)\s+tiene\s+software$/,
+    /^(.+?)\s+ha\s+desarrollado\s+software$/,
+
+    // Contacto
+    /^(.+?)\s+tiene\s+correo$/,
+    /^(.+?)\s+tiene\s+email$/,
+    /^(.+?)\s+tiene\s+correo\s+electronico$/,
+    /^(.+?)\s+tiene\s+redes\s+sociales$/,
+    /^(.+?)\s+tiene\s+contacto$/,
+    /^(.+?)\s+tiene\s+informacion\s+de\s+contacto$/,
+    /^(.+?)\s+como\s+contacto$/,
+    /^(.+?)\s+como\s+contactar$/,
+    /^(.+?)\s+como\s+comunicarme$/,
+    /^(.+?)\s+como\s+escribirle$/,
+    /^(.+?)\s+como\s+escribir$/,
+];
+
+
+for (const pattern of firstWordPatterns) {
+
+    const match = normalized.match(pattern);
+
+    if (match) {
+
+        const name = match[1].trim();
+
+        const index = normalized.indexOf(name);
+
+        return original
+            .slice(index, index + name.length)
+            .trim();
     }
+}
 
     /*
     |--------------------------------------------------------------------------
