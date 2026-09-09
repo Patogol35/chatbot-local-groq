@@ -1790,16 +1790,11 @@ const extractPersonName = (message) => {
 | BUSCAR RESPUESTA LOCAL
 |--------------------------------------------------------------------------
 */
-
 export const getLocalResponse = (message) => {
 
-    const personName = extractPersonName(message);
-
-    /*
-    |--------------------------------------------------------------------------
-    | SI HAY UNA PERSONA
-    |--------------------------------------------------------------------------
-    */
+    const personName =
+        extractPersonName(message) ||
+        extractPersonNameAtStart(message);
 
     let normalizedMessage = normalizeText(message);
 
