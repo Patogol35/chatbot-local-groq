@@ -1545,18 +1545,22 @@ const sashaResponses = [
     {
         keywords: [
             "que haces",
+            "que estas haciendo",
             "que haces tu",
+            "tu que haces",
             "para que sirves",
             "cual es tu funcion",
             "que funcion tienes",
             "que puedes hacer",
             "que puedes hacer tu",
             "en que puedes ayudarme",
+            "ayudame",
             "como puedes ayudarme"
         ],
         responses: [
             "Mi función es ayudarte a conocer mejor el portfolio de Jorge y responder preguntas sobre su perfil, formación, tecnologías, proyectos y certificaciones.",
             "Estoy aquí para ayudarte a explorar el portfolio de Jorge de una manera más interactiva.",
+            "Estoy aquí para mostrar la información de Jorge Patricio.",
             "Puedo ayudarte a encontrar información sobre Jorge, sus estudios, proyectos, tecnologías, certificaciones y otros aspectos de su perfil profesional."
         ]
     },
@@ -1569,7 +1573,10 @@ const sashaResponses = [
             "quien es tu creador",
             "quien es tu desarrollador",
             "quien creo a sasha",
+            "Quien te invento",
+            "Quien es tu inventor",
             "quien desarrollo a sasha"
+            
         ],
         responses: [
             "Fui creada y desarrollada por Jorge como parte de su portfolio.",
@@ -1587,6 +1594,9 @@ const sashaResponses = [
             "eres un robot",
             "eres un chatbot",
             "eres un asistente virtual",
+            "eres un modelo de inteligencia artificial",
+            "eres un modelo de ia",
+            "eres un asistente virtual,"
             "eres una asistente virtual"
         ],
         responses: [
