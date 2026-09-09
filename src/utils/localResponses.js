@@ -1391,6 +1391,11 @@ const firstWordPatterns = [
     // Certificaciones con año
     /^certificados\s+de\s+(.+?)\s+del\s+\d{4}$/,
     /^certificaciones\s+de\s+(.+?)\s+del\s+\d{4}$/,
+    // Certificaciones: año + persona
+/^certificados\s+del\s+\d{4}\s+de\s+(.+)$/,
+/^certificaciones\s+del\s+\d{4}\s+de\s+(.+)$/,
+/^certificado\s+del\s+\d{4}\s+de\s+(.+)$/,
+/^certificacion\s+del\s+\d{4}\s+de\s+(.+)$/,
 
 
     // ============================================================
