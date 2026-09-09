@@ -1329,6 +1329,10 @@ const firstWordPatterns = [
 // NOTAS / PROMEDIOS
 // ============================================================
 
+// ============================================================
+// PERSONA + NOTA / PROMEDIO
+// ============================================================
+
 // Notas / promedios generales
 /^(.+?)\s+tiene\s+nota$/,
 /^(.+?)\s+tiene\s+notas$/,
@@ -1337,163 +1341,137 @@ const firstWordPatterns = [
 /^(.+?)\s+tiene\s+calificacion$/,
 /^(.+?)\s+tiene\s+calificaciones$/,
 
-// ============================================================
-// INGENIERÍA / UNIVERSIDAD
-// ============================================================
-
-/^(.+?)\s+tiene\s+nota\s+de\s+ingenieria$/,
-/^(.+?)\s+tiene\s+notas\s+de\s+ingenieria$/,
-/^(.+?)\s+tiene\s+promedio\s+de\s+ingenieria$/,
-/^(.+?)\s+tiene\s+promedios\s+de\s+ingenieria$/,
-/^(.+?)\s+tiene\s+nota\s+de\s+la\s+universidad$/,
-/^(.+?)\s+tiene\s+notas\s+de\s+la\s+universidad$/,
-/^(.+?)\s+tiene\s+promedio\s+de\s+la\s+universidad$/,
-/^(.+?)\s+tiene\s+promedios\s+de\s+la\s+universidad$/,
-
-// Nota / notas + Ingeniería
+// Ingeniería
 /^(.+?)\s+nota\s+ingenieria$/,
 /^(.+?)\s+notas\s+ingenieria$/,
 /^(.+?)\s+nota\s+de\s+ingenieria$/,
 /^(.+?)\s+notas\s+de\s+ingenieria$/,
-
-// Promedio / promedios + Ingeniería
 /^(.+?)\s+promedio\s+ingenieria$/,
 /^(.+?)\s+promedios\s+ingenieria$/,
 /^(.+?)\s+promedio\s+de\s+ingenieria$/,
 /^(.+?)\s+promedios\s+de\s+ingenieria$/,
 
-// Nota / notas + Universidad
+// Universidad
 /^(.+?)\s+nota\s+universidad$/,
 /^(.+?)\s+notas\s+universidad$/,
 /^(.+?)\s+nota\s+de\s+universidad$/,
 /^(.+?)\s+notas\s+de\s+universidad$/,
-
-// Promedio / promedios + Universidad
 /^(.+?)\s+promedio\s+universidad$/,
 /^(.+?)\s+promedios\s+universidad$/,
 /^(.+?)\s+promedio\s+de\s+universidad$/,
 /^(.+?)\s+promedios\s+de\s+universidad$/,
 
-// Nota / notas + Carrera
+// Carrera
 /^(.+?)\s+nota\s+carrera$/,
 /^(.+?)\s+notas\s+carrera$/,
 /^(.+?)\s+nota\s+de\s+carrera$/,
 /^(.+?)\s+notas\s+de\s+carrera$/,
-
-// Promedio / promedios + Carrera
 /^(.+?)\s+promedio\s+carrera$/,
 /^(.+?)\s+promedios\s+carrera$/,
 /^(.+?)\s+promedio\s+de\s+carrera$/,
 /^(.+?)\s+promedios\s+de\s+carrera$/,
 
-// Nota / notas + Grado
-/^(.+?)\s+nota\s+grado$/,
-/^(.+?)\s+notas\s+grado$/,
-/^(.+?)\s+nota\s+de\s+grado$/,
-/^(.+?)\s+notas\s+de\s+grado$/,
-
-// Promedio / promedios + Grado
-/^(.+?)\s+promedio\s+grado$/,
-/^(.+?)\s+promedios\s+grado$/,
-/^(.+?)\s+promedio\s+de\s+grado$/,
-/^(.+?)\s+promedios\s+de\s+grado$/,
-
-// ============================================================
-// TERCER NIVEL
-// ============================================================
-
+// Tercer nivel
 /^(.+?)\s+nota\s+tercer\s+nivel$/,
 /^(.+?)\s+notas\s+tercer\s+nivel$/,
-/^(.+?)\s+promedio\s+tercer\s+nivel$/,
-/^(.+?)\s+promedios\s+tercer\s+nivel$/,
 /^(.+?)\s+nota\s+de\s+tercer\s+nivel$/,
 /^(.+?)\s+notas\s+de\s+tercer\s+nivel$/,
+/^(.+?)\s+promedio\s+tercer\s+nivel$/,
+/^(.+?)\s+promedios\s+tercer\s+nivel$/,
 /^(.+?)\s+promedio\s+de\s+tercer\s+nivel$/,
 /^(.+?)\s+promedios\s+de\s+tercer\s+nivel$/,
 
-// ============================================================
-// CUARTO NIVEL
-// ============================================================
-
+// Cuarto nivel
 /^(.+?)\s+nota\s+cuarto\s+nivel$/,
 /^(.+?)\s+notas\s+cuarto\s+nivel$/,
-/^(.+?)\s+promedio\s+cuarto\s+nivel$/,
-/^(.+?)\s+promedios\s+cuarto\s+nivel$/,
 /^(.+?)\s+nota\s+de\s+cuarto\s+nivel$/,
 /^(.+?)\s+notas\s+de\s+cuarto\s+nivel$/,
+/^(.+?)\s+promedio\s+cuarto\s+nivel$/,
+/^(.+?)\s+promedios\s+cuarto\s+nivel$/,
 /^(.+?)\s+promedio\s+de\s+cuarto\s+nivel$/,
 /^(.+?)\s+promedios\s+de\s+cuarto\s+nivel$/,
 
-// ============================================================
-// MÁSTER
-// ============================================================
-
-/^(.+?)\s+tiene\s+nota\s+del\s+master$/,
-/^(.+?)\s+tiene\s+notas\s+del\s+master$/,
-/^(.+?)\s+tiene\s+promedio\s+del\s+master$/,
-/^(.+?)\s+tiene\s+promedios\s+del\s+master$/,
-
-// Nota / notas + Máster
+// Máster
 /^(.+?)\s+nota\s+master$/,
 /^(.+?)\s+notas\s+master$/,
 /^(.+?)\s+nota\s+del\s+master$/,
 /^(.+?)\s+notas\s+del\s+master$/,
-
-// Promedio / promedios + Máster
 /^(.+?)\s+promedio\s+master$/,
 /^(.+?)\s+promedios\s+master$/,
 /^(.+?)\s+promedio\s+del\s+master$/,
 /^(.+?)\s+promedios\s+del\s+master$/,
 
-// ============================================================
-// MAESTRÍA
-// ============================================================
-
-/^(.+?)\s+tiene\s+nota\s+de\s+la\s+maestria$/,
-/^(.+?)\s+tiene\s+notas\s+de\s+la\s+maestria$/,
-/^(.+?)\s+tiene\s+promedio\s+de\s+la\s+maestria$/,
-/^(.+?)\s+tiene\s+promedios\s+de\s+la\s+maestria$/,
-
-// Nota / notas + Maestría
+// Maestría
 /^(.+?)\s+nota\s+maestria$/,
 /^(.+?)\s+notas\s+maestria$/,
 /^(.+?)\s+nota\s+de\s+la\s+maestria$/,
 /^(.+?)\s+notas\s+de\s+la\s+maestria$/,
-
-// Promedio / promedios + Maestría
 /^(.+?)\s+promedio\s+maestria$/,
 /^(.+?)\s+promedios\s+maestria$/,
 /^(.+?)\s+promedio\s+de\s+la\s+maestria$/,
 /^(.+?)\s+promedios\s+de\s+la\s+maestria$/,
 
-// ============================================================
-// POSGRADO
-// ============================================================
-
-/^(.+?)\s+tiene\s+nota\s+del\s+posgrado$/,
-/^(.+?)\s+tiene\s+notas\s+del\s+posgrado$/,
-/^(.+?)\s+tiene\s+nota\s+de\s+posgrado$/,
-/^(.+?)\s+tiene\s+notas\s+de\s+posgrado$/,
-/^(.+?)\s+tiene\s+promedio\s+del\s+posgrado$/,
-/^(.+?)\s+tiene\s+promedios\s+del\s+posgrado$/,
-/^(.+?)\s+tiene\s+promedio\s+de\s+posgrado$/,
-/^(.+?)\s+tiene\s+promedios\s+de\s+posgrado$/,
-
-// Nota / notas + Posgrado
+// Posgrado
 /^(.+?)\s+nota\s+posgrado$/,
 /^(.+?)\s+notas\s+posgrado$/,
 /^(.+?)\s+nota\s+del\s+posgrado$/,
 /^(.+?)\s+notas\s+del\s+posgrado$/,
 /^(.+?)\s+nota\s+de\s+posgrado$/,
 /^(.+?)\s+notas\s+de\s+posgrado$/,
-
-// Promedio / promedios + Posgrado
 /^(.+?)\s+promedio\s+posgrado$/,
 /^(.+?)\s+promedios\s+posgrado$/,
 /^(.+?)\s+promedio\s+del\s+posgrado$/,
 /^(.+?)\s+promedios\s+del\s+posgrado$/,
 /^(.+?)\s+promedio\s+de\s+posgrado$/,
 /^(.+?)\s+promedios\s+de\s+posgrado$/,
+
+// ============================================================
+// NOTA / PROMEDIO + PERSONA
+// ============================================================
+
+// Ingeniería
+/^nota\s+ingenieria\s+(.+)$/,
+/^notas\s+ingenieria\s+(.+)$/,
+/^nota\s+de\s+ingenieria\s+(.+)$/,
+/^notas\s+de\s+ingenieria\s+(.+)$/,
+/^promedio\s+ingenieria\s+(.+)$/,
+/^promedios\s+ingenieria\s+(.+)$/,
+/^promedio\s+de\s+ingenieria\s+(.+)$/,
+/^promedios\s+de\s+ingenieria\s+(.+)$/,
+
+// Máster
+/^nota\s+master\s+(.+)$/,
+/^notas\s+master\s+(.+)$/,
+/^nota\s+del\s+master\s+(.+)$/,
+/^notas\s+del\s+master\s+(.+)$/,
+/^promedio\s+master\s+(.+)$/,
+/^promedios\s+master\s+(.+)$/,
+/^promedio\s+del\s+master\s+(.+)$/,
+/^promedios\s+del\s+master\s+(.+)$/,
+
+// Maestría
+/^nota\s+maestria\s+(.+)$/,
+/^notas\s+maestria\s+(.+)$/,
+/^nota\s+de\s+la\s+maestria\s+(.+)$/,
+/^notas\s+de\s+la\s+maestria\s+(.+)$/,
+/^promedio\s+maestria\s+(.+)$/,
+/^promedios\s+maestria\s+(.+)$/,
+/^promedio\s+de\s+la\s+maestria\s+(.+)$/,
+/^promedios\s+de\s+la\s+maestria\s+(.+)$/,
+
+// Posgrado
+/^nota\s+posgrado\s+(.+)$/,
+/^notas\s+posgrado\s+(.+)$/,
+/^nota\s+del\s+posgrado\s+(.+)$/,
+/^notas\s+del\s+posgrado\s+(.+)$/,
+/^nota\s+de\s+posgrado\s+(.+)$/,
+/^notas\s+de\s+posgrado\s+(.+)$/,
+/^promedio\s+posgrado\s+(.+)$/,
+/^promedios\s+posgrado\s+(.+)$/,
+/^promedio\s+del\s+posgrado\s+(.+)$/,
+/^promedios\s+del\s+posgrado\s+(.+)$/,
+/^promedio\s+de\s+posgrado\s+(.+)$/,
+/^promedios\s+de\s+posgrado\s+(.+)$/,
 
 // ============================================================
 // FORMAS COLOQUIALES
@@ -1504,7 +1482,6 @@ const firstWordPatterns = [
 /^(.+?)\s+obtuvo\s+de\s+promedio$/,
 /^(.+?)\s+obtuvo\s+un\s+promedio$/,
 /^(.+?)\s+obtuvo\s+una\s+calificacion$/,
-
 
 
 // ============================================================
