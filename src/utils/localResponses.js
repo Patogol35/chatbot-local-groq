@@ -170,9 +170,11 @@ const LOCAL_RESPONSES = [
         keywords: [
 
             "formacion",
+            "su formacion",
             "formacion academica",
             "educacion",
             "educacion de",
+            "su educacion",
             "formacion de",
             "formacion profesional",
             "trayectoria academica",
