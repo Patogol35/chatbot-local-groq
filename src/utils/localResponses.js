@@ -1251,7 +1251,16 @@ const firstWordPatterns = [
     /^(.+?)\s+saco\s+de\s+promedio$/,
     /^(.+?)\s+obtuvo\s+de\s+promedio$/,
 
-    // Formación
+    
+// Formación con "su"
+ /^(.+?)\s+su\s+formacion$/,
+ /^(.+?)\s+su\s+educacion$/,
+ /^(.+?)\s+su\s+trayectoria$/,
+ /^(.+?)\s+sus\s+estudios$/,
+ /^(.+?)\s+su\s+carrera$/,
+ /^(.+?)\s+su\s+titulo$/,
+
+// Formación
 /^(.+?)\s+estudio$/,
 /^(.+?)\s+estudia$/,
 /^(.+?)\s+ha\s+estudiado$/,
@@ -1261,14 +1270,6 @@ const firstWordPatterns = [
 /^(.+?)\s+tiene\s+titulo$/,
 /^(.+?)\s+formacion$/,
 /^(.+?)\s+educacion$/,
-
-// Formación con "su"
- /^(.+?)\s+su\s+formacion$/,
- /^(.+?)\s+su\s+educacion$/,
- /^(.+?)\s+su\s+trayectoria$/,
- /^(.+?)\s+sus\s+estudios$/,
- /^(.+?)\s+su\s+carrera$/,
- /^(.+?)\s+su\s+titulo$/,
 
     // Máster / maestría / posgrado
     /^(.+?)\s+tiene\s+master$/,
