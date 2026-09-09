@@ -1227,6 +1227,50 @@ if (generalQueries.includes(normalized)) {
     return null;
 }
 
+    |--------------------------------------------------------------------------
+    | TEMAS GENERALES SIN PERSONA
+    |--------------------------------------------------------------------------
+    */
+
+    const generalTopics = [
+        "ajedrez",
+        "ecommerce",
+        "e-commerce",
+        "quiz",
+        "clima",
+        "chatbot",
+        "portfolio",
+        "portafolio"
+    ];
+
+    const generalPrefixes = [
+        "habla de",
+        "hablame de",
+        "habla sobre",
+        "hablame sobre",
+        "dime sobre",
+        "dime del",
+        "informacion sobre",
+        "informacion de",
+        "datos de",
+        "que sabes de",
+        "que sabes sobre",
+        "quiero saber sobre"
+    ];
+
+    for (const prefix of generalPrefixes) {
+        if (normalized.startsWith(prefix + " ")) {
+
+            const topic = normalized
+                .slice(prefix.length)
+                .trim();
+
+            if (generalTopics.includes(topic)) {
+                return null;
+            }
+        }
+}
+
 /*
 |--------------------------------------------------------------------------
 | FORMATO: "nombre + pregunta"
