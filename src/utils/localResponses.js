@@ -1357,6 +1357,8 @@ const extractPersonName = (message) => {
         "conoce tecnologias",
         "maneja tecnologias",
         "domina tecnologias",
+        "tecnología",
+        "tecnologías",
 
         "usa stack",
         "utiliza stack",
