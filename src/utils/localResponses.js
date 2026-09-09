@@ -1412,83 +1412,100 @@ const firstWordPatterns = [
 /^(.+?)\s+certificacion$/,
 
 
-    // ============================================================
-    // TECNOLOGÍAS / STACK
-    // ============================================================
+// ============================================================
+// TECNOLOGÍAS / STACK
+// ============================================================
 
-    /^(.+?)\s+tecnologias$/,
-    /^(.+?)\s+tecnologia$/,
-    /^(.+?)\s+sus\s+tecnologias$/,
-    /^(.+?)\s+sus\s+tecnologia$/,
-    /^(.+?)\s+su\s+stack$/,
-    /^(.+?)\s+sus\s+herramientas$/,
-    /^(.+?)\s+sus\s+lenguajes$/,
-    /^(.+?)\s+usa\s+tecnologias$/,
-    /^(.+?)\s+usa\s+tecnologia$/,
-    /^(.+?)\s+utiliza\s+tecnologias$/,
-    /^(.+?)\s+utiliza\s+tecnologia$/,
-    /^(.+?)\s+conoce\s+tecnologias$/,
-    /^(.+?)\s+maneja\s+tecnologias$/,
-    /^(.+?)\s+domina\s+tecnologias$/,
-    /^(.+?)\s+usa\s+stack$/,
-    /^(.+?)\s+utiliza\s+stack$/,
-    /^(.+?)\s+usa\s+lenguajes$/,
-    /^(.+?)\s+utiliza\s+lenguajes$/,
-    /^(.+?)\s+trabaja\s+con\s+tecnologias$/,
-    /^(.+?)\s+trabaja\s+con\s+herramientas$/,
+/^(.+?)\s+tecnologias$/,
+/^(.+?)\s+tecnologia$/,
+/^(.+?)\s+sus\s+tecnologias$/,
+/^(.+?)\s+sus\s+tecnologia$/,
+/^(.+?)\s+su\s+stack$/,
+/^(.+?)\s+sus\s+herramientas$/,
+/^(.+?)\s+sus\s+lenguajes$/,
+/^(.+?)\s+usa\s+tecnologias$/,
+/^(.+?)\s+usa\s+tecnologia$/,
+/^(.+?)\s+utiliza\s+tecnologias$/,
+/^(.+?)\s+utiliza\s+tecnologia$/,
+/^(.+?)\s+conoce\s+tecnologias$/,
+/^(.+?)\s+maneja\s+tecnologias$/,
+/^(.+?)\s+domina\s+tecnologias$/,
+/^(.+?)\s+usa\s+stack$/,
+/^(.+?)\s+utiliza\s+stack$/,
+/^(.+?)\s+usa\s+lenguajes$/,
+/^(.+?)\s+utiliza\s+lenguajes$/,
+/^(.+?)\s+trabaja\s+con\s+tecnologias$/,
+/^(.+?)\s+trabaja\s+con\s+herramientas$/,
 
-    // Tecnologías concretas
-    /^(.+?)\s+react$/,
-    /^(.+?)\s+react\s+js$/,
-    /^(.+?)\s+reactjs$/,
-    /^(.+?)\s+javascript$/,
-    /^(.+?)\s+python$/,
-    /^(.+?)\s+django$/,
-    /^(.+?)\s+java$/,
-    /^(.+?)\s+spring$/,
-    /^(.+?)\s+spring\s+boot$/,
-    /^(.+?)\s+postgresql$/,
-    /^(.+?)\s+postgres$/,
-    /^(.+?)\s+mysql$/,
-    /^(.+?)\s+render$/,
-    /^(.+?)\s+vercel$/,
-    /^(.+?)\s+aws$/,
+// ============================================================
+// TECNOLOGÍAS CONCRETAS
+// ============================================================
 
-    // Herramientas
-    /^(.+?)\s+postman$/,
-    /^(.+?)\s+linux$/,
-    /^(.+?)\s+virtualbox$/,
-    /^(.+?)\s+nextdns$/,
-    /^(.+?)\s+anydesk$/,
-    /^(.+?)\s+microsoft\s+office$/,
-    /^(.+?)\s+office$/,
+/^(.+?)\s+react$/,
+/^(.+?)\s+react\s+js$/,
+/^(.+?)\s+reactjs$/,
+/^(.+?)\s+javascript$/,
+/^(.+?)\s+typescript$/,
+/^(.+?)\s+python$/,
+/^(.+?)\s+django$/,
+/^(.+?)\s+java$/,
+/^(.+?)\s+spring$/,
+/^(.+?)\s+spring\s+boot$/,
+/^(.+?)\s+postgresql$/,
+/^(.+?)\s+postgres$/,
+/^(.+?)\s+mysql$/,
+/^(.+?)\s+render$/,
+/^(.+?)\s+vercel$/,
+/^(.+?)\s+aws$/,
+/^(.+?)\s+html$/,
+/^(.+?)\s+css$/,
 
+// ============================================================
+// HERRAMIENTAS
+// ============================================================
 
-    // ============================================================
-    // FRONTEND
-    // ============================================================
+/^(.+?)\s+postman$/,
+/^(.+?)\s+linux$/,
+/^(.+?)\s+virtualbox$/,
+/^(.+?)\s+nextdns$/,
+/^(.+?)\s+anydesk$/,
+/^(.+?)\s+microsoft\s+office$/,
+/^(.+?)\s+office$/,
+/^(.+?)\s+git$/,
 
-    /^(.+?)\s+usa\s+frontend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+frontend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+de\s+frontend$/,
-    /^(.+?)\s+usa\s+herramientas\s+frontend$/,
-    /^(.+?)\s+usa\s+herramientas\s+de\s+frontend$/,
-    /^(.+?)\s+usa\s+framework\s+frontend$/,
-    /^(.+?)\s+usa\s+frameworks\s+frontend$/,
+// ============================================================
+// FRONTEND
+// ============================================================
 
+/^(.+?)\s+frontend$/,
+/^(.+?)\s+usa\s+frontend$/,
+/^(.+?)\s+usa\s+tecnologias\s+frontend$/,
+/^(.+?)\s+usa\s+tecnologias\s+de\s+frontend$/,
+/^(.+?)\s+usa\s+herramientas\s+frontend$/,
+/^(.+?)\s+usa\s+herramientas\s+de\s+frontend$/,
+/^(.+?)\s+usa\s+framework\s+frontend$/,
+/^(.+?)\s+usa\s+frameworks\s+frontend$/,
+/^(.+?)\s+trabaja\s+en\s+frontend$/,
+/^(.+?)\s+trabaja\s+con\s+frontend$/,
+/^(.+?)\s+tiene\s+experiencia\s+en\s+frontend$/,
+/^(.+?)\s+experiencia\s+en\s+frontend$/,
 
-    // ============================================================
-    // BACKEND
-    // ============================================================
+// ============================================================
+// BACKEND
+// ============================================================
 
-    /^(.+?)\s+usa\s+backend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+backend$/,
-    /^(.+?)\s+usa\s+tecnologias\s+de\s+backend$/,
-    /^(.+?)\s+usa\s+herramientas\s+backend$/,
-    /^(.+?)\s+usa\s+herramientas\s+de\s+backend$/,
-    /^(.+?)\s+usa\s+framework\s+backend$/,
-    /^(.+?)\s+usa\s+frameworks\s+backend$/,
-
+/^(.+?)\s+backend$/,
+/^(.+?)\s+usa\s+backend$/,
+/^(.+?)\s+usa\s+tecnologias\s+backend$/,
+/^(.+?)\s+usa\s+tecnologias\s+de\s+backend$/,
+/^(.+?)\s+usa\s+herramientas\s+backend$/,
+/^(.+?)\s+usa\s+herramientas\s+de\s+backend$/,
+/^(.+?)\s+usa\s+framework\s+backend$/,
+/^(.+?)\s+usa\s+frameworks\s+backend$/,
+/^(.+?)\s+trabaja\s+en\s+backend$/,
+/^(.+?)\s+trabaja\s+con\s+backend$/,
+/^(.+?)\s+tiene\s+experiencia\s+en\s+backend$/,
+/^(.+?)\s+experiencia\s+en\s+backend$/,
 // ============================================================
 // PROYECTOS / APLICACIONES
 // ============================================================
