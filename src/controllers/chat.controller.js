@@ -1,5 +1,7 @@
 import Groq from "groq-sdk";
 
+import { getLocalResponse } from "../utils/localResponse.js";
+
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
 });
@@ -13,7 +15,6 @@ const COST_PER_1K_TOKENS = 0.0002;
 
 const JORGE_INFO = `
 Jorge Patricio Santamaría Cherrez.
-
 Estudios:
 - Ingeniería en Sistemas, Universidad Indoamérica, Ecuador — 9/10.
 - Máster en Ingeniería de Software, UNIR, España — 8.68/10.
@@ -56,7 +57,8 @@ REGLAS:
 - Sobre Jorge, usa SOLO los datos proporcionados.
 - No inventes información.
 - Si preguntan por el perfil de Jorge, haz un resumen breve, sin listar todos sus datos.
-- Si preguntan por una categoría específica, responde solo esa categoría.
+- Si preguntan por un dato específico, responde SOLO sobre ese dato.
+- No mezcles categorías aunque tengas más información disponible.
 - Puedes responder preguntas generales de tecnología.
 - Si preguntan quién eres, di que eres Sasha, IA del portfolio de Jorge.
 - No digas que eres humana.
@@ -104,6 +106,31 @@ export const sendMessage = async (req, res) => {
                 error: `El mensaje no puede superar los ${MAX_MESSAGE_LENGTH} caracteres.`,
             });
         }
+
+        // ========================================================
+        // RESPUESTAS LOCALES
+        // ========================================================
+
+        const localResponse = getLocalResponse(userMessage);
+
+        if (localResponse) {
+            console.log("⚡ Sasha respondió LOCALMENTE");
+
+            return res.json({
+                response: localResponse,
+                usage: {
+                    promptTokens: 0,
+                    completionTokens: 0,
+                    totalTokens: 0,
+                    estimatedCost: 0,
+                },
+                local: true,
+            });
+        }
+
+        // ========================================================
+        // GROQ
+        // ========================================================
 
         const cleanHistory = sanitizeHistory(history);
 
@@ -164,6 +191,7 @@ export const sendMessage = async (req, res) => {
                 totalTokens,
                 estimatedCost,
             },
+            local: false,
         });
 
     } catch (error) {
