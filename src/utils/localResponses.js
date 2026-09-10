@@ -107,6 +107,8 @@ const COMMON_WORDS = new Set([
     "unos",
     "unas",
     "y",
+    "ingenieria",
+    "ingeniero",
 
     // AGREGAR
     "hola",
