@@ -9,7 +9,7 @@ export const getLocalResponse = (message) => {
     const text = normalizeText(message);
 
     // ============================================================
-    // IDENTIDAD / PERFIL
+    // PERFIL
     // ============================================================
 
     if (
@@ -104,7 +104,7 @@ export const getLocalResponse = (message) => {
     }
 
     // ============================================================
-    // STACK / TECNOLOGÍAS
+    // STACK
     // ============================================================
 
     if (
@@ -128,7 +128,7 @@ export const getLocalResponse = (message) => {
     // ============================================================
 
     if (
-        /\b(proyecto|proyectos|portfolio|portafolio)\b/.test(text)
+        /\b(proyecto|proyectos)\b/.test(text)
     ) {
         return "Entre sus proyectos están Portfolio React, Quiz Ecuador, App del clima, Chatbot, Ajedrez y E-commerce React+Django.";
     }
@@ -164,7 +164,7 @@ export const getLocalResponse = (message) => {
     }
 
     // ============================================================
-    // NO ES UNA PREGUNTA LOCAL
+    // NO ES INFORMACIÓN LOCAL
     // ============================================================
 
     return null;
