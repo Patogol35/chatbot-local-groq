@@ -104,6 +104,22 @@ const COMMON_WORDS = new Set([
     "unos",
     "unas",
     "y",
+
+    // AGREGAR
+    "buenas",
+"buenos",
+"dias",
+"tardes",
+"noches",
+"hola",
+"hey",
+"hello",
+"buen",
+"gracias",
+"gracías",
+"por",
+"favor",
+    "eres",
 ]);
 
 /*
