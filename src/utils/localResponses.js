@@ -69,6 +69,7 @@ const COMMON_WORDS = new Set([
     "en",
     "es",
     "esa",
+    "son",
     "ese",
     "eso",
     "esta",
