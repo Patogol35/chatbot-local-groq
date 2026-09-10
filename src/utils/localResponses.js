@@ -150,6 +150,7 @@ const COMMON_WORDS = new Set([
     "curso",
     "promedio",
     "perfil",
+    "nota",
 ]);
     
 
