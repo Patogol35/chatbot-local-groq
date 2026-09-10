@@ -675,7 +675,7 @@ const LOCAL_RESPONSES = [
     responses: [
         "¡Hola! Soy Sasha, la asistente virtual del portfolio de Jorge. ¿En qué puedo ayudarte?",
         "¡Hola! 👋 Soy Sasha. ¿Qué te gustaría saber?",
-        "¡Buenas! Soy Sasha, la asistente virtual de Jorge. Estoy aquí para ayudarte.",
+        "¡Buenas! Soy Sasha, la asistente virtual del guapo de Jorge. Estoy aquí para ayudarte.",
         "¡Hola! Qué gusto tenerte por aquí. ¿Qué quieres conocer?",
     ],
 },
