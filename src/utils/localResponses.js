@@ -13,6 +13,15 @@ const randomResponse = (responses) =>
 export const getLocalResponse = (message) => {
     const text = normalizeText(message);
 
+    console.log("=================================");
+    console.log("MENSAJE RECIBIDO:", message);
+    console.log("TEXTO NORMALIZADO:", text);
+    console.log("¿EDUCACIÓN?:", text.includes("educacion"));
+    console.log("=================================");
+
+    // ============================================================
+    // IDENTIFICACIÓN DEL USUARIO
+    // ============================================================
     // ============================================================
     // IDENTIFICACIÓN DEL USUARIO
     // ============================================================
