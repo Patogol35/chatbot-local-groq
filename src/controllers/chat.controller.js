@@ -1,6 +1,6 @@
 import Groq from "groq-sdk";
 
-import { getLocalResponse } from "../utils/localResponse.js";
+import { getLocalResponse } from "../utils/localResponses.js";
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
