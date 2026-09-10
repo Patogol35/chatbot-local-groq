@@ -22,7 +22,7 @@ const mentionsJorge = (text) => {
     );
 };
 
-const isJorgeQuestion = (text) => {
+const isJorgeInformationQuestion = (text) => {
     const normalized = normalizeText(text);
 
     const keywords = [
@@ -50,6 +50,7 @@ const isJorgeQuestion = (text) => {
         "portfolio",
         "portafolio",
         "intereses",
+        "interes",
         "contacto",
     ];
 
@@ -61,9 +62,7 @@ const isJorgeQuestion = (text) => {
 export const getLocalResponse = (message) => {
     const text = normalizeText(message);
 
-    /*
-     * Sasha
-     */
+    // Sasha
     if (
         text.includes("quien eres") ||
         text.includes("como te llamas")
@@ -71,9 +70,7 @@ export const getLocalResponse = (message) => {
         return "Soy Sasha, la asistente virtual del portfolio de Jorge.";
     }
 
-    /*
-     * Perfil
-     */
+    // Perfil de Jorge
     if (
         text.includes("quien es") ||
         text.includes("sobre jorge") ||
@@ -86,9 +83,7 @@ export const getLocalResponse = (message) => {
         return "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software y Sistemas Informáticos. Se especializa en desarrollo Full Stack.";
     }
 
-    /*
-     * Estudios
-     */
+    // Estudios
     if (
         text.includes("estudios") ||
         text.includes("estudio") ||
@@ -100,9 +95,7 @@ export const getLocalResponse = (message) => {
         return "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica, Ecuador, con una nota final de 9/10. También obtuvo un Máster en Ingeniería de Software y Sistemas Informáticos por UNIR, España, con un promedio final de 8.68/10.";
     }
 
-    /*
-     * Certificaciones
-     */
+    // Certificaciones
     if (
         text.includes("certificacion") ||
         text.includes("certificaciones")
@@ -110,9 +103,7 @@ export const getLocalResponse = (message) => {
         return "Jorge cuenta con certificaciones en Model Context Protocol y Claude API de Anthropic (2026), Fundamentals of AI de IBM (2025), Linux de Udemy (2024) y AZ-900 de UNIR (2023).";
     }
 
-    /*
-     * Habilidades / Stack
-     */
+    // Habilidades / Stack
     if (
         text.includes("habilidades") ||
         text.includes("skills") ||
@@ -123,9 +114,7 @@ export const getLocalResponse = (message) => {
         return "Su stack incluye React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS. Sus principales especialidades son el desarrollo Full Stack, la virtualización y la ciberseguridad.";
     }
 
-    /*
-     * Proyectos
-     */
+    // Proyectos
     if (
         text.includes("proyecto") ||
         text.includes("proyectos") ||
@@ -135,9 +124,7 @@ export const getLocalResponse = (message) => {
         return "Entre sus proyectos están su Portfolio React, Quiz Ecuador, una aplicación del clima, un Chatbot, Ajedrez y un E-commerce desarrollado con React y Django.";
     }
 
-    /*
-     * Intereses
-     */
+    // Intereses
     if (
         text.includes("interes") ||
         text.includes("intereses")
@@ -145,9 +132,7 @@ export const getLocalResponse = (message) => {
         return "Entre los intereses de Jorge están la lectura y la música.";
     }
 
-    /*
-     * Contacto
-     */
+    // Contacto
     if (text.includes("contacto")) {
         return "Puedes contactar a Jorge desde la sección «Contacto» de su portfolio.";
     }
@@ -156,5 +141,8 @@ export const getLocalResponse = (message) => {
 };
 
 export const shouldUseLocalResponse = (message) => {
-    return mentionsJorge(message) || isJorgeQuestion(message);
+    return (
+        mentionsJorge(message) ||
+        isJorgeInformationQuestion(message)
+    );
 };
