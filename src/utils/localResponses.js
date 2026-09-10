@@ -727,7 +727,9 @@ const LOCAL_RESPONSES = [
             "que cursos tiene",
             "certificados de",
             "certificaciones de",
-
+            "cuáles son sus certificados",
+"cuales son sus cursos",
+            "cuales son sus certificaciones",
             "cursos de",
             "cursos",
         ],
