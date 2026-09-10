@@ -155,6 +155,12 @@ const COMMON_WORDS = new Set([
     "postgrado",
     "siguio",
     "hizo",
+    "cursos",
+    "certificado",
+        "certificados",
+    "certificacion",
+    "certificaciones",
+    
 ]);
     
 
@@ -717,8 +723,11 @@ const LOCAL_RESPONSES = [
             "certificados",
             "certificacion",
             "que certificaciones tiene",
+            "que certificados tiene",
+            "que cursos tiene",
             "certificados de",
             "certificaciones de",
+
             "cursos de",
             "cursos",
         ],
