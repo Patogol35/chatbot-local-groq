@@ -145,6 +145,7 @@ const COMMON_WORDS = new Set([
 "eres",
 "sasha",
     "realizo",
+    "curso",
 ]);
     
 
@@ -221,18 +222,41 @@ const LOCAL_RESPONSES = [
 
 {
     category: "formacion",
-    keywords: [
-        "que estudio",
-        "que carrera estudio",
-        "que carrera tiene",
-        "que ingenieria estudio",
-        "que ingenieria tiene",
-        "que titulo tiene",
-        "que titulos tiene",
-        "es ingeniero",
-        "estudio ingenieria",
-        "carrera universitaria",
-    ],
+  keywords: [
+    "que estudio",
+    "que carrera estudio",
+    "que carrera tiene",
+    "que ingenieria estudio",
+    "que ingenieria tiene",
+    "que titulo tiene",
+    "que titulos tiene",
+    "es ingeniero",
+    "estudio ingenieria",
+    "carrera universitaria",
+
+    "donde estudio su ingenieria",
+    "donde estudio la ingenieria",
+    "donde estudio ingenieria",
+
+    "donde hizo su ingenieria",
+    "donde hizo la ingenieria",
+    "donde hizo ingenieria",
+
+    "donde realizo su ingenieria",
+    "donde realizo la ingenieria",
+    "donde realizo ingenieria",
+
+    "donde curso su ingenieria",
+    "donde curso la ingenieria",
+    "donde curso ingenieria",
+
+    "que universidad estudio",
+    "en que universidad estudio",
+    "en que universidad hizo su ingenieria",
+    "en que universidad estudio ingenieria",
+    "universidad de su ingenieria",
+    "universidad de la ingenieria",
+],
     responses: [
         "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
         "La carrera universitaria de Jorge es Ingeniería en Sistemas.",
