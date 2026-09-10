@@ -158,7 +158,7 @@ const LOCAL_RESPONSES = [
             "quien es santamaria",
             "quien es santamaria cherrez",
             "presentame a jorge",
-            "hablame de jorge",
+            "hablame de el",
             "perfil de jorge",
             "habla de jorge",
             "sobre jorge",
