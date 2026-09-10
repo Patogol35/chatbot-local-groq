@@ -1206,143 +1206,94 @@ const normalizeJorgeName = (message) => {
 |
 |--------------------------------------------------------------------------
 */
-
-    const extractPersonName = (message) => {
+const extractPersonName = (message) => {
     const normalized = normalizeText(message);
 
     // ============================================================
     // PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
     // ============================================================
 
-    const technicalTerms = [
-        "programa",
-        "programar",
-        "programacion",
-        "codigo",
-        "codifica",
-        "codificar",
+    const technicalPatterns = [
+        // Imprimir / mostrar
+        /^imprime\b/,
+        /^imprimir\b/,
+        /^muestra\b/,
+        /^mostrar\b/,
+        /^escribe\b/,
+        /^escribir\b/,
 
-        "imprime",
-        "imprimir",
-        "impresion",
-        "muestra",
-        "mostrar",
-        "escribe",
-        "escribir",
+        // Programar / código
+        /^programa\b/,
+        /^programar\b/,
+        /^programacion\b/,
+        /^codigo\b/,
+        /^codifica\b/,
+        /^codificar\b/,
 
-        "crear",
-        "crea",
-        "declarar",
-        "declara",
-        "definir",
-        "define",
-        "ejecutar",
-        "ejecuta",
+        // Crear / declarar
+        /^crea\s+(un|una)\b/,
+        /^crear\s+(un|una)\b/,
+        /^declara\s+(un|una)\b/,
+        /^declarar\s+(un|una)\b/,
+        /^define\s+(un|una)\b/,
+        /^definir\s+(un|una)\b/,
 
-        "sumar",
-        "suma",
-        "restar",
-        "resta",
-        "multiplicar",
-        "multiplica",
-        "dividir",
-        "divide",
-        "calcular",
-        "calcula",
+        // Ejecutar
+        /^ejecuta\s+(un|una)\b/,
+        /^ejecutar\s+(un|una)\b/,
 
-        "variable",
-        "variables",
-        "array",
-        "arreglo",
-        "lista",
-        "bucle",
-        "ciclo",
-        "condicional",
-        "funcion",
-        "función",
-        "metodo",
-        "método",
-        "clase",
-        "objeto",
+        // Operaciones matemáticas
+        /^suma\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^sumar\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^resta\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^restar\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^multiplica\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^multiplicar\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^divide\s+(un|una|dos|tres|cuatro|cinco)\b/,
+        /^dividir\s+(un|una|dos|tres|cuatro|cinco)\b/,
 
-        "debug",
-        "debuggear",
-        "depurar"
+        // Cálculos
+        /^calcula\s+(el|la|un|una)\b/,
+        /^calcular\s+(el|la|un|una)\b/,
+
+        // Preguntas claramente técnicas
+        /^como\s+programar\b/,
+        /^como\s+hacer\b/,
+        /^como\s+se\s+hace\b/,
+        /^como\s+puedo\s+programar\b/,
+        /^como\s+puedo\s+hacer\b/,
+        /^como\s+imprimir\b/,
+        /^como\s+mostrar\b/,
+        /^como\s+crear\b/,
+        /^como\s+declarar\b/,
+        /^como\s+definir\b/,
+        /^como\s+ejecutar\b/,
+        /^como\s+funciona\b/,
+        /^como\s+usar\b/,
+        /^como\s+utilizar\b/,
+
+        // Estructuras de programación
+        /^crear\s+una\s+variable\b/,
+        /^crear\s+un\s+array\b/,
+        /^crear\s+un\s+arreglo\b/,
+        /^crear\s+una\s+lista\b/,
+        /^declarar\s+una\s+variable\b/,
+        /^declarar\s+un\s+array\b/,
+        /^declarar\s+un\s+arreglo\b/,
+        /^hacer\s+un\s+bucle\b/,
+        /^hacer\s+un\s+ciclo\b/
     ];
 
-    const technicalLanguages = [
-        "java",
-        "javascript",
-        "typescript",
-        "python",
-        "django",
-        "c",
-        "c++",
-        "c#",
-        "php",
-        "ruby",
-        "go",
-        "kotlin",
-        "swift"
-    ];
-
-    const hasTechnicalTerm = technicalTerms.some(term =>
-        normalized.split(/\s+/).includes(term)
+    const isTechnicalMessage = technicalPatterns.some(pattern =>
+        pattern.test(normalized)
     );
 
-    const hasTechnicalLanguage = technicalLanguages.some(language =>
-        normalized.split(/\s+/).includes(language)
-    );
-
-    // Si contiene una acción/concepto de programación + lenguaje,
-    // NO intentar extraer un nombre de persona.
-    if (hasTechnicalTerm && hasTechnicalLanguage) {
-        return null;
-    }
-
-    // También bloquear frases que comienzan claramente como código
-    const technicalPrefixes = [
-        "imprime",
-        "imprimir",
-        "muestra",
-        "mostrar",
-        "escribe",
-        "escribir",
-        "programa",
-        "programar",
-        "codifica",
-        "codificar",
-        "suma",
-        "sumar",
-        "resta",
-        "restar",
-        "multiplica",
-        "multiplicar",
-        "divide",
-        "dividir",
-        "calcula",
-        "calcular",
-        "crea un",
-        "crea una",
-        "crear un",
-        "crear una",
-        "declara un",
-        "declara una",
-        "declarar un",
-        "declarar una"
-    ];
-
-    if (technicalPrefixes.some(prefix =>
-        normalized === prefix ||
-        normalized.startsWith(prefix + " ")
-    )) {
+    if (isTechnicalMessage) {
         return null;
     }
 
     const original = message.trim();
-
-    // ⬇️ DESDE AQUÍ DEJA TODO TU CÓDIGO ACTUAL SIN CAMBIAR
-
+        
     /*
 |--------------------------------------------------------------------------
 | CONSULTAS GENERALES SIN NOMBRE
