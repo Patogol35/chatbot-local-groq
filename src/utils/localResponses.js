@@ -230,7 +230,7 @@ const LOCAL_RESPONSES = [
 {
     category: "formacion",
   keywords: [
-    
+    "ingenieria de",
     
     "que ingenieria estudio",
     "que ingenieria tiene",
