@@ -2223,18 +2223,19 @@ export const getLocalResponse = (message) => {
         /\b(error|depurar|debug|debuggear)\b.*\b(codigo|código|java|javascript|python|typescript)\b/
     ];
 
-    if (technicalRegex.some(pattern =>
-        pattern.test(normalizedMessage)
-    )) {
+    if (technicalRegex.some(pattern => pattern.test(normalizedMessage))) {
         return null;
     }
+
+    // ============================================================
+    // PERSONA
+    // ============================================================
 
     const personName = extractPersonName(message);
 
     if (personName) {
 
         if (!isAboutJorge(personName)) {
-
             const responses = [
                 `No tengo información sobre ${personName}.`,
                 `No tengo datos registrados sobre ${personName}.`,
@@ -2257,24 +2258,8 @@ export const getLocalResponse = (message) => {
         );
     }
 
-    // 👇 AQUÍ SIGUE EL RESTO DE TU CÓDIGO
-
-    const personName = extractPersonName(message);
-
-    /*
-    |--------------------------------------------------------------------------
-    | SI HAY UNA PERSONA
-    |--------------------------------------------------------------------------
-    */
-
-    
-
-    
-
-    // 👇 AQUÍ SIGUE EL RESTO DE TU CÓDIGO
-
-
-    /*
+    // AQUÍ CONTINÚA TU CÓDIGO ORIGINAL    
+        /*
 |--------------------------------------------------------------------------
 | RESPUESTAS ESPECÍFICAS DE SASHA
 |--------------------------------------------------------------------------
