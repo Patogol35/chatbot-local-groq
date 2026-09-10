@@ -1,557 +1,740 @@
 import { JORGE } from "./jorgeInfo.js";
 
-/*
-|--------------------------------------------------------------------------
-| NORMALIZACIÓN
-|--------------------------------------------------------------------------
-*/
+/* =========================================================
+   NORMALIZACIÓN
+========================================================= */
 
-const normalize = (text = "") =>
-    text
+const normalizeText = (text = "") => {
+    return text
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
         .replace(/[¿?¡!.,;:()[\]{}"'`]/g, " ")
         .replace(/\s+/g, " ")
         .trim();
+};
 
-/*
-|--------------------------------------------------------------------------
-| COMPROBAR PALABRAS
-|--------------------------------------------------------------------------
-*/
+/* =========================================================
+   UTILIDADES
+========================================================= */
 
-const containsAny = (text, words = []) =>
-    words.some((word) => text.includes(word));
+const containsAny = (text, words) => {
+    return words.some((word) => text.includes(word));
+};
 
-/*
-|--------------------------------------------------------------------------
-| DETECTAR SI HABLA DE OTRA PERSONA
-|--------------------------------------------------------------------------
-|
-| Si la pregunta menciona explícitamente a otra persona,
-| NO respondemos localmente.
-|
-| Ejemplo:
-|
-| "¿Qué tecnologías usa Luis?"
-| → false
-| → Groq
-|
-| "¿Qué tecnologías usa Jorge?"
-| → true
-| → Local
-|
-| "¿Qué tecnologías usa?"
-| → true
-| → Local
-|
-|--------------------------------------------------------------------------
-*/
+const randomResponse = (responses) => {
+    return responses[
+        Math.floor(Math.random() * responses.length)
+    ];
+};
 
-const isAboutJorge = (text) => {
-    /*
-    |--------------------------------------------------------------------------
-    | REFERENCIAS DIRECTAS A JORGE
-    |--------------------------------------------------------------------------
-    */
+/* =========================================================
+   RESPUESTAS GENERALES
+========================================================= */
+
+const responses = {
+    sasha: [
+        "Soy Sasha, la asistente virtual del portfolio de Jorge. Puedo contarte sobre su formación, tecnologías, certificaciones y proyectos.",
+        "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge Patricio. Puedo ayudarte a conocer su perfil profesional.",
+        "Soy Sasha, la asistente virtual de Jorge. Puedes preguntarme sobre sus estudios, tecnologías, proyectos o trayectoria.",
+        "Soy Sasha, el asistente virtual del portfolio de Jorge. Estoy aquí para ayudarte a conocer su trabajo y perfil profesional.",
+    ],
+
+    greetings: [
+        "¡Hola! Soy Sasha. ¿Qué te gustaría conocer sobre Jorge?",
+        "¡Hola! 👋 Soy Sasha, la asistente virtual del portfolio de Jorge. ¿En qué puedo ayudarte?",
+        "¡Hola! Encantada de ayudarte. Puedes preguntarme sobre Jorge, sus proyectos, estudios o tecnologías.",
+        "¡Hola! Soy Sasha. Dime qué quieres saber y trataré de ayudarte.",
+    ],
+
+    profile: [
+        `Jorge Patricio Santamaría Cherrez es ${JORGE.perfil}`,
+        `Jorge es ${JORGE.perfil}`,
+        `Profesionalmente, Jorge es ${JORGE.perfil}`,
+        `El perfil de Jorge corresponde a un ${JORGE.perfil}`,
+    ],
+
+    engineering: [
+        `Jorge es ${JORGE.estudios.ingenieria.titulo} por ${JORGE.estudios.ingenieria.universidad}, Ecuador. Su promedio final fue ${JORGE.estudios.ingenieria.promedio} y obtuvo ${JORGE.estudios.ingenieria.tesis} en su tesis.`,
+        `Jorge estudió ${JORGE.estudios.ingenieria.titulo} en ${JORGE.estudios.ingenieria.universidad}. Terminó con un promedio de ${JORGE.estudios.ingenieria.promedio}.`,
+        `En su formación de grado, Jorge obtuvo el título de ${JORGE.estudios.ingenieria.titulo}. Su tesis tuvo una nota de ${JORGE.estudios.ingenieria.tesis}.`,
+    ],
+
+    master: [
+        `Jorge tiene un ${JORGE.estudios.master.titulo} de ${JORGE.estudios.master.universidad}, España. Su promedio final fue ${JORGE.estudios.master.promedio} y obtuvo ${JORGE.estudios.master.tfm} en el TFM.`,
+        `Jorge realizó el ${JORGE.estudios.master.titulo} en ${JORGE.estudios.master.universidad}. Finalizó con un promedio de ${JORGE.estudios.master.promedio}.`,
+        `Su formación de posgrado corresponde al ${JORGE.estudios.master.titulo}. En el TFM obtuvo ${JORGE.estudios.master.tfm}.`,
+    ],
+
+    education: [
+        "Jorge es Ingeniero en Sistemas y cuenta además con un Máster en Ingeniería de Software y Sistemas Informáticos.",
+        "Su formación académica combina Ingeniería en Sistemas en Ecuador y un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
+        "Jorge cuenta con formación universitaria y de posgrado orientada al desarrollo de software y sistemas informáticos.",
+    ],
+
+    certifications: [
+        `Jorge cuenta con estas certificaciones y formaciones: ${JORGE.certificaciones.join("; ")}.`,
+        `Entre las certificaciones de Jorge se encuentran: ${JORGE.certificaciones.join("; ")}.`,
+        `Su formación complementaria incluye ${JORGE.certificaciones.join(", ")}.`,
+    ],
+
+    technologies: [
+        `El stack de Jorge incluye ${JORGE.tecnologias.frontend.join(" y ")} en frontend, ${JORGE.tecnologias.backend.join(" y ")} en backend, ${JORGE.tecnologias.basesDatos.join(" y ")} en bases de datos y ${JORGE.tecnologias.deploy.join(", ")} para despliegue.`,
+        `Jorge trabaja con React y JavaScript en frontend; Django y Java en backend; PostgreSQL y MySQL en bases de datos; y Render, Vercel y AWS para deploy.`,
+        `Entre las principales tecnologías de Jorge están React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.`,
+    ],
+
+    frontend: [
+        `En frontend, Jorge trabaja principalmente con ${JORGE.tecnologias.frontend.join(" y ")}.`,
+        `Las principales tecnologías frontend de Jorge son ${JORGE.tecnologias.frontend.join(" y ")}.`,
+        `Para desarrollo frontend, Jorge utiliza ${JORGE.tecnologias.frontend.join(" y ")}.`,
+    ],
+
+    backend: [
+        `En backend, Jorge trabaja principalmente con ${JORGE.tecnologias.backend.join(" y ")}.`,
+        `Las tecnologías backend que utiliza Jorge son ${JORGE.tecnologias.backend.join(" y ")}.`,
+        `Su experiencia backend incluye ${JORGE.tecnologias.backend.join(" y ")}.`,
+    ],
+
+    databases: [
+        `Jorge trabaja con ${JORGE.tecnologias.basesDatos.join(" y ")} como principales bases de datos.`,
+        `En bases de datos, Jorge utiliza ${JORGE.tecnologias.basesDatos.join(" y ")}.`,
+        `Su experiencia con bases de datos incluye ${JORGE.tecnologias.basesDatos.join(" y ")}.`,
+    ],
+
+    deploy: [
+        `Para despliegue, Jorge utiliza ${JORGE.tecnologias.deploy.join(", ")}.`,
+        `Jorge tiene experiencia desplegando aplicaciones con ${JORGE.tecnologias.deploy.join(", ")}.`,
+        `En deployment, su stack incluye ${JORGE.tecnologias.deploy.join(", ")}.`,
+    ],
+
+    areas: [
+        `Las principales áreas de Jorge son ${JORGE.areas.join(", ")}.`,
+        `Jorge tiene experiencia en ${JORGE.areas.join(", ")}.`,
+        `Su perfil profesional abarca ${JORGE.areas.join(", ")}.`,
+    ],
+
+    interests: [
+        `Entre los intereses de Jorge están ${JORGE.intereses.join(", ")}.`,
+        `Fuera del ámbito profesional, Jorge disfruta de ${JORGE.intereses.join(", ")}.`,
+        `Jorge tiene interés por ${JORGE.intereses.join(", ")}.`,
+    ],
+
+    contact: [
+        JORGE.contacto,
+        'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
+        'La mejor forma de contactar a Jorge es utilizando la sección "Contacto" de su portfolio.',
+    ],
+};
+
+/* =========================================================
+   RESPUESTAS ESPECÍFICAS DE PROYECTOS
+========================================================= */
+
+const projectResponses = {
+    "portfolio react": [
+        "El Portfolio React es el sitio personal de Jorge. Está diseñado para presentar su perfil profesional, formación, certificaciones, habilidades y proyectos.",
+        "El portfolio de Jorge está desarrollado con React y funciona como su carta de presentación profesional. Incluye información académica, proyectos y la asistente virtual Sasha.",
+        "En su Portfolio React, Jorge presenta su trayectoria profesional mediante una interfaz moderna con soporte para temas claro y oscuro, cambio de idioma y diferentes animaciones.",
+        "El Portfolio React reúne el perfil profesional de Jorge, sus estudios, certificaciones, tecnologías y proyectos en una experiencia web interactiva.",
+    ],
+
+    "quiz sobre ecuador": [
+        "El Quiz sobre Ecuador es una aplicación interactiva de preguntas y respuestas pensada para poner a prueba los conocimientos sobre Ecuador.",
+        "Este proyecto combina aprendizaje y entretenimiento mediante preguntas relacionadas con Ecuador y una experiencia interactiva.",
+        "El Quiz sobre Ecuador permite al usuario responder preguntas y comprobar cuánto conoce sobre diferentes aspectos del país.",
+        "Es una aplicación enfocada en crear una experiencia dinámica de preguntas y respuestas sobre Ecuador.",
+    ],
+
+    "aplicacion del clima": [
+        "La Aplicación del clima permite consultar información meteorológica de diferentes ubicaciones mediante una interfaz web dinámica.",
+        "Este proyecto muestra cómo consumir información meteorológica externa mediante una API y presentarla de forma clara al usuario.",
+        "La aplicación del clima está enfocada en consultar datos meteorológicos y mostrarlos mediante una experiencia sencilla e interactiva.",
+        "Es un proyecto práctico centrado en el consumo de APIs y la presentación dinámica de información meteorológica.",
+    ],
+
+    "chatbot": [
+        "El Chatbot es un asistente virtual integrado en el portfolio de Jorge. Se llama Sasha y puede responder preguntas sobre su perfil, formación, tecnologías, certificaciones y proyectos.",
+        "Sasha es el chatbot del portfolio de Jorge. Utiliza respuestas locales para las preguntas conocidas y puede utilizar Groq cuando necesita responder preguntas más abiertas.",
+        "El proyecto Chatbot integra una asistente virtual llamada Sasha dentro del portfolio. Su función es facilitar al visitante el acceso a información sobre Jorge.",
+        "El chatbot combina respuestas locales sin consumo de tokens con inteligencia artificial mediante Groq para preguntas que no están contempladas en la base de conocimiento.",
+    ],
+
+    "ajedrez": [
+        "El proyecto Ajedrez es una aplicación web interactiva que lleva la lógica del juego de ajedrez al navegador.",
+        "En el proyecto de Ajedrez, Jorge trabaja con la representación del tablero, interacción del usuario y gestión de movimientos.",
+        "Ajedrez es un proyecto orientado a implementar una experiencia interactiva de juego dentro de una aplicación web.",
+        "Este proyecto demuestra el uso de lógica e interacción para construir una experiencia de ajedrez en el navegador.",
+    ],
+
+    "e-commerce con react y django": [
+        "El E-commerce con React y Django es una plataforma de comercio electrónico desarrollada separando frontend y backend.",
+        "El proyecto E-commerce combina React en el frontend con Django y Django REST Framework en el backend. Incluye productos, categorías, variantes, carrito y pedidos.",
+        "Es una plataforma de comercio electrónico en la que Jorge trabaja con React para la interfaz y Django para la API y la lógica del backend.",
+        "El E-commerce incluye funcionalidades como gestión de productos, variantes, imágenes, autenticación, carrito de compras y pedidos.",
+    ],
+};
+
+/* =========================================================
+   PALABRAS CLAVE
+========================================================= */
+
+const INTENTS = {
+    sasha: [
+        "quien eres",
+        "quien es sasha",
+        "que eres",
+        "que haces",
+        "como te llamas",
+        "tu nombre",
+        "eres una ia",
+        "eres humana",
+    ],
+
+    greetings: [
+        "hola",
+        "buenas",
+        "buenos dias",
+        "buenas tardes",
+        "buenas noches",
+        "hey",
+        "hello",
+        "hi",
+        "saludos",
+    ],
+
+    profile: [
+        "quien es jorge",
+        "quien es jorge patricio",
+        "sobre jorge",
+        "acerca de jorge",
+        "perfil de jorge",
+        "perfil profesional",
+        "a que se dedica jorge",
+        "que hace jorge",
+        "profesion de jorge",
+        "informacion de jorge",
+    ],
+
+    education: [
+        "formacion",
+        "formacion academica",
+        "estudios",
+        "estudios de jorge",
+        "que estudio",
+        "que ha estudiado",
+        "educacion",
+        "titulos",
+        "grado academico",
+    ],
+
+    engineering: [
+        "ingenieria",
+        "ingeniero",
+        "carrera universitaria",
+        "universidad indoamerica",
+        "tesis",
+        "nota de tesis",
+        "promedio de ingenieria",
+    ],
+
+    master: [
+        "master",
+        "maestria",
+        "posgrado",
+        "unir",
+        "universidad internacional de la rioja",
+        "tfm",
+        "trabajo fin de master",
+        "nota del tfm",
+        "promedio del master",
+    ],
+
+    certifications: [
+        "certificaciones",
+        "certificados",
+        "certificacion",
+        "certificado",
+        "cursos",
+        "curso",
+        "formacion complementaria",
+        "badges",
+        "insignias",
+    ],
+
+    technologies: [
+        "tecnologias",
+        "tecnologia",
+        "stack tecnologico",
+        "stack",
+        "herramientas",
+        "lenguajes",
+        "lenguaje de programacion",
+        "programacion",
+        "que tecnologias usa",
+        "que tecnologias utiliza",
+        "con que trabaja",
+    ],
+
+    frontend: [
+        "frontend",
+        "front end",
+        "front-end",
+        "react",
+        "javascript",
+        "desarrollo frontend",
+    ],
+
+    backend: [
+        "backend",
+        "back end",
+        "back-end",
+        "django",
+        "java",
+        "desarrollo backend",
+    ],
+
+    databases: [
+        "base de datos",
+        "bases de datos",
+        "postgresql",
+        "postgres",
+        "mysql",
+        "database",
+    ],
+
+    deploy: [
+        "deploy",
+        "deployment",
+        "despliegue",
+        "desplegar",
+        "hosting",
+        "vercel",
+        "render",
+        "aws",
+    ],
+
+    areas: [
+        "areas",
+        "area profesional",
+        "especialidad",
+        "especialidades",
+        "en que se especializa",
+        "campo profesional",
+        "habilidades profesionales",
+    ],
+
+    projects: [
+        "proyectos",
+        "proyecto",
+        "portfolio",
+        "portafolio",
+        "que ha desarrollado",
+        "que desarrolla",
+        "trabajos realizados",
+        "aplicaciones",
+    ],
+
+    interests: [
+        "intereses",
+        "que le gusta",
+        "que le gusta hacer",
+        "hobbies",
+        "pasatiempos",
+        "lectura",
+        "libros",
+        "musica",
+        "dan brown",
+    ],
+
+    contact: [
+        "contacto",
+        "contactar",
+        "contactarlo",
+        "correo",
+        "email",
+        "telefono",
+        "whatsapp",
+        "como puedo contactar",
+        "como contacto",
+    ],
+};
+
+/* =========================================================
+   DETECCIÓN DE OTROS NOMBRES
+========================================================= */
+
+const JORGE_NAMES = [
+    "jorge",
+    "jorge patricio",
+    "patricio",
+    "santamaria",
+    "santamaria cherrez",
+];
+
+const NON_PERSON_WORDS = [
+    ...JORGE_NAMES,
+
+    "tecnologia",
+    "tecnologias",
+    "frontend",
+    "backend",
+    "javascript",
+    "react",
+    "django",
+    "java",
+    "postgresql",
+    "postgres",
+    "mysql",
+    "aws",
+    "vercel",
+    "render",
+    "proyectos",
+    "proyecto",
+    "formacion",
+    "estudios",
+    "ingenieria",
+    "ingeniero",
+    "master",
+    "maestria",
+    "unir",
+    "tfm",
+    "certificaciones",
+    "certificacion",
+    "areas",
+    "intereses",
+    "contacto",
+    "portfolio",
+    "portafolio",
+    "perfil",
+    "sistemas",
+    "software",
+    "informacion",
+    "datos",
+    "base",
+    "bases",
+    "desarrollo",
+    "programacion",
+    "documentacion",
+    "seguridad",
+    "virtualizacion",
+];
+
+/* =========================================================
+   DETECTAR OTRA PERSONA
+========================================================= */
+
+const containsOtherPersonReference = (originalMessage) => {
+    const message = originalMessage.trim();
+    const normalized = normalizeText(message);
 
     if (
-        containsAny(text, [
-            "jorge",
-            "jorge patricio",
-            "patricio",
-            "santamaria",
-            "santamaria cherrez",
-        ])
+        JORGE_NAMES.some((name) =>
+            normalized.includes(normalizeText(name))
+        )
+    ) {
+        return false;
+    }
+
+    const capitalizedPattern =
+        /\b(?:de|del|sobre|para|con|acerca de|hablame de|hablame sobre)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)(?:\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+))?/;
+
+    const capitalizedMatch =
+        message.match(capitalizedPattern);
+
+    if (capitalizedMatch) {
+        const candidate = normalizeText(
+            capitalizedMatch[1]
+        );
+
+        if (
+            !NON_PERSON_WORDS.includes(candidate)
+        ) {
+            return true;
+        }
+    }
+
+    const genericPattern =
+        /\b(?:de|del|sobre|para|acerca de)\s+([a-záéíóúñ]+)/g;
+
+    let match;
+
+    while (
+        (match = genericPattern.exec(normalized)) !== null
+    ) {
+        const candidate = match[1];
+
+        if (
+            candidate &&
+            !NON_PERSON_WORDS.includes(candidate)
+        ) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+/* =========================================================
+   ¿ES SOBRE JORGE?
+========================================================= */
+
+const isAboutJorge = (originalMessage) => {
+    const text = normalizeText(originalMessage);
+
+    if (
+        containsOtherPersonReference(originalMessage)
+    ) {
+        return false;
+    }
+
+    if (
+        JORGE_NAMES.some((name) =>
+            text.includes(normalizeText(name))
+        )
     ) {
         return true;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | NOMBRES / PERSONAS DISTINTAS
-    |--------------------------------------------------------------------------
-    |
-    | Si el usuario escribe "de Luis", "de Carlos", etc.,
-    | la pregunta debe pasar a Groq.
-    |
-    | Esta lista puede ampliarse cuando quieras.
-    |
-    |--------------------------------------------------------------------------
-    */
-
-    const otherNames = [
-        "luis",
-        "juan",
-        "pedro",
-        "carlos",
-        "miguel",
-        "ana",
-        "maria",
-        "jose",
-        "andres",
-        "diego",
-        "fernando",
-        "ricardo",
-        "david",
-        "alex",
-        "alexander",
-        "daniel",
-        "gabriel",
-        "sofia",
-        "lucia",
-        "laura",
-        "paula",
-        "carmen",
-        "roberto",
-        "alejandro",
-        "manuel",
-        "sergio",
-        "pablo",
-        "mateo",
-        "martin",
-        "martín",
+    const contextualWords = [
+        "que tecnologias usa",
+        "que tecnologias utiliza",
+        "tecnologias usa",
+        "tecnologias utiliza",
+        "donde estudio",
+        "que estudio",
+        "que ha estudiado",
+        "que proyectos tiene",
+        "que proyectos ha hecho",
+        "que certificaciones tiene",
+        "que certificaciones posee",
+        "que le gusta",
+        "cuales son sus proyectos",
+        "cuales son sus tecnologias",
+        "cual es su perfil",
+        "cual es su formacion",
+        "con que trabaja",
+        "que herramientas usa",
+        "que habilidades tiene",
+        "como puedo contactar",
+        "como contacto",
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | SI APARECE OTRO NOMBRE
-    |--------------------------------------------------------------------------
-    */
-
-    if (containsAny(text, otherNames)) {
-        return false;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | SI NO MENCIONA NINGÚN NOMBRE
-    |--------------------------------------------------------------------------
-    |
-    | Por defecto asumimos que está hablando de Jorge,
-    | porque Sasha pertenece al portfolio de Jorge.
-    |
-    |--------------------------------------------------------------------------
-    */
-
-    return true;
+    return containsAny(
+        text,
+        contextualWords
+    );
 };
 
-/*
-|--------------------------------------------------------------------------
-| RESPUESTAS LOCALES
-|--------------------------------------------------------------------------
-*/
+/* =========================================================
+   RESPUESTA ESPECÍFICA DE PROYECTO
+========================================================= */
 
-const responses = {
+const getProjectResponse = (text) => {
+    for (const project of JORGE.proyectos) {
+        const projectName =
+            normalizeText(project.nombre);
 
-    /*
-    |--------------------------------------------------------------------------
-    | SASHA
-    |--------------------------------------------------------------------------
-    */
+        if (text.includes(projectName)) {
+            const projectAnswers =
+                projectResponses[projectName];
 
-    sasha: () =>
-        "Soy Sasha, la asistente virtual del portfolio de Jorge. Puedo ayudarte con información sobre Jorge, sus estudios, certificaciones, tecnologías, proyectos e intereses. También puedo responder preguntas generales de tecnología.",
+            if (projectAnswers) {
+                return randomResponse(
+                    projectAnswers
+                );
+            }
 
-    /*
-    |--------------------------------------------------------------------------
-    | JORGE
-    |--------------------------------------------------------------------------
-    */
-
-    jorge: () =>
-        `${JORGE.nombre} es ${JORGE.perfil}`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | FORMACIÓN COMPLETA
-    |--------------------------------------------------------------------------
-    */
-
-    education: () =>
-        `Jorge es ${JORGE.estudios.ingenieria.titulo} por la ${JORGE.estudios.ingenieria.universidad}, ${JORGE.estudios.ingenieria.pais}, con un promedio final de ${JORGE.estudios.ingenieria.promedio}. También tiene un ${JORGE.estudios.master.titulo} por la ${JORGE.estudios.master.universidad}, ${JORGE.estudios.master.pais}, con un promedio final de ${JORGE.estudios.master.promedio}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | INGENIERÍA
-    |--------------------------------------------------------------------------
-    */
-
-    engineering: () =>
-        `Jorge es ${JORGE.estudios.ingenieria.titulo} por la ${JORGE.estudios.ingenieria.universidad}, Ecuador. Obtuvo un promedio final de ${JORGE.estudios.ingenieria.promedio} y una nota de ${JORGE.estudios.ingenieria.tesis} en su tesis.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | MÁSTER
-    |--------------------------------------------------------------------------
-    */
-
-    master: () =>
-        `Jorge tiene un ${JORGE.estudios.master.titulo} por la ${JORGE.estudios.master.universidad}, España. Su promedio final fue ${JORGE.estudios.master.promedio} y obtuvo una nota de ${JORGE.estudios.master.tfm} en su TFM.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIONES
-    |--------------------------------------------------------------------------
-    */
-
-    certifications: () =>
-        `Jorge cuenta con las siguientes certificaciones y formaciones: ${JORGE.certificaciones.join(
-            "; "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | TODAS LAS TECNOLOGÍAS
-    |--------------------------------------------------------------------------
-    */
-
-    technologies: () =>
-        `Jorge trabaja con ${JORGE.tecnologias.frontend.join(
-            ", "
-        )} en frontend; ${JORGE.tecnologias.backend.join(
-            ", "
-        )} en backend; ${JORGE.tecnologias.basesDatos.join(
-            ", "
-        )} en bases de datos; y ${JORGE.tecnologias.deploy.join(
-            ", "
-        )} para despliegue.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | FRONTEND
-    |--------------------------------------------------------------------------
-    */
-
-    frontend: () =>
-        `En frontend, Jorge trabaja principalmente con ${JORGE.tecnologias.frontend.join(
-            " y "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | BACKEND
-    |--------------------------------------------------------------------------
-    */
-
-    backend: () =>
-        `En backend, Jorge trabaja principalmente con ${JORGE.tecnologias.backend.join(
-            " y "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | BASES DE DATOS
-    |--------------------------------------------------------------------------
-    */
-
-    databases: () =>
-        `Jorge trabaja con ${JORGE.tecnologias.basesDatos.join(
-            " y "
-        )} como tecnologías de bases de datos.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | DEPLOY
-    |--------------------------------------------------------------------------
-    */
-
-    deploy: () =>
-        `Jorge tiene experiencia realizando despliegues con ${JORGE.tecnologias.deploy.join(
-            ", "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | ÁREAS PROFESIONALES
-    |--------------------------------------------------------------------------
-    */
-
-    areas: () =>
-        `Jorge se especializa en ${JORGE.areas.join(
-            ", "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTOS
-    |--------------------------------------------------------------------------
-    */
-
-    projects: () =>
-        `Entre los proyectos de Jorge se encuentran: ${JORGE.proyectos.join(
-            ", "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | INTERESES
-    |--------------------------------------------------------------------------
-    */
-
-    interests: () =>
-        `Entre los intereses de Jorge están ${JORGE.intereses.join(
-            ", "
-        )}.`,
-
-    /*
-    |--------------------------------------------------------------------------
-    | CONTACTO
-    |--------------------------------------------------------------------------
-    */
-
-    contact: () =>
-        JORGE.contacto,
-};
-
-/*
-|--------------------------------------------------------------------------
-| RESPUESTAS COMBINADAS
-|--------------------------------------------------------------------------
-|
-| Ejemplos:
-|
-| "¿Qué estudió y qué tecnologías utiliza?"
-|
-| "¿Qué certificaciones tiene y qué proyectos ha realizado?"
-|
-| "¿Qué tecnologías usa y en qué áreas se especializa?"
-|
-|--------------------------------------------------------------------------
-*/
-
-const getCombinedResponse = (text) => {
-    const parts = [];
-
-    /*
-    |--------------------------------------------------------------------------
-    | FORMACIÓN
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "estudio",
-            "estudios",
-            "estudiado",
-            "formacion",
-            "educacion",
-            "carrera",
-            "titulo",
-            "titulos",
-            "ingenieria",
-            "ingeniero",
-            "master",
-            "maestria",
-            "universidad",
-        ])
-    ) {
-        parts.push(responses.education());
+            return `${project.nombre}: ${project.descripcion} Tecnologías: ${project.tecnologias.join(", ")}.`;
+        }
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | TECNOLOGÍAS
-    |--------------------------------------------------------------------------
-    */
+    /* Alias comunes */
 
     if (
-        containsAny(text, [
-            "tecnologia",
-            "tecnologias",
-            "tecnologico",
-            "tecnologica",
-            "tecnologicos",
-            "tecnologicas",
-            "stack",
-            "stack tecnologico",
-            "tech stack",
-            "habilidades",
-            "habilidades tecnicas",
-            "herramientas",
-            "herramientas tecnicas",
-            "lenguajes",
-            "lenguajes de programacion",
-            "programacion",
-            "programacion web",
-            "que tecnologias usa",
-            "que tecnologias utiliza",
-            "que tecnologias conoce",
-            "que tecnologias maneja",
-            "que herramientas usa",
-            "que herramientas utiliza",
-            "que stack usa",
-            "que stack utiliza",
-            "con que tecnologias trabaja",
-            "con que tecnologia trabaja",
-            "tecnologias que usa",
-            "tecnologias que utiliza",
-            "tecnologias de jorge",
-            "tecnologia de jorge",
-            "stack de jorge",
-            "technical skills",
-            "technologies",
-            "technology",
-            "what technologies does jorge use",
-            "what technologies does he use",
-        ])
+        text.includes("ecommerce") ||
+        text.includes("e commerce") ||
+        text.includes("tienda")
     ) {
-        parts.push(responses.technologies());
+        return randomResponse(
+            projectResponses[
+                "e-commerce con react y django"
+            ]
+        );
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTOS
-    |--------------------------------------------------------------------------
-    */
 
     if (
-        containsAny(text, [
-            "proyecto",
-            "proyectos",
-            "desarrollado",
-            "desarrollados",
-            "desarrollo",
-            "desarrolla",
-            "creado",
-            "creados",
-            "ha hecho",
-            "ha desarrollado",
-            "ha creado",
-            "trabajos realizados",
-        ])
+        text.includes("clima") ||
+        text.includes("tiempo meteorologico")
     ) {
-        parts.push(responses.projects());
+        return randomResponse(
+            projectResponses[
+                "aplicacion del clima"
+            ]
+        );
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIONES
-    |--------------------------------------------------------------------------
-    */
 
     if (
-        containsAny(text, [
-            "certificacion",
-            "certificaciones",
-            "certificado",
-            "certificados",
-            "credenciales",
-            "curso",
-            "cursos",
-            "formacion profesional",
-        ])
+        text.includes("quiz") ||
+        text.includes("ecuador")
     ) {
-        parts.push(responses.certifications());
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | ÁREAS
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "especializa",
-            "especialidad",
-            "especialidades",
-            "areas",
-            "area profesional",
-            "areas profesionales",
-        ])
-    ) {
-        parts.push(responses.areas());
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | INTERESES
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "intereses",
-            "interes",
-            "gustos",
-            "gusta",
-            "hobbies",
-            "pasatiempos",
-        ])
-    ) {
-        parts.push(responses.interests());
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | ELIMINAR DUPLICADOS
-    |--------------------------------------------------------------------------
-    */
-
-    const uniqueParts = [...new Set(parts)];
-
-    /*
-    |--------------------------------------------------------------------------
-    | SOLO COMBINAR SI HAY 2 O MÁS CATEGORÍAS
-    |--------------------------------------------------------------------------
-    */
-
-    if (uniqueParts.length >= 2) {
-        return uniqueParts.join(" ");
+        return randomResponse(
+            projectResponses[
+                "quiz sobre ecuador"
+            ]
+        );
     }
 
     return null;
 };
 
-/*
-|--------------------------------------------------------------------------
-| RESPUESTA LOCAL PRINCIPAL
-|--------------------------------------------------------------------------
-*/
+/* =========================================================
+   DETECTAR INTENCIÓN
+========================================================= */
 
-export const getLocalResponse = (message) => {
-    /*
-    |--------------------------------------------------------------------------
-    | NORMALIZAR
-    |--------------------------------------------------------------------------
-    */
+const matchesIntent = (text, intent) => {
+    return containsAny(
+        text,
+        INTENTS[intent]
+    );
+};
 
-    const text = normalize(message);
+/* =========================================================
+   RESPUESTA POR INTENCIÓN
+========================================================= */
 
-    if (!text) {
+const getIntentResponse = (intent) => {
+    return randomResponse(
+        responses[intent]
+    );
+};
+
+/* =========================================================
+   RESPUESTAS COMBINADAS
+========================================================= */
+
+const getCombinedResponse = (text) => {
+    const matchedIntents = [];
+
+    const orderedIntents = [
+        "profile",
+        "education",
+        "engineering",
+        "master",
+        "certifications",
+        "technologies",
+        "frontend",
+        "backend",
+        "databases",
+        "deploy",
+        "areas",
+        "projects",
+        "interests",
+        "contact",
+    ];
+
+    for (const intent of orderedIntents) {
+        if (
+            matchesIntent(
+                text,
+                intent
+            )
+        ) {
+            matchedIntents.push(intent);
+        }
+    }
+
+    if (
+        matchedIntents.length < 2
+    ) {
         return null;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | VERIFICAR PERSONA
-    |--------------------------------------------------------------------------
-    |
-    | Si pregunta por otra persona:
-    |
-    | return null
-    |
-    | El controlador enviará la pregunta a Groq.
-    |--------------------------------------------------------------------------
-    */
+    const selected =
+        matchedIntents.slice(0, 3);
 
-    if (!isAboutJorge(text)) {
-        console.log(
-            "🧠 Pregunta sobre otra persona → Groq"
+    const parts =
+        selected.map((intent) =>
+            getIntentResponse(intent)
         );
 
+    return parts.join(" ");
+};
+
+/* =========================================================
+   FUNCIÓN PRINCIPAL
+========================================================= */
+
+export const getLocalResponse = (
+    message
+) => {
+    if (
+        typeof message !== "string" ||
+        !message.trim()
+    ) {
         return null;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | 1. PREGUNTAS COMBINADAS
-    |--------------------------------------------------------------------------
-    */
+    const originalMessage =
+        message.trim();
 
+    const text =
+        normalizeText(
+            originalMessage
+        );
+
+    /* Otra persona → Groq */
+    if (
+        containsOtherPersonReference(
+            originalMessage
+        )
+    ) {
+        return null;
+    }
+
+    /* Saludos */
+    if (
+        matchesIntent(
+            text,
+            "greetings"
+        ) &&
+        text.length < 60
+    ) {
+        return getIntentResponse(
+            "greetings"
+        );
+    }
+
+    /* Sasha */
+    if (
+        matchesIntent(
+            text,
+            "sasha"
+        )
+    ) {
+        return getIntentResponse(
+            "sasha"
+        );
+    }
+
+    /* Debe ser información de Jorge */
+    if (
+        !isAboutJorge(
+            originalMessage
+        )
+    ) {
+        return null;
+    }
+
+    /* Proyecto específico */
+    const projectResponse =
+        getProjectResponse(text);
+
+    if (projectResponse) {
+        return projectResponse;
+    }
+
+    /* Combinaciones */
     const combinedResponse =
         getCombinedResponse(text);
 
@@ -559,454 +742,39 @@ export const getLocalResponse = (message) => {
         return combinedResponse;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | 2. QUIÉN ES SASHA
-    |--------------------------------------------------------------------------
-    */
+    /* Intenciones individuales */
+    const priorityIntents = [
+        "master",
+        "engineering",
+        "certifications",
+        "frontend",
+        "backend",
+        "databases",
+        "deploy",
+        "technologies",
+        "projects",
+        "education",
+        "areas",
+        "interests",
+        "contact",
+        "profile",
+    ];
 
-    if (
-        containsAny(text, [
-            "quien eres",
-            "quien es sasha",
-            "que eres",
-            "eres una ia",
-            "eres inteligencia artificial",
-            "eres humano",
-            "eres humana",
-            "presentate",
-            "hablame de ti",
-            "cuentame sobre ti",
-            "who are you",
-            "who is sasha",
-            "what are you",
-            "are you ai",
-        ])
+    for (
+        const intent
+        of priorityIntents
     ) {
-        return responses.sasha();
+        if (
+            matchesIntent(
+                text,
+                intent
+            )
+        ) {
+            return getIntentResponse(
+                intent
+            );
+        }
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 3. SALUDOS
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "hola",
-            "hola sasha",
-            "buenos dias",
-            "buenas tardes",
-            "buenas noches",
-            "hello",
-            "hi",
-            "hey",
-            "hey sasha",
-            "good morning",
-            "good afternoon",
-            "good evening",
-        ])
-    ) {
-        return "Hola, soy Sasha. ¿Qué te gustaría saber sobre Jorge o sobre su trabajo?";
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 4. QUIÉN ES JORGE
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "quien es jorge",
-            "quien es jorge patricio",
-            "hablame de jorge",
-            "habla de jorge",
-            "dime sobre jorge",
-            "cuentame sobre jorge",
-            "informacion de jorge",
-            "informacion sobre jorge",
-            "perfil de jorge",
-            "who is jorge",
-            "tell me about jorge",
-            "who is jorge patricio",
-        ])
-    ) {
-        return responses.jorge();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 5. CONTACTO
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "contacto",
-            "contactar",
-            "contactar a jorge",
-            "como contacto a jorge",
-            "como puedo contactar",
-            "como hablar con jorge",
-            "hablar con jorge",
-            "comunicarme con jorge",
-            "correo de jorge",
-            "email de jorge",
-            "contact information",
-            "how can i contact jorge",
-            "how to contact jorge",
-            "contact jorge",
-        ])
-    ) {
-        return responses.contact();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 6. CERTIFICACIONES
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "certificacion",
-            "certificaciones",
-            "certificado",
-            "certificados",
-            "credenciales",
-            "cursos realizados",
-            "cursos ha realizado",
-            "que cursos tiene",
-            "que certificaciones tiene",
-            "certifications",
-            "certificates",
-            "what certifications",
-        ])
-    ) {
-        return responses.certifications();
-    }
-
-/*
-    |--------------------------------------------------------------------------
-    | 7. FORMACIÓN
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "estudios de jorge",
-            "que estudio jorge",
-            "que ha estudiado",
-            "que estudio",
-            "donde estudio jorge",
-            "donde estudio",
-            "formacion de jorge",
-            "formacion academica",
-            "formacion profesional",
-            "carrera de jorge",
-            "carrera",
-            "universidad de jorge",
-            "universidad",
-            "titulos de jorge",
-            "titulos",
-            "titulo de jorge",
-            "titulo",
-            "que carrera estudio",
-            "que carrera hizo",
-            "educacion de jorge",
-            "educacion",
-            "education",
-            "what did jorge study",
-            "where did jorge study",
-            "what is jorge education",
-            "what did he study",
-        ])
-    ) {
-        return responses.education();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 8. INGENIERÍA
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "es ingeniero",
-            "es ingeniero de sistemas",
-            "ingeniero en sistemas",
-            "ingenieria de sistemas",
-            "estudio sistemas",
-            "universidad indoamerica",
-            "indoamerica",
-            "nota de tesis",
-            "calificacion de tesis",
-            "promedio de ingenieria",
-            "tesis",
-            "engineering degree",
-            "systems engineer",
-        ])
-    ) {
-        return responses.engineering();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 9. MÁSTER
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "tiene master",
-            "tiene un master",
-            "tiene maestria",
-            "que master tiene",
-            "que maestria tiene",
-            "master de jorge",
-            "maestria de jorge",
-            "donde hizo el master",
-            "donde hizo la maestria",
-            "estudio un master",
-            "estudio una maestria",
-            "unir",
-            "tfm",
-            "nota del tfm",
-            "promedio del master",
-            "masters degree",
-            "master degree",
-            "what master does jorge have",
-        ])
-    ) {
-        return responses.master();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 10. TECNOLOGÍAS
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "tecnologia",
-            "tecnologias",
-            "tecnologico",
-            "tecnologica",
-            "tecnologicos",
-            "tecnologicas",
-            "stack",
-            "stack tecnologico",
-            "tech stack",
-            "habilidades",
-            "habilidades tecnicas",
-            "herramientas",
-            "herramientas tecnicas",
-            "lenguajes",
-            "lenguajes de programacion",
-            "programacion",
-            "que tecnologias usa",
-            "que tecnologias utiliza",
-            "que tecnologias conoce",
-            "que tecnologias maneja",
-            "que herramientas usa",
-            "que herramientas utiliza",
-            "que stack usa",
-            "que stack utiliza",
-            "con que tecnologias trabaja",
-            "con que tecnologia trabaja",
-            "tecnologias que usa",
-            "tecnologias que utiliza",
-            "tecnologias de jorge",
-            "tecnologia de jorge",
-            "stack de jorge",
-            "technical skills",
-            "technologies",
-            "technology",
-            "what technologies does jorge use",
-            "what technologies does he use",
-        ])
-    ) {
-        return responses.technologies();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 11. FRONTEND
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "frontend",
-            "front end",
-            "front-end",
-            "react",
-            "javascript",
-            "que usa para frontend",
-            "tecnologias frontend",
-            "frontend technologies",
-            "does he know react",
-        ])
-    ) {
-        return responses.frontend();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 12. BACKEND
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "backend",
-            "back end",
-            "back-end",
-            "django",
-            "java",
-            "que usa para backend",
-            "tecnologias backend",
-            "backend technologies",
-            "does he know django",
-        ])
-    ) {
-        return responses.backend();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 13. BASES DE DATOS
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "base de datos",
-            "bases de datos",
-            "postgresql",
-            "mysql",
-            "que base de datos usa",
-            "que bases de datos conoce",
-            "database",
-            "databases",
-            "what database does he use",
-        ])
-    ) {
-        return responses.databases();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 14. DEPLOY
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "deploy",
-            "despliegue",
-            "deployment",
-            "hosting",
-            "donde despliega",
-            "donde aloja",
-            "vercel",
-            "render",
-            "aws",
-            "cloud",
-            "where does he deploy",
-        ])
-    ) {
-        return responses.deploy();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 15. ÁREAS PROFESIONALES
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "en que se especializa",
-            "en que area trabaja",
-            "areas de trabajo",
-            "areas profesionales",
-            "especialidad",
-            "especialidades",
-            "area profesional",
-            "professional areas",
-            "specialties",
-            "what does he specialize in",
-        ])
-    ) {
-        return responses.areas();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 16. PROYECTOS
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "proyectos",
-            "proyecto de jorge",
-            "proyectos de jorge",
-            "que proyectos tiene",
-            "que proyectos ha hecho",
-            "que proyectos ha desarrollado",
-            "que ha desarrollado",
-            "que ha creado",
-            "trabajos realizados",
-            "portfolio projects",
-            "projects",
-            "what projects has jorge built",
-            "what projects has he made",
-        ])
-    ) {
-        return responses.projects();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | 17. INTERESES
-    |--------------------------------------------------------------------------
-    */
-
-    if (
-        containsAny(text, [
-            "intereses",
-            "que le gusta",
-            "que le interesa",
-            "gustos de jorge",
-            "hobbies",
-            "pasatiempos",
-            "tiempo libre",
-            "que hace en su tiempo libre",
-            "lectura",
-            "dan brown",
-            "musica",
-            "interests",
-            "what does jorge like",
-        ])
-    ) {
-        return responses.interests();
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | NO EXISTE RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    |
-    | El controlador enviará la pregunta a Groq.
-    |
-    |--------------------------------------------------------------------------
-    */
 
     return null;
 };
