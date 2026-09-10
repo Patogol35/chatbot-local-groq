@@ -1,3 +1,5 @@
+// utils/localResponse.js
+
 const normalizeText = (text = "") =>
     text
         .toLowerCase()
@@ -9,11 +11,24 @@ export const getLocalResponse = (message) => {
     const text = normalizeText(message);
 
     // ============================================================
+    // IDENTIFICAR SI LA PREGUNTA ES SOBRE JORGE / PATRICIO
+    // ============================================================
+
+    const isJorge =
+        /\b(jorge|patricio)\b/.test(text);
+
+    // Si pregunta por otra persona, NO responder localmente.
+    // La pregunta continuará hacia Groq.
+    if (!isJorge) {
+        return null;
+    }
+
+    // ============================================================
     // PERFIL
     // ============================================================
 
     if (
-        /\b(quien es jorge|quien es jorge patricio|perfil de jorge|perfil profesional|sobre jorge|hablame de jorge)\b/
+        /\b(quien es|quien es jorge|perfil|perfil de jorge|perfil profesional|sobre jorge|hablame de jorge)\b/
             .test(text)
     ) {
         return "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software. Se especializa en desarrollo Full Stack, virtualización y ciberseguridad.";
@@ -27,7 +42,7 @@ export const getLocalResponse = (message) => {
         /\b(master|maestria)\b/.test(text) &&
         !/\b(nota|calificacion|promedio)\b/.test(text)
     ) {
-        return "Máster en Ingeniería de Software, realizado en la Universidad Internacional de La Rioja (UNIR), España.";
+        return "Jorge tiene un Máster en Ingeniería de Software, realizado en la Universidad Internacional de La Rioja (UNIR), España.";
     }
 
     // ============================================================
@@ -49,7 +64,7 @@ export const getLocalResponse = (message) => {
         /\b(ingenieria|ingeniero)\b/.test(text) &&
         !/\b(nota|calificacion|promedio)\b/.test(text)
     ) {
-        return "Ingeniería en Sistemas, realizada en la Universidad Indoamérica, Ecuador.";
+        return "Jorge es Ingeniero en Sistemas, título obtenido en la Universidad Indoamérica, Ecuador.";
     }
 
     // ============================================================
@@ -68,7 +83,7 @@ export const getLocalResponse = (message) => {
     // ============================================================
 
     if (
-        /\b(frontend|front end|front|desarrollo frontend)\b/.test(text)
+        /\b(frontend|front end|desarrollo frontend)\b/.test(text)
     ) {
         return "En Frontend utiliza principalmente React y JavaScript.";
     }
@@ -78,7 +93,7 @@ export const getLocalResponse = (message) => {
     // ============================================================
 
     if (
-        /\b(backend|back end|back|desarrollo backend)\b/.test(text)
+        /\b(backend|back end|desarrollo backend)\b/.test(text)
     ) {
         return "En Backend utiliza principalmente Django y Java.";
     }
@@ -104,7 +119,7 @@ export const getLocalResponse = (message) => {
     }
 
     // ============================================================
-    // STACK
+    // STACK / TECNOLOGÍAS
     // ============================================================
 
     if (
@@ -164,7 +179,8 @@ export const getLocalResponse = (message) => {
     }
 
     // ============================================================
-    // NO ES INFORMACIÓN LOCAL
+    // SI MENCIONÓ JORGE/PATRICIO PERO NO HAY RESPUESTA LOCAL
+    // → GROQ
     // ============================================================
 
     return null;
