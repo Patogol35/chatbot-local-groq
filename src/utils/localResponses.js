@@ -129,6 +129,7 @@ const LOCAL_RESPONSES = [
             "perfil",
             "cuentame sobre Jorge",
             "cuentame acerca de Jorge",
+            "cuentame de Jorge",
         ],
         responses: [
             "Jorge Patricio Santamaría Cherrez es ingeniero en sistemas y tiene un máster en ingeniería de software. Su experiencia se enfoca en desarrollo Full Stack, virtualización y ciberseguridad, trabajando con React, JavaScript, Django, Java y SQL.",
