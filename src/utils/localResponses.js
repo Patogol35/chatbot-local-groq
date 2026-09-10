@@ -54,6 +54,7 @@ const COMMON_WORDS = new Set([
     "cual",
     "cuales",
     "cuando",
+    "calificacion",
     "de",
     "del",
     "desde",
@@ -151,6 +152,7 @@ const COMMON_WORDS = new Set([
     "promedio",
     "perfil",
     "nota",
+    "postgrado",
 ]);
     
 
@@ -396,6 +398,8 @@ const LOCAL_RESPONSES = [
         "nota de su maestria",
         "nota de maestria",
         "nota de la maestria",
+        "nota de su posgrado",
+        "nota del posgrado",
     ],
     responses: [
         "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
