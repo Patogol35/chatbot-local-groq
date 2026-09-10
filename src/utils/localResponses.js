@@ -249,17 +249,35 @@ const LOCAL_RESPONSES = [
 {
     category: "formacion",
     keywords: [
-        "master",
-        "maestria",
-        "posgrado",
-        "que master tiene",
-        "que maestria tiene",
-        "que posgrado tiene",
-        "estudio una maestria",
-        "tiene maestria",
-        "tiene un master",
-        "master de jorge",
-    ],
+    "master",
+    "maestria",
+    "posgrado",
+
+    "que master tiene",
+    "que maestria tiene",
+    "que posgrado tiene",
+
+    "donde estudio su master",
+    "donde estudio su maestria",
+    "donde estudio su posgrado",
+
+    "donde estudio el master",
+    "donde estudio la maestria",
+    "donde estudio el posgrado",
+
+    "donde hizo su master",
+    "donde hizo su maestria",
+    "donde hizo su posgrado",
+
+    "donde realizo su master",
+    "donde realizo su maestria",
+    "donde realizo su posgrado",
+
+    "estudio una maestria",
+    "tiene maestria",
+    "tiene un master",
+    "master de jorge",
+],
     responses: [
         "Jorge realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja (UNIR), España.",
         "Jorge tiene un Máster en Ingeniería de Software y Sistemas Informáticos realizado en la UNIR.",
