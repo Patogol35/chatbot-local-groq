@@ -513,4 +513,163 @@ const LOCAL_RESPONSES = [
             "que le gusta",
         ],
         responses: [
-            "Entre los intereses de Jorge están la lectura, especialmente las obras de Dan Brown, y la m
+            "Entre los intereses de Jorge están la lectura, especialmente las obras de Dan Brown, y la música.",
+            "Jorge disfruta de la lectura, particularmente de los libros de Dan Brown, y también tiene interés por la música.",
+            "Sus principales intereses registrados son la lectura y la música, destacando especialmente su gusto por Dan Brown.",
+            "Entre sus intereses se encuentran la literatura, especialmente Dan Brown, y la música."
+        ]
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | CONTACTO
+    |--------------------------------------------------------------------------
+    */
+
+    {
+        category: "contacto",
+        keywords: [
+            "contacto",
+            "contactar",
+            "contactarme",
+            "comunicarme",
+            "hablar con jorge",
+            "contactar a jorge",
+            "como contacto",
+            "como contactar",
+        ],
+        responses: [
+            'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
+            'Para comunicarte con Jorge, utiliza la sección "Contacto" de su portfolio.',
+            'Si quieres contactar a Jorge, encontrarás la opción correspondiente en la sección "Contacto".',
+            'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.'
+        ]
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | SASHA
+    |--------------------------------------------------------------------------
+    */
+
+    {
+        category: "sasha",
+        keywords: [
+            "quien eres",
+            "que eres",
+            "como te llamas",
+            "tu nombre",
+        ],
+        responses: [
+            "Soy Sasha, la asistente virtual del portfolio de Jorge.",
+            "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge.",
+            "Soy Sasha, una IA creada para asistir a los visitantes del portfolio de Jorge.",
+            "Mi nombre es Sasha y funciono como asistente virtual del portfolio de Jorge."
+        ]
+    },
+];
+
+/*
+|--------------------------------------------------------------------------
+| COMPROBAR SI HABLA DE JORGE
+|--------------------------------------------------------------------------
+*/
+
+const isAboutJorge = (message) => {
+    const normalized = normalizeText(message);
+
+
+    const jorgeKeywords = [
+    "jorge",
+    "patricio",
+    "santamaria",
+    "santamaria cherrez",
+
+    // Combinaciones del nombre
+    "jorge patricio",
+    "jorge santamaria",
+    "jorge cherrez",
+    "patricio santamaria",
+    "patricio cherrez",
+    "jorge patricio santamaria",
+    "jorge patricio cherrez",
+    "jorge santamaria cherrez",
+    "patricio santamaria cherrez",
+    "jorge patricio santamaria cherrez",
+];
+
+    return jorgeKeywords.some((keyword) =>
+        normalized.includes(normalizeText(keyword))
+    );
+};
+/*
+|--------------------------------------------------------------------------
+| BUSCAR RESPUESTA LOCAL
+|--------------------------------------------------------------------------
+*/
+
+export const getLocalResponse = (message) => {
+    const normalizedMessage = normalizeText(message);
+
+    let bestMatch = null;
+    let bestScore = 0;
+
+    for (const item of LOCAL_RESPONSES) {
+        let score = 0;
+
+        for (const keyword of item.keywords) {
+            const normalizedKeyword = normalizeText(keyword);
+
+            /*
+            |--------------------------------------------------------------------------
+            | COINCIDENCIA EXACTA DE PALABRA O FRASE
+            |--------------------------------------------------------------------------
+            */
+
+            const regex = new RegExp(
+                `(^|\\s)${normalizedKeyword.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    "\\$&"
+                )}(?=\\s|$)`
+            );
+
+            if (regex.test(normalizedMessage)) {
+                const words = normalizedKeyword.split(" ").length;
+
+                // Las coincidencias específicas tienen mucho peso
+                score += words * 10;
+            }
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | GUARDAR LA MEJOR COINCIDENCIA
+        |--------------------------------------------------------------------------
+        */
+
+        if (score > bestScore) {
+            bestScore = score;
+            bestMatch = item;
+        }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | RESPUESTA LOCAL
+    |--------------------------------------------------------------------------
+    */
+
+    if (bestMatch && bestScore >= 10) {
+        const responses = bestMatch.responses;
+
+        const randomIndex = Math.floor(
+            Math.random() * responses.length
+        );
+
+        return responses[randomIndex];
+    }
+
+    return null;
+};
+
+     
