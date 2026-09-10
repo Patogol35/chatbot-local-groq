@@ -23,7 +23,11 @@ const normalizeText = (text = "") => {
 const VALID_NAMES = [
     "jorge",
     "patricio",
+    "santamaria",
+    "santamaria cherrez",
     "jorge patricio",
+    "jorge patricio santamaria",
+    "jorge patricio santamaria cherrez",
 ];
 
 /*
@@ -34,14 +38,37 @@ const VALID_NAMES = [
 
 const PERSON_QUESTION_PATTERNS = [
     "quien es",
-    "quién es",
     "hablame de",
-    "háblame de",
-    "sobre",
+    "cuentame sobre",
+    "informacion sobre",
     "informacion de",
-    "información de",
     "datos de",
+    "datos sobre",
     "perfil de",
+    "perfil sobre",
+    "educacion de",
+    "educacion sobre",
+    "formacion de",
+    "formacion sobre",
+    "trayectoria de",
+    "trayectoria sobre",
+    "estudios de",
+    "estudios sobre",
+    "carrera de",
+    "carrera sobre",
+    "ingenieria de",
+    "maestria de",
+    "maestria sobre",
+    "master de",
+    "master sobre",
+    "certificaciones de",
+    "certificaciones sobre",
+    "proyectos de",
+    "proyectos sobre",
+    "experiencia de",
+    "experiencia sobre",
+    "tecnologias de",
+    "tecnologias sobre",
 ];
 
 /*
@@ -495,8 +522,7 @@ const LOCAL_RESPONSES = [
             "Su formación complementaria incluye certificaciones de MCP, Linux, Fundamentals of AI, AZ-900 y Claude API."
         ]
     },
-
-    /*
+ /*
     |--------------------------------------------------------------------------
     | INTERESES
     |--------------------------------------------------------------------------
@@ -609,23 +635,33 @@ const containsValidName = (message) => {
     const normalized = normalizeText(message);
 
     return VALID_NAMES.some((name) => {
-        return normalized.includes(
-            normalizeText(name)
+        const normalizedName = normalizeText(name);
+
+        const regex = new RegExp(
+            `(^|\\s)${normalizedName.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            )}(?=\\s|$)`
         );
+
+        return regex.test(normalized);
     });
 };
 
 /*
 |--------------------------------------------------------------------------
-| DETECTAR SI PREGUNTAN POR OTRA PERSONA
+| DETECTAR PREGUNTA SOBRE OTRA PERSONA
 |--------------------------------------------------------------------------
 |
 | Ejemplos:
 |
-| ¿Quién es Carlos?
-| ¿Quién es Messi?
-| Háblame de Elon Musk
+| Educación de Luis
+| Formación de Carlos
+| Maestría de Pedro
+| ¿Quién es Luis?
+| Háblame de Messi
 | Información de María
+| Proyectos de Elon Musk
 |
 | Todo eso debe ir a Groq.
 |
@@ -635,21 +671,9 @@ const containsValidName = (message) => {
 const isQuestionAboutAnotherPerson = (message) => {
     const normalized = normalizeText(message);
 
-    const isPersonQuestion =
-        PERSON_QUESTION_PATTERNS.some((pattern) =>
-            normalized.includes(
-                normalizeText(pattern)
-            )
-        );
-
-    if (!isPersonQuestion) {
-        return false;
-    }
-
     /*
     |--------------------------------------------------------------------------
-    | Si aparece Jorge, Patricio o Jorge Patricio,
-    | se permite respuesta local.
+    | PRIMERO: SI ES JORGE, NO BLOQUEAR RESPUESTA LOCAL
     |--------------------------------------------------------------------------
     */
 
@@ -659,14 +683,67 @@ const isQuestionAboutAnotherPerson = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | Hay una pregunta sobre una persona pero no aparece
-    | ninguno de los nombres válidos.
-    |
-    | Por lo tanto, Groq debe responder.
+    | PREGUNTA EXPLÍCITA SOBRE PERSONA
     |--------------------------------------------------------------------------
     */
 
-    return true;
+    const hasPersonPattern =
+        PERSON_QUESTION_PATTERNS.some((pattern) => {
+            const normalizedPattern =
+                normalizeText(pattern);
+
+            return normalized.includes(normalizedPattern);
+        });
+
+    if (hasPersonPattern) {
+        return true;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | ESTRUCTURA "TEMA DE NOMBRE"
+    |--------------------------------------------------------------------------
+    |
+    | Esto cubre casos como:
+    |
+    | educación de Luis
+    | estudios de Carlos
+    | proyectos de Pedro
+    | experiencia de María
+    | tecnologías de Juan
+    |
+    |--------------------------------------------------------------------------
+    */
+
+    const topicAboutPerson =
+        /^(educacion|formacion|estudios|trayectoria|carrera|ingenieria|maestria|master|certificaciones|certificados|proyectos|experiencia|tecnologias|tecnologia|perfil|datos|informacion|promedio|nota|notas|intereses|profesion)\s+(de|sobre)\s+.+$/;
+
+    if (topicAboutPerson.test(normalized)) {
+        return true;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | PREGUNTA "QUE ... TIENE/HIZO/ESTUDIO ... "
+    |--------------------------------------------------------------------------
+    |
+    | Ejemplos:
+    |
+    | ¿Qué maestría tiene Luis?
+    | ¿Qué proyectos tiene Carlos?
+    | ¿Dónde estudió Pedro?
+    |
+    |--------------------------------------------------------------------------
+    */
+
+    const questionAboutPerson =
+        /^(que|cual|donde|como|quien)\b.*\b(tiene|estudio|estudia|hizo|trabaja|trabajo|es|cuenta|obtuvo|realizo)\b.*$/;
+
+    if (questionAboutPerson.test(normalized)) {
+        return true;
+    }
+
+    return false;
 };
 
 /*
@@ -679,7 +756,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | OTRO NOMBRE = GROQ
+    | OTRA PERSONA = GROQ
     |--------------------------------------------------------------------------
     */
 
