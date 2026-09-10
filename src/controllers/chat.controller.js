@@ -125,6 +125,29 @@ const sanitizeHistory = (history) => {
         .slice(-MAX_HISTORY_MESSAGES);
 };
 
+const isAnotherPerson = (message) => {
+    const text = message
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+    // Si menciona a Jorge, dejamos que responda con la información local
+    if (
+        text.includes("jorge") ||
+        text.includes("patricio") ||
+        text.includes("santamaria")
+    ) {
+        return false;
+    }
+
+    // Solo detectamos otro nombre cuando la frase realmente pregunta
+    // por información de una persona
+    const personQuestion =
+        /\b(quien|hablame de|cuentame sobre|informacion sobre|que|cual|donde|como)\b.*\b(es|estudio|estudia|tiene|hizo|trabaja|trabajo|experiencia|proyectos|profesion|carrera|maestria|master)\b/i;
+
+    return personQuestion.test(text);
+};
+
 /*
 |--------------------------------------------------------------------------
 | CONTROLADOR
@@ -161,9 +184,11 @@ export const sendMessage = async (req, res) => {
         |
         */
 
-        const localResponse = getLocalResponse(userMessage);
+        const localResponse = isAnotherPerson(userMessage)
+    ? null
+    : getLocalResponse(userMessage);
 
-        if (localResponse) {
+if (localResponse) {
             console.log("⚡ RESPUESTA LOCAL");
             console.log("🤖 Groq no fue utilizado");
             console.log("💰 Tokens utilizados: 0");
