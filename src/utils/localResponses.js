@@ -1206,159 +1206,142 @@ const normalizeJorgeName = (message) => {
 |
 |--------------------------------------------------------------------------
 */
-const extractPersonName = (message) => {
+
+    const extractPersonName = (message) => {
     const normalized = normalizeText(message);
-    // ============================================================
-// PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
-// ============================================================
 
+    // ============================================================
+    // PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
+    // ============================================================
+
+    const technicalTerms = [
+        "programa",
+        "programar",
+        "programacion",
+        "codigo",
+        "codifica",
+        "codificar",
+
+        "imprime",
+        "imprimir",
+        "impresion",
+        "muestra",
+        "mostrar",
+        "escribe",
+        "escribir",
+
+        "crear",
+        "crea",
+        "declarar",
+        "declara",
+        "definir",
+        "define",
+        "ejecutar",
+        "ejecuta",
+
+        "sumar",
+        "suma",
+        "restar",
+        "resta",
+        "multiplicar",
+        "multiplica",
+        "dividir",
+        "divide",
+        "calcular",
+        "calcula",
+
+        "variable",
+        "variables",
+        "array",
+        "arreglo",
+        "lista",
+        "bucle",
+        "ciclo",
+        "condicional",
+        "funcion",
+        "función",
+        "metodo",
+        "método",
+        "clase",
+        "objeto",
+
+        "debug",
+        "debuggear",
+        "depurar"
+    ];
+
+    const technicalLanguages = [
+        "java",
+        "javascript",
+        "typescript",
+        "python",
+        "django",
+        "c",
+        "c++",
+        "c#",
+        "php",
+        "ruby",
+        "go",
+        "kotlin",
+        "swift"
+    ];
+
+    const hasTechnicalTerm = technicalTerms.some(term =>
+        normalized.split(/\s+/).includes(term)
+    );
+
+    const hasTechnicalLanguage = technicalLanguages.some(language =>
+        normalized.split(/\s+/).includes(language)
+    );
+
+    // Si contiene una acción/concepto de programación + lenguaje,
+    // NO intentar extraer un nombre de persona.
+    if (hasTechnicalTerm && hasTechnicalLanguage) {
+        return null;
+    }
+
+    // También bloquear frases que comienzan claramente como código
     const technicalPrefixes = [
-    // ============================================================
-    // PROGRAMACIÓN GENERAL
-    // ============================================================
-    "programa",
-    "programar",
-    "programacion",
-    "codigo",
-    "codifica",
-    "codificar",
-    "ejemplo de codigo",
-    "codigo en",
-    "programar en",
-    "programacion en",
+        "imprime",
+        "imprimir",
+        "muestra",
+        "mostrar",
+        "escribe",
+        "escribir",
+        "programa",
+        "programar",
+        "codifica",
+        "codificar",
+        "suma",
+        "sumar",
+        "resta",
+        "restar",
+        "multiplica",
+        "multiplicar",
+        "divide",
+        "dividir",
+        "calcula",
+        "calcular",
+        "crea un",
+        "crea una",
+        "crear un",
+        "crear una",
+        "declara un",
+        "declara una",
+        "declarar un",
+        "declarar una"
+    ];
 
-    // ============================================================
-    // MOSTRAR / IMPRIMIR
-    // ============================================================
-    "imprime",
-    "imprimir",
-    "impresion",
-    "muestra",
-    "mostrar",
-    "escribe",
-    "escribir",
-    "como imprimir",
-    "como mostrar",
-    "como escribir",
+    if (technicalPrefixes.some(prefix =>
+        normalized === prefix ||
+        normalized.startsWith(prefix + " ")
+    )) {
+        return null;
+    }
 
-    // ============================================================
-    // CREAR / DECLARAR / DEFINIR
-    // ============================================================
-    "como crear",
-    "como declarar",
-    "como definir",
-    "como ejecutar",
-
-    "crea un",
-    "crea una",
-    "crear un",
-    "crear una",
-    "declara un",
-    "declara una",
-    "declarar un",
-    "declarar una",
-    "define un",
-    "define una",
-    "definir un",
-    "definir una",
-
-    // ============================================================
-    // EJECUTAR / USAR
-    // ============================================================
-    "como ejecutar",
-    "ejecuta un",
-    "ejecuta una",
-    "ejecutar un",
-    "ejecutar una",
-
-    "como usar",
-    "como utilizar",
-    "como se usa",
-    "como se utiliza",
-
-    // ============================================================
-    // OPERACIONES MATEMÁTICAS
-    // ============================================================
-    "suma dos",
-    "sumar dos",
-    "suma tres",
-    "sumar tres",
-    "resta dos",
-    "restar dos",
-    "resta tres",
-    "restar tres",
-    "multiplica dos",
-    "multiplicar dos",
-    "divide dos",
-    "dividir dos",
-    "calcula el",
-    "calcular el",
-    "calcula la",
-    "calcular la",
-
-    // ============================================================
-    // VARIABLES Y ESTRUCTURAS
-    // ============================================================
-    "declara una variable",
-    "declarar una variable",
-    "crear una variable",
-    "crear un array",
-    "crear un arreglo",
-    "crear una lista",
-    "variable",
-    "variables",
-    "array",
-    "arreglo",
-    "lista",
-    "bucle",
-    "ciclo",
-    "for",
-    "while",
-    "if",
-    "condicional",
-    "funcion",
-    "función",
-    "metodo",
-    "método",
-    "clase",
-    "objeto",
-
-    // ============================================================
-    // ERRORES / DEPURACIÓN
-    // ============================================================
-    "error de codigo",
-    "error en el codigo",
-    "error de código",
-    "error en el código",
-    "depura",
-    "depurar",
-    "debug",
-    "debuggear",
-
-    // ============================================================
-    // PREGUNTAS TÉCNICAS
-    // ============================================================
-    "como programar",
-    "como hacer",
-    "como se hace",
-    "como puedo hacer",
-    "como puedo programar",
-    "como funciona",
-    "ejemplo de",
-    "ejemplo"
-];
-
-const isTechnicalMessage = technicalPrefixes.some(prefix =>
-    normalized === prefix ||
-    normalized.startsWith(prefix + " ")
-);
-
-if (isTechnicalMessage) {
-    return null;
-}
-
-    
     const original = message.trim();
+
+    // ⬇️ DESDE AQUÍ DEJA TODO TU CÓDIGO ACTUAL SIN CAMBIAR
 
     /*
 |--------------------------------------------------------------------------
