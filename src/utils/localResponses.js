@@ -108,7 +108,26 @@ export const getLocalResponse = (message) => {
             "Jorge posee un Máster en Ingeniería de Software obtenido en la Universidad Internacional de La Rioja."
         ]);
     }
+// ============================================================
+// EDUCACIÓN / FORMACIÓN ACADÉMICA
+// ============================================================
 
+if (
+    /\b(educacion|formacion|formacion academica|estudios|estudios academicos|trayectoria academica|preparacion academica|formacion profesional|educacion de jorge|estudios de jorge)\b/.test(text)
+) {
+    return randomResponse([
+        "Jorge tiene formación como Ingeniero en Sistemas y Máster en Ingeniería de Software.",
+        "La formación académica de Jorge incluye Ingeniería en Sistemas y un Máster en Ingeniería de Software.",
+        "Jorge es Ingeniero en Sistemas y posteriormente realizó un Máster en Ingeniería de Software.",
+        "Su trayectoria académica comprende un título de Ingeniería en Sistemas y estudios de posgrado en Ingeniería de Software.",
+        "Jorge cuenta con formación universitaria en Ingeniería en Sistemas y formación de posgrado en Ingeniería de Software.",
+        "Académicamente, Jorge tiene un título de Ingeniero en Sistemas y un Máster en Ingeniería de Software.",
+        "La preparación académica de Jorge está enfocada en Sistemas e Ingeniería de Software.",
+        "Jorge inició su formación universitaria en Ingeniería en Sistemas y continuó con un Máster en Ingeniería de Software.",
+        "Su formación profesional combina Ingeniería en Sistemas con un Máster en Ingeniería de Software.",
+        "Jorge cuenta con estudios universitarios de Ingeniería en Sistemas y estudios de cuarto nivel en Ingeniería de Software."
+    ]);
+}
     // ============================================================
     // NOTA DEL MÁSTER
     // ============================================================
