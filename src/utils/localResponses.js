@@ -2,7 +2,7 @@ import { JORGE } from "./jorgeInfo.js";
 
 /*
 |--------------------------------------------------------------------------
-| NORMALIZACIÓN
+| NORMALIZAR TEXTO
 |--------------------------------------------------------------------------
 */
 
@@ -15,11 +15,14 @@ const normalize = (text = "") =>
         .replace(/\s+/g, " ")
         .trim();
 
-const containsAny = (text, keywords = []) =>
-    keywords.some((keyword) => text.includes(keyword));
+/*
+|--------------------------------------------------------------------------
+| COMPROBAR PALABRAS
+|--------------------------------------------------------------------------
+*/
 
-const containsAll = (text, keywords = []) =>
-    keywords.every((keyword) => text.includes(keyword));
+const containsAny = (text, words) =>
+    words.some((word) => text.includes(word));
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +39,7 @@ const responses = {
     */
 
     sasha: () =>
-        "Soy Sasha, la asistente virtual del portfolio de Jorge. Puedo ayudarte con información sobre Jorge, sus estudios, certificaciones, tecnologías, proyectos y también con preguntas generales de tecnología.",
+        "Soy Sasha, la asistente virtual del portfolio de Jorge. Puedo ayudarte con información sobre Jorge, sus estudios, certificaciones, tecnologías, proyectos e intereses. También puedo responder preguntas generales de tecnología.",
 
     /*
     |--------------------------------------------------------------------------
@@ -49,12 +52,12 @@ const responses = {
 
     /*
     |--------------------------------------------------------------------------
-    | FORMACIÓN COMPLETA
+    | FORMACIÓN
     |--------------------------------------------------------------------------
     */
 
     education: () =>
-        `Jorge es ${JORGE.estudios.ingenieria.titulo} por la ${JORGE.estudios.ingenieria.universidad}, Ecuador, con un promedio final de ${JORGE.estudios.ingenieria.promedio}. También tiene un ${JORGE.estudios.master.titulo} por la ${JORGE.estudios.master.universidad}, España, con un promedio final de ${JORGE.estudios.master.promedio}.`,
+        `Jorge es ${JORGE.estudios.ingenieria.titulo} por la ${JORGE.estudios.ingenieria.universidad}, ${JORGE.estudios.ingenieria.pais}, con un promedio final de ${JORGE.estudios.ingenieria.promedio}. También tiene un ${JORGE.estudios.master.titulo} por la ${JORGE.estudios.master.universidad}, ${JORGE.estudios.master.pais}, con un promedio final de ${JORGE.estudios.master.promedio}.`,
 
     /*
     |--------------------------------------------------------------------------
@@ -72,7 +75,7 @@ const responses = {
     */
 
     master: () =>
-        `Jorge tiene un ${JORGE.estudios.master.titulo} por la ${JORGE.estudios.master.universidad}, España. Su promedio final fue ${JORGE.estudios.master.promedio y obtuvo una nota de ${JORGE.estudios.master.tfm} en su TFM.`,
+        `Jorge tiene un ${JORGE.estudios.master.titulo} por la ${JORGE.estudios.master.universidad}, España. Su promedio final fue ${JORGE.estudios.master.promedio} y obtuvo una nota de ${JORGE.estudios.master.tfm} en su TFM.`,
 
     /*
     |--------------------------------------------------------------------------
@@ -190,31 +193,42 @@ const responses = {
 | RESPUESTAS COMBINADAS
 |--------------------------------------------------------------------------
 |
-| Permite responder preguntas como:
+| Permite:
 |
 | "¿Qué estudió Jorge y qué tecnologías utiliza?"
 |
-| sin llamar a Groq.
+| "¿Qué certificaciones tiene y qué proyectos ha realizado?"
 |
+|--------------------------------------------------------------------------
 */
 
-const combinedResponse = (text) => {
-
+const getCombinedResponse = (text) => {
     const parts = [];
+
+    /*
+    | Formación
+    */
 
     if (
         containsAny(text, [
             "estudio",
             "estudios",
             "formacion",
+            "educacion",
+            "carrera",
+            "titulo",
             "ingenieria",
             "master",
             "maestria",
-            "titulo",
+            "universidad",
         ])
     ) {
         parts.push(responses.education());
     }
+
+    /*
+    | Tecnologías
+    */
 
     if (
         containsAny(text, [
@@ -228,41 +242,84 @@ const combinedResponse = (text) => {
         parts.push(responses.technologies());
     }
 
+    /*
+    | Proyectos
+    */
+
     if (
         containsAny(text, [
             "proyecto",
             "proyectos",
             "desarrollado",
-            "desarrolla",
+            "desarrollados",
+            "desarrollo",
+            "creado",
+            "creados",
         ])
     ) {
         parts.push(responses.projects());
     }
+
+    /*
+    | Certificaciones
+    */
 
     if (
         containsAny(text, [
             "certificacion",
             "certificaciones",
             "certificado",
+            "certificados",
+            "curso",
             "cursos",
         ])
     ) {
         parts.push(responses.certifications());
     }
 
+    /*
+    | Áreas
+    */
+
     if (
         containsAny(text, [
             "especializa",
             "especialidad",
+            "especialidades",
             "areas",
-            "area",
+            "area profesional",
         ])
     ) {
         parts.push(responses.areas());
     }
 
-    if (parts.length >= 2) {
-        return parts.join(" ");
+    /*
+    | Intereses
+    */
+
+    if (
+        containsAny(text, [
+            "intereses",
+            "interes",
+            "gustos",
+            "gusta",
+            "hobbies",
+            "pasatiempos",
+        ])
+    ) {
+        parts.push(responses.interests());
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Solo devolver combinación si hay mínimo 2 categorías
+    |--------------------------------------------------------------------------
+    */
+
+    const uniqueParts = [...new Set(parts)];
+
+    if (uniqueParts.length >= 2) {
+        return uniqueParts.join(" ");
     }
 
     return null;
@@ -270,12 +327,11 @@ const combinedResponse = (text) => {
 
 /*
 |--------------------------------------------------------------------------
-| DETECTOR PRINCIPAL
+| FUNCIÓN PRINCIPAL
 |--------------------------------------------------------------------------
 */
 
 export const getLocalResponse = (message) => {
-
     const text = normalize(message);
 
     if (!text) {
@@ -284,7 +340,19 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | SASHA
+    | 1. PREGUNTAS COMBINADAS
+    |--------------------------------------------------------------------------
+    */
+
+    const combinedResponse = getCombinedResponse(text);
+
+    if (combinedResponse) {
+        return combinedResponse;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | 2. SASHA
     |--------------------------------------------------------------------------
     */
 
@@ -299,9 +367,9 @@ export const getLocalResponse = (message) => {
             "presentate",
             "hablame de ti",
             "cuentame sobre ti",
-            "what are you",
             "who are you",
             "who is sasha",
+            "what are you",
             "are you ai",
         ])
     ) {
@@ -310,19 +378,20 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | SALUDOS
+    | 3. SALUDOS
     |--------------------------------------------------------------------------
     */
 
     if (
         containsAny(text, [
-            "hola sasha",
             "hola",
+            "hola sasha",
             "buenos dias",
             "buenas tardes",
             "buenas noches",
             "hello",
             "hi",
+            "hey",
             "hey sasha",
             "good morning",
             "good afternoon",
@@ -334,7 +403,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | JORGE - PERFIL
+    | 4. QUIÉN ES JORGE
     |--------------------------------------------------------------------------
     */
 
@@ -359,7 +428,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | CONTACTO
+    | 5. CONTACTO
     |--------------------------------------------------------------------------
     */
 
@@ -386,7 +455,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | CERTIFICACIONES
+    | 6. CERTIFICACIONES
     |--------------------------------------------------------------------------
     */
 
@@ -411,7 +480,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | FORMACIÓN ACADÉMICA
+    | 7. FORMACIÓN
     |--------------------------------------------------------------------------
     */
 
@@ -444,7 +513,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | INGENIERÍA
+    | 8. INGENIERÍA
     |--------------------------------------------------------------------------
     */
 
@@ -469,7 +538,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | MÁSTER
+    | 9. MÁSTER
     |--------------------------------------------------------------------------
     */
 
@@ -500,7 +569,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | TECNOLOGÍAS GENERALES
+    | 10. TECNOLOGÍAS
     |--------------------------------------------------------------------------
     */
 
@@ -529,7 +598,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | FRONTEND
+    | 11. FRONTEND
     |--------------------------------------------------------------------------
     */
 
@@ -551,7 +620,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | BACKEND
+    | 12. BACKEND
     |--------------------------------------------------------------------------
     */
 
@@ -573,7 +642,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | BASES DE DATOS
+    | 13. BASES DE DATOS
     |--------------------------------------------------------------------------
     */
 
@@ -595,7 +664,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | DEPLOY
+    | 14. DEPLOY
     |--------------------------------------------------------------------------
     */
 
@@ -617,9 +686,9 @@ export const getLocalResponse = (message) => {
         return responses.deploy();
     }
 
-    /*
+     /*
     |--------------------------------------------------------------------------
-    | ÁREAS
+    | 15. ÁREAS
     |--------------------------------------------------------------------------
     */
 
@@ -642,7 +711,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | PROYECTOS
+    | 16. PROYECTOS
     |--------------------------------------------------------------------------
     */
 
@@ -668,7 +737,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | INTERESES
+    | 17. INTERESES
     |--------------------------------------------------------------------------
     */
 
@@ -686,7 +755,6 @@ export const getLocalResponse = (message) => {
             "dan brown",
             "musica",
             "interests",
-            "hobbies",
             "what does jorge like",
         ])
     ) {
@@ -695,19 +763,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | PREGUNTAS COMBINADAS
-    |--------------------------------------------------------------------------
-    */
-
-    const combined = combinedResponse(text);
-
-    if (combined) {
-        return combined;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | SIN RESPUESTA LOCAL
+    | NO HAY RESPUESTA LOCAL
     |--------------------------------------------------------------------------
     */
 
