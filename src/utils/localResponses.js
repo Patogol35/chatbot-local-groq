@@ -24,71 +24,95 @@ const VALID_NAMES = [
     "jorge",
     "patricio",
     "santamaria",
-    "santamaria cherrez",
+    "cherrez",
     "jorge patricio",
     "jorge patricio santamaria",
     "jorge patricio santamaria cherrez",
+    "santamaria cherrez",
 ];
 
 /*
 |--------------------------------------------------------------------------
-| PATRONES PARA PREGUNTAS SOBRE PERSONAS
+| PALABRAS COMUNES
+|--------------------------------------------------------------------------
+|
+| Se ignoran estas palabras al buscar nombres.
+|
 |--------------------------------------------------------------------------
 */
 
-const PERSON_QUESTION_PATTERNS = [
-    "quien es",
-    "hablame de",
-    "cuentame sobre",
-    "informacion sobre",
-    "informacion de",
-    "datos de",
-    "datos sobre",
-    "perfil de",
-    "perfil sobre",
-    "educacion de",
-    "educacion sobre",
-    "formacion de",
-    "formacion sobre",
-    "trayectoria de",
-    "trayectoria sobre",
-    "estudios de",
-    "estudios sobre",
-    "carrera de",
-    "carrera sobre",
-    "ingenieria de",
-    "maestria de",
-    "maestria sobre",
-    "master de",
-    "master sobre",
-    "certificaciones de",
-    "certificaciones sobre",
-    "proyectos de",
-    "proyectos sobre",
-    "experiencia de",
-    "experiencia sobre",
-    "tecnologias de",
-    "tecnologias sobre",
-];
+const COMMON_WORDS = new Set([
+    "a",
+    "al",
+    "algo",
+    "algun",
+    "alguna",
+    "algunos",
+    "algunas",
+    "como",
+    "con",
+    "cual",
+    "cuales",
+    "cuando",
+    "de",
+    "del",
+    "desde",
+    "dime",
+    "donde",
+    "el",
+    "ella",
+    "ellos",
+    "en",
+    "es",
+    "esa",
+    "ese",
+    "eso",
+    "esta",
+    "estas",
+    "este",
+    "estos",
+    "fue",
+    "ha",
+    "habla",
+    "hablame",
+    "hay",
+    "la",
+    "las",
+    "le",
+    "lo",
+    "los",
+    "me",
+    "mi",
+    "mis",
+    "nombre",
+    "no",
+    "o",
+    "para",
+    "por",
+    "que",
+    "quien",
+    "quienes",
+    "se",
+    "sobre",
+    "su",
+    "sus",
+    "tiene",
+    "tienen",
+    "tu",
+    "un",
+    "una",
+    "unos",
+    "unas",
+    "y",
+]);
 
 /*
 |--------------------------------------------------------------------------
 | RESPUESTAS LOCALES
 |--------------------------------------------------------------------------
-|
-| Cada tema puede tener hasta 4 respuestas.
-| Se selecciona una de ellas de forma aleatoria.
-|
 */
 
 const LOCAL_RESPONSES = [
-
-    /*
-    |--------------------------------------------------------------------------
-    | IDENTIDAD
-    |--------------------------------------------------------------------------
-    */
-
     {
         category: "identidad",
         keywords: [
@@ -104,15 +128,9 @@ const LOCAL_RESPONSES = [
             "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
             "Jorge Patricio Santamaría Cherrez es un profesional de Ingeniería de Software, con formación en Ingeniería en Sistemas y un Máster en esta área.",
             "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica y Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR.",
-            "Jorge Patricio Santamaría Cherrez cuenta con formación en Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos."
-        ]
+            "Jorge Patricio Santamaría Cherrez cuenta con formación en Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos.",
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | FORMACIÓN
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "formacion",
@@ -124,8 +142,8 @@ const LOCAL_RESPONSES = [
             "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador. Posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR, España.",
             "Su formación universitaria comenzó con Ingeniería en Sistemas en la Universidad Indoamérica y continuó con un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR.",
             "Jorge cursó Ingeniería en Sistemas en Ecuador y posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-            "A nivel universitario, Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica y después obtuvo un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR."
-        ]
+            "A nivel universitario, Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica y después obtuvo un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR.",
+        ],
     },
 
     {
@@ -139,8 +157,8 @@ const LOCAL_RESPONSES = [
             "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
             "La carrera universitaria de Jorge es Ingeniería en Sistemas.",
             "Jorge es Ingeniero en Sistemas, titulado por la Universidad Indoamérica.",
-            "Su formación de grado corresponde a Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador."
-        ]
+            "Su formación de grado corresponde a Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
+        ],
     },
 
     {
@@ -155,8 +173,8 @@ const LOCAL_RESPONSES = [
             "Jorge realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja (UNIR), España.",
             "Jorge tiene un Máster en Ingeniería de Software y Sistemas Informáticos realizado en la UNIR.",
             "A nivel de posgrado, Jorge cuenta con un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
-            "Jorge continuó su formación con un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja."
-        ]
+            "Jorge continuó su formación con un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja.",
+        ],
     },
 
     {
@@ -171,15 +189,9 @@ const LOCAL_RESPONSES = [
             "La formación académica de Jorge incluye Ingeniería en Sistemas por la Universidad Indoamérica y un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
             "Jorge tiene formación de grado en Ingeniería en Sistemas y formación de posgrado en Ingeniería de Software y Sistemas Informáticos.",
             "Su trayectoria académica comprende una Ingeniería en Sistemas en Ecuador y un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-            "En cuanto a formación académica, Jorge cuenta con una Ingeniería en Sistemas y posteriormente realizó un Máster especializado en Ingeniería de Software y Sistemas Informáticos."
-        ]
+            "En cuanto a formación académica, Jorge cuenta con una Ingeniería en Sistemas y posteriormente realizó un Máster especializado en Ingeniería de Software y Sistemas Informáticos.",
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | NOTAS
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "notas",
@@ -192,8 +204,8 @@ const LOCAL_RESPONSES = [
             "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas.",
             "En Ingeniería en Sistemas, Jorge obtuvo un promedio final de 9.",
             "La nota promedio de Jorge en Ingeniería en Sistemas fue de 9.",
-            "Jorge terminó su Ingeniería en Sistemas con un promedio de 9."
-        ]
+            "Jorge terminó su Ingeniería en Sistemas con un promedio de 9.",
+        ],
     },
 
     {
@@ -207,8 +219,8 @@ const LOCAL_RESPONSES = [
             "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
             "En su Máster, Jorge obtuvo un promedio de 8.68.",
             "La media final de Jorge en el Máster en Ingeniería de Software y Sistemas Informáticos fue de 8.68.",
-            "Jorge completó su Máster con un promedio de 8.68."
-        ]
+            "Jorge completó su Máster con un promedio de 8.68.",
+        ],
     },
 
     {
@@ -224,15 +236,9 @@ const LOCAL_RESPONSES = [
             "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas y un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
             "En su formación universitaria, Jorge obtuvo un 9 de promedio en Ingeniería en Sistemas y 8.68 en el Máster.",
             "Sus promedios registrados son 9 en Ingeniería en Sistemas y 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
-            "Jorge obtuvo excelentes resultados académicos: 9 en su Ingeniería en Sistemas y 8.68 en su Máster."
-        ]
+            "Jorge obtuvo excelentes resultados académicos: 9 en su Ingeniería en Sistemas y 8.68 en su Máster.",
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | TECNOLOGÍAS
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "tecnologias",
@@ -246,8 +252,8 @@ const LOCAL_RESPONSES = [
             "En frontend, Jorge trabaja principalmente con React y JavaScript.",
             "Para desarrollo frontend, Jorge utiliza principalmente React y JavaScript.",
             "Jorge tiene experiencia en frontend utilizando React y JavaScript.",
-            "En la parte visual de sus proyectos, Jorge trabaja con React y JavaScript."
-        ]
+            "En la parte visual de sus proyectos, Jorge trabaja con React y JavaScript.",
+        ],
     },
 
     {
@@ -262,8 +268,8 @@ const LOCAL_RESPONSES = [
             "En backend, Jorge trabaja principalmente con Django y Java.",
             "Para el desarrollo backend, Jorge utiliza Django y Java.",
             "Jorge cuenta con experiencia en backend utilizando Django y Java.",
-            "En el lado del servidor, Jorge trabaja principalmente con Django y Java."
-        ]
+            "En el lado del servidor, Jorge trabaja principalmente con Django y Java.",
+        ],
     },
 
     {
@@ -278,8 +284,8 @@ const LOCAL_RESPONSES = [
             "Jorge trabaja con PostgreSQL y MySQL.",
             "En bases de datos, Jorge utiliza principalmente PostgreSQL y MySQL.",
             "Jorge tiene experiencia trabajando con PostgreSQL y MySQL.",
-            "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL."
-        ]
+            "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL.",
+        ],
     },
 
     {
@@ -294,8 +300,8 @@ const LOCAL_RESPONSES = [
             "Para despliegue, Jorge trabaja con servicios como Render, Vercel y AWS.",
             "Jorge utiliza Render, Vercel y AWS para desplegar sus aplicaciones.",
             "En cuanto a deployment, Jorge trabaja con plataformas como Render, Vercel y AWS.",
-            "Para publicar sus proyectos, Jorge utiliza servicios como Render, Vercel y AWS."
-        ]
+            "Para publicar sus proyectos, Jorge utiliza servicios como Render, Vercel y AWS.",
+        ],
     },
 
     {
@@ -311,15 +317,9 @@ const LOCAL_RESPONSES = [
             "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
             "Su stack incluye React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
             "Entre las principales tecnologías de Jorge están React, JavaScript, Django, Java, PostgreSQL y MySQL, junto con Render, Vercel y AWS.",
-            "Jorge cuenta con experiencia en frontend, backend, bases de datos y deployment utilizando React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS."
-        ]
+            "Jorge cuenta con experiencia en frontend, backend, bases de datos y deployment utilizando React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | PROYECTOS
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "proyectos",
@@ -332,8 +332,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con un portfolio desarrollado con React para mostrar su formación, tecnologías y proyectos.",
             "Su portfolio está desarrollado con React y reúne información sobre su perfil profesional y sus proyectos.",
             "Jorge tiene un portfolio web creado con React donde presenta su experiencia, formación y proyectos.",
-            "El portfolio de Jorge es una aplicación desarrollada con React para presentar su perfil profesional."
-        ]
+            "El portfolio de Jorge es una aplicación desarrollada con React para presentar su perfil profesional.",
+        ],
     },
 
     {
@@ -347,8 +347,8 @@ const LOCAL_RESPONSES = [
             "Uno de los proyectos de Jorge es un Quiz sobre Ecuador.",
             "Jorge desarrolló un proyecto de preguntas y respuestas relacionado con Ecuador.",
             "Entre sus proyectos se encuentra un Quiz dedicado a temas relacionados con Ecuador.",
-            "Jorge cuenta con una aplicación tipo Quiz enfocada en Ecuador."
-        ]
+            "Jorge cuenta con una aplicación tipo Quiz enfocada en Ecuador.",
+        ],
     },
 
     {
@@ -362,8 +362,8 @@ const LOCAL_RESPONSES = [
             "Jorge desarrolló una aplicación del clima que permite consultar información meteorológica.",
             "Entre sus proyectos está una aplicación para consultar información del clima.",
             "Jorge cuenta con una app meteorológica desarrollada como parte de sus proyectos.",
-            "Uno de sus proyectos es una aplicación del clima que muestra información meteorológica."
-        ]
+            "Uno de sus proyectos es una aplicación del clima que muestra información meteorológica.",
+        ],
     },
 
     {
@@ -377,8 +377,8 @@ const LOCAL_RESPONSES = [
             "Jorge desarrolló un chatbot y Sasha funciona como asistente virtual de su portfolio.",
             "Entre sus proyectos se encuentra este chatbot, donde Sasha actúa como asistente virtual.",
             "Jorge cuenta con un proyecto de chatbot integrado en su portfolio.",
-            "Sasha forma parte del proyecto de chatbot desarrollado para el portfolio de Jorge."
-        ]
+            "Sasha forma parte del proyecto de chatbot desarrollado para el portfolio de Jorge.",
+        ],
     },
 
     {
@@ -391,8 +391,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con un proyecto relacionado con el juego de ajedrez.",
             "Entre sus proyectos se encuentra una aplicación relacionada con ajedrez.",
             "Jorge desarrolló también un proyecto basado en el juego de ajedrez.",
-            "Otro de sus proyectos está relacionado con ajedrez."
-        ]
+            "Otro de sus proyectos está relacionado con ajedrez.",
+        ],
     },
 
     {
@@ -408,8 +408,8 @@ const LOCAL_RESPONSES = [
             "Jorge desarrolló un e-commerce utilizando React en frontend y Django en backend.",
             "Entre sus proyectos está una tienda online desarrollada con React y Django.",
             "Jorge cuenta con un proyecto de comercio electrónico utilizando React y Django.",
-            "Su proyecto e-commerce combina React para el frontend y Django para el backend."
-        ]
+            "Su proyecto e-commerce combina React para el frontend y Django para el backend.",
+        ],
     },
 
     {
@@ -425,15 +425,9 @@ const LOCAL_RESPONSES = [
             "Entre los proyectos de Jorge se encuentran su Portfolio React, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
             "Jorge ha desarrollado proyectos como un portfolio, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce.",
             "Su portafolio de proyectos incluye aplicaciones web, un chatbot, una app del clima, un Quiz sobre Ecuador, ajedrez y un e-commerce.",
-            "Entre sus principales proyectos destacan su portfolio React, Quiz sobre Ecuador, aplicación meteorológica, chatbot, ajedrez y e-commerce."
-        ]
+            "Entre sus principales proyectos destacan su portfolio React, Quiz sobre Ecuador, aplicación meteorológica, chatbot, ajedrez y e-commerce.",
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | CERTIFICACIONES
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "certificaciones",
@@ -445,8 +439,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con una certificación relacionada con MCP de Anthropic, obtenida en 2026.",
             "En 2026, Jorge obtuvo una certificación relacionada con MCP de Anthropic.",
             "Jorge tiene una certificación de MCP asociada a Anthropic.",
-            "Entre sus certificaciones se encuentra una relacionada con MCP de Anthropic, obtenida en 2026."
-        ]
+            "Entre sus certificaciones se encuentra una relacionada con MCP de Anthropic, obtenida en 2026.",
+        ],
     },
 
     {
@@ -459,8 +453,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con una certificación de Linux realizada en Udemy en 2024.",
             "En 2024, Jorge realizó una certificación de Linux en Udemy.",
             "Jorge tiene formación certificada en Linux mediante Udemy.",
-            "Entre sus certificaciones se encuentra una relacionada con Linux, realizada en Udemy en 2024."
-        ]
+            "Entre sus certificaciones se encuentra una relacionada con Linux, realizada en Udemy en 2024.",
+        ],
     },
 
     {
@@ -474,8 +468,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con la certificación Fundamentals of AI de IBM, obtenida en 2025.",
             "En 2025, Jorge obtuvo Fundamentals of AI de IBM.",
             "Jorge tiene una certificación de Fundamentals of AI otorgada por IBM.",
-            "Entre sus certificaciones está Fundamentals of AI de IBM, correspondiente a 2025."
-        ]
+            "Entre sus certificaciones está Fundamentals of AI de IBM, correspondiente a 2025.",
+        ],
     },
 
     {
@@ -489,8 +483,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con la certificación AZ-900 de UNIR, obtenida en 2023.",
             "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR.",
             "Jorge tiene la certificación AZ-900 relacionada con Azure.",
-            "Entre sus certificaciones se encuentra AZ-900, obtenida mediante UNIR en 2023."
-        ]
+            "Entre sus certificaciones se encuentra AZ-900, obtenida mediante UNIR en 2023.",
+        ],
     },
 
     {
@@ -503,8 +497,8 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con una certificación relacionada con Claude API de Anthropic, obtenida en 2026.",
             "En 2026, Jorge obtuvo una certificación relacionada con Claude API de Anthropic.",
             "Jorge tiene una certificación relacionada con Claude API.",
-            "Entre sus certificaciones está una relacionada con Claude API de Anthropic, correspondiente a 2026."
-        ]
+            "Entre sus certificaciones está una relacionada con Claude API de Anthropic, correspondiente a 2026.",
+        ],
     },
 
     {
@@ -519,14 +513,9 @@ const LOCAL_RESPONSES = [
             "Jorge cuenta con certificaciones relacionadas con MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
             "Entre las certificaciones de Jorge se encuentran MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
             "Jorge tiene certificaciones en áreas como MCP, Linux, inteligencia artificial, Azure y Claude API.",
-            "Su formación complementaria incluye certificaciones de MCP, Linux, Fundamentals of AI, AZ-900 y Claude API."
-        ]
+            "Su formación complementaria incluye certificaciones de MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+        ],
     },
- /*
-    |--------------------------------------------------------------------------
-    | INTERESES
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "intereses",
@@ -541,8 +530,8 @@ const LOCAL_RESPONSES = [
             "A Jorge le gusta la lectura, especialmente las obras del escritor Dan Brown.",
             "Uno de los intereses de Jorge es la lectura, y disfruta especialmente de los libros de Dan Brown.",
             "Jorge tiene interés por la lectura y entre sus autores favoritos destaca Dan Brown.",
-            "En cuanto a lectura, Jorge muestra especial interés por las obras de Dan Brown."
-        ]
+            "En cuanto a lectura, Jorge muestra especial interés por las obras de Dan Brown.",
+        ],
     },
 
     {
@@ -555,8 +544,8 @@ const LOCAL_RESPONSES = [
             "La música es uno de los intereses de Jorge.",
             "Jorge también tiene interés por la música.",
             "Entre las aficiones de Jorge se encuentra la música.",
-            "La música forma parte de los intereses personales registrados de Jorge."
-        ]
+            "La música forma parte de los intereses personales registrados de Jorge.",
+        ],
     },
 
     {
@@ -572,15 +561,9 @@ const LOCAL_RESPONSES = [
             "Entre los intereses de Jorge están la lectura, especialmente las obras de Dan Brown, y la música.",
             "Jorge disfruta de la lectura, particularmente de los libros de Dan Brown, y también tiene interés por la música.",
             "Sus principales intereses registrados son la lectura y la música, destacando especialmente su gusto por Dan Brown.",
-            "Entre sus intereses se encuentran la literatura, especialmente Dan Brown, y la música."
-        ]
+            "Entre sus intereses se encuentran la literatura, especialmente Dan Brown, y la música.",
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | CONTACTO
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "contacto",
@@ -598,15 +581,9 @@ const LOCAL_RESPONSES = [
             'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
             'Para comunicarte con Jorge, utiliza la sección "Contacto" de su portfolio.',
             'Si quieres contactar a Jorge, encontrarás la opción correspondiente en la sección "Contacto".',
-            'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.'
-        ]
+            'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.',
+        ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | SASHA
-    |--------------------------------------------------------------------------
-    */
 
     {
         category: "sasha",
@@ -620,14 +597,14 @@ const LOCAL_RESPONSES = [
             "Soy Sasha, la asistente virtual del portfolio de Jorge.",
             "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge.",
             "Soy Sasha, una IA creada para asistir a los visitantes del portfolio de Jorge.",
-            "Mi nombre es Sasha y funciono como asistente virtual del portfolio de Jorge."
-        ]
+            "Mi nombre es Sasha y funciono como asistente virtual del portfolio de Jorge.",
+        ],
     },
 ];
 
 /*
 |--------------------------------------------------------------------------
-| DETECTAR SI EL NOMBRE ES DE JORGE
+| DETECTAR SI EL MENSAJE MENCIONA A JORGE
 |--------------------------------------------------------------------------
 */
 
@@ -650,97 +627,58 @@ const containsValidName = (message) => {
 
 /*
 |--------------------------------------------------------------------------
-| DETECTAR PREGUNTA SOBRE OTRA PERSONA
+| DETECTAR SI EXISTE OTRO NOMBRE
 |--------------------------------------------------------------------------
 |
-| Ejemplos:
+| Regla:
 |
-| Educación de Luis
-| Formación de Carlos
-| Maestría de Pedro
-| ¿Quién es Luis?
-| Háblame de Messi
-| Información de María
-| Proyectos de Elon Musk
+| - Si el mensaje menciona a Jorge -> puede usar respuestas locales.
+| - Si menciona otro nombre -> Groq.
 |
-| Todo eso debe ir a Groq.
+| No importa la posición ni el tipo de frase.
 |
 |--------------------------------------------------------------------------
 */
 
-const isQuestionAboutAnotherPerson = (message) => {
+const containsAnotherPersonName = (message) => {
     const normalized = normalizeText(message);
 
-    /*
-    |--------------------------------------------------------------------------
-    | PRIMERO: SI ES JORGE, NO BLOQUEAR RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
-
-    if (containsValidName(message)) {
+    // Si aparece Jorge, no lo consideramos otra persona.
+    if (containsValidName(normalized)) {
         return false;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | PREGUNTA EXPLÍCITA SOBRE PERSONA
-    |--------------------------------------------------------------------------
-    */
+    const words = normalized.split(/\s+/);
 
-    const hasPersonPattern =
-        PERSON_QUESTION_PATTERNS.some((pattern) => {
-            const normalizedPattern =
-                normalizeText(pattern);
+    for (const word of words) {
+        if (!word) continue;
 
-            return normalized.includes(normalizedPattern);
-        });
+        // Ignorar palabras comunes.
+        if (COMMON_WORDS.has(word)) {
+            continue;
+        }
 
-    if (hasPersonPattern) {
-        return true;
-    }
+        // Ignorar números.
+        if (/^\d+$/.test(word)) {
+            continue;
+        }
 
-    /*
-    |--------------------------------------------------------------------------
-    | ESTRUCTURA "TEMA DE NOMBRE"
-    |--------------------------------------------------------------------------
-    |
-    | Esto cubre casos como:
-    |
-    | educación de Luis
-    | estudios de Carlos
-    | proyectos de Pedro
-    | experiencia de María
-    | tecnologías de Juan
-    |
-    |--------------------------------------------------------------------------
-    */
+        /*
+        Si la palabra es una palabra independiente y no pertenece
+        a las palabras comunes, la tratamos como posible nombre.
 
-    const topicAboutPerson =
-        /^(educacion|formacion|estudios|trayectoria|carrera|ingenieria|maestria|master|certificaciones|certificados|proyectos|experiencia|tecnologias|tecnologia|perfil|datos|informacion|promedio|nota|notas|intereses|profesion)\s+(de|sobre)\s+.+$/;
+        Ejemplos:
+        luis
+        pedro
+        messi
+        carlos
+        maria
+        elon
+        */
 
-    if (topicAboutPerson.test(normalized)) {
-        return true;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | PREGUNTA "QUE ... TIENE/HIZO/ESTUDIO ... "
-    |--------------------------------------------------------------------------
-    |
-    | Ejemplos:
-    |
-    | ¿Qué maestría tiene Luis?
-    | ¿Qué proyectos tiene Carlos?
-    | ¿Dónde estudió Pedro?
-    |
-    |--------------------------------------------------------------------------
-    */
-
-    const questionAboutPerson =
-        /^(que|cual|donde|como|quien)\b.*\b(tiene|estudio|estudia|hizo|trabaja|trabajo|es|cuenta|obtuvo|realizo)\b.*$/;
-
-    if (questionAboutPerson.test(normalized)) {
-        return true;
+        if (/^[a-záéíóúñ]+$/i.test(word)) {
+            return true;
+        }
     }
 
     return false;
@@ -755,12 +693,15 @@ const isQuestionAboutAnotherPerson = (message) => {
 export const getLocalResponse = (message) => {
 
     /*
-    |--------------------------------------------------------------------------
-    | OTRA PERSONA = GROQ
-    |--------------------------------------------------------------------------
+    Primero comprobamos si existe otra persona.
+
+    Si existe:
+    return null
+
+    El controlador enviará el mensaje a Groq.
     */
 
-    if (isQuestionAboutAnotherPerson(message)) {
+    if (containsAnotherPersonName(message)) {
         return null;
     }
 
@@ -804,12 +745,6 @@ export const getLocalResponse = (message) => {
         }
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
-
     if (
         bestMatch &&
         bestScore >= 10
@@ -826,15 +761,6 @@ export const getLocalResponse = (message) => {
 
         return responses[randomIndex];
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | NO HAY RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    |
-    | sendMessage.js continuará hacia Groq.
-    |--------------------------------------------------------------------------
-    */
 
     return null;
 };
