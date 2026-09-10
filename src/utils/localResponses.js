@@ -24,6 +24,20 @@ export const getLocalResponse = (message) => {
     if (!isJorge) {
         return null;
     }
+    // ============================================================
+// EDUCACIÓN / FORMACIÓN
+// ============================================================
+
+if (
+    /\b(educacion|educacion de jorge|formacion|formacion de jorge|estudios|estudios de jorge|preparacion academica|formacion academica|trayectoria academica)\b/.test(text)
+) {
+    return randomResponse([
+        "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica, Ecuador, y tiene un Máster en Ingeniería de Software por la UNIR, España.",
+        "La formación de Jorge incluye Ingeniería en Sistemas en la Universidad Indoamérica y un Máster en Ingeniería de Software en la UNIR, España.",
+        "Jorge cuenta con formación en Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos.",
+        "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica y posteriormente realizó un Máster en Ingeniería de Software en la UNIR, España."
+    ]);
+}
 
     // ============================================================
     // PERFIL
