@@ -123,7 +123,7 @@ const LOCAL_RESPONSES = [
             "presentame a jorge",
             "hablame de jorge",
             "perfil de jorge",
-            "habla de jorge"
+            "habla de jorge",
             "sobre jorge",
             "dime sobre jorge",
             "perfil",
