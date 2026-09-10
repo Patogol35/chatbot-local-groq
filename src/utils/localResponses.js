@@ -790,12 +790,6 @@ const containsValidName = (message) => {
 const containsAnotherPersonName = (message) => {
     const normalized = normalizeText(message);
 
-    // Sasha es la asistente, no otra persona.
-    if (normalized.includes("sasha")) {
-        return false;
-    }
-
-    // Si aparece Jorge, no lo consideramos otra persona.
     if (containsValidName(normalized)) {
         return false;
     }
@@ -804,6 +798,10 @@ const containsAnotherPersonName = (message) => {
 
     for (const word of words) {
         if (!word) continue;
+
+        if (word === "sasha") {
+            continue;
+        }
 
         if (COMMON_WORDS.has(word)) {
             continue;
@@ -820,7 +818,6 @@ const containsAnotherPersonName = (message) => {
 
     return false;
 };
-
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
