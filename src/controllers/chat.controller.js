@@ -51,9 +51,6 @@ Full Stack, virtualización y ciberseguridad.
 Proyectos:
 Portfolio React, Quiz sobre Ecuador, App del clima, Chatbot, Ajedrez y E-commerce React + Django.
 
-Intereses:
-Lectura, especialmente Dan Brown, y música.
-
 Contacto:
 Sección "Contacto" del portfolio.
 `;
