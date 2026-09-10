@@ -248,7 +248,7 @@ const LOCAL_RESPONSES = [
     "donde estudio ingenieria",
 
       "donde siguio su ingenieria",
-    "donde el siguio la ingenieria",
+    "donde  siguio la ingenieria",
     "donde siguio ingenieria",
 
     "donde hizo su ingenieria",
