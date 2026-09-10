@@ -2,7 +2,7 @@ import { JORGE } from "./jorgeInfo.js";
 
 /*
 |--------------------------------------------------------------------------
-| NORMALIZAR TEXTO
+| NORMALIZACIÓN
 |--------------------------------------------------------------------------
 */
 
@@ -21,12 +21,126 @@ const normalize = (text = "") =>
 |--------------------------------------------------------------------------
 */
 
-const containsAny = (text, words) =>
+const containsAny = (text, words = []) =>
     words.some((word) => text.includes(word));
 
 /*
 |--------------------------------------------------------------------------
-| RESPUESTAS
+| DETECTAR SI HABLA DE OTRA PERSONA
+|--------------------------------------------------------------------------
+|
+| Si la pregunta menciona explícitamente a otra persona,
+| NO respondemos localmente.
+|
+| Ejemplo:
+|
+| "¿Qué tecnologías usa Luis?"
+| → false
+| → Groq
+|
+| "¿Qué tecnologías usa Jorge?"
+| → true
+| → Local
+|
+| "¿Qué tecnologías usa?"
+| → true
+| → Local
+|
+|--------------------------------------------------------------------------
+*/
+
+const isAboutJorge = (text) => {
+    /*
+    |--------------------------------------------------------------------------
+    | REFERENCIAS DIRECTAS A JORGE
+    |--------------------------------------------------------------------------
+    */
+
+    if (
+        containsAny(text, [
+            "jorge",
+            "jorge patricio",
+            "patricio",
+            "santamaria",
+            "santamaria cherrez",
+        ])
+    ) {
+        return true;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | NOMBRES / PERSONAS DISTINTAS
+    |--------------------------------------------------------------------------
+    |
+    | Si el usuario escribe "de Luis", "de Carlos", etc.,
+    | la pregunta debe pasar a Groq.
+    |
+    | Esta lista puede ampliarse cuando quieras.
+    |
+    |--------------------------------------------------------------------------
+    */
+
+    const otherNames = [
+        "luis",
+        "juan",
+        "pedro",
+        "carlos",
+        "miguel",
+        "ana",
+        "maria",
+        "jose",
+        "andres",
+        "diego",
+        "fernando",
+        "ricardo",
+        "david",
+        "alex",
+        "alexander",
+        "daniel",
+        "gabriel",
+        "sofia",
+        "lucia",
+        "laura",
+        "paula",
+        "carmen",
+        "roberto",
+        "alejandro",
+        "manuel",
+        "sergio",
+        "pablo",
+        "mateo",
+        "martin",
+        "martín",
+    ];
+
+    /*
+    |--------------------------------------------------------------------------
+    | SI APARECE OTRO NOMBRE
+    |--------------------------------------------------------------------------
+    */
+
+    if (containsAny(text, otherNames)) {
+        return false;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | SI NO MENCIONA NINGÚN NOMBRE
+    |--------------------------------------------------------------------------
+    |
+    | Por defecto asumimos que está hablando de Jorge,
+    | porque Sasha pertenece al portfolio de Jorge.
+    |
+    |--------------------------------------------------------------------------
+    */
+
+    return true;
+};
+
+/*
+|--------------------------------------------------------------------------
+| RESPUESTAS LOCALES
 |--------------------------------------------------------------------------
 */
 
@@ -52,7 +166,7 @@ const responses = {
 
     /*
     |--------------------------------------------------------------------------
-    | FORMACIÓN
+    | FORMACIÓN COMPLETA
     |--------------------------------------------------------------------------
     */
 
@@ -84,11 +198,13 @@ const responses = {
     */
 
     certifications: () =>
-        `Jorge cuenta con las siguientes certificaciones y formaciones: ${JORGE.certificaciones.join("; ")}.`,
+        `Jorge cuenta con las siguientes certificaciones y formaciones: ${JORGE.certificaciones.join(
+            "; "
+        )}.`,
 
     /*
     |--------------------------------------------------------------------------
-    | TECNOLOGÍAS
+    | TODAS LAS TECNOLOGÍAS
     |--------------------------------------------------------------------------
     */
 
@@ -149,12 +265,14 @@ const responses = {
 
     /*
     |--------------------------------------------------------------------------
-    | ÁREAS
+    | ÁREAS PROFESIONALES
     |--------------------------------------------------------------------------
     */
 
     areas: () =>
-        `Jorge se especializa en ${JORGE.areas.join(", ")}.`,
+        `Jorge se especializa en ${JORGE.areas.join(
+            ", "
+        )}.`,
 
     /*
     |--------------------------------------------------------------------------
@@ -193,11 +311,13 @@ const responses = {
 | RESPUESTAS COMBINADAS
 |--------------------------------------------------------------------------
 |
-| Permite:
+| Ejemplos:
 |
-| "¿Qué estudió Jorge y qué tecnologías utiliza?"
+| "¿Qué estudió y qué tecnologías utiliza?"
 |
 | "¿Qué certificaciones tiene y qué proyectos ha realizado?"
+|
+| "¿Qué tecnologías usa y en qué áreas se especializa?"
 |
 |--------------------------------------------------------------------------
 */
@@ -206,18 +326,23 @@ const getCombinedResponse = (text) => {
     const parts = [];
 
     /*
-    | Formación
+    |--------------------------------------------------------------------------
+    | FORMACIÓN
+    |--------------------------------------------------------------------------
     */
 
     if (
         containsAny(text, [
             "estudio",
             "estudios",
+            "estudiado",
             "formacion",
             "educacion",
             "carrera",
             "titulo",
+            "titulos",
             "ingenieria",
+            "ingeniero",
             "master",
             "maestria",
             "universidad",
@@ -227,23 +352,59 @@ const getCombinedResponse = (text) => {
     }
 
     /*
-    | Tecnologías
+    |--------------------------------------------------------------------------
+    | TECNOLOGÍAS
+    |--------------------------------------------------------------------------
     */
 
     if (
         containsAny(text, [
             "tecnologia",
             "tecnologias",
+            "tecnologico",
+            "tecnologica",
+            "tecnologicos",
+            "tecnologicas",
             "stack",
+            "stack tecnologico",
+            "tech stack",
             "habilidades",
+            "habilidades tecnicas",
             "herramientas",
+            "herramientas tecnicas",
+            "lenguajes",
+            "lenguajes de programacion",
+            "programacion",
+            "programacion web",
+            "que tecnologias usa",
+            "que tecnologias utiliza",
+            "que tecnologias conoce",
+            "que tecnologias maneja",
+            "que herramientas usa",
+            "que herramientas utiliza",
+            "que stack usa",
+            "que stack utiliza",
+            "con que tecnologias trabaja",
+            "con que tecnologia trabaja",
+            "tecnologias que usa",
+            "tecnologias que utiliza",
+            "tecnologias de jorge",
+            "tecnologia de jorge",
+            "stack de jorge",
+            "technical skills",
+            "technologies",
+            "technology",
+            "what technologies does jorge use",
+            "what technologies does he use",
         ])
     ) {
         parts.push(responses.technologies());
     }
 
     /*
-    | Proyectos
+    |--------------------------------------------------------------------------
+    | PROYECTOS
+    |--------------------------------------------------------------------------
     */
 
     if (
@@ -253,15 +414,22 @@ const getCombinedResponse = (text) => {
             "desarrollado",
             "desarrollados",
             "desarrollo",
+            "desarrolla",
             "creado",
             "creados",
+            "ha hecho",
+            "ha desarrollado",
+            "ha creado",
+            "trabajos realizados",
         ])
     ) {
         parts.push(responses.projects());
     }
 
     /*
-    | Certificaciones
+    |--------------------------------------------------------------------------
+    | CERTIFICACIONES
+    |--------------------------------------------------------------------------
     */
 
     if (
@@ -270,15 +438,19 @@ const getCombinedResponse = (text) => {
             "certificaciones",
             "certificado",
             "certificados",
+            "credenciales",
             "curso",
             "cursos",
+            "formacion profesional",
         ])
     ) {
         parts.push(responses.certifications());
     }
 
     /*
-    | Áreas
+    |--------------------------------------------------------------------------
+    | ÁREAS
+    |--------------------------------------------------------------------------
     */
 
     if (
@@ -288,13 +460,16 @@ const getCombinedResponse = (text) => {
             "especialidades",
             "areas",
             "area profesional",
+            "areas profesionales",
         ])
     ) {
         parts.push(responses.areas());
     }
 
     /*
-    | Intereses
+    |--------------------------------------------------------------------------
+    | INTERESES
+    |--------------------------------------------------------------------------
     */
 
     if (
@@ -312,11 +487,17 @@ const getCombinedResponse = (text) => {
 
     /*
     |--------------------------------------------------------------------------
-    | Solo devolver combinación si hay mínimo 2 categorías
+    | ELIMINAR DUPLICADOS
     |--------------------------------------------------------------------------
     */
 
     const uniqueParts = [...new Set(parts)];
+
+    /*
+    |--------------------------------------------------------------------------
+    | SOLO COMBINAR SI HAY 2 O MÁS CATEGORÍAS
+    |--------------------------------------------------------------------------
+    */
 
     if (uniqueParts.length >= 2) {
         return uniqueParts.join(" ");
@@ -327,14 +508,41 @@ const getCombinedResponse = (text) => {
 
 /*
 |--------------------------------------------------------------------------
-| FUNCIÓN PRINCIPAL
+| RESPUESTA LOCAL PRINCIPAL
 |--------------------------------------------------------------------------
 */
 
 export const getLocalResponse = (message) => {
+    /*
+    |--------------------------------------------------------------------------
+    | NORMALIZAR
+    |--------------------------------------------------------------------------
+    */
+
     const text = normalize(message);
 
     if (!text) {
+        return null;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | VERIFICAR PERSONA
+    |--------------------------------------------------------------------------
+    |
+    | Si pregunta por otra persona:
+    |
+    | return null
+    |
+    | El controlador enviará la pregunta a Groq.
+    |--------------------------------------------------------------------------
+    */
+
+    if (!isAboutJorge(text)) {
+        console.log(
+            "🧠 Pregunta sobre otra persona → Groq"
+        );
+
         return null;
     }
 
@@ -344,7 +552,8 @@ export const getLocalResponse = (message) => {
     |--------------------------------------------------------------------------
     */
 
-    const combinedResponse = getCombinedResponse(text);
+    const combinedResponse =
+        getCombinedResponse(text);
 
     if (combinedResponse) {
         return combinedResponse;
@@ -352,7 +561,7 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | 2. SASHA
+    | 2. QUIÉN ES SASHA
     |--------------------------------------------------------------------------
     */
 
@@ -362,6 +571,7 @@ export const getLocalResponse = (message) => {
             "quien es sasha",
             "que eres",
             "eres una ia",
+            "eres inteligencia artificial",
             "eres humano",
             "eres humana",
             "presentate",
@@ -478,7 +688,7 @@ export const getLocalResponse = (message) => {
         return responses.certifications();
     }
 
-    /*
+/*
     |--------------------------------------------------------------------------
     | 7. FORMACIÓN
     |--------------------------------------------------------------------------
@@ -489,14 +699,20 @@ export const getLocalResponse = (message) => {
             "estudios de jorge",
             "que estudio jorge",
             "que ha estudiado",
+            "que estudio",
             "donde estudio jorge",
+            "donde estudio",
             "formacion de jorge",
             "formacion academica",
             "formacion profesional",
             "carrera de jorge",
+            "carrera",
             "universidad de jorge",
+            "universidad",
             "titulos de jorge",
+            "titulos",
             "titulo de jorge",
+            "titulo",
             "que carrera estudio",
             "que carrera hizo",
             "educacion de jorge",
@@ -529,6 +745,7 @@ export const getLocalResponse = (message) => {
             "nota de tesis",
             "calificacion de tesis",
             "promedio de ingenieria",
+            "tesis",
             "engineering degree",
             "systems engineer",
         ])
@@ -575,22 +792,42 @@ export const getLocalResponse = (message) => {
 
     if (
         containsAny(text, [
+            "tecnologia",
+            "tecnologias",
+            "tecnologico",
+            "tecnologica",
+            "tecnologicos",
+            "tecnologicas",
+            "stack",
+            "stack tecnologico",
+            "tech stack",
+            "habilidades",
+            "habilidades tecnicas",
+            "herramientas",
+            "herramientas tecnicas",
+            "lenguajes",
+            "lenguajes de programacion",
+            "programacion",
             "que tecnologias usa",
+            "que tecnologias utiliza",
             "que tecnologias conoce",
             "que tecnologias maneja",
+            "que herramientas usa",
+            "que herramientas utiliza",
+            "que stack usa",
+            "que stack utiliza",
+            "con que tecnologias trabaja",
+            "con que tecnologia trabaja",
+            "tecnologias que usa",
+            "tecnologias que utiliza",
             "tecnologias de jorge",
             "tecnologia de jorge",
-            "cual es su stack",
-            "cual es el stack",
-            "stack tecnologico",
-            "habilidades tecnicas",
-            "herramientas que usa",
-            "que herramientas conoce",
-            "lenguajes que conoce",
+            "stack de jorge",
             "technical skills",
+            "technologies",
+            "technology",
             "what technologies does jorge use",
             "what technologies does he use",
-            "tech stack",
         ])
     ) {
         return responses.technologies();
@@ -686,9 +923,9 @@ export const getLocalResponse = (message) => {
         return responses.deploy();
     }
 
-     /*
+    /*
     |--------------------------------------------------------------------------
-    | 15. ÁREAS
+    | 15. ÁREAS PROFESIONALES
     |--------------------------------------------------------------------------
     */
 
@@ -763,7 +1000,11 @@ export const getLocalResponse = (message) => {
 
     /*
     |--------------------------------------------------------------------------
-    | NO HAY RESPUESTA LOCAL
+    | NO EXISTE RESPUESTA LOCAL
+    |--------------------------------------------------------------------------
+    |
+    | El controlador enviará la pregunta a Groq.
+    |
     |--------------------------------------------------------------------------
     */
 
