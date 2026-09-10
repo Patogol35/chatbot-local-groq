@@ -171,6 +171,7 @@ const COMMON_WORDS = new Set([
 "contactar",
 "contactarme",
 "comunicar",
+    "contactame",
     
 ]);
     
@@ -919,6 +920,8 @@ const LOCAL_RESPONSES = [
         "deseo comunicarme",
         "necesito contactar",
         "necesito hablar con jorge",
+        "contactame con el",
+        "contactame",
     ],
     responses: [
         'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
