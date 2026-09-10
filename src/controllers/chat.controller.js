@@ -1,4 +1,9 @@
-import Groq from "groq-sdk";
+    import Groq from "groq-sdk";
+
+import {
+    getLocalResponse,
+    shouldUseLocalResponse,
+} from "../utils/respondes.js";
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
@@ -13,22 +18,23 @@ const COST_PER_1K_TOKENS = 0.0002;
 
 const JORGE_INFO = `
 Jorge Patricio Santamaría Cherrez.
+
 Estudios:
 - Ingeniería en Sistemas, Universidad Indoamérica, Ecuador — 9/10.
 - Máster en Ingeniería de Software, UNIR, España — 8.68/10.
 
 Certificaciones:
-- Model Context Protocol, Anthropic, 2026
-- Claude API, Anthropic, 2026
-- Fundamentals of AI, IBM, 2025
-- Linux, Udemy, 2024
-- AZ-900, UNIR, 2023
+- Model Context Protocol, Anthropic, 2026.
+- Claude API, Anthropic, 2026.
+- Fundamentals of AI, IBM, 2025.
+- Linux, Udemy, 2024.
+- AZ-900, UNIR, 2023.
 
 Stack:
 React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel, AWS.
 
 Especialidades:
-Desarrollo Full Stack, virtualización, ciberseguridad.
+Desarrollo Full Stack, virtualización y ciberseguridad.
 
 Proyectos:
 Portfolio React, Quiz Ecuador, App del clima, Chatbot, Ajedrez y E-commerce React+Django.
@@ -38,7 +44,6 @@ Lectura y música.
 
 Contacto:
 Sección "Contacto" del portfolio.
-
 `;
 
 const SYSTEM_PROMPT = `
@@ -72,24 +77,35 @@ const sanitizeHistory = (history) => {
 
     return history
         .filter(
-            item =>
+            (item) =>
                 item &&
-                (item.role === "user" || item.role === "assistant") &&
+                (item.role === "user" ||
+                    item.role === "assistant") &&
                 typeof item.content === "string"
         )
-        .map(item => ({
+        .map((item) => ({
             role: item.role,
             content: item.content.trim(),
         }))
-        .filter(item => item.content.length > 0)
+        .filter((item) => item.content.length > 0)
         .slice(-MAX_HISTORY_MESSAGES);
 };
 
 export const sendMessage = async (req, res) => {
     try {
-        const { message, history = [] } = req.body;
+        const {
+            message,
+            history = [],
+        } = req.body;
 
-        if (typeof message !== "string" || !message.trim()) {
+        // ============================================
+        // VALIDACIÓN
+        // ============================================
+
+        if (
+            typeof message !== "string" ||
+            !message.trim()
+        ) {
             return res.status(400).json({
                 error: "El mensaje es obligatorio.",
             });
@@ -97,13 +113,53 @@ export const sendMessage = async (req, res) => {
 
         const userMessage = message.trim();
 
-        if (userMessage.length > MAX_MESSAGE_LENGTH) {
+        if (
+            userMessage.length >
+            MAX_MESSAGE_LENGTH
+        ) {
             return res.status(400).json({
                 error: `El mensaje no puede superar los ${MAX_MESSAGE_LENGTH} caracteres.`,
             });
         }
 
-        const cleanHistory = sanitizeHistory(history);
+        // ============================================
+        // RESPUESTA LOCAL
+        // ============================================
+
+        if (shouldUseLocalResponse(userMessage)) {
+            const localResponse =
+                getLocalResponse(userMessage);
+
+            if (localResponse) {
+                console.log(
+                    "⚡ Sasha respondió LOCALMENTE"
+                );
+                console.log(
+                    "💰 Tokens Groq: 0"
+                );
+
+                return res.json({
+                    response: localResponse,
+                    usage: {
+                        promptTokens: 0,
+                        completionTokens: 0,
+                        totalTokens: 0,
+                        estimatedCost: 0,
+                    },
+                });
+            }
+        }
+
+        // ============================================
+        // GROQ
+        // ============================================
+
+        console.log(
+            "🤖 Sasha utilizará Groq"
+        );
+
+        const cleanHistory =
+            sanitizeHistory(history);
 
         const messages = [
             {
@@ -117,42 +173,96 @@ export const sendMessage = async (req, res) => {
             },
         ];
 
-        const completion = await groq.chat.completions.create({
-            model: MODEL,
-            messages,
-            temperature: 0.3,
-            max_completion_tokens: MAX_COMPLETION_TOKENS,
-            reasoning_effort: "low",
-            stream: false,
-        });
+        const completion =
+            await groq.chat.completions.create({
+                model: MODEL,
+                messages,
+                temperature: 0.3,
+                max_completion_tokens:
+                    MAX_COMPLETION_TOKENS,
+                reasoning_effort: "low",
+                stream: false,
+            });
 
-        const usage = completion.usage || {};
+        // ============================================
+        // USAGE
+        // ============================================
 
-        const promptTokens = usage.prompt_tokens || 0;
-        const completionTokens = usage.completion_tokens || 0;
-        const totalTokens = usage.total_tokens || 0;
+        const usage =
+            completion.usage || {};
+
+        const promptTokens =
+            usage.prompt_tokens || 0;
+
+        const completionTokens =
+            usage.completion_tokens || 0;
+
+        const totalTokens =
+            usage.total_tokens || 0;
 
         const estimatedCost =
-            (totalTokens / 1000) * COST_PER_1K_TOKENS;
+            (totalTokens / 1000) *
+            COST_PER_1K_TOKENS;
+
+        // ============================================
+        // RESPUESTA
+        // ============================================
 
         const response =
-            completion.choices?.[0]?.message?.content?.trim();
+            completion
+                .choices?.[0]
+                ?.message
+                ?.content
+                ?.trim();
 
         if (!response) {
-            throw new Error("Groq no devolvió contenido.");
+            throw new Error(
+                "Groq no devolvió contenido."
+            );
         }
 
-        const cleanResponse = response
-            .replace(/\*\*/g, "")
-            .replace(/\*/g, "")
-            .trim();
+        const cleanResponse =
+            response
+                .replace(/\*\*/g, "")
+                .replace(/\*/g, "")
+                .trim();
 
-        console.log("🤖 Sasha respondió");
-        console.log("🧠 Modelo:", MODEL);
-        console.log("📊 Prompt:", promptTokens);
-        console.log("⬅️ Completion:", completionTokens);
-        console.log("🔢 Total:", totalTokens);
-        console.log("💰 Costo: $", estimatedCost.toFixed(6));
+        // ============================================
+        // LOGS
+        // ============================================
+
+        console.log(
+            "🤖 Sasha respondió con Groq"
+        );
+
+        console.log(
+            "🧠 Modelo:",
+            MODEL
+        );
+
+        console.log(
+            "📊 Prompt:",
+            promptTokens
+        );
+
+        console.log(
+            "⬅️ Completion:",
+            completionTokens
+        );
+
+        console.log(
+            "🔢 Total:",
+            totalTokens
+        );
+
+        console.log(
+            "💰 Costo: $",
+            estimatedCost.toFixed(6)
+        );
+
+        // ============================================
+        // RESPONSE
+        // ============================================
 
         return res.json({
             response: cleanResponse,
@@ -165,7 +275,10 @@ export const sendMessage = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("❌ ERROR GROQ:", error);
+        console.error(
+            "❌ ERROR GROQ:",
+            error
+        );
 
         if (error?.status === 429) {
             return res.status(429).json({
