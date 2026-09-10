@@ -2202,9 +2202,8 @@ return null;
 |--------------------------------------------------------------------------
 */
 export const getLocalResponse = (message) => {
-    const getLocalResponse = (message) => {
-
-    const normalizedMessage = normalizeText(message);
+    
+    let normalizedMessage = normalizeText(message);
 
     // ============================================================
     // PREGUNTAS DE PROGRAMACIÓN → GROQ
@@ -2230,20 +2229,7 @@ export const getLocalResponse = (message) => {
         return null;
     }
 
-    // AQUÍ VA
-    
-
-    // RESTO DE TU CÓDIGO...
-
     const personName = extractPersonName(message);
-
-    /*
-    |--------------------------------------------------------------------------
-    | SI HAY UNA PERSONA
-    |--------------------------------------------------------------------------
-    */
-
-    let normalizedMessage = normalizeText(message);
 
     if (personName) {
 
@@ -2270,6 +2256,20 @@ export const getLocalResponse = (message) => {
             correctedName
         );
     }
+
+    // 👇 AQUÍ SIGUE EL RESTO DE TU CÓDIGO
+
+    const personName = extractPersonName(message);
+
+    /*
+    |--------------------------------------------------------------------------
+    | SI HAY UNA PERSONA
+    |--------------------------------------------------------------------------
+    */
+
+    
+
+    
 
     // 👇 AQUÍ SIGUE EL RESTO DE TU CÓDIGO
 
