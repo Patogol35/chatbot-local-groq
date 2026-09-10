@@ -790,6 +790,11 @@ const containsValidName = (message) => {
 const containsAnotherPersonName = (message) => {
     const normalized = normalizeText(message);
 
+    // Sasha es la asistente, no otra persona.
+    if (normalized.includes("sasha")) {
+        return false;
+    }
+
     // Si aparece Jorge, no lo consideramos otra persona.
     if (containsValidName(normalized)) {
         return false;
@@ -800,28 +805,13 @@ const containsAnotherPersonName = (message) => {
     for (const word of words) {
         if (!word) continue;
 
-        // Ignorar palabras comunes.
         if (COMMON_WORDS.has(word)) {
             continue;
         }
 
-        // Ignorar números.
         if (/^\d+$/.test(word)) {
             continue;
         }
-
-        /*
-        Si la palabra es una palabra independiente y no pertenece
-        a las palabras comunes, la tratamos como posible nombre.
-
-        Ejemplos:
-        luis
-        pedro
-        messi
-        carlos
-        maria
-        elon
-        */
 
         if (/^[a-záéíóúñ]+$/i.test(word)) {
             return true;
