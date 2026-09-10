@@ -2,7 +2,7 @@ export const JORGE = {
     nombre: "Jorge Patricio Santamaría Cherrez",
 
     perfil:
-        "Ingeniero en Sistemas y Máster en Ingeniería de Software, especializado en desarrollo Full Stack y tecnologías web.",
+        "Ingeniero en Sistemas y Máster en Ingeniería de Software y Sistemas Informáticos, especializado en desarrollo Full Stack y tecnologías web.",
 
     estudios: {
         ingenieria: {
@@ -14,8 +14,10 @@ export const JORGE = {
         },
 
         master: {
-            titulo: "Máster en Ingeniería de Software",
-            universidad: "Universidad Internacional de La Rioja (UNIR)",
+            titulo:
+                "Máster en Ingeniería de Software y Sistemas Informáticos",
+            universidad:
+                "Universidad Internacional de La Rioja (UNIR)",
             pais: "España",
             promedio: "8.68",
             tfm: "9",
@@ -63,10 +65,10 @@ export const JORGE = {
     proyectos: [
         "Portfolio React",
         "Quiz sobre Ecuador",
-        "App del clima",
+        "Aplicación del clima",
         "Chatbot",
         "Ajedrez",
-        "E-commerce React + Django",
+        "E-commerce con React y Django",
     ],
 
     intereses: [
