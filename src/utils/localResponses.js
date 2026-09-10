@@ -204,7 +204,7 @@ const LOCAL_RESPONSES = [
             "cuentame sobre Jorge",
             "cuentame acerca de Jorge",
             "cuentame de Jorge",
-            "quiero saberbde Jorge",
+            "quiero saber de Jorge",
             "acerca de jorge",
             "hablame de jorge",
             "hablame acerca de jorge",
