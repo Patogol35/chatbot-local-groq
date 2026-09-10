@@ -1208,27 +1208,7 @@ const normalizeJorgeName = (message) => {
 */
 const extractPersonName = (message) => {
     const normalized = normalizeText(message);
-    const original = message.trim();
-
-    /*
-|--------------------------------------------------------------------------
-| CONSULTAS GENERALES SIN NOMBRE
-|--------------------------------------------------------------------------
-*/
-
-const generalQueries = [
-    "nota del master",
-    "promedio del master",
-    "nota del posgrado",
-    "promedio del posgrado",
-];
-
-if (generalQueries.includes(normalized)) {
-    return null;
-}
-
-
-// ============================================================
+    // ============================================================
 // PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
 // ============================================================
 
@@ -1376,6 +1356,28 @@ const isTechnicalMessage = technicalPrefixes.some(prefix =>
 if (isTechnicalMessage) {
     return null;
 }
+
+    
+    const original = message.trim();
+
+    /*
+|--------------------------------------------------------------------------
+| CONSULTAS GENERALES SIN NOMBRE
+|--------------------------------------------------------------------------
+*/
+
+const generalQueries = [
+    "nota del master",
+    "promedio del master",
+    "nota del posgrado",
+    "promedio del posgrado",
+];
+
+if (generalQueries.includes(normalized)) {
+    return null;
+}
+
+
 
     
 /*
