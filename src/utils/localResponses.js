@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 */
 
-const normalizeText = (text) => {
+const normalizeText = (text = "") => {
     return text
         .toLowerCase()
         .normalize("NFD")
@@ -13,6 +13,36 @@ const normalizeText = (text) => {
         .replace(/\s+/g, " ")
         .trim();
 };
+
+/*
+|--------------------------------------------------------------------------
+| NOMBRES VÁLIDOS DE JORGE
+|--------------------------------------------------------------------------
+*/
+
+const VALID_NAMES = [
+    "jorge",
+    "patricio",
+    "jorge patricio",
+];
+
+/*
+|--------------------------------------------------------------------------
+| PATRONES PARA PREGUNTAS SOBRE PERSONAS
+|--------------------------------------------------------------------------
+*/
+
+const PERSON_QUESTION_PATTERNS = [
+    "quien es",
+    "quién es",
+    "hablame de",
+    "háblame de",
+    "sobre",
+    "informacion de",
+    "información de",
+    "datos de",
+    "perfil de",
+];
 
 /*
 |--------------------------------------------------------------------------
@@ -466,7 +496,7 @@ const LOCAL_RESPONSES = [
         ]
     },
 
-       /*
+    /*
     |--------------------------------------------------------------------------
     | INTERESES
     |--------------------------------------------------------------------------
@@ -571,37 +601,74 @@ const LOCAL_RESPONSES = [
 
 /*
 |--------------------------------------------------------------------------
-| COMPROBAR SI HABLA DE JORGE
+| DETECTAR SI EL NOMBRE ES DE JORGE
 |--------------------------------------------------------------------------
 */
 
-const isAboutJorge = (message) => {
+const containsValidName = (message) => {
     const normalized = normalizeText(message);
 
-
-    const jorgeKeywords = [
-    "jorge",
-    "patricio",
-    "santamaria",
-    "santamaria cherrez",
-
-    // Combinaciones del nombre
-    "jorge patricio",
-    "jorge santamaria",
-    "jorge cherrez",
-    "patricio santamaria",
-    "patricio cherrez",
-    "jorge patricio santamaria",
-    "jorge patricio cherrez",
-    "jorge santamaria cherrez",
-    "patricio santamaria cherrez",
-    "jorge patricio santamaria cherrez",
-];
-
-    return jorgeKeywords.some((keyword) =>
-        normalized.includes(normalizeText(keyword))
-    );
+    return VALID_NAMES.some((name) => {
+        return normalized.includes(
+            normalizeText(name)
+        );
+    });
 };
+
+/*
+|--------------------------------------------------------------------------
+| DETECTAR SI PREGUNTAN POR OTRA PERSONA
+|--------------------------------------------------------------------------
+|
+| Ejemplos:
+|
+| ¿Quién es Carlos?
+| ¿Quién es Messi?
+| Háblame de Elon Musk
+| Información de María
+|
+| Todo eso debe ir a Groq.
+|
+|--------------------------------------------------------------------------
+*/
+
+const isQuestionAboutAnotherPerson = (message) => {
+    const normalized = normalizeText(message);
+
+    const isPersonQuestion =
+        PERSON_QUESTION_PATTERNS.some((pattern) =>
+            normalized.includes(
+                normalizeText(pattern)
+            )
+        );
+
+    if (!isPersonQuestion) {
+        return false;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Si aparece Jorge, Patricio o Jorge Patricio,
+    | se permite respuesta local.
+    |--------------------------------------------------------------------------
+    */
+
+    if (containsValidName(message)) {
+        return false;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Hay una pregunta sobre una persona pero no aparece
+    | ninguno de los nombres válidos.
+    |
+    | Por lo tanto, Groq debe responder.
+    |--------------------------------------------------------------------------
+    */
+
+    return true;
+};
+
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
@@ -609,43 +676,50 @@ const isAboutJorge = (message) => {
 */
 
 export const getLocalResponse = (message) => {
-    const normalizedMessage = normalizeText(message);
+
+    /*
+    |--------------------------------------------------------------------------
+    | OTRO NOMBRE = GROQ
+    |--------------------------------------------------------------------------
+    */
+
+    if (isQuestionAboutAnotherPerson(message)) {
+        return null;
+    }
+
+    const normalizedMessage =
+        normalizeText(message);
 
     let bestMatch = null;
     let bestScore = 0;
 
     for (const item of LOCAL_RESPONSES) {
+
         let score = 0;
 
         for (const keyword of item.keywords) {
-            const normalizedKeyword = normalizeText(keyword);
 
-            /*
-            |--------------------------------------------------------------------------
-            | COINCIDENCIA EXACTA DE PALABRA O FRASE
-            |--------------------------------------------------------------------------
-            */
+            const normalizedKeyword =
+                normalizeText(keyword);
 
-            const regex = new RegExp(
-                `(^|\\s)${normalizedKeyword.replace(
+            const escapedKeyword =
+                normalizedKeyword.replace(
                     /[.*+?^${}()|[\]\\]/g,
                     "\\$&"
-                )}(?=\\s|$)`
+                );
+
+            const regex = new RegExp(
+                `(^|\\s)${escapedKeyword}(?=\\s|$)`
             );
 
             if (regex.test(normalizedMessage)) {
-                const words = normalizedKeyword.split(" ").length;
 
-                // Las coincidencias específicas tienen mucho peso
+                const words =
+                    normalizedKeyword.split(" ").length;
+
                 score += words * 10;
             }
         }
-
-        /*
-        |--------------------------------------------------------------------------
-        | GUARDAR LA MEJOR COINCIDENCIA
-        |--------------------------------------------------------------------------
-        */
 
         if (score > bestScore) {
             bestScore = score;
@@ -659,17 +733,31 @@ export const getLocalResponse = (message) => {
     |--------------------------------------------------------------------------
     */
 
-    if (bestMatch && bestScore >= 10) {
-        const responses = bestMatch.responses;
+    if (
+        bestMatch &&
+        bestScore >= 10
+    ) {
 
-        const randomIndex = Math.floor(
-            Math.random() * responses.length
-        );
+        const responses =
+            bestMatch.responses;
+
+        const randomIndex =
+            Math.floor(
+                Math.random() *
+                responses.length
+            );
 
         return responses[randomIndex];
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | NO HAY RESPUESTA LOCAL
+    |--------------------------------------------------------------------------
+    |
+    | sendMessage.js continuará hacia Groq.
+    |--------------------------------------------------------------------------
+    */
+
     return null;
 };
-
-     
