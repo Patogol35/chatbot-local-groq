@@ -138,9 +138,12 @@ const COMMON_WORDS = new Set([
     "hizo",
     "programo",
     "desarrollo",
-    "pronto",
-    "eres",
-    "sasha",
+"master",
+"maestria",
+"posgrado",
+"pronto",
+"eres",
+"sasha",
 ]);
     
 
