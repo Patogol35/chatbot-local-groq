@@ -112,6 +112,7 @@ const COMMON_WORDS = new Set([
     "y",
     "ingenieria",
     "ingeniero",
+    "acerca",
 
     // AGREGAR
     "linux",
