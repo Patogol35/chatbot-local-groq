@@ -166,6 +166,11 @@ const COMMON_WORDS = new Set([
     "contactarlo",
     "comunicarme",
     "quiero",
+    "hablar",
+"llamar",
+"contactar",
+"contactarme",
+"comunicar",
     
 ]);
     
