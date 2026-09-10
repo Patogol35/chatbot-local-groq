@@ -3,7 +3,7 @@
 import {
     getLocalResponse,
     shouldUseLocalResponse,
-} from "../utils/respondes.js";
+} from "../utils/localResponses.js";
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
