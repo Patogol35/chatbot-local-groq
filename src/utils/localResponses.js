@@ -1192,241 +1192,6 @@ const normalizeJorgeName = (message) => {
 };
 
 
-/*
-|--------------------------------------------------------------------------
-| EXTRAER PERSONA DE LA CONSULTA
-|--------------------------------------------------------------------------
-|
-| Ejemplos:
-|
-| "luis nota master"      → luis
-| "carlos nota master"    → carlos
-| "jorge nota master"     → jorge
-| "que nota tiene luis"  → luis
-|
-|--------------------------------------------------------------------------
-*/
-const extractPersonName = (message) => {
-    const normalized = normalizeText(message);
-
-    // ============================================================
-    // PREGUNTAS TÉCNICAS: NO TRATAR COMO PERSONA
-    // ============================================================
-
-    const technicalPatterns = [
-        // Imprimir / mostrar
-        /^imprime\b/,
-        /^imprimir\b/,
-        /^muestra\b/,
-        /^mostrar\b/,
-        /^escribe\b/,
-        /^escribir\b/,
-
-        // Programar / código
-        /^programa\b/,
-        /^programar\b/,
-        /^programacion\b/,
-        /^codigo\b/,
-        /^codifica\b/,
-        /^codificar\b/,
-
-        // Crear / declarar
-        /^crea\s+(un|una)\b/,
-        /^crear\s+(un|una)\b/,
-        /^declara\s+(un|una)\b/,
-        /^declarar\s+(un|una)\b/,
-        /^define\s+(un|una)\b/,
-        /^definir\s+(un|una)\b/,
-
-        // Ejecutar
-        /^ejecuta\s+(un|una)\b/,
-        /^ejecutar\s+(un|una)\b/,
-
-        // Operaciones matemáticas
-        /^suma\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^sumar\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^resta\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^restar\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^multiplica\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^multiplicar\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^divide\s+(un|una|dos|tres|cuatro|cinco)\b/,
-        /^dividir\s+(un|una|dos|tres|cuatro|cinco)\b/,
-
-        // Cálculos
-        /^calcula\s+(el|la|un|una)\b/,
-        /^calcular\s+(el|la|un|una)\b/,
-
-        // Preguntas claramente técnicas
-        /^como\s+programar\b/,
-        /^como\s+hacer\b/,
-        /^como\s+se\s+hace\b/,
-        /^como\s+puedo\s+programar\b/,
-        /^como\s+puedo\s+hacer\b/,
-        /^como\s+imprimir\b/,
-        /^como\s+mostrar\b/,
-        /^como\s+crear\b/,
-        /^como\s+declarar\b/,
-        /^como\s+definir\b/,
-        /^como\s+ejecutar\b/,
-        /^como\s+funciona\b/,
-        /^como\s+usar\b/,
-        /^como\s+utilizar\b/,
-
-        // Estructuras de programación
-        /^crear\s+una\s+variable\b/,
-        /^crear\s+un\s+array\b/,
-        /^crear\s+un\s+arreglo\b/,
-        /^crear\s+una\s+lista\b/,
-        /^declarar\s+una\s+variable\b/,
-        /^declarar\s+un\s+array\b/,
-        /^declarar\s+un\s+arreglo\b/,
-        /^hacer\s+un\s+bucle\b/,
-        /^hacer\s+un\s+ciclo\b/
-    ];
-
-    const isTechnicalMessage = technicalPatterns.some(pattern =>
-        pattern.test(normalized)
-    );
-
-    if (isTechnicalMessage) {
-        return null;
-    }
-
-    const original = message.trim();
-        
-    /*
-|--------------------------------------------------------------------------
-| CONSULTAS GENERALES SIN NOMBRE
-|--------------------------------------------------------------------------
-*/
-
-const generalQueries = [
-    "nota del master",
-    "promedio del master",
-    "nota del posgrado",
-    "promedio del posgrado",
-];
-
-if (generalQueries.includes(normalized)) {
-    return null;
-}
-
-
-
-    
-/*
-    |--------------------------------------------------------------------------
-    | TEMAS GENERALES SIN PERSONA
-    |--------------------------------------------------------------------------
-    */
-
-    const generalTopics = [
-    "ajedrez",
-    "chess",
-    "ecommerce",
-    "e-commerce",
-    "quiz",
-    "clima",
-    "chatbot",
-    "chat bot",
-    "portfolio",
-    "portafolio",
-    "proyecto de ajedrez",
-    "proyecto ajedrez",
-    "proyecto ecommerce",
-    "proyecto quiz",
-    "proyecto clima",
-    "proyecto chatbot"
-];
-
-const generalPrefixes = [
-    "habla de",
-    "habla del",
-    "hablame de",
-    "hablame del",
-    "habla sobre",
-    "hablame sobre",
-    "dime sobre",
-    "dime del",
-    "informacion sobre",
-    "informacion de",
-    "datos de",
-    "que sabes de",
-    "que sabes sobre",
-    "quiero saber sobre"
-];
-
-for (const prefix of generalPrefixes) {
-    if (normalized.startsWith(prefix + " ")) {
-
-        const topic = normalized
-            .slice(prefix.length)
-            .trim();
-
-        if (generalTopics.includes(topic)) {
-            return null;
-        }
-    }
-}
-
-/*
-|--------------------------------------------------------------------------
-| FORMATO: "nombre + pregunta"
-|--------------------------------------------------------------------------
-*/
-
-const firstWordPatterns = [
-// ============================================================
-// IDENTIDAD
-// ============================================================
-
-// Formas directas
-/^(.+?)\s+quien\s+es$/,
-/^(.+?)\s+informacion$/,
-/^(.+?)\s+datos$/,
-/^(.+?)\s+perfil$/,
-
-// Formas naturales
-/^(.+?)\s+presentame$/,
-/^(.+?)\s+presentame\s+a$/,
-/^(.+?)\s+hablame$/,
-/^(.+?)\s+hablame\s+de$/,
-/^(.+?)\s+habla\s+de$/,
-/^(.+?)\s+cuentame$/,
-/^(.+?)\s+cuentame\s+de$/,
-/^(.+?)\s+cuentame\s+sobre$/,
-/^(.+?)\s+dime\s+de$/,
-/^(.+?)\s+dime\s+sobre$/,
-/^(.+?)\s+que\s+sabes$/,
-/^(.+?)\s+que\s+sabes\s+de$/,
-/^(.+?)\s+quiero\s+saber$/,
-/^(.+?)\s+quiero\s+saber\s+quien\s+es$/,
-/^(.+?)\s+todo\s+sobre$/,
-
-// Perfil
-/^(.+?)\s+perfil\s+profesional$/,
-/^(.+?)\s+perfil\s+profesional\s+de$/,
-
-// Profesión
-/^(.+?)\s+profesion$/,
-/^(.+?)\s+profesionalmente$/,
-/^(.+?)\s+que\s+hace$/,
-/^(.+?)\s+a\s+que\s+se\s+dedica$/,
-
-// ============================================================
-// NOTAS / PROMEDIOS
-// ============================================================
-
-// ============================================================
-// PERSONA + NOTA / PROMEDIO
-// ============================================================
-
-// Notas / promedios generales
-/^(.+?)\s+tiene\s+nota$/,
-/^(.+?)\s+tiene\s+notas$/,
-/^(.+?)\s+tiene\s+promedio$/,
-/^(.+?)\s+tiene\s+promedios$/,
-/^(.+?)\s+tiene\s+calificacion$/,
 /^(.+?)\s+tiene\s+calificaciones$/,
 
 // Ingeniería
@@ -2437,6 +2202,38 @@ return null;
 |--------------------------------------------------------------------------
 */
 export const getLocalResponse = (message) => {
+    const getLocalResponse = (message) => {
+
+    const normalizedMessage = normalizeText(message);
+
+    // ============================================================
+    // PREGUNTAS DE PROGRAMACIÓN → GROQ
+    // ============================================================
+
+    const technicalRegex = [
+        /\b(imprime|imprimir|muestra|mostrar|escribe|escribir)\b.*\b(java|javascript|python|typescript|c\+\+|c#|php|ruby|kotlin|swift|go)\b/,
+
+        /\b(suma|sumar|resta|restar|multiplica|multiplicar|divide|dividir)\b.*\b(numero|número|numeros|números|valor|valores)\b/,
+
+        /\b(crea|crear|declara|declarar|define|definir)\b.*\b(variable|funcion|función|clase|objeto|array|arreglo|lista)\b/,
+
+        /\b(programa|programar|programacion|programación|codigo|código|codificar)\b/,
+
+        /\b(como|cómo)\b.*\b(programar|imprimir|mostrar|crear|declarar|definir|ejecutar|usar|utilizar)\b/,
+
+        /\b(error|depurar|debug|debuggear)\b.*\b(codigo|código|java|javascript|python|typescript)\b/
+    ];
+
+    if (technicalRegex.some(pattern =>
+        pattern.test(normalizedMessage)
+    )) {
+        return null;
+    }
+
+    // AQUÍ VA
+    
+
+    // RESTO DE TU CÓDIGO...
 
     const personName = extractPersonName(message);
 
