@@ -185,10 +185,7 @@ export const sendMessage = async (req, res) => {
         |
         */
 
-        const localResponse = isAnotherPerson(userMessage)
-            ? null
-            : getLocalResponse(userMessage);
-
+        const localResponse = getLocalResponse(userMessage);
         if (localResponse) {
             console.log("⚡ RESPUESTA LOCAL");
             console.log("🤖 Groq no fue utilizado");
