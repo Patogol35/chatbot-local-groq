@@ -143,7 +143,6 @@ const COMMON_WORDS = new Set([
     "pronto",
     "eres",
     "sasha",
-    "Sasha",
 ]);
 
 /*
