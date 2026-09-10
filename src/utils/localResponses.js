@@ -148,6 +148,7 @@ const COMMON_WORDS = new Set([
 "sasha",
     "realizo",
     "curso",
+    "promedio",
 ]);
     
 
