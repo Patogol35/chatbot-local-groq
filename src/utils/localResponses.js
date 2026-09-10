@@ -391,6 +391,10 @@ const LOCAL_RESPONSES = [
         "nota del master",
         "promedio de la maestria",
         "calificacion master",
+        "nota de Master",
+        "nota de su master",
+        "nota de su maestria",
+        "nota de maestria",
     ],
     responses: [
         "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
