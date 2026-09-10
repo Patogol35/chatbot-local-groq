@@ -379,6 +379,7 @@ const LOCAL_RESPONSES = [
     category: "notas",
     keywords: [
         "promedio master",
+        "promedio de su master",
         "nota master",
         "promedio posgrado",
         "nota posgrado",
