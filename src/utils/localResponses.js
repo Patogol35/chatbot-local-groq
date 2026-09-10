@@ -223,16 +223,16 @@ const LOCAL_RESPONSES = [
 {
     category: "formacion",
   keywords: [
-    "que estudio",
-    "que carrera estudio",
-    "que carrera tiene",
+    
+    
     "que ingenieria estudio",
     "que ingenieria tiene",
-    "que titulo tiene",
-    "que titulos tiene",
+    "titulo de ingenieria",
+      "su ingenieria",
+      
     "es ingeniero",
     "estudio ingenieria",
-    "carrera universitaria",
+    "carrera de ingenieria",
 
     "donde estudio su ingenieria",
     "donde estudio la ingenieria",
@@ -250,8 +250,7 @@ const LOCAL_RESPONSES = [
     "donde curso la ingenieria",
     "donde curso ingenieria",
 
-    "que universidad estudio",
-    "en que universidad estudio",
+    "en que universidad estudio su ingenieria",
     "en que universidad hizo su ingenieria",
     "en que universidad estudio ingenieria",
     "universidad de su ingenieria",
