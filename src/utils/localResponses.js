@@ -790,6 +790,9 @@ const containsValidName = (message) => {
 const containsAnotherPersonName = (message) => {
     const normalized = normalizeText(message);
 
+    console.log("MENSAJE:", normalized);
+    console.log("VALID JORGE:", containsValidName(normalized));
+
     if (containsValidName(normalized)) {
         return false;
     }
@@ -812,6 +815,7 @@ const containsAnotherPersonName = (message) => {
         }
 
         if (/^[a-záéíóúñ]+$/i.test(word)) {
+            console.log("OTRA PERSONA:", word);
             return true;
         }
     }
