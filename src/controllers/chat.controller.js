@@ -11,7 +11,7 @@ const groq = new Groq({
 |--------------------------------------------------------------------------
 */
 
-//const MODEL = "openai/gpt-oss-20b";
+const MODEL = "openai/gpt-oss-20b";
 
 const MAX_MESSAGE_LENGTH = 1000;
 const MAX_HISTORY_MESSAGES = 8;
@@ -125,13 +125,24 @@ const sanitizeHistory = (history) => {
         .slice(-MAX_HISTORY_MESSAGES);
 };
 
+/*
+|--------------------------------------------------------------------------
+| DETECTAR PREGUNTAS SOBRE OTRA PERSONA
+|--------------------------------------------------------------------------
+*/
+
 const isAnotherPerson = (message) => {
     const text = message
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
 
-    // Si menciona a Jorge, dejamos que responda con la información local
+    /*
+    |--------------------------------------------------------------------------
+    | JORGE
+    |--------------------------------------------------------------------------
+    */
+
     if (
         text.includes("jorge") ||
         text.includes("patricio") ||
@@ -140,10 +151,14 @@ const isAnotherPerson = (message) => {
         return false;
     }
 
-    // Solo detectamos otro nombre cuando la frase realmente pregunta
-    // por información de una persona
+    /*
+    |--------------------------------------------------------------------------
+    | PREGUNTAS SOBRE UNA PERSONA
+    |--------------------------------------------------------------------------
+    */
+
     const personQuestion =
-        /\b(quien|hablame de|cuentame sobre|informacion sobre|que|cual|donde|como)\b.*\b(es|estudio|estudia|tiene|hizo|trabaja|trabajo|experiencia|proyectos|profesion|carrera|maestria|master)\b/i;
+        /\b(quien|hablame|cuentame|informacion|que|cual|donde|como)\b.*\b(es|estudio|estudia|tiene|hizo|trabaja|trabajo|experiencia|proyectos|profesion|carrera|maestria|master)\b/i;
 
     return personQuestion.test(text);
 };
@@ -177,18 +192,20 @@ export const sendMessage = async (req, res) => {
         | RESPUESTA LOCAL
         |--------------------------------------------------------------------------
         |
-        | Si existe una respuesta preparada:
-        | - NO se llama a Groq
-        | - NO consume tokens
-        | - NO consume cuota de Groq
+        | Si la pregunta es sobre otra persona:
+        | - NO usamos respuestas locales de Jorge
+        | - La pregunta pasa directamente a Groq
+        |
+        | Si no es otra persona:
+        | - Se intenta primero la respuesta local
         |
         */
 
         const localResponse = isAnotherPerson(userMessage)
-    ? null
-    : getLocalResponse(userMessage);
+            ? null
+            : getLocalResponse(userMessage);
 
-if (localResponse) {
+        if (localResponse) {
             console.log("⚡ RESPUESTA LOCAL");
             console.log("🤖 Groq no fue utilizado");
             console.log("💰 Tokens utilizados: 0");
@@ -284,6 +301,7 @@ if (localResponse) {
         console.log("➡️ Prompt:", promptTokens);
         console.log("⬅️ Completion:", completionTokens);
         console.log("🔢 Total:", totalTokens);
+
         console.log(
             "💰 Costo estimado: $",
             estimatedCost.toFixed(6)
