@@ -636,6 +636,7 @@ const LOCAL_RESPONSES = [
             "hablar con Jorge",
             "Llamar a Jorge",
             "como llamar a Jorge",
+            "como me comunico con Jorge",
         ],
         responses: [
             'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
@@ -670,7 +671,7 @@ const LOCAL_RESPONSES = [
         "buenas tardes",
         "buenas noches",
         "hey",
-        "hello",
+        
     ],
     responses: [
         "¡Hola! Soy Sasha, la asistente virtual del portfolio de Jorge. ¿En qué puedo ayudarte?",
@@ -687,6 +688,7 @@ const LOCAL_RESPONSES = [
         "muchas gracias",
         "te agradezco",
         "gracias sasha",
+        "muy agradecido",
     ],
     responses: [
         "¡De nada! 😊",
@@ -705,6 +707,7 @@ const LOCAL_RESPONSES = [
         "nos vemos",
         "me voy",
         "bye",
+        "hasta pronto",
     ],
     responses: [
         "¡Chao! 👋 Gracias por visitar el portfolio de Jorge.",
@@ -721,6 +724,7 @@ const LOCAL_RESPONSES = [
         "como te encuentras",
         "estas bien",
         "como te va",
+        "como vas",
     ],
     responses: [
         "¡Muy bien, gracias por preguntar! 😊 ¿En qué puedo ayudarte?",
@@ -739,6 +743,7 @@ const LOCAL_RESPONSES = [
         "quien te programo",
         "quien te desarrollo",
         "quien desarrollo a sasha",
+        "quien te invento",
     ],
     responses: [
         "Fui creada para funcionar como la asistente virtual del portfolio de Jorge Patricio Santamaría Cherrez.",
