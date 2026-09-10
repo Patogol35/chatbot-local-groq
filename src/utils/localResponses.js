@@ -395,6 +395,7 @@ const LOCAL_RESPONSES = [
         "nota de su master",
         "nota de su maestria",
         "nota de maestria",
+        "nota de la maestria",
     ],
     responses: [
         "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
