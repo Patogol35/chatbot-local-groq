@@ -126,6 +126,7 @@ const LOCAL_RESPONSES = [
             "habla de jorge"
             "sobre jorge",
             "dime sobre jorge",
+            "perfil",
         ],
         responses: [
             "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
@@ -511,6 +512,10 @@ const LOCAL_RESPONSES = [
             "certificados",
             "certificacion",
             "que certificaciones tiene",
+            "certificados de",
+            "certificaciones de",
+            "cursos de",
+            "cursos",
         ],
         responses: [
             "Jorge cuenta con certificaciones relacionadas con MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
