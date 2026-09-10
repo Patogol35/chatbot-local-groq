@@ -271,10 +271,10 @@ const LOCAL_RESPONSES = [
 ],
     responses: [
         "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
-        "La carrera universitaria de Jorge es Ingeniería en Sistemas.",
+        "La carrera universitaria de Jorge es Ingeniería en Sistemas y siguió la minsma en la Universidad Indoamerica.",
         "Jorge es Ingeniero en Sistemas, titulado por la Universidad Indoamérica.",
         "Su formación de grado corresponde a Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
-        "Jorge realizó sus estudios universitarios en Ingeniería en Sistemas.",
+        "Jorge realizó sus estudios universitarios en Ingeniería en Sistemas en la Universidad Indoamerica.",
         "A nivel de grado, Jorge estudió Ingeniería en Sistemas en Ecuador.",
         "Jorge cuenta con el título de Ingeniero en Sistemas por la Universidad Indoamérica.",
         "La carrera que estudió Jorge fue Ingeniería en Sistemas en la Universidad Indoamérica.",
