@@ -106,19 +106,40 @@ const COMMON_WORDS = new Set([
     "y",
 
     // AGREGAR
-    "buenas",
+    "hola",
+"buenas",
 "buenos",
 "dias",
 "tardes",
 "noches",
-"hola",
 "hey",
 "hello",
-"buen",
 "gracias",
-"gracías",
-"por",
-"favor",
+"muchas",
+"te",
+"agradezco",
+"chao",
+"adios",
+"hasta",
+"luego",
+"nos",
+"vemos",
+"me",
+"voy",
+"bye",
+"como",
+"estas",
+"encuentras",
+"bien",
+"va",
+"quien",
+"creo",
+"ti",
+"hizo",
+"programo",
+"desarrollo",
+"desarrollo",
+"desarrollo",
     "eres",
 ]);
 
@@ -639,6 +660,93 @@ const LOCAL_RESPONSES = [
             "Mi nombre es Sasha y funciono como asistente virtual del portfolio de Jorge.",
         ],
     },
+
+    {
+    category: "sasha_saludos",
+    keywords: [
+        "hola",
+        "buenas",
+        "buenos dias",
+        "buenas tardes",
+        "buenas noches",
+        "hey",
+        "hello",
+    ],
+    responses: [
+        "¡Hola! Soy Sasha, la asistente virtual del portfolio de Jorge. ¿En qué puedo ayudarte?",
+        "¡Hola! 👋 Soy Sasha. ¿Qué te gustaría saber?",
+        "¡Buenas! Soy Sasha, la asistente virtual de Jorge. Estoy aquí para ayudarte.",
+        "¡Hola! Qué gusto tenerte por aquí. ¿Qué quieres conocer?",
+    ],
+},
+
+{
+    category: "sasha_gracias",
+    keywords: [
+        "gracias",
+        "muchas gracias",
+        "te agradezco",
+        "gracias sasha",
+    ],
+    responses: [
+        "¡De nada! 😊",
+        "¡Con gusto! Estoy aquí para ayudarte.",
+        "¡No hay de qué! 😊",
+        "¡Cuando quieras! ¿Necesitas algo más?",
+    ],
+},
+
+{
+    category: "sasha_despedida",
+    keywords: [
+        "chao",
+        "adios",
+        "hasta luego",
+        "nos vemos",
+        "me voy",
+        "bye",
+    ],
+    responses: [
+        "¡Chao! 👋 Gracias por visitar el portfolio de Jorge.",
+        "¡Hasta luego! Fue un gusto ayudarte. 😊",
+        "¡Nos vemos! 👋 Espero que vuelvas pronto.",
+        "¡Adiós! Que tengas un excelente día.",
+    ],
+},
+
+{
+    category: "sasha_estado",
+    keywords: [
+        "como estas",
+        "como te encuentras",
+        "estas bien",
+        "como te va",
+    ],
+    responses: [
+        "¡Muy bien, gracias por preguntar! 😊 ¿En qué puedo ayudarte?",
+        "Estoy muy bien y lista para ayudarte. ¿Qué quieres saber?",
+        "¡Todo bien por aquí! Soy Sasha, siempre lista para ayudarte.",
+        "Muy bien, gracias. 😊 ¿Quieres conocer algo sobre Jorge?",
+    ],
+},
+
+{
+    category: "sasha_creador",
+    keywords: [
+        "quien te creo",
+        "quien te creo a ti",
+        "quien te hizo",
+        "quien te programo",
+        "quien te desarrollo",
+        "quien desarrollo a sasha",
+    ],
+    responses: [
+        "Fui creada para funcionar como la asistente virtual del portfolio de Jorge Patricio Santamaría Cherrez.",
+        "Jorge Patricio Santamaría Cherrez desarrolló a Sasha como asistente virtual para su portfolio.",
+        "Soy una asistente virtual creada para el portfolio de Jorge Patricio Santamaría Cherrez.",
+        "Fui desarrollada como parte del portfolio de Jorge para ayudar a los visitantes a conocer su perfil y proyectos.",
+    ],
+},
 ];
 
 /*
