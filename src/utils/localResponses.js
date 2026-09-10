@@ -153,6 +153,8 @@ const COMMON_WORDS = new Set([
     "perfil",
     "nota",
     "postgrado",
+    "siguio",
+    "hizo",
 ]);
     
 
@@ -231,7 +233,7 @@ const LOCAL_RESPONSES = [
     category: "formacion",
   keywords: [
     "ingenieria de",
-    
+    "que ingenieria hizo"
     "que ingenieria estudio",
     "que ingenieria tiene",
     "titulo de ingenieria",
@@ -244,6 +246,10 @@ const LOCAL_RESPONSES = [
     "donde estudio su ingenieria",
     "donde estudio la ingenieria",
     "donde estudio ingenieria",
+
+      "donde siguio su ingenieria",
+    "donde el siguio la ingenieria",
+    "donde siguio ingenieria",
 
     "donde hizo su ingenieria",
     "donde hizo la ingenieria",
