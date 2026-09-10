@@ -140,6 +140,7 @@ const COMMON_WORDS = new Set([
 "desarrollo",
 "desarrollo",
 "desarrollo",
+    "pronto",
     "eres",
 ]);
 
