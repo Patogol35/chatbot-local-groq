@@ -122,7 +122,10 @@ const LOCAL_RESPONSES = [
             "quien es santamaria cherrez",
             "presentame a jorge",
             "hablame de jorge",
+            "perfil de jorge",
+            "habla de jorge"
             "sobre jorge",
+            "dime sobre jorge",
         ],
         responses: [
             "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software.",
