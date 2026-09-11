@@ -1173,6 +1173,10 @@ const conceptualTopics = [
     "proyectos",
     "nota",
     "notas",
+    "master",
+    "maestria",
+    "ingenieria"
+    "posgrado",
 ];
 
 const isConceptualQuestion =
