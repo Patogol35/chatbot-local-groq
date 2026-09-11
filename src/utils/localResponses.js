@@ -44,6 +44,9 @@ const VALID_NAMES = [
 const COMMON_WORDS = new Set([
     "a",
     "soluciones",
+    "aplicaciones",
+    "apps",
+    "sistemas",
     "al",
     "algo",
     "proyectos",
