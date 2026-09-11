@@ -13,7 +13,8 @@ keywords: [
     "perfil de",
     "perfil profesional de jorge",
     "perfil profesional",
-    
+    "experiencia",
+    "experiencia de",
 
     "habla de jorge",
     "habla acerca de jorge",
