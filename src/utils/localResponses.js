@@ -1162,12 +1162,14 @@ const conceptualTopics = [
     // Formación
     "formacion",
 
-    // Otros conceptos que ya manejabas
+    // Otros conceptos 
     "stack",
     "tecnologia",
     "tecnologias",
     "herramienta",
     "herramientas",
+    "proyecto",
+    "proyectos",
 ];
 
 const isConceptualQuestion =
