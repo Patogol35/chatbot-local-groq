@@ -223,7 +223,7 @@ keywords: [
     "perfil de jorge",
     "perfil profesional de jorge",
     "perfil profesional",
-    "su perfil",
+    
 
     "habla de jorge",
     "habla acerca de jorge",
