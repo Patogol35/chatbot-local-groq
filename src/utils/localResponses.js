@@ -1070,7 +1070,21 @@ if (
     normalizedMessage === "que es un stack" ||
     normalizedMessage === "que es stack" ||
     normalizedMessage === "que significa stack" ||
-    normalizedMessage === "que significa un stack"
+    normalizedMessage === "que significa un stack" ||
+
+    normalizedMessage === "que es tecnologia" ||
+    normalizedMessage === "que es una tecnologia" ||
+    normalizedMessage === "que significa tecnologia" ||
+    normalizedMessage === "que son las tecnologias" ||
+    normalizedMessage === "que son tecnologias" ||
+    normalizedMessage === "que significan las tecnologias" ||
+
+    normalizedMessage === "que es una herramienta" ||
+    normalizedMessage === "que es herramienta" ||
+    normalizedMessage === "que significa herramienta" ||
+    normalizedMessage === "que son las herramientas" ||
+    normalizedMessage === "que son herramientas" ||
+    normalizedMessage === "que significan las herramientas"
 ) {
     return null;
 }
