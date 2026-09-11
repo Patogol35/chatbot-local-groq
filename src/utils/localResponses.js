@@ -815,6 +815,8 @@ keywords: [
         "necesito hablar con jorge",
         "contactame con el",
         "contactame",
+        "cuentame de el",
+        "cuentame de",
     ],
     responses: [
         'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
