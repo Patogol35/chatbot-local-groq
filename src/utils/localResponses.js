@@ -730,6 +730,7 @@ keywords: [
 "aplicaciones",
 "sistemas",
 "soluciones",
+            "apps",
             "que proyectos tiene",
             "que ha desarrollado",
             "aplicaciones",
