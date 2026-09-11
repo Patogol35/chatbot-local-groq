@@ -551,11 +551,26 @@ keywords: [
             "javascript",
         ],
         responses: [
-            "En frontend, Jorge trabaja principalmente con React y JavaScript.",
-            "Para desarrollo frontend, Jorge utiliza principalmente React y JavaScript.",
-            "Jorge tiene experiencia en frontend utilizando React y JavaScript.",
-            "En la parte visual de sus proyectos, Jorge trabaja con React y JavaScript.",
-        ],
+    "En frontend, Jorge trabaja principalmente con React y JavaScript.",
+
+    "Para el desarrollo frontend, Jorge utiliza principalmente React y JavaScript.",
+
+    "Jorge tiene experiencia en desarrollo frontend utilizando React y JavaScript.",
+
+    "En la parte frontend de sus proyectos, Jorge trabaja con React y JavaScript.",
+
+    "Jorge desarrolla interfaces web utilizando React y JavaScript.",
+
+    "Su experiencia en frontend se centra principalmente en React y JavaScript.",
+
+    "Para construir interfaces y aplicaciones web, Jorge utiliza React junto con JavaScript.",
+
+    "Jorge trabaja en el desarrollo de la parte visual de las aplicaciones utilizando React y JavaScript.",
+
+    "Dentro de sus tecnologías frontend, Jorge utiliza principalmente React y JavaScript.",
+
+    "En el área de frontend, Jorge cuenta con experiencia trabajando con React y JavaScript."
+],
     },
 
     {
@@ -567,11 +582,26 @@ keywords: [
             "java",
         ],
         responses: [
-            "En backend, Jorge trabaja principalmente con Django y Java.",
-            "Para el desarrollo backend, Jorge utiliza Django y Java.",
-            "Jorge cuenta con experiencia en backend utilizando Django y Java.",
-            "En el lado del servidor, Jorge trabaja principalmente con Django y Java.",
-        ],
+    "En backend, Jorge trabaja principalmente con Django y Java.",
+
+    "Para el desarrollo backend, Jorge utiliza principalmente Django y Java.",
+
+    "Jorge cuenta con experiencia en desarrollo backend utilizando Django y Java.",
+
+    "En el lado del servidor, Jorge trabaja principalmente con Django y Java.",
+
+    "Jorge desarrolla la parte backend de sus aplicaciones utilizando Django y Java.",
+
+    "Su experiencia en backend se centra principalmente en Django y Java.",
+
+    "Para construir la lógica del servidor, Jorge utiliza principalmente Django y Java.",
+
+    "Jorge trabaja en el desarrollo del backend utilizando tecnologías como Django y Java.",
+
+    "Dentro de sus tecnologías backend, Jorge utiliza principalmente Django y Java.",
+
+    "En el área de backend, Jorge tiene experiencia trabajando con Django y Java."
+],
     },
 
     {
