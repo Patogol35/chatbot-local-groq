@@ -839,6 +839,10 @@ const LOCAL_RESPONSES = [
     "curso ia",
     "curso de ai",
     "curso ai",
+        "curso de ibm",
+        "curso ibm",
+       "formacion de ibm",
+       "formación ibm",
 
     "formacion en inteligencia artificial",
     "formacion inteligencia artificial",
