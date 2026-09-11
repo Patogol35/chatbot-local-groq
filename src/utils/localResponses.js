@@ -1183,21 +1183,35 @@ const containsAnotherPersonName = (message) => {
 
 export const getLocalResponse = (message) => {
 
-    /*
-    Primero comprobamos si existe otra persona.
-
-    Si existe:
-    return null
-
-    El controlador enviará el mensaje a Groq.
-    */
-
     if (containsAnotherPersonName(message)) {
         return null;
     }
 
-    const normalizedMessage =
-        normalizeText(message);
+    const normalizedMessage = normalizeText(message);
+
+    const generalTechnology = [
+        "habla de azure",
+        "que es azure",
+        "explicame azure",
+        "explica azure",
+        "sobre azure",
+        "azure que es",
+
+        "habla de linux",
+        "que es linux",
+        "explicame linux",
+        "explica linux",
+        "sobre linux",
+        "linux que es",
+    ];
+
+    if (
+        generalTechnology.some((phrase) =>
+            normalizedMessage.includes(phrase)
+        )
+    ) {
+        return null;
+    }
 
     let bestMatch = null;
     let bestScore = 0;
