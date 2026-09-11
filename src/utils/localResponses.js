@@ -1104,44 +1104,69 @@ const normalizedMessage = normalizeText(message);
 |--------------------------------------------------------------------------
 */
 
+
 const conceptualPrefixes = [
     "que es",
     "que significa",
     "que son",
-    "que significa el",
-    "que significa la",
-    "que significa un",
-    "que significa una",
+
     "dime que es",
     "dime que significa",
     "dime que son",
+
     "explica que es",
     "explica que significa",
+    "explica que son",
+
     "explicame que es",
     "explicame que significa",
     "explicame que son",
+
     "puedes decirme que es",
     "puedes decirme que significa",
+    "puedes decirme que son",
+
     "puedes explicar que es",
     "puedes explicarme que es",
-    "hablame de",
+    "puedes explicarme que significa",
+    "puedes explicarme que son",
+
+    "cuentame que es",
+    "cuentame que significa",
+    "cuentame que son",
+
+    
     "para que sirve",
     "para que sirven",
+
     "que hace",
     "que hacen",
 ];
 
 const conceptualTopics = [
+    // Frontend
     "frontend",
     "front end",
     "front-end",
-    "front",
+
+    // Backend
     "backend",
     "back end",
     "back-end",
-    "back",
+
+    // Bases de datos
     "base de datos",
     "bases de datos",
+
+    // Formación
+    "formacion",
+
+    // Otros conceptos que ya manejabas
+    "stack",
+    "tecnologia",
+    "tecnologias",
+    "herramienta",
+    "herramientas",
 ];
 
 const isConceptualQuestion =
