@@ -595,11 +595,26 @@ keywords: [
             "lenguajes",
         ],
         responses: [
-            "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
-            "Su stack incluye React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
-            "Entre las principales tecnologías de Jorge están React, JavaScript, Django, Java, PostgreSQL y MySQL, junto con Render, Vercel y AWS.",
-            "Jorge cuenta con experiencia en frontend, backend, bases de datos y deployment utilizando React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
-        ],
+    "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
+
+    "Su stack tecnológico combina React y JavaScript para el desarrollo frontend, Django y Java para backend, y PostgreSQL y MySQL para bases de datos.",
+
+    "Entre las principales tecnologías de Jorge se encuentran React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+
+    "Jorge tiene experiencia en desarrollo Full Stack utilizando React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
+
+    "Su perfil técnico abarca desarrollo web Full Stack, trabajando con React, JavaScript, Django y Java, junto con bases de datos como PostgreSQL y MySQL.",
+
+    "Jorge utiliza tecnologías modernas para desarrollar aplicaciones web, entre ellas React, JavaScript, Django, Java, PostgreSQL y MySQL, además de servicios como Render, Vercel y AWS.",
+
+    "En frontend, Jorge trabaja principalmente con React y JavaScript; en backend utiliza Django y Java, y tiene experiencia con PostgreSQL y MySQL.",
+
+    "Su experiencia tecnológica incluye desarrollo frontend, backend, bases de datos y despliegue de aplicaciones mediante React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+
+    "Jorge cuenta con un stack orientado al desarrollo de aplicaciones web, combinando React, JavaScript, Django y Java con PostgreSQL y MySQL, además de plataformas de despliegue como Render, Vercel y AWS.",
+
+    "Las principales tecnologías que forman parte del perfil de Jorge son React, JavaScript, Django, Java, PostgreSQL y MySQL. También trabaja con servicios de despliegue y nube como Render, Vercel y AWS."
+],
     },
 
     {
