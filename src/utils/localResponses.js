@@ -1112,6 +1112,14 @@ if (
     return null;
 }
 
+// Preguntas con año específico → responder con IA
+    if (
+        /\b(19|20)\d{2}\b/.test(normalizedMessage)
+    ) {
+        return null;
+    }
+    
+
     if (containsAnotherPersonName(message)) {
         return null;
     }
