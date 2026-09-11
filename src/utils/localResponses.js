@@ -1232,57 +1232,6 @@ export const getLocalResponse = (message) => {
     }
 
 
-const profileTechnology = [
-    "linux",
-    "ibm",
-    "azure",
-    "az900",
-    "mcp",
-    "claude",
-    "anthropic",
-];
-
-const hasJorge = containsValidName(normalizedMessage);
-
-const hasProfileTechnology = profileTechnology.some((technology) =>
-    normalizedMessage.includes(technology)
-);
-
-const isGeneralJorgeFormation =
-    hasJorge &&
-    (
-        normalizedMessage === "formacion de jorge" ||
-        normalizedMessage === "formacion jorge" ||
-        normalizedMessage === "educacion de jorge" ||
-        normalizedMessage === "educacion jorge" ||
-        normalizedMessage === "estudios de jorge" ||
-        normalizedMessage === "estudios jorge" ||
-        normalizedMessage === "preparacion de jorge" ||
-        normalizedMessage === "preparacion jorge" ||
-        normalizedMessage === "trayectoria de jorge" ||
-        normalizedMessage === "trayectoria jorge"
-    );
-
-const mentionsFormation =
-    normalizedMessage.includes("formacion") ||
-    normalizedMessage.includes("educacion") ||
-    normalizedMessage.includes("estudios") ||
-    normalizedMessage.includes("preparacion") ||
-    normalizedMessage.includes("trayectoria");
-
-if (
-    hasJorge &&
-    mentionsFormation &&
-    !hasProfileTechnology &&
-    !isGeneralJorgeFormation
-) {
-    return null;
-}
-
-
-
-    
-    
 
     let bestMatch = null;
     let bestScore = 0;
