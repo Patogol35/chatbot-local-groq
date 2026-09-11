@@ -1695,15 +1695,26 @@ const hasProfileTechnology = profileTechnology.some((technology) =>
     normalizedMessage.includes(technology)
 );
 
-// "Formacion de Jorge" sin una tecnología específica = local
 const isGeneralJorgeFormation =
     hasJorge &&
-    normalizedMessage === "formacion de jorge";
+    (
+        normalizedMessage === "formacion de jorge" ||
+        normalizedMessage === "educacion de jorge" ||
+        normalizedMessage === "estudios de jorge" ||
+        normalizedMessage === "preparacion de jorge" ||
+        normalizedMessage === "trayectoria de jorge"
+    );
 
-// "Formacion de Jorge en X" donde X no pertenece al perfil = Groq
+const mentionsFormation =
+    normalizedMessage.includes("formacion") ||
+    normalizedMessage.includes("educacion") ||
+    normalizedMessage.includes("estudios") ||
+    normalizedMessage.includes("preparacion") ||
+    normalizedMessage.includes("trayectoria");
+
 if (
     hasJorge &&
-    normalizedMessage.includes("formacion") &&
+    mentionsFormation &&
     !hasProfileTechnology &&
     !isGeneralJorgeFormation
 ) {
