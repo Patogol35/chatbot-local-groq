@@ -1410,7 +1410,7 @@ export const getLocalResponse = (message) => {
 "mcp que es",
 "que significa mcp",
 "dime sobre mcp",
-"para que sirve mcp,
+"para que sirve mcp",
     // AWS
     "habla de aws",
     "que es aws",
