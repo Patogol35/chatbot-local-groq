@@ -43,6 +43,7 @@ const VALID_NAMES = [
 
 const COMMON_WORDS = new Set([
     "a",
+    "soluciones",
     "al",
     "algo",
     "proyectos",
@@ -715,6 +716,15 @@ keywords: [
         keywords: [
             "proyectos",
             "proyecto",
+"trabajos",
+"desarrollos",
+"aplicaciones",
+"sistemas",
+"soluciones",
+
+"proyectos tecnológicos",
+"proyectos informáticos",
+"portafolio"
             "que proyectos tiene",
             "que ha desarrollado",
             "aplicaciones",
