@@ -43,6 +43,7 @@ const VALID_NAMES = [
 
 const COMMON_WORDS = new Set([
     "a",
+    "azure",
     "al",
     "algo",
     "linux",
@@ -1191,20 +1192,175 @@ export const getLocalResponse = (message) => {
     const normalizedMessage = normalizeText(message);
 
     const generalTechnology = [
-        "habla de azure",
-        "que es azure",
-        "explicame azure",
-        "explica azure",
-        "sobre azure",
-        "azure que es",
+    // React
+    "habla de react",
+    "que es react",
+    "dime que es react",
+    "explicame react",
+    "explica react",
+    "sobre react",
+    "react que es",
+    "que significa react",
+    "dime sobre react",
+    "para que sirve react",
 
-        "habla de linux",
-        "que es linux",
-        "explicame linux",
-        "explica linux",
-        "sobre linux",
-        "linux que es",
-    ];
+    // JavaScript
+    "habla de javascript",
+    "que es javascript",
+    "dime que es javascript",
+    "explicame javascript",
+    "explica javascript",
+    "sobre javascript",
+    "javascript que es",
+    "que significa javascript",
+    "dime sobre javascript",
+    "para que sirve javascript",
+
+    // Python
+    "habla de python",
+    "que es python",
+    "dime que es python",
+    "explicame python",
+    "explica python",
+    "sobre python",
+    "python que es",
+    "que significa python",
+    "dime sobre python",
+    "para que sirve python",
+
+    // Django
+    "habla de django",
+    "que es django",
+    "dime que es django",
+    "explicame django",
+    "explica django",
+    "sobre django",
+    "django que es",
+    "que significa django",
+    "dime sobre django",
+    "para que sirve django",
+
+    // Java
+    "habla de java",
+    "que es java",
+    "dime que es java",
+    "explicame java",
+    "explica java",
+    "sobre java",
+    "java que es",
+    "que significa java",
+    "dime sobre java",
+    "para que sirve java",
+
+    // PostgreSQL
+    "habla de postgresql",
+    "que es postgresql",
+    "dime que es postgresql",
+    "explicame postgresql",
+    "explica postgresql",
+    "sobre postgresql",
+    "postgresql que es",
+    "que significa postgresql",
+    "dime sobre postgresql",
+    "para que sirve postgresql",
+
+    // MySQL
+    "habla de mysql",
+    "que es mysql",
+    "dime que es mysql",
+    "explicame mysql",
+    "explica mysql",
+    "sobre mysql",
+    "mysql que es",
+    "que significa mysql",
+    "dime sobre mysql",
+    "para que sirve mysql",
+
+    // AWS
+    "habla de aws",
+    "que es aws",
+    "dime que es aws",
+    "explicame aws",
+    "explica aws",
+    "sobre aws",
+    "aws que es",
+    "que significa aws",
+    "dime sobre aws",
+    "para que sirve aws",
+
+    // Azure
+    "habla de azure",
+    "que es azure",
+    "dime que es azure",
+    "explicame azure",
+    "explica azure",
+    "sobre azure",
+    "azure que es",
+    "que significa azure",
+    "dime sobre azure",
+    "para que sirve azure",
+
+    // Linux
+    "habla de linux",
+    "que es linux",
+    "dime que es linux",
+    "explicame linux",
+    "explica linux",
+    "sobre linux",
+    "linux que es",
+    "que significa linux",
+    "dime sobre linux",
+    "para que sirve linux",
+
+    // Git
+    "habla de git",
+    "que es git",
+    "dime que es git",
+    "explicame git",
+    "explica git",
+    "sobre git",
+    "git que es",
+    "que significa git",
+    "dime sobre git",
+    "para que sirve git",
+
+    // Vercel
+    "habla de vercel",
+    "que es vercel",
+    "dime que es vercel",
+    "explicame vercel",
+    "explica vercel",
+    "sobre vercel",
+    "vercel que es",
+    "que significa vercel",
+    "dime sobre vercel",
+    "para que sirve vercel",
+
+    // Render
+    "habla de render",
+    "que es render",
+    "dime que es render",
+    "explicame render",
+    "explica render",
+    "sobre render",
+    "render que es",
+    "que significa render",
+    "dime sobre render",
+    "para que sirve render",
+
+    // Spring Boot
+    "habla de spring boot",
+    "que es spring boot",
+    "dime que es spring boot",
+    "explicame spring boot",
+    "explica spring boot",
+    "sobre spring boot",
+    "spring boot que es",
+    "que significa spring boot",
+    "dime sobre spring boot",
+    "para que sirve spring boot",
+
+];
 
     if (
         generalTechnology.some((phrase) =>
