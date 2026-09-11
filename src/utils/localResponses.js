@@ -43,6 +43,8 @@ const VALID_NAMES = [
 
 const COMMON_WORDS = new Set([
     "a",
+    "claude",
+"anthropic",
     "azure",
     "mcp",
     "al",
