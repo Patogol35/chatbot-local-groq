@@ -191,6 +191,8 @@ const COMMON_WORDS = new Set([
     "mcp",
     "anthropic",
     "claude",
+    //IBM
+    "ibm",
 ]);
     
 
