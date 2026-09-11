@@ -55,6 +55,8 @@ const COMMON_WORDS = new Set([
     "tecnologias",
     "stack",
     "lenguajes",
+    "frontend",
+    "backend",
     "herramientas",
     "que",
     "desarrollado",
