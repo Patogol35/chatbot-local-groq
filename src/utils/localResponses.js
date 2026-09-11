@@ -227,6 +227,7 @@ const COMMON_WORDS = new Set([
     // otros
     "linux",
     "utiliza",
+    "experiencia",
 ]);
     
 /*
