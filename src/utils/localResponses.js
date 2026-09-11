@@ -45,6 +45,8 @@ const COMMON_WORDS = new Set([
     "a",
     "al",
     "algo",
+    "proyectos",
+    "proyecto",
     "tecnologia",
     "tecnologias",
     "stack",
