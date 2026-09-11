@@ -45,6 +45,7 @@ const COMMON_WORDS = new Set([
     "a",
     "al",
     "algo",
+    "que",
     "algun",
     "alguna",
     "algunos",
