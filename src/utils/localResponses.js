@@ -1699,10 +1699,15 @@ const isGeneralJorgeFormation =
     hasJorge &&
     (
         normalizedMessage === "formacion de jorge" ||
+        normalizedMessage === "formacion jorge" ||
         normalizedMessage === "educacion de jorge" ||
+        normalizedMessage === "educacion jorge" ||
         normalizedMessage === "estudios de jorge" ||
+        normalizedMessage === "estudios jorge" ||
         normalizedMessage === "preparacion de jorge" ||
-        normalizedMessage === "trayectoria de jorge"
+        normalizedMessage === "preparacion jorge" ||
+        normalizedMessage === "trayectoria de jorge" ||
+        normalizedMessage === "trayectoria jorge"
     );
 
 const mentionsFormation =
