@@ -264,136 +264,15 @@ keywords: [
         {
     category: "formacion",
     keywords: [
-        "donde estudio",
-        "en que universidad",
-        "donde estudia",
-        "en que universidades estudio",
-        "universidad de jorge",
-        "universidades de jorge",
-        "donde hizo sus estudios",
-        "donde realizo sus estudios",
-        "donde se formo",
-        "donde curso sus estudios",
-    ],
-    responses: [
-        "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador. Posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR, España.",
-        "Su formación universitaria comenzó con Ingeniería en Sistemas en la Universidad Indoamérica y continuó con un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR.",
-        "Jorge cursó Ingeniería en Sistemas en Ecuador y posteriormente realizó un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-        "A nivel universitario, Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica y después realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la UNIR.",
-        "Jorge realizó sus estudios de Ingeniería en Sistemas en la Universidad Indoamérica y su formación de posgrado en la UNIR, España.",
-        "En cuanto a sus estudios universitarios, Jorge se formó en la Universidad Indoamérica y posteriormente continuó sus estudios en la UNIR.",
-        "Jorge estudió su carrera de Ingeniería en Sistemas en Ecuador y realizó su Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-        "Su trayectoria universitaria comprende estudios en la Universidad Indoamérica y posteriormente en la Universidad Internacional de La Rioja, UNIR.",
-        "Jorge inició su formación profesional en la Universidad Indoamérica y continuó su especialización académica en la UNIR, España.",
-        "Las universidades donde Jorge realizó sus principales estudios son la Universidad Indoamérica, en Ecuador, y la UNIR, en España.",
-    ],
-},
 
-{
-    category: "formacion",
-  keywords: [
-    "ingenieria de",
-    "que ingenieria hizo",
-    "que ingenieria estudio",
-    "que ingenieria tiene",
-    "titulo de ingenieria",
-      "su ingenieria",
-      
-    "es ingeniero",
-    "estudio ingenieria",
-    "carrera de ingenieria",
+        // =========================================================
+        // FORMACIÓN GENERAL
+        // =========================================================
 
-    "donde estudio su ingenieria",
-    "donde estudio la ingenieria",
-    "donde estudio ingenieria",
-
-      "donde siguio su ingenieria",
-    "donde  siguio la ingenieria",
-    "donde siguio ingenieria",
-
-    "donde hizo su ingenieria",
-    "donde hizo la ingenieria",
-    "donde hizo ingenieria",
-
-    "donde realizo su ingenieria",
-    "donde realizo la ingenieria",
-    "donde realizo ingenieria",
-
-    "donde curso su ingenieria",
-    "donde curso la ingenieria",
-    "donde curso ingenieria",
-
-    "en que universidad estudio su ingenieria",
-    "en que universidad hizo su ingenieria",
-    "en que universidad estudio ingenieria",
-    "universidad de su ingenieria",
-    "universidad de la ingenieria",
-],
-    responses: [
-        "Jorge estudió Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
-        "La carrera universitaria de Jorge es Ingeniería en Sistemas y siguió la minsma en la Universidad Indoamerica.",
-        "Jorge es Ingeniero en Sistemas, titulado por la Universidad Indoamérica.",
-        "Su formación de grado corresponde a Ingeniería en Sistemas en la Universidad Indoamérica, Ecuador.",
-        "Jorge realizó sus estudios universitarios en Ingeniería en Sistemas en la Universidad Indoamerica.",
-        "A nivel de grado, Jorge estudió Ingeniería en Sistemas en Ecuador.",
-        "Jorge cuenta con el título de Ingeniero en Sistemas por la Universidad Indoamérica.",
-        "La carrera que estudió Jorge fue Ingeniería en Sistemas en la Universidad Indoamérica.",
-        "Jorge se formó profesionalmente como Ingeniero en Sistemas.",
-        "Su carrera universitaria principal es Ingeniería en Sistemas, cursada en la Universidad Indoamérica.",
-    ],
-},
-
-{
-    category: "formacion",
-    keywords: [
-    "master",
-    "maestria",
-    "posgrado",
-
-    "que master tiene",
-    "que maestria tiene",
-    "que posgrado tiene",
-
-    "donde estudio su master",
-    "donde estudio su maestria",
-    "donde estudio su posgrado",
-
-    "donde estudio el master",
-    "donde estudio la maestria",
-    "donde estudio el posgrado",
-
-    "donde hizo su master",
-    "donde hizo su maestria",
-    "donde hizo su posgrado",
-
-    "donde realizo su master",
-    "donde realizo su maestria",
-    "donde realizo su posgrado",
-
-    "estudio una maestria",
-    "tiene maestria",
-    "tiene un master",
-    "master de jorge",
-],
-    responses: [
-        "Jorge realizó un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja (UNIR), España.",
-        "Jorge tiene un Máster en Ingeniería de Software y Sistemas Informáticos realizado en la UNIR.",
-        "A nivel de posgrado, Jorge cuenta con un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
-        "Jorge continuó su formación con un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja.",
-        "La maestría de Jorge es en Ingeniería de Software y Sistemas Informáticos, realizada en la UNIR.",
-        "Jorge realizó sus estudios de posgrado en Ingeniería de Software y Sistemas Informáticos en España.",
-        "Su formación de posgrado corresponde a un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR.",
-        "Jorge cuenta con una maestría especializada en Ingeniería de Software y Sistemas Informáticos.",
-        "Después de su Ingeniería en Sistemas, Jorge continuó sus estudios con un Máster en la UNIR, España.",
-        "Jorge se especializó mediante un Máster en Ingeniería de Software y Sistemas Informáticos en la Universidad Internacional de La Rioja.",
-    ],
-},
-
-{
-    category: "formacion",
-    keywords: [
-        "formacion de jorge",
+        "formacion",
         "formacion academica",
+        "formacion profesional",
+        "educacion",
         "educacion de jorge",
         "trayectoria academica",
         "estudios de jorge",
@@ -402,46 +281,119 @@ keywords: [
         "historial academico",
         "preparacion academica",
         "nivel academico",
+
+        // =========================================================
+        // FORMACIÓN + JORGE
+        // =========================================================
+
+        "formacion de jorge",
+        "formacion de patricio",
+        "formacion de jorge patricio",
+
+        "habla de jorge",
+        "habla de patricio",
+
+        "habla de la formacion de jorge",
+        "habla de la formacion de patricio",
+        "habla de la formacion de jorge patricio",
+
+        "habla de su formacion",
+        "hablame de su formacion",
+        "hablame sobre su formacion",
+        "hablame acerca de su formacion",
+
+        "dime sobre su formacion",
+        "dime acerca de su formacion",
+        "cuentame sobre su formacion",
+        "cuentame acerca de su formacion",
+        "cuentame de su formacion",
+
+        // =========================================================
+        // EDUCACIÓN
+        // =========================================================
+
+        "educacion de jorge",
+        "educacion de patricio",
+        "educacion de jorge patricio",
+
+        "habla de su educacion",
+        "hablame de su educacion",
+        "hablame sobre su educacion",
+        "dime sobre su educacion",
+        "cuentame sobre su educacion",
+
+        // =========================================================
+        // ESTUDIOS
+        // =========================================================
+
+        "estudios de jorge",
+        "estudios de patricio",
+        "estudios de jorge patricio",
+
+        "habla de sus estudios",
+        "hablame de sus estudios",
+        "hablame sobre sus estudios",
+        "dime sobre sus estudios",
+        "cuentame sobre sus estudios",
+
+        // =========================================================
+        // TRAYECTORIA ACADÉMICA
+        // =========================================================
+
+        "trayectoria academica de jorge",
+        "trayectoria academica de patricio",
+
+        "habla de su trayectoria academica",
+        "hablame de su trayectoria academica",
+        "hablame sobre su trayectoria academica",
+        "dime sobre su trayectoria academica",
+        "cuentame sobre su trayectoria academica",
+
+        // =========================================================
+        // PREPARACIÓN
+        // =========================================================
+
+        "preparacion academica de jorge",
+        "preparacion academica de patricio",
+
+        "habla de su preparacion academica",
+        "hablame de su preparacion academica",
+        "dime sobre su preparacion academica",
+        "cuentame sobre su preparacion academica",
+
+        // =========================================================
+        // PERFIL ACADÉMICO
+        // =========================================================
+
+        "perfil academico de jorge",
+        "perfil academico de patricio",
+
+        "habla de su perfil academico",
+        "hablame de su perfil academico",
+        "dime sobre su perfil academico",
+        "cuentame sobre su perfil academico",
     ],
+
     responses: [
         "La formación académica de Jorge incluye Ingeniería en Sistemas por la Universidad Indoamérica y un Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR, España.",
-        "Jorge tiene formación de grado en Ingeniería en Sistemas y formación de posgrado en Ingeniería de Software y Sistemas Informáticos.",
-        "Su trayectoria académica comprende una Ingeniería en Sistemas en Ecuador y un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
-        "En cuanto a formación académica, Jorge cuenta con una Ingeniería en Sistemas y posteriormente realizó un Máster especializado en Ingeniería de Software y Sistemas Informáticos.",
-        "Jorge es Ingeniero en Sistemas y cuenta además con un Máster en Ingeniería de Software y Sistemas Informáticos.",
-        "Su formación combina estudios de Ingeniería en Sistemas en Ecuador y estudios de posgrado en España.",
-        "La trayectoria académica de Jorge comenzó con Ingeniería en Sistemas y continuó con un Máster en Ingeniería de Software y Sistemas Informáticos.",
-        "Jorge cuenta con formación universitaria y de posgrado orientada al área de sistemas e ingeniería de software.",
-        "Su preparación académica incluye Ingeniería en Sistemas por la Universidad Indoamérica y un Máster realizado en la UNIR.",
-        "En resumen, Jorge tiene una Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos.",
-    ],
-},
 
-{
-    category: "notas",
-    keywords: [
-        "promedio ingenieria",
-        "nota ingenieria",
-        "promedio universidad",
-        "nota universidad",
-        "promedio de ingenieria",
-        "promedio de la ingenieria",
-        "nota de ingenieria",
-        "nota de la ingenieria",
-        "promedio carrera",
-        "calificacion ingenieria",
-    ],
-    responses: [
-        "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas.",
-        "En Ingeniería en Sistemas, Jorge obtuvo un promedio final de 9.",
-        "La nota promedio de Jorge en Ingeniería en Sistemas fue de 9.",
-        "Jorge terminó su Ingeniería en Sistemas con un promedio de 9.",
-        "Jorge obtuvo una calificación promedio de 9 durante su Ingeniería en Sistemas.",
-        "El promedio final de Jorge en su Ingeniería en Sistemas fue de 9 sobre 10.",
-        "En sus estudios de Ingeniería en Sistemas, Jorge alcanzó un promedio de 9.",
-        "Jorge obtuvo 9 de promedio en su carrera de Ingeniería en Sistemas.",
-        "Su promedio universitario en Ingeniería en Sistemas fue de 9.",
-        "La Ingeniería en Sistemas de Jorge tuvo un promedio final de 9 sobre 10.",
+        "Jorge tiene formación de grado en Ingeniería en Sistemas y formación de posgrado en Ingeniería de Software y Sistemas Informáticos.",
+
+        "Su trayectoria académica comprende una Ingeniería en Sistemas en Ecuador y un Máster en Ingeniería de Software y Sistemas Informáticos en España.",
+
+        "En cuanto a formación académica, Jorge cuenta con una Ingeniería en Sistemas y posteriormente realizó un Máster especializado en Ingeniería de Software y Sistemas Informáticos.",
+
+        "Jorge es Ingeniero en Sistemas y cuenta además con un Máster en Ingeniería de Software y Sistemas Informáticos.",
+
+        "Su formación combina estudios de Ingeniería en Sistemas en Ecuador y estudios de posgrado en España.",
+
+        "La trayectoria académica de Jorge comenzó con Ingeniería en Sistemas y continuó con un Máster en Ingeniería de Software y Sistemas Informáticos.",
+
+        "Jorge cuenta con formación universitaria y de posgrado orientada al área de sistemas e ingeniería de software.",
+
+        "Su preparación académica incluye Ingeniería en Sistemas por la Universidad Indoamérica y un Máster realizado en la UNIR.",
+
+        "En resumen, Jorge tiene una Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos.",
     ],
 },
 
