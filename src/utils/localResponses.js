@@ -43,6 +43,12 @@ const VALID_NAMES = [
 
 const COMMON_WORDS = new Set([
     "a",
+    "microsoft",
+"az900",
+"az",
+"fundamentals",
+"cloud",
+"nube",
     "claude",
 "anthropic",
     "azure",
@@ -678,17 +684,41 @@ const LOCAL_RESPONSES = [
         {
     category: "certificaciones",
     keywords: [
-        "mcp",
-        "certificacion mcp",
-        "certificado mcp",
-        "mcp de anthopic",
-        "mcp de anthropic",
-        "certificacion anthropic",
-        "certificado anthropic",
-        "certificacion relacionada con mcp",
-        "formacion en mcp",
-        "curso de mcp",
-    ],
+    "mcp",
+
+    "certificacion mcp",
+    "certificacion de mcp",
+    "certificado mcp",
+    "certificado de mcp",
+
+    "mcp de anthropic",
+    "anthropic mcp",
+    "mcp anthropic",
+
+    "certificacion anthropic",
+    "certificado anthropic",
+    "certificacion de anthropic",
+    "certificado de anthropic",
+
+    "certificacion relacionada con mcp",
+    "certificado relacionado con mcp",
+    "formacion en mcp",
+    "formacion mcp",
+
+    "curso de mcp",
+    "curso mcp",
+    "cursos de mcp",
+
+    "que certificacion tiene de mcp",
+    "que certificado tiene de mcp",
+    "tiene certificacion de mcp",
+    "tiene certificado de mcp",
+
+    "certificacion mcp anthropic",
+    "certificado mcp anthropic",
+    "certificacion de mcp de anthropic",
+    "certificado de mcp de anthropic",
+],
     responses: [
         "Jorge cuenta con una certificación relacionada con MCP de Anthropic, obtenida en 2026.",
         "En 2026, Jorge obtuvo una certificación relacionada con MCP de Anthropic.",
@@ -706,17 +736,42 @@ const LOCAL_RESPONSES = [
 {
     category: "certificaciones",
     keywords: [
-        "linux",
-        "certificacion linux",
-        "certificado linux",
-        "curso de linux",
-        "formacion en linux",
-        "linux udemy",
-        "certificacion de linux",
-        "certificado de linux",
-        "estudio linux",
-        "formacion linux",
-    ],
+    "linux",
+
+    "certificacion linux",
+    "certificacion de linux",
+    "certificado linux",
+    "certificado de linux",
+
+    "curso de linux",
+    "curso linux",
+    "cursos de linux",
+
+    "formacion en linux",
+    "formacion linux",
+    "formacion de linux",
+
+    "estudio linux",
+    "estudios de linux",
+    "estudio de linux",
+
+    "linux udemy",
+    "udemy linux",
+
+    "certificacion linux udemy",
+    "certificado linux udemy",
+    "curso de linux udemy",
+
+    "certificacion relacionada con linux",
+    "certificado relacionado con linux",
+    "formacion relacionada con linux",
+
+    "que certificacion tiene de linux",
+    "que certificado tiene de linux",
+    "que curso tiene de linux",
+    "tiene certificacion de linux",
+    "tiene certificado de linux",
+],
     responses: [
         "Jorge cuenta con una certificación de Linux realizada en Udemy en 2024.",
         "En 2024, Jorge realizó una certificación de Linux en Udemy.",
@@ -734,17 +789,58 @@ const LOCAL_RESPONSES = [
 {
     category: "certificaciones",
     keywords: [
-        "fundamentals of ai",
-        "fundamentos de ia",
-        "fundamentos inteligencia artificial",
-        "inteligencia artificial ibm",
-        "ia ibm",
-        "certificacion ia",
-        "certificado ia",
-        "certificacion inteligencia artificial",
-        "certificado inteligencia artificial",
-        "curso de inteligencia artificial",
-    ],
+    "fundamentals of ai",
+    "fundamentals ai",
+    "fundamentos de ai",
+    "fundamentos de ia",
+    "fundamentos ia",
+    "fundamentos de inteligencia artificial",
+    "fundamentos inteligencia artificial",
+
+    "inteligencia artificial ibm",
+    "ia ibm",
+    "ai ibm",
+    "ibm inteligencia artificial",
+    "ibm ia",
+
+    "certificacion ia",
+    "certificacion ai",
+    "certificado ia",
+    "certificado ai",
+    "certificacion de ia",
+    "certificado de ia",
+
+    "certificacion inteligencia artificial",
+    "certificado inteligencia artificial",
+    "certificacion de inteligencia artificial",
+    "certificado de inteligencia artificial",
+
+    "certificacion fundamentals of ai",
+    "certificado fundamentals of ai",
+    "certificacion fundamentals ai",
+    "certificado fundamentals ai",
+
+    "certificacion ibm",
+    "certificado ibm",
+    "certificacion de ibm",
+    "certificado de ibm",
+
+    "curso de inteligencia artificial",
+    "curso inteligencia artificial",
+    "curso de ia",
+    "curso ia",
+    "curso de ai",
+    "curso ai",
+
+    "formacion en inteligencia artificial",
+    "formacion inteligencia artificial",
+    "formacion en ia",
+    "formacion ia",
+
+    "fundamentals of ai ibm",
+    "fundamentals ai ibm",
+    "fundamentos de ia ibm",
+],
     responses: [
         "Jorge cuenta con la certificación Fundamentals of AI de IBM, obtenida en 2025.",
         "En 2025, Jorge obtuvo Fundamentals of AI de IBM.",
@@ -762,17 +858,37 @@ const LOCAL_RESPONSES = [
 {
     category: "certificaciones",
     keywords: [
-        "az 900",
-        "az-900",
-        "azure",
-        "certificacion azure",
-        "certificado azure",
-        "certificacion az900",
-        "certificado az900",
-        "microsoft azure",
-        "azure fundamentals",
-        "microsoft azure fundamentals",
-    ],
+    "az 900",
+    "az-900",
+    "az900",
+    "azure",
+    "microsoft",
+    "microsoft azure",
+
+    "certificacion azure",
+    "certificacion de azure",
+    "certificado azure",
+    "certificado de azure",
+
+    "certificacion az900",
+    "certificacion az 900",
+    "certificacion az-900",
+    "certificado az900",
+    "certificado az 900",
+    "certificado az-900",
+
+    "curso az900",
+    "curso az 900",
+    "curso az-900",
+    "curso de azure",
+    "curso de microsoft azure",
+
+    "azure fundamentals",
+    "microsoft azure fundamentals",
+    "azure fundamentals certification",
+    "certificacion azure fundamentals",
+    "certificado azure fundamentals",
+],
     responses: [
         "Jorge cuenta con la certificación AZ-900 de UNIR, obtenida en 2023.",
         "En 2023, Jorge obtuvo la certificación AZ-900 de UNIR.",
@@ -790,17 +906,54 @@ const LOCAL_RESPONSES = [
 {
     category: "certificaciones",
     keywords: [
-        "claude api",
-        "certificacion claude",
-        "certificado claude",
-        "claude de anthropic",
-        "anthropic claude",
-        "certificacion anthropic claude",
-        "certificado anthropic claude",
-        "curso claude api",
-        "formacion claude api",
-        "api de claude",
-    ],
+    "claude api",
+    "api de claude",
+    "claude de anthropic",
+    "anthropic claude",
+    "claude anthropic",
+
+    "certificacion claude",
+    "certificacion de claude",
+    "certificado claude",
+    "certificado de claude",
+
+    "certificacion claude api",
+    "certificado claude api",
+    "certificacion de claude api",
+    "certificado de claude api",
+
+    "certificacion anthropic",
+    "certificado anthropic",
+    "certificacion de anthropic",
+    "certificado de anthropic",
+
+    "certificacion anthropic claude",
+    "certificado anthropic claude",
+
+    "curso claude",
+    "curso de claude",
+    "cursos de claude",
+    "curso claude api",
+    "curso de claude api",
+
+    "formacion claude",
+    "formacion de claude",
+    "formacion claude api",
+    "formacion en claude api",
+
+    "que certificacion tiene de claude",
+    "que certificado tiene de claude",
+    "tiene certificacion de claude",
+    "tiene certificado de claude",
+
+    "que certificacion tiene de claude api",
+    "que certificado tiene de claude api",
+    "tiene certificacion de claude api",
+    "tiene certificado de claude api",
+
+    "certificacion claude api anthropic",
+    "certificado claude api anthropic",
+],
     responses: [
         "Jorge cuenta con una certificación relacionada con Claude API de Anthropic, obtenida en 2026.",
         "En 2026, Jorge obtuvo una certificación relacionada con Claude API de Anthropic.",
@@ -852,57 +1005,8 @@ const LOCAL_RESPONSES = [
         "Las principales certificaciones de Jorge incluyen MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
     ],
 },
-        
     
-        
 
-    {
-        category: "intereses",
-        keywords: [
-            "lectura",
-            "leer",
-            "libros",
-            "libro",
-            "dan brown",
-        ],
-        responses: [
-            "A Jorge le gusta la lectura, especialmente las obras del escritor Dan Brown.",
-            "Uno de los intereses de Jorge es la lectura, y disfruta especialmente de los libros de Dan Brown.",
-            "Jorge tiene interés por la lectura y entre sus autores favoritos destaca Dan Brown.",
-            "En cuanto a lectura, Jorge muestra especial interés por las obras de Dan Brown.",
-        ],
-    },
-
-    {
-        category: "intereses",
-        keywords: [
-            "musica",
-            "que musica le gusta",
-        ],
-        responses: [
-            "La música es uno de los intereses de Jorge.",
-            "Jorge también tiene interés por la música.",
-            "Entre las aficiones de Jorge se encuentra la música.",
-            "La música forma parte de los intereses personales registrados de Jorge.",
-        ],
-    },
-
-    {
-        category: "intereses",
-        keywords: [
-            "intereses",
-            "hobbies",
-            "pasatiempos",
-            "aficiones",
-            "que le gusta",
-        ],
-        responses: [
-            "Entre los intereses de Jorge están la lectura, especialmente las obras de Dan Brown, y la música.",
-            "Jorge disfruta de la lectura, particularmente de los libros de Dan Brown, y también tiene interés por la música.",
-            "Sus principales intereses registrados son la lectura y la música, destacando especialmente su gusto por Dan Brown.",
-            "Entre sus intereses se encuentran la literatura, especialmente Dan Brown, y la música.",
-        ],
-    },
 
 {
     category: "contacto",
@@ -1278,7 +1382,29 @@ export const getLocalResponse = (message) => {
     "que significa mysql",
     "dime sobre mysql",
     "para que sirve mysql",
-
+        // Python
+"habla de python",
+"que es python",
+"dime que es python",
+"explicame python",
+"explica python",
+"sobre python",
+"python que es",
+"que significa python",
+"dime sobre python",
+"para que sirve python",
+        
+// mcp
+"habla de mcp",
+"que es mcp",
+"dime que es mcp",
+"explicame mcp",
+"explica mcp",
+"sobre mcp",
+"mcp que es",
+"que significa mcp",
+"dime sobre mcp",
+"para que sirve mcp,
     // AWS
     "habla de aws",
     "que es aws",
