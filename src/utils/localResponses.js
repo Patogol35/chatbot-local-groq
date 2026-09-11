@@ -1527,6 +1527,34 @@ export const getLocalResponse = (message) => {
         return null;
     }
 
+
+
+const profileTechnology = [
+    "linux",
+    "ibm",
+    "azure",
+    "az900",
+    "mcp",
+    "claude",
+    "anthropic",
+];
+
+const hasJorge = containsValidName(normalizedMessage);
+
+const hasProfileTechnology = profileTechnology.some((technology) =>
+    normalizedMessage.includes(technology)
+);
+
+if (
+    hasJorge &&
+    normalizedMessage.includes("formacion") &&
+    !hasProfileTechnology
+) {
+    return null;
+}
+
+    
+
     let bestMatch = null;
     let bestScore = 0;
 
