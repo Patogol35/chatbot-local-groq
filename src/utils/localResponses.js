@@ -189,6 +189,9 @@ const COMMON_WORDS = new Set([
     "certificados",
     "certificacion",
     "certificaciones",
+    "base",
+"bases",
+"datos",
 
     // Contacto
     "contactarlo",
@@ -633,17 +636,33 @@ keywords: [
     {
         category: "tecnologias",
         keywords: [
-            "base de datos",
-            "bases de datos",
-            "postgresql",
-            "mysql",
-        ],
+    "base de datos",
+    "bases de datos",
+    "base de datos de jorge",
+    "bases de datos de jorge",
+    "bases de datos que usa",
+    "bases de datos que utiliza",
+    "que base de datos usa",
+    "que bases de datos usa",
+    "que base de datos utiliza",
+    "que bases de datos utiliza",
+    "tecnologias de base de datos",
+    "tecnologias de bases de datos",
+    "sistemas de bases de datos",
+    "gestores de bases de datos",
+],
         responses: [
-            "Jorge trabaja con PostgreSQL y MySQL.",
-            "En bases de datos, Jorge utiliza principalmente PostgreSQL y MySQL.",
-            "Jorge tiene experiencia trabajando con PostgreSQL y MySQL.",
-            "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL.",
-        ],
+    "Jorge trabaja con PostgreSQL y MySQL.",
+    "En bases de datos, Jorge utiliza principalmente PostgreSQL y MySQL.",
+    "Jorge tiene experiencia trabajando con PostgreSQL y MySQL.",
+    "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL.",
+    "Jorge utiliza PostgreSQL y MySQL para gestionar los datos de sus aplicaciones.",
+    "En el área de bases de datos, Jorge trabaja principalmente con PostgreSQL y MySQL.",
+    "Su experiencia en bases de datos incluye el uso de PostgreSQL y MySQL.",
+    "Jorge cuenta con experiencia utilizando PostgreSQL y MySQL en sus proyectos de software.",
+    "Para la gestión y almacenamiento de datos, Jorge utiliza PostgreSQL y MySQL.",
+    "Las principales bases de datos que utiliza Jorge son PostgreSQL y MySQL."
+],
     },
 
     {
