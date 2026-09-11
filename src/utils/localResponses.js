@@ -989,29 +989,41 @@ const containsAnotherPersonName = (message) => {
     const normalized = normalizeText(message);
 
     console.log("MENSAJE:", normalized);
-    console.log("VALID JORGE:", containsValidName(normalized));
 
-    if (containsValidName(normalized)) {
-        return false;
-    }
+    // Nombres y apellidos que pertenecen a Jorge
+    const jorgeWords = new Set([
+        "jorge",
+        "patricio",
+        "santamaria",
+        "cherrez",
+    ]);
 
     const words = normalized.split(/\s+/);
 
     for (const word of words) {
         if (!word) continue;
 
+        // Palabras del nombre completo de Jorge
+        if (jorgeWords.has(word)) {
+            continue;
+        }
+
+        // Sasha no es una persona consultada
         if (word === "sasha") {
             continue;
         }
 
+        // Palabras comunes de la pregunta
         if (COMMON_WORDS.has(word)) {
             continue;
         }
 
+        // Números
         if (/^\d+$/.test(word)) {
             continue;
         }
 
+        // Cualquier palabra restante se considera otro nombre
         if (/^[a-záéíóúñ]+$/i.test(word)) {
             console.log("OTRA PERSONA:", word);
             return true;
