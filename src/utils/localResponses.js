@@ -220,7 +220,8 @@ keywords: [
     "presentame a jorge",
     "hablame de el",
 
-    "perfil de jorge",
+    "perfil",
+    "perfil de",
     "perfil profesional de jorge",
     "perfil profesional",
     
