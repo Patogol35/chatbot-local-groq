@@ -1,4 +1,4 @@
-const LOCAL_RESPONSES = [
+export const LOCAL_RESPONSES = [
     {
         category: "identidad",
 keywords: [
@@ -426,4 +426,340 @@ keywords: [
     "Su experiencia en bases de datos incluye el uso de PostgreSQL y MySQL.",
     "Jorge cuenta con experiencia utilizando PostgreSQL y MySQL en sus proyectos de software.",
     "Para la gestión y almacenamiento de datos, Jorge utiliza PostgreSQL y MySQL.",
-    "Las principales bases de datos que utiliza Jorge son PostgreSQL
+    "Las principales bases de datos que utiliza Jorge son PostgreSQL y MySQL."
+],
+    },
+
+    {
+        category: "tecnologias",
+        keywords: [
+            "deploy",
+            "deployment",
+            "despliegue",
+            "hosting",
+        ],
+        responses: [
+            "Para despliegue, Jorge trabaja con servicios como Render, Vercel y AWS.",
+            "Jorge utiliza Render, Vercel y AWS para desplegar sus aplicaciones.",
+            "En cuanto a deployment, Jorge trabaja con plataformas como Render, Vercel y AWS.",
+            "Para publicar sus proyectos, Jorge utiliza servicios como Render, Vercel y AWS.",
+        ],
+    },
+
+    {
+        category: "tecnologias",
+        keywords: [
+            "tecnologias",
+            "tecnologia",
+            "stack",
+            "herramientas",
+            "lenguajes",
+        ],
+        responses: [
+    "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
+
+    "Su stack tecnológico combina React y JavaScript para el desarrollo frontend, Django y Java para backend, y PostgreSQL y MySQL para bases de datos.",
+
+    "Entre las principales tecnologías de Jorge se encuentran React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+
+    "Jorge tiene experiencia en desarrollo Full Stack utilizando React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
+
+    "Su perfil técnico abarca desarrollo web Full Stack, trabajando con React, JavaScript, Django y Java, junto con bases de datos como PostgreSQL y MySQL.",
+
+    "Jorge utiliza tecnologías modernas para desarrollar aplicaciones web, entre ellas React, JavaScript, Django, Java, PostgreSQL y MySQL, además de servicios como Render, Vercel y AWS.",
+
+    "En frontend, Jorge trabaja principalmente con React y JavaScript; en backend utiliza Django y Java, y tiene experiencia con PostgreSQL y MySQL.",
+
+    "Su experiencia tecnológica incluye desarrollo frontend, backend, bases de datos y despliegue de aplicaciones mediante React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+
+    "Jorge cuenta con un stack orientado al desarrollo de aplicaciones web, combinando React, JavaScript, Django y Java con PostgreSQL y MySQL, además de plataformas de despliegue como Render, Vercel y AWS.",
+
+    "Las principales tecnologías que forman parte del perfil de Jorge son React, JavaScript, Django, Java, PostgreSQL y MySQL. También trabaja con servicios de despliegue y nube como Render, Vercel y AWS."
+],
+    },
+
+    
+        
+    {
+        category: "proyectos",
+        keywords: [
+            "proyectos",
+            "proyecto",
+"trabajos",
+"desarrollos",
+"aplicaciones",
+"sistemas",
+"soluciones",
+            "apps",
+            "que proyectos tiene",
+            "que ha desarrollado",
+            "aplicaciones",
+        ],
+        responses: [
+    "Entre los proyectos de Jorge se encuentran su Portfolio React, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce desarrollado con React y Django.",
+
+    "Jorge ha desarrollado diversos proyectos web, entre ellos un portfolio personal, un Quiz sobre Ecuador, una aplicación meteorológica, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
+
+    "Su portafolio reúne proyectos como aplicaciones web, un chatbot, una aplicación del clima, un Quiz sobre Ecuador, un proyecto de ajedrez y un e-commerce desarrollado con React y Django.",
+
+    "Entre sus principales desarrollos destacan su Portfolio React, el Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y una plataforma de e-commerce con React y Django.",
+
+    "Jorge cuenta con proyectos relacionados con desarrollo web, incluyendo su portfolio, una aplicación meteorológica, un Quiz sobre Ecuador, un chatbot, ajedrez y un e-commerce con React y Django.",
+
+    "Dentro de los proyectos de Jorge destacan su portfolio desarrollado con React, un Quiz sobre Ecuador, una app del clima, un chatbot, un proyecto de ajedrez y un e-commerce basado en React y Django.",
+
+    "Su experiencia práctica se refleja en proyectos como un portfolio web, una aplicación del clima, un Quiz sobre Ecuador, un chatbot, una aplicación de ajedrez y un e-commerce desarrollado con React y Django.",
+
+    "Jorge ha trabajado en diferentes proyectos de software, entre ellos un portfolio personal, un Quiz sobre Ecuador, una aplicación meteorológica, un chatbot, un proyecto de ajedrez y un e-commerce.",
+
+    "Entre los desarrollos que forman parte del portafolio de Jorge están su Portfolio React, el Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
+
+    "El portafolio de Jorge incluye proyectos de diferentes áreas del desarrollo web, como su portfolio React, un Quiz sobre Ecuador, una aplicación meteorológica, un chatbot, ajedrez y un e-commerce desarrollado con React y Django."
+],
+    },
+
+
+
+{
+    category: "certificaciones",
+    keywords: [
+        "certificaciones",
+        "certificados",
+        "certificacion",
+        "que certificaciones tiene",
+        "que certificados tiene",
+        "que cursos tiene",
+        "cuales son sus certificados",
+        "cuales son sus cursos",
+        "cuales son sus certificaciones",
+        "que certificaciones posee",
+        "que certificados posee",
+        "que cursos posee",
+        "lista de certificaciones",
+        "lista de certificados",
+        "formacion complementaria",
+        "formacion adicional",
+        "cursos de jorge",
+        "certificaciones de jorge",
+        "certificados de jorge",
+        "cursos de jorge",
+    ],
+    responses: [
+        "Jorge cuenta con certificaciones relacionadas con MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+        "Entre las certificaciones de Jorge se encuentran MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+        "Jorge tiene certificaciones en áreas como MCP, Linux, inteligencia artificial, Azure y Claude API.",
+        "Su formación complementaria incluye certificaciones de MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+        "Jorge ha complementado su formación profesional con certificaciones en tecnología, inteligencia artificial, Linux y Azure.",
+        "Entre su formación adicional destacan certificaciones relacionadas con MCP, Linux, IA, Azure y Claude API.",
+        "Jorge cuenta con formación certificada en diferentes áreas tecnológicas, incluyendo MCP, Linux, IA, Azure y Claude API.",
+        "Su preparación complementaria incluye MCP, Linux, Fundamentals of AI de IBM, AZ-900 y Claude API.",
+        "Jorge dispone de certificaciones relacionadas con inteligencia artificial, sistemas, cloud y tecnologías de desarrollo.",
+        "Las principales certificaciones de Jorge incluyen MCP, Linux, Fundamentals of AI, AZ-900 y Claude API.",
+    ],
+},
+    
+
+
+{
+    category: "contacto",
+    keywords: [
+        "contacto",
+        "contactar",
+        "contactarme",
+        "contactarlo",
+        "comunicarme",
+        "comunicar",
+        "comunicarme con jorge",
+        "hablar con jorge",
+        "hablar con el",
+        "hablar con jorge patricio",
+        "contactar a jorge",
+        "contactar a jorge patricio",
+        "como contacto",
+        "como contactar",
+        "como contactarlo",
+        "como me comunico",
+        "como me comunico con jorge",
+        "como llamar a jorge",
+        "llamar a jorge",
+        "quiero contactar",
+        "quiero contactarlo",
+        "quiero contactar a jorge",
+        "quiero hablar con jorge",
+        "deseo contactar",
+        "deseo contactarlo",
+        "deseo contactar a jorge",
+        "deseo hablar con jorge",
+        "quiero comunicarme",
+        "deseo comunicarme",
+        "necesito contactar",
+        "necesito hablar con jorge",
+        "contactame con el",
+        "contactame",
+        
+    ],
+    responses: [
+        'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
+        'Para comunicarte con Jorge, utiliza la sección "Contacto" de su portfolio.',
+        'Si quieres contactar a Jorge, encontrarás la opción correspondiente en la sección "Contacto".',
+        'La forma indicada para contactar a Jorge es mediante la sección "Contacto" de su portfolio.',
+        'Puedes encontrar las opciones de contacto de Jorge directamente en su portfolio.',
+        'Si deseas hablar con Jorge, visita la sección "Contacto" de su portfolio.',
+        'Para comunicarte con Jorge, dirígete a la sección "Contacto". Allí encontrarás las opciones disponibles.',
+        '¿Quieres contactar a Jorge? Puedes hacerlo desde la sección "Contacto" de su portfolio.',
+        'La sección "Contacto" del portfolio es el lugar indicado para comunicarte con Jorge.',
+        'Si necesitas comunicarte con Jorge, entra a la sección "Contacto" y utiliza la opción que prefieras.',
+    ],
+},
+{
+    category: "sasha",
+    keywords: [
+        "quien eres",
+        "que eres",
+        "como te llamas",
+        "tu nombre",
+        "quien es sasha",
+        "que es sasha",
+        "hablame de ti",
+        "cuentame de ti",
+        "dime quien eres",
+        "como te llamas sasha",
+        "que haces",
+        "cual es tu funcion",
+        "cual es tu trabajo",
+        "para que sirves",
+    ],
+    responses: [
+        "Soy Sasha, la asistente virtual del portfolio de Jorge.",
+        "Me llamo Sasha y soy la asistente virtual del portfolio de Jorge.",
+        "Soy Sasha, una IA creada para asistir a los visitantes del portfolio de Jorge.",
+        "Mi nombre es Sasha y funciono como asistente virtual del portfolio de Jorge.",
+        "Soy Sasha, la asistente virtual encargada de ayudarte a conocer el portfolio de Jorge.",
+        "Me llamo Sasha 😊. Estoy aquí para responder tus preguntas sobre Jorge y su trabajo.",
+        "Soy Sasha, una asistente virtual desarrollada para acompañar a los visitantes del portfolio de Jorge.",
+        "¡Soy Sasha! 👋 Puedo ayudarte a conocer el perfil, estudios, proyectos y habilidades de Jorge.",
+        "Soy Sasha y mi función es ayudarte a descubrir más sobre el trabajo y trayectoria profesional de Jorge.",
+        "Soy Sasha, la asistente virtual de Jorge. 😊 Pregúntame lo que quieras sobre su portfolio.",
+    ],
+},
+
+    {
+    category: "sasha_saludos",
+    keywords: [
+        "hola",
+        "buenas",
+        "buenos dias",
+        "buenas tardes",
+        "buenas noches",
+        "hey",
+    ],
+    responses: [
+        "¡Hola! Soy Sasha, la asistente virtual del portfolio de Jorge. ¿En qué puedo ayudarte?",
+        "¡Hola! 👋 Soy Sasha. ¿Qué te gustaría saber?",
+        "¡Buenas! Soy Sasha, la asistente virtual del guapo de Jorge. Estoy aquí para ayudarte.",
+        "¡Hola! Qué gusto tenerte por aquí. ¿Qué quieres conocer?",
+        "¡Hey! 👋 Bienvenido al portfolio de Jorge. Soy Sasha, ¿en qué puedo ayudarte?",
+        "¡Hola! 😊 Me alegra verte por aquí. ¿Quieres conocer más sobre Jorge?",
+        "¡Buenas! 👋 Soy Sasha y estoy lista para ayudarte a conocer el trabajo de Jorge.",
+        "¡Hola! Qué bueno tenerte por aquí. Dime, ¿qué te gustaría saber?",
+        "¡Buenos días! 😊 Soy Sasha, la asistente virtual de Jorge. ¿Cómo puedo ayudarte?",
+        "¡Buenas tardes/noches! 👋 Soy Sasha. Pregúntame lo que quieras sobre el portfolio de Jorge.",
+    ],
+},
+
+{
+    category: "sasha_gracias",
+    keywords: [
+        "gracias",
+        "muchas gracias",
+        "te agradezco",
+        "gracias sasha",
+        "muy agradecido",
+    ],
+    responses: [
+        "¡De nada! 😊",
+        "¡Con gusto! Estoy aquí para ayudarte.",
+        "¡No hay de qué! 😊",
+        "¡Cuando quieras! ¿Necesitas algo más?",
+        "¡Un placer ayudarte! 😊",
+        "¡No tienes nada que agradecer! Estoy para ayudarte.",
+        "¡Con mucho gusto! ¿Hay algo más que quieras saber?",
+        "¡De nada! Me alegra poder ayudarte. 😊",
+        "¡Para eso estoy! Cuando quieras, puedes preguntarme.",
+        "¡Encantada de ayudarte! 😊 ¿Necesitas algo más?",
+    ],
+},
+
+{
+    category: "sasha_despedida",
+    keywords: [
+        "chao",
+        "adios",
+        "hasta luego",
+        "nos vemos",
+        "me voy",
+        "bye",
+        "hasta pronto",
+    ],
+    responses: [
+        "¡Chao! 👋 Gracias por visitar el portfolio de Jorge.",
+        "¡Hasta luego! Fue un gusto ayudarte. 😊",
+        "¡Nos vemos! 👋 Espero que vuelvas pronto.",
+        "¡Adiós! Que tengas un excelente día.",
+        "¡Hasta pronto! 👋 Espero verte nuevamente por aquí.",
+        "¡Chao! 😊 Ha sido un gusto conversar contigo.",
+        "¡Nos vemos! Que tengas un excelente día. 👋",
+        "¡Hasta luego! Gracias por pasar por el portfolio de Jorge.",
+        "¡Adiós! 👋 Cuando quieras, aquí estará Sasha para ayudarte.",
+        "¡Hasta pronto! 😊 Espero que hayas encontrado lo que buscabas.",
+    ],
+},
+
+{
+    category: "sasha_estado",
+    keywords: [
+        "como estas",
+        "como te encuentras",
+        "estas bien",
+        "como te va",
+        "como vas",
+    ],
+    responses: [
+        "¡Muy bien, gracias por preguntar! 😊 ¿En qué puedo ayudarte?",
+        "Estoy muy bien y lista para ayudarte. ¿Qué quieres saber?",
+        "¡Todo bien por aquí! Soy Sasha, siempre lista para ayudarte.",
+        "Muy bien, gracias. 😊 ¿Quieres conocer algo sobre Jorge?",
+        "¡Estoy genial! Siempre disponible para ayudarte con el portfolio de Jorge.",
+        "Todo marcha muy bien por aquí. 😊 ¿Qué te gustaría conocer?",
+        "¡Muy bien! Gracias por preguntar. ¿Quieres que te cuente algo sobre Jorge?",
+        "Estoy excelente y preparada para ayudarte. ¿Qué necesitas saber?",
+        "¡Todo perfecto! 😊 Dime qué quieres conocer del portfolio de Jorge.",
+        "Muy bien, gracias. ¡Es un gusto conversar contigo! ¿En qué puedo ayudarte?",
+    ],
+},
+
+{
+    category: "sasha_creador",
+    keywords: [
+        "quien te creo",
+        "quien te creo a ti",
+        "quien te hizo",
+        "quien te programo",
+        "quien te desarrollo",
+        "quien desarrollo a sasha",
+        "quien te invento",
+    ],
+    responses: [
+        "Fui creada para funcionar como la asistente virtual del portfolio de Jorge Patricio Santamaría Cherrez.",
+        "Jorge Patricio Santamaría Cherrez desarrolló a Sasha como asistente virtual para su portfolio.",
+        "Soy una asistente virtual creada para el portfolio de Jorge Patricio Santamaría Cherrez.",
+        "Fui desarrollada como parte del portfolio de Jorge para ayudar a los visitantes a conocer su perfil y proyectos.",
+        "Jorge creó a Sasha para brindar información y ayudar a los visitantes de su portfolio.",
+        "Soy Sasha, una asistente virtual desarrollada por Jorge para acompañar a quienes visitan su portfolio.",
+        "Mi función es ayudar a los visitantes a conocer mejor el perfil profesional y los proyectos de Jorge.",
+        "Fui desarrollada por Jorge como parte de su portfolio de Ingeniería de Software.",
+        "Jorge Patricio Santamaría Cherrez es quien desarrolló a Sasha para interactuar con los visitantes de su portfolio.",
+        "Soy Sasha, la asistente virtual de Jorge, creada para responder preguntas sobre su perfil, estudios, proyectos y experiencia.",
+    ],
+},
+];
