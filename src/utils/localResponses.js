@@ -257,9 +257,11 @@ keywords: [
     "dime acerca de el",
     "cuentame acerca de el",
     "cuentame sobre el",
+    "cuentame de el",
     "habla sobre el",
     "habla acerca de el",
     "hablame",
+    "cuentame",
 ],
         responses: [
             "Jorge Patricio Santamaría Cherrez es ingeniero en sistemas y tiene un máster en ingeniería de software. Su experiencia se enfoca en desarrollo Full Stack, virtualización y ciberseguridad, trabajando con React, JavaScript, Django, Java y SQL.",
@@ -815,8 +817,7 @@ keywords: [
         "necesito hablar con jorge",
         "contactame con el",
         "contactame",
-        "cuentame de el",
-        "cuentame de",
+        
     ],
     responses: [
         'Puedes contactar a Jorge desde la sección "Contacto" de su portfolio.',
