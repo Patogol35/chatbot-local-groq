@@ -1062,12 +1062,24 @@ const containsAnotherPersonName = (message) => {
 */
 
 export const getLocalResponse = (message) => {
+    
+
+const normalizedMessage = normalizeText(message);
+
+if (
+    normalizedMessage === "que es un stack" ||
+    normalizedMessage === "que es stack" ||
+    normalizedMessage === "que significa stack" ||
+    normalizedMessage === "que significa un stack"
+) {
+    return null;
+}
 
     if (containsAnotherPersonName(message)) {
         return null;
     }
 
-    const normalizedMessage = normalizeText(message);
+    
 
 
 
