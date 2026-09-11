@@ -453,6 +453,10 @@ keywords: [
         "nota de la ingenieria",
         "promedio carrera",
         "calificacion ingenieria",
+        "nota de su ingenieria",
+        "promedio de la ingenieria",
+        "nota de la ingenieria",
+        "calificacion de la ingenieria",
     ],
     responses: [
         "Jorge obtuvo un promedio de 9 en Ingeniería en Sistemas.",
