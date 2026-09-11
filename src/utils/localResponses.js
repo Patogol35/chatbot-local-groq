@@ -57,6 +57,7 @@ const COMMON_WORDS = new Set([
     "lenguajes",
     "herramientas",
     "que",
+    "desarrollado",
     "algun",
     "alguna",
     "algunos",
