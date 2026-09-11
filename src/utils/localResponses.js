@@ -392,11 +392,11 @@ keywords: [
 {
     category: "formacion",
     keywords: [
-        "formacion",
+        "formacion de jorge",
         "formacion academica",
-        "educacion",
+        "educacion de jorge",
         "trayectoria academica",
-        "estudios",
+        "estudios de jorge",
         "estudios academicos",
         "perfil academico",
         "historial academico",
