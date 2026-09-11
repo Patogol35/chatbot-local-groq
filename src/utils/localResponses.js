@@ -112,6 +112,7 @@ const COMMON_WORDS = new Set([
     "y",
 
     // Perfil y formación
+    "formacion",
     "ingenieria",
     "ingeniero",
     "acerca",
@@ -842,7 +843,7 @@ const LOCAL_RESPONSES = [
         "curso de ibm",
         "curso ibm",
        "formacion de ibm",
-       "formación ibm",
+       "formacion ibm",
 
     "formacion en inteligencia artificial",
     "formacion inteligencia artificial",
