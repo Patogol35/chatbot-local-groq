@@ -652,11 +652,26 @@ keywords: [
             "aplicaciones",
         ],
         responses: [
-            "Entre los proyectos de Jorge se encuentran su Portfolio React, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
-            "Jorge ha desarrollado proyectos como un portfolio, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce.",
-            "Su portafolio de proyectos incluye aplicaciones web, un chatbot, una app del clima, un Quiz sobre Ecuador, ajedrez y un e-commerce.",
-            "Entre sus principales proyectos destacan su portfolio React, Quiz sobre Ecuador, aplicación meteorológica, chatbot, ajedrez y e-commerce.",
-        ],
+    "Entre los proyectos de Jorge se encuentran su Portfolio React, un Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce desarrollado con React y Django.",
+
+    "Jorge ha desarrollado diversos proyectos web, entre ellos un portfolio personal, un Quiz sobre Ecuador, una aplicación meteorológica, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
+
+    "Su portafolio reúne proyectos como aplicaciones web, un chatbot, una aplicación del clima, un Quiz sobre Ecuador, un proyecto de ajedrez y un e-commerce desarrollado con React y Django.",
+
+    "Entre sus principales desarrollos destacan su Portfolio React, el Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y una plataforma de e-commerce con React y Django.",
+
+    "Jorge cuenta con proyectos relacionados con desarrollo web, incluyendo su portfolio, una aplicación meteorológica, un Quiz sobre Ecuador, un chatbot, ajedrez y un e-commerce con React y Django.",
+
+    "Dentro de los proyectos de Jorge destacan su portfolio desarrollado con React, un Quiz sobre Ecuador, una app del clima, un chatbot, un proyecto de ajedrez y un e-commerce basado en React y Django.",
+
+    "Su experiencia práctica se refleja en proyectos como un portfolio web, una aplicación del clima, un Quiz sobre Ecuador, un chatbot, una aplicación de ajedrez y un e-commerce desarrollado con React y Django.",
+
+    "Jorge ha trabajado en diferentes proyectos de software, entre ellos un portfolio personal, un Quiz sobre Ecuador, una aplicación meteorológica, un chatbot, un proyecto de ajedrez y un e-commerce.",
+
+    "Entre los desarrollos que forman parte del portafolio de Jorge están su Portfolio React, el Quiz sobre Ecuador, una aplicación del clima, un chatbot, un proyecto de ajedrez y un e-commerce con React y Django.",
+
+    "El portafolio de Jorge incluye proyectos de diferentes áreas del desarrollo web, como su portfolio React, un Quiz sobre Ecuador, una aplicación meteorológica, un chatbot, ajedrez y un e-commerce desarrollado con React y Django."
+],
     },
 
 
