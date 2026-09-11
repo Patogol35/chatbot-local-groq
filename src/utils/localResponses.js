@@ -199,6 +199,7 @@ const COMMON_WORDS = new Set([
     "ibm",
     // otros
     "linux",
+    "utiliza",
 ]);
     
 
