@@ -43,19 +43,8 @@ const VALID_NAMES = [
 
 const COMMON_WORDS = new Set([
     "a",
-    "microsoft",
-"az900",
-"az",
-"fundamentals",
-"cloud",
-"nube",
-    "claude",
-"anthropic",
-    "azure",
-    "mcp",
     "al",
     "algo",
-    "linux",
     "algun",
     "alguna",
     "algunos",
@@ -121,12 +110,22 @@ const COMMON_WORDS = new Set([
     "unos",
     "unas",
     "y",
+
+    // Perfil y formación
     "ingenieria",
     "ingeniero",
     "acerca",
+    "master",
+    "maestria",
+    "posgrado",
+    "postgrado",
+    "promedio",
+    "perfil",
+    "nota",
+    "realizo",
+    "siguio",
 
-    // AGREGAR
-    
+    // Conversación
     "hola",
     "buenas",
     "buenos",
@@ -147,44 +146,51 @@ const COMMON_WORDS = new Set([
     "vemos",
     "voy",
     "bye",
+    "pronto",
     "estas",
     "encuentras",
     "bien",
     "va",
     "creo",
     "ti",
+    "eres",
+    "sasha",
+
+    // Desarrollo
     "hizo",
     "programo",
     "desarrollo",
-"master",
-"maestria",
-"posgrado",
-"pronto",
-"eres",
-"sasha",
-    "realizo",
     "curso",
-    "promedio",
-    "perfil",
-    "nota",
-    "postgrado",
-    "siguio",
-    "hizo",
     "cursos",
     "certificado",
-        "certificados",
+    "certificados",
     "certificacion",
     "certificaciones",
+
+    // Contacto
     "contactarlo",
+    "contactame",
+    "contactar",
+    "contactarme",
     "comunicarme",
+    "comunicar",
     "quiero",
     "hablar",
-"llamar",
-"contactar",
-"contactarme",
-"comunicar",
-    "contactame",
-    
+    "llamar",
+
+    // Microsoft / Azure
+    "microsoft",
+    "azure",
+    "az",
+    "az900",
+    "fundamentals",
+    "cloud",
+    "nube",
+
+    // MCP / Anthropic / Claude
+    "mcp",
+    "anthropic",
+    "claude",
 ]);
     
 
