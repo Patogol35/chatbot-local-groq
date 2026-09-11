@@ -787,6 +787,9 @@ keywords: [
         "comunicarme",
         "comunicar",
         "comunicarme con jorge",
+        "hablar con jorge",
+        "hablar con el",
+        "hablar con jorge patricio",
         "contactar a jorge",
         "contactar a jorge patricio",
         "como contacto",
@@ -807,7 +810,7 @@ keywords: [
         "quiero comunicarme",
         "deseo comunicarme",
         "necesito contactar",
-        
+        "necesito hablar con jorge",
         "contactame con el",
         "contactame",
     ],
