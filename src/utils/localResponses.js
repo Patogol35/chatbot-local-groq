@@ -503,6 +503,7 @@ keywords: [
         "nota de la maestria",
         "nota de su posgrado",
         "nota del posgrado",
+        "nota del master",
     ],
     responses: [
         "Jorge obtuvo un promedio de 8.68 en el Máster en Ingeniería de Software y Sistemas Informáticos.",
