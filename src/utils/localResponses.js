@@ -1095,6 +1095,74 @@ export const getLocalResponse = (message) => {
 
 const normalizedMessage = normalizeText(message);
 
+/*
+|--------------------------------------------------------------------------
+| PREGUNTAS CONCEPTUALES
+|--------------------------------------------------------------------------
+| Si preguntan qué es, qué significa, para qué sirve, explicación, etc.
+| sobre frontend, backend o bases de datos → responde la IA.
+|--------------------------------------------------------------------------
+*/
+
+const conceptualPrefixes = [
+    "que es",
+    "que significa",
+    "que son",
+    "que significa el",
+    "que significa la",
+    "que significa un",
+    "que significa una",
+    "dime que es",
+    "dime que significa",
+    "dime que son",
+    "explica que es",
+    "explica que significa",
+    "explicame que es",
+    "explicame que significa",
+    "explicame que son",
+    "puedes decirme que es",
+    "puedes decirme que significa",
+    "puedes explicar que es",
+    "puedes explicarme que es",
+    "hablame de",
+    "para que sirve",
+    "para que sirven",
+    "que hace",
+    "que hacen",
+];
+
+const conceptualTopics = [
+    "frontend",
+    "front end",
+    "front-end",
+    "front",
+    "backend",
+    "back end",
+    "back-end",
+    "back",
+    "base de datos",
+    "bases de datos",
+];
+
+const isConceptualQuestion =
+    conceptualPrefixes.some(prefix =>
+        normalizedMessage.includes(prefix)
+    ) &&
+    conceptualTopics.some(topic =>
+        normalizedMessage.includes(topic)
+    );
+
+if (isConceptualQuestion) {
+    return null;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| PREGUNTAS CONCEPTUALES GENERALES
+|--------------------------------------------------------------------------
+*/
+
 if (
     normalizedMessage === "que es un stack" ||
     normalizedMessage === "que es stack" ||
@@ -1117,7 +1185,6 @@ if (
 ) {
     return null;
 }
-
 // Preguntas con año específico → responder con IA
     if (
         /\b(19|20)\d{2}\b/.test(normalizedMessage)
