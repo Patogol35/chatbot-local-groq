@@ -1,4 +1,4 @@
-import { LOCAL_RESPONSES } from "./localResponsesData";
+import { LOCAL_RESPONSES } from "./localResponsesData.js";
 
 /*
 |--------------------------------------------------------------------------
