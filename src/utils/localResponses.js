@@ -721,10 +721,6 @@ keywords: [
 "aplicaciones",
 "sistemas",
 "soluciones",
-
-"proyectos tecnológicos",
-"proyectos informáticos",
-"portafolio"
             "que proyectos tiene",
             "que ha desarrollado",
             "aplicaciones",
