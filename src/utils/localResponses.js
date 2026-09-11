@@ -44,6 +44,7 @@ const VALID_NAMES = [
 const COMMON_WORDS = new Set([
     "a",
     "azure",
+    "mcp",
     "al",
     "algo",
     "linux",
