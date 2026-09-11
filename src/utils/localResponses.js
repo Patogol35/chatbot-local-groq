@@ -125,6 +125,7 @@ const COMMON_WORDS = new Set([
     "nota",
     "realizo",
     "siguio",
+    "educacion", 
 
     // Conversación
     "hola",
@@ -780,6 +781,20 @@ const LOCAL_RESPONSES = [
     "que curso tiene de linux",
     "tiene certificacion de linux",
     "tiene certificado de linux",
+        "formacion de jorge en linux",
+"formacion de jorge linux",
+"formacion en linux",
+"formacion linux",
+"formacion de linux",
+"formacion relacionada con linux",
+"formacion de jorge relacionada con linux",
+        "formacion de jorge en linux",
+"educacion de jorge linux",
+"educacion en linux",
+"educacion linux",
+"educacion de linux",
+"educacion relacionada con linux",
+"educacion de jorge relacionada con linux",
 ],
     responses: [
         "Jorge cuenta con una certificación de Linux realizada en Udemy en 2024.",
