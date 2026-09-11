@@ -1679,6 +1679,40 @@ export const getLocalResponse = (message) => {
     }
 
 
+const profileTechnology = [
+    "linux",
+    "ibm",
+    "azure",
+    "az900",
+    "mcp",
+    "claude",
+    "anthropic",
+];
+
+const hasJorge = containsValidName(normalizedMessage);
+
+const hasProfileTechnology = profileTechnology.some((technology) =>
+    normalizedMessage.includes(technology)
+);
+
+// "Formacion de Jorge" sin una tecnología específica = local
+const isGeneralJorgeFormation =
+    hasJorge &&
+    normalizedMessage === "formacion de jorge";
+
+// "Formacion de Jorge en X" donde X no pertenece al perfil = Groq
+if (
+    hasJorge &&
+    normalizedMessage.includes("formacion") &&
+    !hasProfileTechnology &&
+    !isGeneralJorgeFormation
+) {
+    return null;
+}
+
+
+
+    
     
 
     let bestMatch = null;
