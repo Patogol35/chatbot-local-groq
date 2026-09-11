@@ -142,6 +142,7 @@ const COMMON_WORDS = new Set([
     "promedio",
     "perfil",
     "nota",
+    "notas",
     "realizo",
     "siguio",
     "educacion", 
