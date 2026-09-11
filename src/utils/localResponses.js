@@ -393,6 +393,7 @@ keywords: [
     category: "formacion",
     keywords: [
         "formacion de jorge",
+        "formacion",
         "formacion academica",
         "educacion de jorge",
         "trayectoria academica",
