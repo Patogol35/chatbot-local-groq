@@ -406,6 +406,7 @@ const conceptualTopics = [
     "maestria",
     "ingenieria",
     "posgrado",
+    "experiencia",
 ];
 
 const isConceptualQuestion =
