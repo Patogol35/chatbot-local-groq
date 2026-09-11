@@ -192,6 +192,8 @@ const COMMON_WORDS = new Set([
     "quiero",
     "hablar",
     "llamar",
+    "cuentame",
+    "saber",
 
     // Microsoft / Azure
     "microsoft",
