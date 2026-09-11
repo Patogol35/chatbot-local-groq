@@ -1018,7 +1018,6 @@ const containsAnotherPersonName = (message) => {
 
     return false;
 };
-
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
@@ -1027,74 +1026,25 @@ const containsAnotherPersonName = (message) => {
 
 export const getLocalResponse = (message) => {
 
-    /*
-    |--------------------------------------------------------------------------
-    | 1. COMPROBAR SI ES OTRA PERSONA
-    |--------------------------------------------------------------------------
-    */
-
     if (containsAnotherPersonName(message)) {
         return null;
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | 2. MENSAJE NORMALIZADO
-    |--------------------------------------------------------------------------
-    */
-
-    const normalizedMessage =
-        normalizeText(message);
+    const normalizedMessage = normalizeText(message);
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | 3. INTENCIÓN SIN EL NOMBRE DE JORGE/PATRICIO
-    |--------------------------------------------------------------------------
-    */
-
-    const messageIntent =
-        normalizeIntent(message);
-
-
-    console.log(
-        "MENSAJE NORMALIZADO:",
-        normalizedMessage
-    );
-
-    console.log(
-        "INTENCIÓN:",
-        messageIntent
-    );
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 4. BUSCAR LA MEJOR RESPUESTA
-    |--------------------------------------------------------------------------
-    */
 
     let bestMatch = null;
     let bestScore = 0;
-
 
     for (const item of LOCAL_RESPONSES) {
 
         let score = 0;
 
-
         for (const keyword of item.keywords) {
 
             const normalizedKeyword =
                 normalizeText(keyword);
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | COINCIDENCIA NORMAL
-            |--------------------------------------------------------------------------
-            */
 
             const escapedKeyword =
                 normalizedKeyword.replace(
@@ -1102,95 +1052,24 @@ export const getLocalResponse = (message) => {
                     "\\$&"
                 );
 
-
             const regex = new RegExp(
                 `(^|\\s)${escapedKeyword}(?=\\s|$)`
             );
 
-
             if (regex.test(normalizedMessage)) {
 
                 const words =
-                    normalizedKeyword.split(/\s+/).length;
+                    normalizedKeyword.split(" ").length;
 
                 score += words * 10;
-
-                continue;
-            }
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | COINCIDENCIA POR INTENCIÓN
-            |--------------------------------------------------------------------------
-            |
-            | Ejemplo:
-            |
-            | Mensaje:
-            | "Jorge formación"
-            |
-            | Intención:
-            | "formacion"
-            |
-            | Keyword:
-            | "formacion de jorge"
-            |
-            | Intención de keyword:
-            | "formacion"
-            |
-            |--------------------------------------------------------------------------
-            */
-
-            const keywordIntent =
-                normalizeIntent(keyword);
-
-
-            if (!keywordIntent) {
-                continue;
-            }
-
-
-            const escapedIntent =
-                keywordIntent.replace(
-                    /[.*+?^${}()|[\]\\]/g,
-                    "\\$&"
-                );
-
-
-            const intentRegex = new RegExp(
-                `(^|\\s)${escapedIntent}(?=\\s|$)`
-            );
-
-
-            if (intentRegex.test(messageIntent)) {
-
-                const words =
-                    keywordIntent.split(/\s+/).length;
-
-                score += words * 8;
             }
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | GUARDAR MEJOR COINCIDENCIA
-        |--------------------------------------------------------------------------
-        */
-
         if (score > bestScore) {
-
             bestScore = score;
             bestMatch = item;
         }
     }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 5. DEVOLVER RESPUESTA
-    |--------------------------------------------------------------------------
-    */
 
     if (
         bestMatch &&
@@ -1206,25 +1085,8 @@ export const getLocalResponse = (message) => {
                 responses.length
             );
 
-        console.log(
-            "CATEGORÍA:",
-            bestMatch.category
-        );
-
-        console.log(
-            "SCORE:",
-            bestScore
-        );
-
         return responses[randomIndex];
     }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | 6. NO HAY RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
 
     return null;
 };
