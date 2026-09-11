@@ -1223,6 +1223,130 @@ if (
         return null;
     }
 
+
+ /*
+|--------------------------------------------------------------------------
+| PREGUNTAS DE OPINIÓN / VALORACIÓN ACADÉMICA
+|--------------------------------------------------------------------------
+| Las preguntas que piden valorar, interpretar o dar una opinión sobre
+| notas, promedios o resultados académicos deben ser respondidas por IA.
+|--------------------------------------------------------------------------
+*/
+
+const opinionWords = [
+    "bueno",
+    "buena",
+    "buen",
+    "buenas",
+    "malo",
+    "mala",
+    "malos",
+    "malas",
+    "excelente",
+    "excelentes",
+    "bien",
+    "mejor",
+    "peor",
+    "alto",
+    "alta",
+    "altos",
+    "altas",
+    "bajo",
+    "baja",
+    "bajos",
+    "bajas",
+    "satisfactorio",
+    "satisfactoria",
+    "satisfactorios",
+    "satisfactorias",
+    "destacable",
+    "destacables",
+    "destacado",
+    "destacada",
+    "destacados",
+    "destacadas",
+    "sobresaliente",
+    "sobresalientes",
+    "opinas",
+    "opinion",
+    "consideras",
+    "consideras",
+    "piensas",
+    "ves",
+    "tal",
+];
+
+const academicWords = [
+    // Notas y promedios
+    "nota",
+    "notas",
+    "promedio",
+    "promedios",
+    "calificacion",
+    "calificaciones",
+
+    // Resultados académicos
+    "resultado",
+    "resultados",
+    "rendimiento",
+    "rendimiento academico",
+    "resultado academico",
+    "resultados academicos",
+
+    // Formación y certificaciones
+    "certificado",
+    "certificados",
+    "certificacion",
+    "certificaciones",
+    "curso",
+    "cursos",
+    "formacion",
+    "formacion complementaria",
+];
+
+const opinionIndicators = [
+    "son",
+    "es",
+    "estan",
+    "esta",
+    "tiene",
+    "tienen",
+    "saco",
+    "sacó",
+    "obtuvo",
+    "fue",
+    "le fue",
+    "que opinas",
+    "que opinion",
+    "como ves",
+    "como son",
+    "como estan",
+    "que tal",
+    "que piensas",
+    "consideras",
+];
+
+const hasOpinionWord = opinionWords.some(word =>
+    normalizedMessage.includes(word)
+);
+
+const hasAcademicWord = academicWords.some(word =>
+    normalizedMessage.includes(word)
+);
+
+const hasOpinionIndicator = opinionIndicators.some(indicator =>
+    normalizedMessage.includes(indicator)
+);
+
+if (
+    hasAcademicWord &&
+    hasOpinionWord &&
+    hasOpinionIndicator
+) {
+    return null;
+}
+
+
     
 
 
