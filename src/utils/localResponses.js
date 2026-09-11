@@ -197,6 +197,8 @@ const COMMON_WORDS = new Set([
     "claude",
     //IBM
     "ibm",
+    // otros
+    "linux",
 ]);
     
 
