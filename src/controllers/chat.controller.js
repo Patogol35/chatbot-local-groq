@@ -1,5 +1,5 @@
 import Groq from "groq-sdk";
-import { getLocalResponse } from "../utils/localResponses.js";
+//import { getLocalResponse } from "../utils/localResponses.js";
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY,
@@ -184,7 +184,7 @@ export const sendMessage = async (req, res) => {
         | NO SE MODIFICA ESTA LÓGICA.
         |
         */
-
+/*
         const localResponse = getLocalResponse(userMessage);
         if (localResponse) {
             console.log("⚡ RESPUESTA LOCAL");
@@ -202,6 +202,7 @@ export const sendMessage = async (req, res) => {
                 },
             });
         }
+        */
 
         /*
         |--------------------------------------------------------------------------
