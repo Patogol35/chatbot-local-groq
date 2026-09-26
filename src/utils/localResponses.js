@@ -18,86 +18,6 @@ const normalizeText = (text = "") => {
 
 /*
 |--------------------------------------------------------------------------
-| DISTANCIA DE LEVENSHTEIN
-|--------------------------------------------------------------------------
-*/
-
-const levenshteinDistance = (a, b) => {
-    const matrix = Array.from(
-        { length: b.length + 1 },
-        (_, i) => [i]
-    );
-
-    for (let j = 0; j <= a.length; j++) {
-        matrix[0][j] = j;
-    }
-
-    for (let i = 1; i <= b.length; i++) {
-        for (let j = 1; j <= a.length; j++) {
-            matrix[i][j] =
-                b[i - 1] === a[j - 1]
-                    ? matrix[i - 1][j - 1]
-                    : Math.min(
-                        matrix[i - 1][j - 1] + 1,
-                        matrix[i][j - 1] + 1,
-                        matrix[i - 1][j] + 1
-                    );
-        }
-    }
-
-    return matrix[b.length][a.length];
-};
-
-/*
-|--------------------------------------------------------------------------
-| DETECTAR ERROR DE ESCRITURA DE JORGE
-|--------------------------------------------------------------------------
-*/
-
-const isSimilarToJorge = (word) => {
-    const normalizedWord = normalizeText(word);
-
-    // Solo aplicar similitud a palabras con una longitud razonable
-    if (
-        normalizedWord.length < 4 ||
-        normalizedWord.length > 8
-    ) {
-        return false;
-    }
-
-    return levenshteinDistance(
-        normalizedWord,
-        "jorge"
-    ) <= 2;
-};
-
-/*
-|--------------------------------------------------------------------------
-| NORMALIZAR VARIANTES DE JORGE
-|--------------------------------------------------------------------------
-|
-| Ejemplos:
-| jorge  → jorge
-| jorgee → jorge
-| jorje  → jorge
-| jroge  → jorge
-|
-|--------------------------------------------------------------------------
-*/
-
-const normalizeJorgeVariants = (message) => {
-    return normalizeText(message)
-        .split(/\s+/)
-        .map((word) =>
-            isSimilarToJorge(word)
-                ? "jorge"
-                : word
-        )
-        .join(" ");
-};
-
-/*
-|--------------------------------------------------------------------------
 | NOMBRES VÁLIDOS DE JORGE
 |--------------------------------------------------------------------------
 */
@@ -117,106 +37,13 @@ const VALID_NAMES = [
 |--------------------------------------------------------------------------
 | PALABRAS COMUNES
 |--------------------------------------------------------------------------
+|
+| Se ignoran estas palabras al buscar nombres.
+|
+|--------------------------------------------------------------------------
 */
 
 const COMMON_WORDS = new Set([
-
-        // English
-    
-    "tech",
-    "who",
-    "is",
-    "tell",
-    "me",
-    "about",
-    "more",
-    "what",
-    "are",
-    "the",
-    "his",
-    "her",
-    "he",
-    "his",
-    "skills",
-    "experience",
-    "profile",
-    "professional",
-    "education",
-    "degree",
-    "master",
-    "engineering",
-    "software",
-    "systems",
-    "developer",
-    "development",
-    "technologies",
-    "technology",
-    "tools",
-    "projects",
-    "project",
-    "contact",
-    "how",
-    "can",
-    "i",
-    "you",
-    "your",
-    "with",
-    "and",
-    "from",
-    "has",
-    "have",
-    "does",
-    "do",
-    "in",
-    "of",
-    "to",
-    "for",
-    "on",
-    "his",
-    "him",
-    "introduce",
-    "describe",
-    "certifications",
-    // Nuevas palabras
-    "hello",
-    "hi",
-    "hey",
-    "good",
-    "morning",
-    "afternoon",
-    "evening",
-    "thanks",
-    "thank",
-    "you",
-    "many",
-    "appreciate",
-    "grateful",
-    "please",
-    "bye",
-    "goodbye",
-    "see",
-    "later",
-    "soon",
-    "take",
-    "care",
-    "leaving",
-    "okay",
-    "doing",
-    "going",
-    "things",
-    "created",
-    "made",
-    "programmed",
-    "developed",
-    "invented",
-    "name",
-    "function",
-    "job",
-    "work",
-    "role",
-    "do",
-    "yourself",
-
     "a",
     "soluciones",
     "aplicaciones",
@@ -230,6 +57,10 @@ const COMMON_WORDS = new Set([
     "tecnologias",
     "stack",
     "lenguajes",
+    "frontend",
+    "back",
+    "front",
+    "backend",
     "herramientas",
     "que",
     "desarrollado",
@@ -280,12 +111,12 @@ const COMMON_WORDS = new Set([
     "mi",
     "mis",
     "necesito",
-    "hizo",
     "nombre",
     "no",
     "o",
     "para",
     "por",
+    "que",
     "quien",
     "quienes",
     "se",
@@ -316,12 +147,11 @@ const COMMON_WORDS = new Set([
     "notas",
     "realizo",
     "siguio",
-    "educacion",
+    "educacion", 
     "estudio",
     "estudios",
 
     // Conversación
-    "haces",
     "hola",
     "buenas",
     "buenos",
@@ -353,7 +183,7 @@ const COMMON_WORDS = new Set([
     "sasha",
 
     // Desarrollo
-    
+    "hizo",
     "programo",
     "desarrollo",
     "curso",
@@ -362,7 +192,9 @@ const COMMON_WORDS = new Set([
     "certificados",
     "certificacion",
     "certificaciones",
-    
+    "base",
+"bases",
+"datos",
 
     // Contacto
     "contactarlo",
@@ -373,15 +205,31 @@ const COMMON_WORDS = new Set([
     "comunicar",
     "quiero",
     "hablar",
-    "contactas",
     "llamar",
     "cuentame",
     "saber",
+
+    // Microsoft / Azure
+    "microsoft",
+    "azure",
+    "az",
+    "az900",
+    "fundamentals",
+    "cloud",
+    "nube",
+
+    // MCP / Anthropic / Claude
+    "mcp",
+    "anthropic",
+    "claude",
+    //IBM
+    "ibm",
+    // otros
+    "linux",
     "utiliza",
     "experiencia",
-    "conectar",
 ]);
-
+    
 /*
 |--------------------------------------------------------------------------
 | DETECTAR SI EL MENSAJE MENCIONA A JORGE
@@ -389,7 +237,7 @@ const COMMON_WORDS = new Set([
 */
 
 const containsValidName = (message) => {
-    const normalized = normalizeJorgeVariants(message);
+    const normalized = normalizeText(message);
 
     return VALID_NAMES.some((name) => {
         const normalizedName = normalizeText(name);
@@ -409,13 +257,23 @@ const containsValidName = (message) => {
 |--------------------------------------------------------------------------
 | DETECTAR SI EXISTE OTRO NOMBRE
 |--------------------------------------------------------------------------
+|
+| Regla:
+|
+| - Si el mensaje menciona a Jorge -> puede usar respuestas locales.
+| - Si menciona otro nombre -> Groq.
+|
+| No importa la posición ni el tipo de frase.
+|
+|--------------------------------------------------------------------------
 */
 
 const containsAnotherPersonName = (message) => {
-    const normalized = normalizeJorgeVariants(message);
+    const normalized = normalizeText(message);
 
-    console.log("MENSAJE NORMALIZADO:", normalized);
+    console.log("MENSAJE:", normalized);
 
+    // Nombres y apellidos que pertenecen a Jorge
     const jorgeWords = new Set([
         "jorge",
         "patricio",
@@ -428,7 +286,7 @@ const containsAnotherPersonName = (message) => {
     for (const word of words) {
         if (!word) continue;
 
-        // Palabras del nombre de Jorge
+        // Palabras del nombre completo de Jorge
         if (jorgeWords.has(word)) {
             continue;
         }
@@ -438,7 +296,7 @@ const containsAnotherPersonName = (message) => {
             continue;
         }
 
-        // Palabras comunes
+        // Palabras comunes de la pregunta
         if (COMMON_WORDS.has(word)) {
             continue;
         }
@@ -457,7 +315,6 @@ const containsAnotherPersonName = (message) => {
 
     return false;
 };
-
 /*
 |--------------------------------------------------------------------------
 | BUSCAR RESPUESTA LOCAL
@@ -465,131 +322,120 @@ const containsAnotherPersonName = (message) => {
 */
 
 export const getLocalResponse = (message) => {
+    
 
-    /*
-    |--------------------------------------------------------------------------
-    | NORMALIZAR MENSAJE
-    |--------------------------------------------------------------------------
-    |
-    | Aquí se corrigen automáticamente pequeños errores de "Jorge".
-    |
-    */
+const normalizedMessage = normalizeText(message);
 
-    const normalizedMessage =
-        normalizeJorgeVariants(message);
+/*
+|--------------------------------------------------------------------------
+| PREGUNTAS CONCEPTUALES
+|--------------------------------------------------------------------------
+| Si preguntan qué es, qué significa, para qué sirve, explicación, etc.
+| sobre frontend, backend o bases de datos → responde la IA.
+|--------------------------------------------------------------------------
+*/
 
-    console.log(
-        "🔎 MENSAJE PARA RESPUESTA LOCAL:",
-        normalizedMessage
+
+const conceptualPrefixes = [
+    "que es",
+    "que significa",
+    "que son",
+
+    "dime que es",
+    "dime que significa",
+    "dime que son",
+
+    "explica que es",
+    "explica que significa",
+    "explica que son",
+
+    "explicame que es",
+    "explicame que significa",
+    "explicame que son",
+
+    "puedes decirme que es",
+    "puedes decirme que significa",
+    "puedes decirme que son",
+
+    "puedes explicar que es",
+    "puedes explicarme que es",
+    "puedes explicarme que significa",
+    "puedes explicarme que son",
+
+    "cuentame que es",
+    "cuentame que significa",
+    "cuentame que son",
+
+    
+    "para que sirve",
+    "para que sirven",
+
+    "que hace",
+    "que hacen",
+];
+
+const conceptualTopics = [
+    // Frontend
+    "frontend",
+    "front end",
+    "front-end",
+
+    // Backend
+    "backend",
+    "back end",
+    "back-end",
+
+    // Bases de datos
+    "base de datos",
+    "bases de datos",
+
+    // Formación
+    "formacion",
+
+    // Otros conceptos 
+    "stack",
+    "tecnologia",
+    "tecnologias",
+    "herramienta",
+    "herramientas",
+    "proyecto",
+    "proyectos",
+    "nota",
+    "notas",
+    "master",
+    "maestria",
+    "ingenieria",
+    "posgrado",
+    "experiencia",
+];
+
+const isConceptualQuestion =
+    conceptualPrefixes.some(prefix =>
+        normalizedMessage.includes(prefix)
+    ) &&
+    conceptualTopics.some(topic =>
+        normalizedMessage.includes(topic)
     );
 
+if (isConceptualQuestion) {
+    return null;
+}
 
-    /*
-    |--------------------------------------------------------------------------
-    | PREGUNTAS CONCEPTUALES
-    |--------------------------------------------------------------------------
-    */
 
-    const conceptualPrefixes = [
-        "que es",
-        "que significa",
-        "que son",
 
-        "dime que es",
-        "dime que significa",
-        "dime que son",
-
-        "explica que es",
-        "explica que significa",
-        "explica que son",
-
-        "explicame que es",
-        "explicame que significa",
-        "explicame que son",
-
-        "puedes decirme que es",
-        "puedes decirme que significa",
-        "puedes decirme que son",
-
-        "puedes explicar que es",
-        "puedes explicarme que es",
-        "puedes explicarme que significa",
-        "puedes explicarme que son",
-
-        "cuentame que es",
-        "cuentame que significa",
-        "cuentame que son",
-
-        "para que sirve",
-        "para que sirven",
-
-        "que hace",
-        "que hacen",
-    ];
-
-    const conceptualTopics = [
-        
-        // Formación
-        "formacion",
-
-        // Otros conceptos
-        "stack",
-        "tecnologia",
-        "tecnologias",
-        "herramienta",
-        "herramientas",
-        "proyecto",
-        "proyectos",
-        "nota",
-        "notas",
-        "master",
-        "maestria",
-        "ingenieria",
-        "posgrado",
-        "experiencia",
-    ];
-
-    const isConceptualQuestion =
-        conceptualPrefixes.some((prefix) =>
-            normalizedMessage.includes(prefix)
-        ) &&
-        conceptualTopics.some((topic) =>
-            normalizedMessage.includes(topic)
-        );
-
-    if (isConceptualQuestion) {
-        return null;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | PREGUNTAS CON AÑO ESPECÍFICO → GROQ
-    |--------------------------------------------------------------------------
-    */
-
+// Preguntas con año específico → responder con IA
     if (
-        /\b(19|20)\d{2}\b/.test(
-            normalizedMessage
-        )
+        /\b(19|20)\d{2}\b/.test(normalizedMessage)
     ) {
         return null;
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | OTRO NOMBRE → GROQ
-    |--------------------------------------------------------------------------
-    */
+    
 
     if (containsAnotherPersonName(message)) {
         return null;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | BUSCAR MEJOR RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
+
 
     let bestMatch = null;
     let bestScore = 0;
@@ -628,12 +474,6 @@ export const getLocalResponse = (message) => {
         }
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | DEVOLVER RESPUESTA LOCAL
-    |--------------------------------------------------------------------------
-    */
-
     if (
         bestMatch &&
         bestScore >= 10
@@ -648,16 +488,8 @@ export const getLocalResponse = (message) => {
                 responses.length
             );
 
-        console.log(
-            "✅ RESPUESTA LOCAL UTILIZADA"
-        );
-
         return responses[randomIndex];
     }
-
-    console.log(
-        "❌ SIN RESPUESTA LOCAL → GROQ"
-    );
 
     return null;
 };
