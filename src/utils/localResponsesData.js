@@ -40,19 +40,30 @@ keywords: [
     "cuentame",
 ],
         responses: [
-            "Jorge Patricio Santamaría Cherrez es ingeniero en sistemas y tiene un máster en ingeniería de software. Su experiencia se enfoca en desarrollo Full Stack, virtualización y ciberseguridad, trabajando con React, JavaScript, Django, Java y SQL.",
-            "Jorge Patricio Santamaría Cherrez es un profesional de Ingeniería de Software, con formación en Ingeniería en Sistemas y un Máster en esta área.",
-            "Jorge es Ingeniero en Sistemas y cuenta con un Máster en Ingeniería de Software. Se especializa en desarrollo Full Stack, además de tener conocimientos en virtualización y ciberseguridad. Ha creado aplicaciones web, un chatbot, un juego de ajedrez y un e-commerce.",
-            "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica y Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR.",
-            "Jorge Patricio es un profesional de sistemas con formación de máster en ingeniería de software. Entre sus principales áreas están el desarrollo Full Stack, la ciberseguridad y la virtualización, utilizando tecnologías como React, Django, JavaScript y Java.",
-            "Jorge Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software. Ha trabajado en diferentes proyectos tecnológicos, incluyendo aplicaciones React, un quiz sobre Ecuador, una aplicación del clima, un chatbot, ajedrez y una tienda online.",
-            "Jorge se desempeña como Ingeniero de Software y Desarrollador Full Stack. Tiene formación en Ingeniería de Sistemas y una maestría en Ingeniería de Software, con experiencia en tecnologías como React, JavaScript, Django, Java y bases de datos SQL.",
-            "Jorge Patricio Santamaría Cherrez combina su formación en Ingeniería de Sistemas con un máster en Ingeniería de Software. Sus principales áreas de interés son el desarrollo Full Stack, la virtualización y la ciberseguridad, donde trabaja con diferentes tecnologías web.",
-            "Jorge es un Ingeniero en Sistemas con Máster en Ingeniería de Software. Dentro de su experiencia destacan el desarrollo de aplicaciones web y proyectos Full Stack, utilizando herramientas como React, Django, JavaScript, Java y bases de datos SQL.",
-            "Jorge Patricio tiene formación como Ingeniero en Sistemas y Máster en Ingeniería de Software. En su trayectoria ha desarrollado proyectos como un portfolio, un quiz sobre Ecuador, una app del clima, un chatbot, un juego de ajedrez y un e-commerce.",
-            "Jorge Santamaría se especializa en desarrollo de software y Full Stack. Es Ingeniero en Sistemas y tiene un Máster en Ingeniería de Software, con conocimientos en React, JavaScript, Django, Java, SQL, virtualización y ciberseguridad.",
-"Jorge Patricio Santamaría Cherrez es un profesional de software con formación en Ingeniería de Sistemas y una maestría en Ingeniería de Software. Ha desarrollado diversos proyectos web y aplicaciones, destacando su trabajo con React, Django, JavaScript, Java y SQL.",
-        ],
+    "Jorge Patricio Santamaría Cherrez es Ingeniero en Sistemas y tiene un Máster en Ingeniería de Software y Sistemas Informáticos. Su experiencia se enfoca principalmente en desarrollo Full Stack, trabajando con React, JavaScript, Django, Java, PostgreSQL y MySQL.",
+
+    "Jorge Patricio Santamaría Cherrez es un profesional de Ingeniería de Software, con formación en Ingeniería en Sistemas y un Máster en Ingeniería de Software y Sistemas Informáticos.",
+
+    "Jorge es Ingeniero en Sistemas y cuenta con un Máster en Ingeniería de Software y Sistemas Informáticos. Se especializa en desarrollo Full Stack y desarrollo de aplicaciones web, utilizando tecnologías como React, JavaScript, Django y Java.",
+
+    "Jorge es Ingeniero en Sistemas por la Universidad Indoamérica y Máster en Ingeniería de Software y Sistemas Informáticos por la UNIR.",
+
+    "Jorge Patricio es un profesional de sistemas orientado al desarrollo Full Stack. Trabaja con tecnologías como React, JavaScript, Django y Java, además de bases de datos como PostgreSQL y MySQL.",
+
+    "Jorge Santamaría Cherrez es Ingeniero en Sistemas y Máster en Ingeniería de Software. Ha trabajado en diferentes proyectos tecnológicos, incluyendo aplicaciones React, un quiz sobre Ecuador, una aplicación del clima, un chatbot, ajedrez y una tienda online.",
+
+    "Jorge se desempeña como Ingeniero de Software y Desarrollador Full Stack. Tiene formación en Ingeniería de Sistemas y una maestría en Ingeniería de Software, con experiencia en React, JavaScript, Django, Java, PostgreSQL y MySQL.",
+
+    "Jorge Patricio Santamaría Cherrez combina su formación en Ingeniería de Sistemas con un Máster en Ingeniería de Software. Sus principales áreas son el desarrollo web Full Stack, el manejo de bases de datos, la virtualización y el despliegue de aplicaciones.",
+
+    "Jorge es un Ingeniero en Sistemas con Máster en Ingeniería de Software. Dentro de su experiencia destacan el desarrollo de aplicaciones web y proyectos Full Stack, utilizando React, Django, JavaScript, Java y bases de datos SQL.",
+
+    "Jorge Patricio tiene formación como Ingeniero en Sistemas y Máster en Ingeniería de Software. En su trayectoria ha desarrollado proyectos como un portafolio, un quiz sobre Ecuador, una app del clima, un chatbot, un juego de ajedrez y un e-commerce.",
+
+    "Jorge Santamaría se especializa en desarrollo de software y Full Stack. Es Ingeniero en Sistemas y tiene un Máster en Ingeniería de Software, con conocimientos en React, JavaScript, Django, Java, PostgreSQL, MySQL, virtualización y herramientas de desarrollo.",
+
+    "Jorge Patricio Santamaría Cherrez es un profesional de software con formación en Ingeniería de Sistemas y una maestría en Ingeniería de Software. Ha desarrollado diversos proyectos web y aplicaciones, trabajando con React, Django, JavaScript, Java, PostgreSQL y MySQL."
+],
     },
 
             {
@@ -82,6 +93,7 @@ keywords: [
         "Las universidades donde Jorge realizó sus principales estudios son la Universidad Indoamérica, en Ecuador, y la UNIR, en España.",
     ],
 },
+
 
 {
     category: "formacion",
@@ -310,142 +322,8 @@ keywords: [
         "Jorge tuvo un promedio final de 9 en su carrera universitaria y de 8.68 en su Máster.",
     ],
 },
+    
 
-    {
-        category: "tecnologias",
-        keywords: [
-    "frontend",
-    "front end",
-    "front-end",
-    "front",
-    "desarrollo frontend",
-    "desarrollo front end",
-    "desarrollo front-end",
-    "parte frontend",
-    "parte front end",
-    "frontend de jorge",
-    "tecnologias frontend",
-    "tecnologias de frontend",
-    "tecnologias del frontend",
-    "que usa en frontend",
-    "que utiliza en frontend",
-    "que tecnologias usa en frontend",
-    "que tecnologias utiliza en frontend",
-],
-        responses: [
-    "En frontend, Jorge trabaja principalmente con React y JavaScript.",
-
-    "Para el desarrollo frontend, Jorge utiliza principalmente React y JavaScript.",
-
-    "Jorge tiene experiencia en desarrollo frontend utilizando React y JavaScript.",
-
-    "En la parte frontend de sus proyectos, Jorge trabaja con React y JavaScript.",
-
-    "Jorge desarrolla interfaces web utilizando React y JavaScript.",
-
-    "Su experiencia en frontend se centra principalmente en React y JavaScript.",
-
-    "Para construir interfaces y aplicaciones web, Jorge utiliza React junto con JavaScript.",
-
-    "Jorge trabaja en el desarrollo de la parte visual de las aplicaciones utilizando React y JavaScript.",
-
-    "Dentro de sus tecnologías frontend, Jorge utiliza principalmente React y JavaScript.",
-
-    "En el área de frontend, Jorge cuenta con experiencia trabajando con React y JavaScript."
-],
-    },
-
-    {
-        category: "tecnologias",
-        keywords: [
-    "backend",
-    "back end",
-    "back-end",
-    "back",
-    "desarrollo backend",
-    "desarrollo back end",
-    "desarrollo back-end",
-    "parte backend",
-    "parte back end",
-    "backend de jorge",
-    "tecnologias backend",
-    "tecnologias de backend",
-    "tecnologias del backend",
-    "que usa en backend",
-    "que utiliza en backend",
-    "que tecnologias usa en backend",
-    "que tecnologias utiliza en backend",
-],
-        responses: [
-    "En backend, Jorge trabaja principalmente con Django y Java.",
-
-    "Para el desarrollo backend, Jorge utiliza principalmente Django y Java.",
-
-    "Jorge cuenta con experiencia en desarrollo backend utilizando Django y Java.",
-
-    "En el lado del servidor, Jorge trabaja principalmente con Django y Java.",
-
-    "Jorge desarrolla la parte backend de sus aplicaciones utilizando Django y Java.",
-
-    "Su experiencia en backend se centra principalmente en Django y Java.",
-
-    "Para construir la lógica del servidor, Jorge utiliza principalmente Django y Java.",
-
-    "Jorge trabaja en el desarrollo del backend utilizando tecnologías como Django y Java.",
-
-    "Dentro de sus tecnologías backend, Jorge utiliza principalmente Django y Java.",
-
-    "En el área de backend, Jorge tiene experiencia trabajando con Django y Java."
-],
-    },
-
-    {
-        category: "tecnologias",
-        keywords: [
-    "base de datos",
-    "bases de datos",
-    "base de datos de jorge",
-    "bases de datos de jorge",
-    "bases de datos que usa",
-    "bases de datos que utiliza",
-    "que base de datos usa",
-    "que bases de datos usa",
-    "que base de datos utiliza",
-    "que bases de datos utiliza",
-    "tecnologias de base de datos",
-    "tecnologias de bases de datos",
-    "sistemas de bases de datos",
-    "gestores de bases de datos",
-],
-        responses: [
-    "Jorge trabaja con PostgreSQL y MySQL.",
-    "En bases de datos, Jorge utiliza principalmente PostgreSQL y MySQL.",
-    "Jorge tiene experiencia trabajando con PostgreSQL y MySQL.",
-    "Entre las tecnologías de bases de datos que utiliza Jorge están PostgreSQL y MySQL.",
-    "Jorge utiliza PostgreSQL y MySQL para gestionar los datos de sus aplicaciones.",
-    "En el área de bases de datos, Jorge trabaja principalmente con PostgreSQL y MySQL.",
-    "Su experiencia en bases de datos incluye el uso de PostgreSQL y MySQL.",
-    "Jorge cuenta con experiencia utilizando PostgreSQL y MySQL en sus proyectos de software.",
-    "Para la gestión y almacenamiento de datos, Jorge utiliza PostgreSQL y MySQL.",
-    "Las principales bases de datos que utiliza Jorge son PostgreSQL y MySQL."
-],
-    },
-
-    {
-        category: "tecnologias",
-        keywords: [
-            "deploy",
-            "deployment",
-            "despliegue",
-            "hosting",
-        ],
-        responses: [
-            "Para despliegue, Jorge trabaja con servicios como Render, Vercel y AWS.",
-            "Jorge utiliza Render, Vercel y AWS para desplegar sus aplicaciones.",
-            "En cuanto a deployment, Jorge trabaja con plataformas como Render, Vercel y AWS.",
-            "Para publicar sus proyectos, Jorge utiliza servicios como Render, Vercel y AWS.",
-        ],
-    },
 
     {
         category: "tecnologias",
@@ -457,30 +335,28 @@ keywords: [
             "lenguajes",
         ],
         responses: [
-    "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel y AWS.",
+    "Jorge trabaja principalmente con React, JavaScript, Django, Java, PostgreSQL y MySQL. También utiliza Render, Vercel, VirtualBox, LibreOffice y Postman.",
 
-    "Su stack tecnológico combina React y JavaScript para el desarrollo frontend, Django y Java para backend, y PostgreSQL y MySQL para bases de datos.",
+    "Su stack tecnológico combina React y JavaScript para el desarrollo frontend, Django y Java para backend, PostgreSQL y MySQL para bases de datos, además de herramientas como Postman, VirtualBox y LibreOffice.",
 
-    "Entre las principales tecnologías de Jorge se encuentran React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+    "Entre las principales tecnologías y herramientas de Jorge se encuentran React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel, VirtualBox, LibreOffice y Postman.",
 
-    "Jorge tiene experiencia en desarrollo Full Stack utilizando React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL.",
+    "Jorge tiene experiencia en desarrollo Full Stack utilizando React y JavaScript en frontend, Django y Java en backend, además de PostgreSQL y MySQL. También utiliza Postman para trabajar con APIs y herramientas como VirtualBox y LibreOffice.",
 
-    "Su perfil técnico abarca desarrollo web Full Stack, trabajando con React, JavaScript, Django y Java, junto con bases de datos como PostgreSQL y MySQL.",
+    "Su perfil técnico abarca desarrollo web Full Stack, trabajando con React, JavaScript, Django y Java, junto con bases de datos como PostgreSQL y MySQL. También utiliza Postman, VirtualBox y LibreOffice.",
 
-    "Jorge utiliza tecnologías modernas para desarrollar aplicaciones web, entre ellas React, JavaScript, Django, Java, PostgreSQL y MySQL, además de servicios como Render, Vercel y AWS.",
+    "Jorge utiliza tecnologías y herramientas para desarrollar, probar y administrar aplicaciones, entre ellas React, JavaScript, Django, Java, PostgreSQL, MySQL, Postman, VirtualBox y LibreOffice, además de servicios como Render y Vercel.",
 
-    "En frontend, Jorge trabaja principalmente con React y JavaScript; en backend utiliza Django y Java, y tiene experiencia con PostgreSQL y MySQL.",
+    "En frontend, Jorge trabaja principalmente con React y JavaScript; en backend utiliza Django y Java, y tiene experiencia con PostgreSQL y MySQL. Para pruebas y desarrollo utiliza Postman, mientras que también trabaja con VirtualBox y LibreOffice.",
 
-    "Su experiencia tecnológica incluye desarrollo frontend, backend, bases de datos y despliegue de aplicaciones mediante React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel y AWS.",
+    "Su experiencia tecnológica incluye desarrollo frontend, backend, bases de datos, pruebas de APIs, virtualización y soporte remoto mediante React, JavaScript, Django, Java, PostgreSQL, MySQL, Postman, VirtualBox, LibreOffice, Render y Vercel.",
 
-    "Jorge cuenta con un stack orientado al desarrollo de aplicaciones web, combinando React, JavaScript, Django y Java con PostgreSQL y MySQL, además de plataformas de despliegue como Render, Vercel y AWS.",
+    "Jorge cuenta con un stack orientado al desarrollo de aplicaciones web, combinando React, JavaScript, Django y Java con PostgreSQL y MySQL. También utiliza Postman, VirtualBox y LibreOffice, además de plataformas de despliegue como Render y Vercel.",
 
-    "Las principales tecnologías que forman parte del perfil de Jorge son React, JavaScript, Django, Java, PostgreSQL y MySQL. También trabaja con servicios de despliegue y nube como Render, Vercel y AWS."
+    "Las principales tecnologías y herramientas que forman parte del perfil de Jorge son React, JavaScript, Django, Java, PostgreSQL y MySQL. También trabaja con Postman, VirtualBox, LibreOffice y servicios de despliegue y nube como Render y Vercel."
 ],
     },
 
-    
-        
     {
         category: "proyectos",
         keywords: [
@@ -565,6 +441,7 @@ keywords: [
     category: "contacto",
     keywords: [
         "contacto",
+        "contactas",
         "contactar",
         "contactarme",
         "contactarlo",
@@ -597,6 +474,7 @@ keywords: [
         "necesito hablar con jorge",
         "contactame con el",
         "contactame",
+        "conectar",
         
     ],
     responses: [
@@ -612,6 +490,407 @@ keywords: [
         'Si necesitas comunicarte con Jorge, entra a la sección "Contacto" y utiliza la opción que prefieras.',
     ],
 },
+
+    {
+category: "contact",
+keywords: [
+"contact",
+"contact jorge",
+"contact jorge patricio",
+    "How can I contact Jorge",
+"contact me",
+"contact him",
+"get in touch",
+"get in touch with jorge",
+"talk to jorge",
+"talk to him",
+"talk to jorge patricio",
+"how can i contact",
+"how can i contact jorge",
+"how do i contact",
+"how do i contact jorge",
+"how to contact",
+"how to contact jorge",
+"how can i reach",
+"how can i reach jorge",
+"how do i reach jorge",
+"reach jorge",
+"i want to contact",
+"i want to contact jorge",
+"i want to talk to jorge",
+"i would like to contact jorge",
+"i would like to talk to jorge",
+"i need to contact jorge",
+"i need to talk to jorge",
+"where can i contact jorge",
+"where can i reach jorge",
+"how can i talk to jorge",
+"how can i communicate with jorge",
+"jorge's contact",
+"jorge contact",
+"contact information",
+"jorge's contact information",
+"contact details",
+"jorge's contact details",
+],
+
+responses: [
+    'You can contact Jorge through the "Contact" section of his portfolio.',
+    'To get in touch with Jorge, use the "Contact" section of his portfolio.',
+    'If you want to contact Jorge, you can find the corresponding option in the "Contact" section.',
+    'The recommended way to contact Jorge is through the "Contact" section of his portfolio.',
+    'You can find Jorge\'s contact options directly in his portfolio.',
+    'If you would like to talk to Jorge, visit the "Contact" section of his portfolio.',
+    'To communicate with Jorge, go to the "Contact" section, where you will find the available options.',
+    'Want to contact Jorge? You can do so through the "Contact" section of his portfolio.',
+    'The "Contact" section of the portfolio is the place to get in touch with Jorge.',
+    'If you need to contact Jorge, go to the "Contact" section and choose your preferred option.',
+],
+
+    },
+
+    {
+    category: "identity",
+    keywords: [
+        "who is jorge",
+        "who is jorge patricio",
+        "who is santamaria",
+        "who is santamaria cherrez",
+        "introduce me to jorge",
+        "tell me about him",
+
+        "profile",
+        "professional profile",
+        "jorge's professional profile",
+        "experience",
+        "jorge's experience",
+
+        "talk about jorge",
+        "talk about jorge's profile",
+        "tell me about jorge",
+        "tell me about jorge's experience",
+        "tell me about jorge",
+        "tell me more about jorge",
+        "i want to know about jorge",
+        "about jorge",
+
+        "tell me about him",
+        "tell me more about him",
+        "talk about him",
+        "talk to me about him",
+        "what can you tell me about jorge",
+        "who is this jorge",
+        "describe jorge",
+    ],
+
+    responses: [
+    "Jorge Patricio Santamaría Cherrez is a Systems Engineer with a Master's degree in Software Engineering and Computer Systems. His experience focuses mainly on Full Stack development, working with React, JavaScript, Django, Java, PostgreSQL, and MySQL.",
+
+    "Jorge Patricio Santamaría Cherrez is a Software Engineering professional with a background in Systems Engineering and a Master's degree in Software Engineering and Computer Systems.",
+
+    "Jorge is a Systems Engineer with a Master's degree in Software Engineering and Computer Systems. He specializes in Full Stack development and web application development, using technologies such as React, JavaScript, Django, and Java.",
+
+    "Jorge holds a degree in Systems Engineering from Universidad Indoamérica and a Master's degree in Software Engineering and Computer Systems from UNIR.",
+
+    "Jorge Patricio is a systems professional focused on Full Stack development. He works with technologies such as React, JavaScript, Django, and Java, as well as databases such as PostgreSQL and MySQL.",
+
+    "Jorge Santamaría Cherrez is a Systems Engineer with a Master's degree in Software Engineering. He has worked on different technology projects, including React applications, an Ecuador quiz, a weather application, a chatbot, a chess game, and an online store.",
+
+    "Jorge works as a Software Engineer and Full Stack Developer. He has a background in Systems Engineering and a Master's degree in Software Engineering, with experience in React, JavaScript, Django, Java, PostgreSQL, and MySQL.",
+
+    "Jorge Patricio Santamaría Cherrez combines his background in Systems Engineering with a Master's degree in Software Engineering. His main areas include Full Stack web development, database management, virtualization, and application deployment.",
+
+    "Jorge is a Systems Engineer with a Master's degree in Software Engineering. His experience includes web application development and Full Stack projects using React, Django, JavaScript, Java, and SQL databases such as PostgreSQL and MySQL.",
+
+    "Jorge Patricio has a background in Systems Engineering and a Master's degree in Software Engineering. Throughout his career, he has developed projects such as a portfolio, an Ecuador quiz, a weather app, a chatbot, a chess game, and an e-commerce platform.",
+
+    "Jorge Santamaría specializes in software development and Full Stack development. He is a Systems Engineer with a Master's degree in Software Engineering and knowledge of React, JavaScript, Django, Java, PostgreSQL, MySQL, virtualization, and development tools.",
+
+    "Jorge Patricio Santamaría Cherrez is a software professional with a background in Systems Engineering and a Master's degree in Software Engineering. He has developed various web projects and applications, working with React, Django, JavaScript, Java, PostgreSQL, and MySQL."
+],       
+},
+
+    {
+    category: "technologies",
+    keywords: [
+        "technologies",
+        "technology",
+        "tech stack",
+        "stack",
+        "tools",
+        "programming languages",
+        "languages",
+        "what technologies does jorge use",
+        "what tools does jorge use",
+        "jorge technologies",
+        "jorge tech stack",
+        "jorge tools",
+        "technical skills",
+        "development tools",
+    ],
+
+    responses: [
+        "Jorge mainly works with React, JavaScript, Django, Java, PostgreSQL, and MySQL. He also uses Render, Vercel, VirtualBox, LibreOffice, and Postman.",
+
+        "His technology stack combines React and JavaScript for frontend development, Django and Java for backend development, PostgreSQL and MySQL for databases, along with tools such as Postman, VirtualBox, and LibreOffice.",
+
+        "Among Jorge's main technologies and tools are React, JavaScript, Django, Java, PostgreSQL, MySQL, Render, Vercel, VirtualBox, LibreOffice, and Postman.",
+
+        "Jorge has Full Stack development experience using React and JavaScript for frontend, Django and Java for backend, as well as PostgreSQL and MySQL. He also uses Postman for API testing and tools such as VirtualBox and LibreOffice.",
+
+        "His technical profile covers Full Stack web development, working with React, JavaScript, Django, and Java, together with databases such as PostgreSQL and MySQL. He also uses Postman, VirtualBox, and LibreOffice.",
+
+        "Jorge uses technologies and tools to develop, test, and manage applications, including React, JavaScript, Django, Java, PostgreSQL, MySQL, Postman, VirtualBox, and LibreOffice, as well as services such as Render, and Vercel.",
+
+        "On the frontend, Jorge mainly works with React and JavaScript; on the backend, he uses Django and Java, and he has experience with PostgreSQL and MySQL. For testing and development, he uses Postman, while also working with VirtualBox and LibreOffice.",
+
+        "His technology experience includes frontend development, backend development, databases, API testing, virtualization, and remote support using React, JavaScript, Django, Java, PostgreSQL, MySQL, Postman, VirtualBox, LibreOffice, Render, and Vercel.",
+
+        "Jorge has a technology stack focused on web application development, combining React, JavaScript, Django, and Java with PostgreSQL and MySQL. He also uses Postman, VirtualBox, and LibreOffice, as well as deployment platforms such as Render, and Vercel.",
+
+        "The main technologies and tools that are part of Jorge's profile include React, JavaScript, Django, Java, PostgreSQL, and MySQL. He also works with Postman, VirtualBox, LibreOffice, and cloud and deployment services such as Render, and Vercel."
+    ],
+},
+
+    {
+    category: "education",
+    keywords: [
+        "jorge's education",
+        "education",
+        "academic education",
+        "academic background",
+        "jorge's academic background",
+        "academic career",
+        "jorge's studies",
+        "academic studies",
+        "academic profile",
+        "academic history",
+        "academic preparation",
+        "education level",
+        "what is jorge's education",
+        "what did jorge study",
+        "where did jorge study",
+        "jorge's academic background",
+    ],
+
+    responses: [
+        "Jorge's academic background includes a degree in Systems Engineering from Universidad Indoamérica and a Master's degree in Software Engineering and Computer Systems from UNIR, Spain.",
+
+        "Jorge has an undergraduate degree in Systems Engineering and a postgraduate degree in Software Engineering and Computer Systems.",
+
+        "His academic background includes a degree in Systems Engineering in Ecuador and a Master's degree in Software Engineering and Computer Systems in Spain.",
+
+        "Regarding his academic background, Jorge has a degree in Systems Engineering and later completed a Master's degree specializing in Software Engineering and Computer Systems.",
+
+        "Jorge is a Systems Engineer and also holds a Master's degree in Software Engineering and Computer Systems.",
+
+        "His academic background combines studies in Systems Engineering in Ecuador with postgraduate studies in Spain.",
+
+        "Jorge's academic career began with a degree in Systems Engineering and continued with a Master's degree in Software Engineering and Computer Systems.",
+
+        "Jorge has undergraduate and postgraduate education focused on systems and software engineering.",
+
+        "His academic preparation includes a degree in Systems Engineering from Universidad Indoamérica and a Master's degree completed at UNIR.",
+
+        "In summary, Jorge has a degree in Systems Engineering and a Master's degree in Software Engineering and Computer Systems.",
+    ],
+},
+
+    {
+    category: "certifications",
+    keywords: [
+        "certifications",
+        "certificates",
+        "certification",
+        "what certifications does jorge have",
+        "what certificates does jorge have",
+        "what courses does jorge have",
+        "what are his certificates",
+        "what are his courses",
+        "what are his certifications",
+        "what certifications does he have",
+        "what certificates does he have",
+        "what courses does he have",
+        "list of certifications",
+        "list of certificates",
+        "additional training",
+        "additional education",
+        "jorge's courses",
+        "jorge's certifications",
+        "jorge's certificates",
+        "jorge's training",
+    ],
+    responses: [
+        "Jorge has certifications related to MCP, Linux, Fundamentals of AI, AZ-900, and Claude API.",
+        "Among Jorge's certifications are MCP, Linux, Fundamentals of AI, AZ-900, and Claude API.",
+        "Jorge holds certifications in areas such as MCP, Linux, artificial intelligence, Azure, and Claude API.",
+        "His additional training includes certifications in MCP, Linux, Fundamentals of AI, AZ-900, and Claude API.",
+        "Jorge has complemented his professional education with certifications in technology, artificial intelligence, Linux, and Azure.",
+        "His additional training includes certifications related to MCP, Linux, AI, Azure, and Claude API.",
+        "Jorge has certified training in different technology areas, including MCP, Linux, AI, Azure, and Claude API.",
+        "His additional preparation includes MCP, Linux, IBM Fundamentals of AI, AZ-900, and Claude API.",
+        "Jorge holds certifications related to artificial intelligence, systems, cloud, and development technologies.",
+        "Jorge's main certifications include MCP, Linux, Fundamentals of AI, AZ-900, and Claude API.",
+    ],
+},
+
+
+
+
+
+    {
+    category: "sasha",
+    keywords: [
+        "who are you",
+        "what are you",
+        "what is your name",
+        "your name",
+        "who is sasha",
+        "what is sasha",
+        "tell me about yourself",
+        "tell me about you",
+        "tell me who you are",
+        "what do you do",
+        "what is your function",
+        "what is your job",
+        "what are you for",
+        "what can you do",
+    ],
+    responses: [
+        "I'm Sasha, the virtual assistant for Jorge's portfolio.",
+        "My name is Sasha, and I'm the virtual assistant for Jorge's portfolio.",
+        "I'm Sasha, an AI created to assist visitors to Jorge's portfolio.",
+        "My name is Sasha, and I work as the virtual assistant for Jorge's portfolio.",
+        "I'm Sasha, the virtual assistant here to help you learn about Jorge's portfolio.",
+        "My name is Sasha 😊. I'm here to answer your questions about Jorge and his work.",
+        "I'm Sasha, a virtual assistant developed to assist visitors to Jorge's portfolio.",
+        "I'm Sasha! 👋 I can help you learn about Jorge's profile, education, projects, and skills.",
+        "I'm Sasha, and my role is to help you discover more about Jorge's work and professional background.",
+        "I'm Sasha, Jorge's virtual assistant. 😊 Ask me anything about his portfolio.",
+    ],
+},
+
+{
+    category: "sasha_saludos",
+    keywords: [
+        "hello",
+        "hi",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "hey",
+    ],
+    responses: [
+        "Hello! I'm Sasha, the virtual assistant for Jorge's portfolio. How can I help you?",
+        "Hello! 👋 I'm Sasha. What would you like to know?",
+        "Hi! I'm Sasha, the virtual assistant for the handsome Jorge. I'm here to help you.",
+        "Hello! It's great to have you here. What would you like to know?",
+        "Hey! 👋 Welcome to Jorge's portfolio. I'm Sasha, how can I help you?",
+        "Hello! 😊 I'm glad to see you here. Would you like to learn more about Jorge?",
+        "Hi! 👋 I'm Sasha, and I'm ready to help you learn about Jorge's work.",
+        "Hello! It's great to have you here. Tell me, what would you like to know?",
+        "Good morning! 😊 I'm Sasha, Jorge's virtual assistant. How can I help you?",
+        "Good afternoon/evening! 👋 I'm Sasha. Ask me anything about the portfolio.",
+    ],
+},
+
+{
+    category: "sasha_gracias",
+    keywords: [
+        "thanks",
+        "thank you",
+        "many thanks",
+        "I appreciate it",
+        "thanks sasha",
+        "very grateful",
+    ],
+    responses: [
+        "You're welcome! 😊",
+        "My pleasure! I'm here to help.",
+        "You're very welcome! 😊",
+        "Anytime! Is there anything else you need?",
+        "It's a pleasure to help you! 😊",
+        "There's no need to thank me! I'm here to help.",
+        "My pleasure! Is there anything else you'd like to know?",
+        "You're welcome! I'm glad I could help. 😊",
+        "That's what I'm here for! Feel free to ask me anything.",
+        "Happy to help! 😊 Is there anything else you need?",
+    ],
+},
+
+{
+    category: "sasha_despedida",
+    keywords: [
+        "bye",
+        "goodbye",
+        "see you later",
+        "see you",
+        "I'm leaving",
+        "see you soon",
+        "take care",
+    ],
+    responses: [
+        "Bye! 👋 Thanks for visiting Jorge's portfolio.",
+        "See you later! It was a pleasure helping you. 😊",
+        "See you! 👋 I hope you come back soon.",
+        "Goodbye! Have an excellent day.",
+        "See you soon! 👋 I hope to see you here again.",
+        "Bye! 😊 It was a pleasure chatting with you.",
+        "See you! Have an excellent day. 👋",
+        "See you later! Thanks for visiting Jorge's portfolio.",
+        "Goodbye! 👋 Sasha will be here whenever you need help.",
+        "See you soon! 😊 I hope you found what you were looking for.",
+    ],
+},
+
+{
+    category: "sasha_estado",
+    keywords: [
+        "how are you",
+        "how are you doing",
+        "are you okay",
+        "how is it going",
+        "how are things",
+    ],
+    responses: [
+        "I'm doing very well, thanks for asking! 😊 How can I help you?",
+        "I'm doing great and ready to help you. What would you like to know?",
+        "Everything is good here! I'm Sasha, always ready to help.",
+        "I'm doing very well, thank you. 😊 Would you like to learn something about Jorge?",
+        "I'm great! Always available to help you with Jorge's portfolio.",
+        "Everything is going very well here. 😊 What would you like to know?",
+        "I'm doing great! Thanks for asking. Would you like me to tell you something about Jorge?",
+        "I'm excellent and ready to help you. What do you need to know?",
+        "Everything is perfect! 😊 Tell me what you'd like to know about the portfolio.",
+        "I'm doing very well, thank you. It's a pleasure talking with you! How can I help you?",
+    ],
+},
+
+{
+    category: "sasha_creador",
+    keywords: [
+        "who created you",
+        "who created you",
+        "who made you",
+        "who programmed you",
+        "who developed you",
+        "who developed sasha",
+        "who invented you",
+    ],
+    responses: [
+        "I was created to work as the virtual assistant for Jorge Patricio Santamaría Cherrez's portfolio.",
+        "Jorge Patricio Santamaría Cherrez developed Sasha as a virtual assistant for his portfolio.",
+        "I'm a virtual assistant created for Jorge Patricio Santamaría Cherrez's portfolio.",
+        "I was developed as part of Jorge's portfolio to help visitors learn about his profile and projects.",
+        "Jorge created Sasha to provide information and assist visitors to his portfolio.",
+        "I'm Sasha, a virtual assistant developed by Jorge to assist visitors to his portfolio.",
+        "My role is to help visitors learn more about Jorge's professional profile and projects.",
+        "I was developed by Jorge as part of his Software Engineering portfolio.",
+        "Jorge Patricio Santamaría Cherrez is the person who developed Sasha to interact with visitors to his portfolio.",
+        "I'm Sasha, Jorge's virtual assistant, created to answer questions about his profile, education, projects, and experience.",
+    ],
+},
+    
 {
     category: "sasha",
     keywords: [
@@ -763,4 +1042,6 @@ keywords: [
         "Soy Sasha, la asistente virtual de Jorge, creada para responder preguntas sobre su perfil, estudios, proyectos y experiencia.",
     ],
 },
+    
+    
 ];
